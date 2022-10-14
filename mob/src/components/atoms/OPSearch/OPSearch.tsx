@@ -4,7 +4,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Icons from '../../../constants/Icons';
 
-import {styles} from './styles';
+import {styles} from './style';
 
 interface OPSearchProps {
   value?: string;
