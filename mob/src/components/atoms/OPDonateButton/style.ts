@@ -8,14 +8,17 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 4,
     borderColor: Colors.RED,
+    backgroundColor: Colors.WHITE,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 50,
+    paddingTop: -5,
   },
   text: {
     fontSize: 12,
     color: Colors.RED,
     textTransform: 'uppercase',
+    marginTop: 5,
   },
   focusedContainer: {
     borderColor: Colors.WHITE,

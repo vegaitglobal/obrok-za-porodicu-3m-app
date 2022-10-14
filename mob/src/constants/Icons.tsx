@@ -6,6 +6,7 @@ import CallFull from '../../assets/icons/call_full.svg';
 import Call from '../../assets/icons/call.svg';
 import Contact from '../../assets/icons/contact.svg';
 import Donate from '../../assets/icons/donate.svg';
+import DonateWhite from '../../assets/icons/donate_white.svg';
 import FileFull from '../../assets/icons/file_full.svg';
 import File from '../../assets/icons/file.svg';
 import Filter from '../../assets/icons/filter.svg';
@@ -28,6 +29,7 @@ export default {
   CALL_FULL: <CallFull />,
   CONTACT: <Contact />,
   DONATE: <Donate />,
+  DONATE_WHITE: <DonateWhite />,
   FILE: <File />,
   FILE_FULL: <FileFull />,
   FILTER: <Filter />,

@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   icon: {
     height: 24,
     width: 24,
-    backgroundColor: Colors.RED,
+    // backgroundColor: Colors.RED,
   },
   text: {
     fontSize: 12,
