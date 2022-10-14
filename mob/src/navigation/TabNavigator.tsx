@@ -10,6 +10,7 @@ import AboutUsScreen from '../screens/AboutUsScreen';
 import ContactScreen from '../screens/ContactScreen';
 import DonateScreen from '../screens/DonateScreen';
 import {useTranslation} from 'react-i18next';
+import {Text} from 'react-native';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -24,6 +25,9 @@ const TabNavigator = () => {
         options={{
           tabBarLabel: t('tabNavigator.home'),
           headerShown: false,
+          tabBarIcon: ({focused}) => {
+            return <Text>test</Text>;
+          },
         }}
       />
       <BottomTab.Screen
