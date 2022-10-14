@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import FormikTextInput from '../components/atoms/Formik/FormikTextInput/FormikTextInput';
 import {testSchema} from '../validation/TestSchema';
+import FormikDropdown from '../components/atoms/Formik/FormikDropdown/FormikDropdown';
 
 const ActionsListScreen = () => {
   const initialValues = {
@@ -21,6 +22,7 @@ const ActionsListScreen = () => {
   };
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loseFocus, setLoseFocus] = useState(false);
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -54,6 +56,19 @@ const ActionsListScreen = () => {
                 textArea
                 label={'Ime i Prezime'}
                 placeholder={'Ime i Prezime'}
+              />
+              <Field
+                validateOnChange
+                component={FormikDropdown}
+                loseFocus={loseFocus}
+                editable
+                submitOnChange={true}
+                dropdownValues={[
+                  {label: 'sss', value: 2},
+                  {label: 'ddad', value: 33},
+                ]}
+                name={'selectedCreator'}
+                label={'Select Creator'}
               />
             </View>
           )}

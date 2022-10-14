@@ -16,6 +16,10 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 5,
     backgroundColor: 'transparent',
   },
+  rightIcon: {
+    position: 'absolute',
+    right: 15,
+  },
   inputWrapper: {
     height: 58,
     width: 343,
@@ -25,6 +29,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   inputField: {
     ...TextStyles.ARCHIVO_REGULAR,
@@ -68,6 +73,7 @@ export const styles = StyleSheet.create({
   textArea: {
     height: 131,
     marginTop: 10,
+    marginBottom: 30,
     paddingHorizontal: 5,
     paddingVertical: 10,
     textAlignVertical: 'top',
