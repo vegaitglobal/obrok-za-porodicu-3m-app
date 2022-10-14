@@ -1,5 +1,4 @@
-import { ResponseModel } from "../models/ResponseModel";
-
+import {ResponseModel} from '../models/ResponseModel';
 
 interface IContactService {
   getContacts(): Promise<ResponseModel | null>;
@@ -7,8 +6,8 @@ interface IContactService {
 
 class ContactService implements IContactService {
   async getContacts(): Promise<ResponseModel> {
-    try {  
-      throw new Error("Method not implemented.");
+    try {
+      throw new Error('Method not implemented.');
       // TODO: Remove or implement this method
       // return Promise.resolve();
     } catch (error: any) {

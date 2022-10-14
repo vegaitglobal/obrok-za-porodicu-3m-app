@@ -1,9 +1,9 @@
-import { combineReducers } from '@reduxjs/toolkit';
+import {combineReducers} from '@reduxjs/toolkit';
 
 import contactSlice from './ContactReducer';
 
 const rootReducer = combineReducers({
-    contact: contactSlice,
+  contact: contactSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
