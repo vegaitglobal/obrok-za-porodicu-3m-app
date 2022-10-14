@@ -1,5 +1,6 @@
 import { Field, Formik } from "formik";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { LoginUserModel } from "../../../../models/LoginUserModel";
 import { loginValidationScheme } from "../../../validators/loginValidationScheme";
@@ -15,6 +16,8 @@ const initialValues: LoginUserModel = {
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <Formik
       initialValues={initialValues}
@@ -24,7 +27,9 @@ const LoginForm = () => {
           email: values.email,
           password: values.password,
         };
+
         // dispatch(login(data));
+        navigate("/home");
       }}
     >
       {(formik) => (
