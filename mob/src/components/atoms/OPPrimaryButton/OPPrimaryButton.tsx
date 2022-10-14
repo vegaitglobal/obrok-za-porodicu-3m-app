@@ -1,16 +1,28 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {Text, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
 import {styles} from './style';
 
 interface OPPrimaryButtonProps {
   text: string;
+  style?: ViewStyle;
+  disabled?: boolean;
+  textStyle?: TextStyle;
   onPress: () => void;
 }
 
-const OPPrimaryButton: React.FC<OPPrimaryButtonProps> = ({text, onPress}) => {
+const OPPrimaryButton: React.FC<OPPrimaryButtonProps> = ({
+  text,
+  style = {},
+  disabled = false,
+  textStyle = {},
+  onPress,
+}) => {
   return (
-    <TouchableOpacity style={styles.container}>
-      <Text>OPPrimaryButton</Text>
+    <TouchableOpacity
+      disabled={disabled}
+      onPress={onPress}
+      style={[styles.container, style, disabled && styles.disabledContainer]}>
+      <Text style={[styles.text, textStyle]}>{text}</Text>
     </TouchableOpacity>
   );
 };
