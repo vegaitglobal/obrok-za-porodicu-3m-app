@@ -16,6 +16,7 @@
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/stack": "^6.3.2",
     "@reduxjs/toolkit": "^1.8.6",
+    "formik": "^2.2.9",
     "i18next": "^21.10.0",
     "i18next-browser-languagedetector": "^6.1.8",
     "i18next-http-backend": "^1.4.4",
@@ -29,7 +30,8 @@
     "react-native-svg": "^13.4.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-redux": "^8.0.4",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

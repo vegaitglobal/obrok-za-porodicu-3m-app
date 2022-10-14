@@ -20,6 +20,7 @@ import Star from '../../assets/icons/star.svg';
 import UserFull from '../../assets/icons/user_full.svg';
 import User from '../../assets/icons/user.svg';
 import Warning from '../../assets/icons/warning.svg';
+import {Colors} from './Colors';
 
 export default {
   ARROW_DOWN: <ArrowDown />,
@@ -41,5 +42,6 @@ export default {
   STAR: <Star />,
   USER_FULL: <UserFull />,
   USER: <User />,
-  WARNING: <Warning />,
+  WARNING: <Warning color={Colors.LIGHT_GRAY} />,
+  RED_WARNING: <Warning color={Colors.RED_ERROR} />,
 };
