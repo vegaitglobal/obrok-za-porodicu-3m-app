@@ -1,7 +1,9 @@
 import React from 'react';
 
-import ArrowDown from '../../assets/icons/arrow_left.svg';
+import ArrowDown from '../../assets/icons/arrow_down.svg';
 import ArrowLeft from '../../assets/icons/arrow_left.svg';
+import ArrowUp from '../../assets/icons/arrow_up.svg';
+
 import CallFull from '../../assets/icons/call_full.svg';
 import Call from '../../assets/icons/call.svg';
 import Contact from '../../assets/icons/contact.svg';
@@ -26,6 +28,7 @@ import {Colors} from './Colors';
 export default {
   ARROW_DOWN: <ArrowDown />,
   ARROW_LEFT: <ArrowLeft />,
+  ARROW_UP: <ArrowUp />,
   CALL: <Call />,
   CALL_FULL: <CallFull />,
   CONTACT: <Contact />,
@@ -45,5 +48,6 @@ export default {
   STAR: <Star />,
   USER_FULL: <UserFull />,
   USER: <User />,
-  WARNING: <Warning />,
+  WARNING: <Warning color={Colors.LIGHT_GRAY} />,
+  RED_WARNING: <Warning color={Colors.RED_ERROR} />,
 };
