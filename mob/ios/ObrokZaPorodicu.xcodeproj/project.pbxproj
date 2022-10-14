@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ObrokZaPorodicuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ObrokZaPorodicuTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-ObrokZaPorodicu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-ObrokZaPorodicu.a */; };
+		01817FAE84964930BCD61CC1 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B9C6521C9464ECC83904570 /* Montserrat-Regular.ttf */; };
+		0C1E45AB590A662A168A8887 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85468734253EDDEAE3B429A1 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */; };
+		1F9DAE619380A866C5BD72E5 /* libPods-ObrokZaPorodicu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 474B8343A6E1B1192D13CBF0 /* libPods-ObrokZaPorodicu.a */; };
+		5F9C53803E524253AD63240F /* Archivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA01D8B1A521413FA087BA9C /* Archivo-Regular.ttf */; };
+		7427B66411F243E8A4D439C4 /* Dosis-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F142555612142DBBEFB8B55 /* Dosis-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AD27FF8C7F144D7AA7F97094 /* Chewy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46908102C52C4B4D8CE61035 /* Chewy-Regular.ttf */; };
+		C952D0C328F9EC530029786F /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C952D0C228F9EC530029786F /* hermes.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +41,19 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ObrokZaPorodicu/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ObrokZaPorodicu/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ObrokZaPorodicu/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-ObrokZaPorodicu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu.debug.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-ObrokZaPorodicu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu.release.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-ObrokZaPorodicu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObrokZaPorodicu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B41343D52489967ECAA94F /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig"; sourceTree = "<group>"; };
+		330276F5972D1668FAE4D743 /* Pods-ObrokZaPorodicu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu.release.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu.release.xcconfig"; sourceTree = "<group>"; };
+		46908102C52C4B4D8CE61035 /* Chewy-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Chewy-Regular.ttf"; path = "../assets/fonts/Chewy-Regular.ttf"; sourceTree = "<group>"; };
+		474B8343A6E1B1192D13CBF0 /* libPods-ObrokZaPorodicu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObrokZaPorodicu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B9C6521C9464ECC83904570 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		5F142555612142DBBEFB8B55 /* Dosis-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-Regular.ttf"; path = "../assets/fonts/Dosis-Regular.ttf"; sourceTree = "<group>"; };
+		5F1D216D4CA96E7AC654BCA6 /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ObrokZaPorodicu/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; sourceTree = "<group>"; };
+		85468734253EDDEAE3B429A1 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C952D0C228F9EC530029786F /* hermes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = hermes.xcframework; path = "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework"; sourceTree = "<group>"; };
+		DA01D8B1A521413FA087BA9C /* Archivo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Regular.ttf"; path = "../assets/fonts/Archivo-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F51B38084053336E6129C0FE /* Pods-ObrokZaPorodicu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu.debug.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a in Frameworks */,
+				0C1E45AB590A662A168A8887 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +69,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-ObrokZaPorodicu.a in Frameworks */,
+				C952D0C328F9EC530029786F /* hermes.xcframework in Frameworks */,
+				1F9DAE619380A866C5BD72E5 /* libPods-ObrokZaPorodicu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,11 +110,23 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C952D0C228F9EC530029786F /* hermes.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-ObrokZaPorodicu.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */,
+				474B8343A6E1B1192D13CBF0 /* libPods-ObrokZaPorodicu.a */,
+				85468734253EDDEAE3B429A1 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EED3D57BA7B4A3ABD477B20 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA01D8B1A521413FA087BA9C /* Archivo-Regular.ttf */,
+				5F142555612142DBBEFB8B55 /* Dosis-Regular.ttf */,
+				5B9C6521C9464ECC83904570 /* Montserrat-Regular.ttf */,
+				46908102C52C4B4D8CE61035 /* Chewy-Regular.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -122,6 +145,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				2EED3D57BA7B4A3ABD477B20 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -140,10 +164,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-ObrokZaPorodicu.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-ObrokZaPorodicu.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */,
+				F51B38084053336E6129C0FE /* Pods-ObrokZaPorodicu.debug.xcconfig */,
+				330276F5972D1668FAE4D743 /* Pods-ObrokZaPorodicu.release.xcconfig */,
+				29B41343D52489967ECAA94F /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig */,
+				5F1D216D4CA96E7AC654BCA6 /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ObrokZaPorodicuTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				56454C8196BA8CBB9B4136E0 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				377FB6793E6308E79AC7623F /* [CP] Embed Pods Frameworks */,
+				E97951ACEC75A57304C859CE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +200,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ObrokZaPorodicu" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				1533CB45EF096DB2C4C8142C /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				FE9F8E0450344E7751614666 /* [CP] Embed Pods Frameworks */,
+				CD9B244398CF4BEBBF0E5FD8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,6 +268,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				5F9C53803E524253AD63240F /* Archivo-Regular.ttf in Resources */,
+				7427B66411F243E8A4D439C4 /* Dosis-Regular.ttf in Resources */,
+				01817FAE84964930BCD61CC1 /* Montserrat-Regular.ttf in Resources */,
+				AD27FF8C7F144D7AA7F97094 /* Chewy-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,46 +294,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		1533CB45EF096DB2C4C8142C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,7 +316,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		377FB6793E6308E79AC7623F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,7 +333,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		56454C8196BA8CBB9B4136E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD9B244398CF4BEBBF0E5FD8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -361,7 +372,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		E97951ACEC75A57304C859CE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -397,6 +408,23 @@
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		FE9F8E0450344E7751614666 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -430,7 +458,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig */;
+			baseConfigurationReference = 29B41343D52489967ECAA94F /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -458,7 +486,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */;
+			baseConfigurationReference = 5F1D216D4CA96E7AC654BCA6 /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -483,13 +511,14 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-ObrokZaPorodicu.debug.xcconfig */;
+			baseConfigurationReference = F51B38084053336E6129C0FE /* Pods-ObrokZaPorodicu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RC7W8BPRW2;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = ObrokZaPorodicu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,12 +540,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-ObrokZaPorodicu.release.xcconfig */;
+			baseConfigurationReference = 330276F5972D1668FAE4D743 /* Pods-ObrokZaPorodicu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RC7W8BPRW2;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = ObrokZaPorodicu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
