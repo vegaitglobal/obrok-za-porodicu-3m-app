@@ -9,7 +9,6 @@ const TypeLabel: React.FC<TypeLabelProps> = ({text}) => {
   return (
     <View style={styles.container}>
       {
-        
         // TODO: Delete or implement this component
       }
     </View>
