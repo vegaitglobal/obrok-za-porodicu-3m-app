@@ -1,0 +1,13 @@
+name: Android build
+
+on:
+  push:
+    branches: ['features/**']
+    paths: ['mob/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
