@@ -1,0 +1,29 @@
+@import "../../../constants/Colors.scss";
+
+.login-body {
+  height: 100vh;
+  display: flex;
+  font-family: bulldog;
+}
+
+.login-form {
+  width: 30%;
+  height: inherit;
+  align-items: center;
+  text-align: center;
+  background-color: var(WHITE);
+}
+
+.logo-wrapper {
+  padding-top: 10vh;
+}
+
+.logo {
+  width: 50%;
+}
+
+.right-panel {
+  width: 70%;
+  height: inherit;
+  background: linear-gradient(117.85deg, $red 2.82%, $orange 100%);
+}
