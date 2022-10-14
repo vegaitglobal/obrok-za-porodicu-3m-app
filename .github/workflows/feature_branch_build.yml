@@ -2,8 +2,8 @@ name: Android build
 
 on:
   push:
-    paths: 
-      - 'mob/**'
+    paths:
+      - mob/**
 
 jobs:
   build:
