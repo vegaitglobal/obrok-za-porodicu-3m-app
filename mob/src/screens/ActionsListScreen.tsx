@@ -1,14 +1,12 @@
 import React from 'react';
 
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
-import {FontFamily} from '../constants/FontFamily';
+import {TextStyles} from '../constants/TextStyles';
 
 const ActionsListScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{fontFamily: FontFamily.CHEWY_REGULAR}}>
-        Action List Screen
-      </Text>
+      <Text style={{...TextStyles.ARCHIVO_SEMI_BOLD}}>Action List Screen</Text>
     </SafeAreaView>
   );
 };
