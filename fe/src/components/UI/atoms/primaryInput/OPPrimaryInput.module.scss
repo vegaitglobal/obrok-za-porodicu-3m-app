@@ -1,0 +1,75 @@
+@import "../../../../constants/Colors.scss";
+
+.input-label {
+  font-family: "Bulldog";
+  float: left;
+  clear: left;
+  width: "100%";
+  padding-left: 6px;
+}
+.input-field {
+  width: 97%;
+  height: 36px;
+  margin-bottom: 2.5vh;
+  margin-top: 0.5vh;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+
+  border-radius: 7px;
+  -khtml-border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding-left: 10px;
+  font-family: bulldog;
+  font-size: 14px;
+  z-index: 0;
+  &:focus {
+    outline: 2px solid $lightOrange;
+  }
+}
+
+.input-field::placeholder {
+  font: 14px bulldog;
+  color: $bgLightGrey;
+}
+
+.icon {
+  position: absolute;
+}
+
+.error {
+  font: 12px bulldog;
+  float: left;
+  clear: left;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  color: $redError;
+}
+
+.error-div {
+  background-color: $redError;
+}
+
+.regular-div {
+  background-color: $bgLightGrey;
+}
+
+.input-error {
+  width: 98%;
+  height: 36px;
+  margin-bottom: 2.5vh;
+  margin-top: 0.5vh;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  -khtml-border-radius: 7px;
+  padding-left: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: bulldog;
+  background-color: #ffcccb;
+  font-size: 14px;
+  &:focus {
+    outline: 1px solid #b30000;
+  }
+}

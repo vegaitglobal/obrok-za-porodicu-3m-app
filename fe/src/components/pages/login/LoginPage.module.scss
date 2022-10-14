@@ -11,7 +11,7 @@
   height: inherit;
   align-items: center;
   text-align: center;
-  background-color: var(WHITE);
+  background-color: $white;
 }
 
 .logo-wrapper {
@@ -20,6 +20,16 @@
 
 .logo {
   width: 50%;
+}
+
+.form-wrapper {
+  list-style: none;
+  width: 80%;
+  min-width: 200px;
+  padding-right: 10%;
+  padding-left: 10%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .right-panel {

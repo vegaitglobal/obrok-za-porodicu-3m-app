@@ -1,0 +1,19 @@
+@import "../../../../constants/Colors.scss";
+
+.login-btn {
+  width: 100%;
+  height: 40px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  background-color: $orange;
+  border: 2px solid $orange;
+  border-radius: 7px;
+  font-family: "Bulldog";
+  font-size: 14px;
+  color: $white;
+  &:hover {
+    cursor: pointer;
+    background-color: $lightOrange;
+    border: 2px solid $lightOrange;
+  }
+}
