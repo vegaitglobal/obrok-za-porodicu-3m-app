@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="Dto\" />
+    <Folder Include="ServiceInterface\" />
+    <Folder Include="Service\" />
   </ItemGroup>
 
 </Project>
