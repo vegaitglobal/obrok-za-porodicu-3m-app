@@ -1,3 +1,5 @@
+.DS_Store
+
 # Xcode
 !**/*.xcodeproj
 !**/*.pbxproj
@@ -20,6 +22,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+
+
+
 **/.xcode.env.local
 
 # Gradle
@@ -71,6 +76,7 @@ node_modules
 *.log
 .nvm
 package-lock.json
+.yarn-integrity
 
 # OS X
 .DS_Store
