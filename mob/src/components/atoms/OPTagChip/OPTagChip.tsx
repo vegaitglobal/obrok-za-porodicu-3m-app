@@ -1,4 +1,4 @@
-import {View, Text, TextStyle} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
 import {styles} from './style';
 import {Colors} from '../../../constants/Colors';
@@ -8,24 +8,27 @@ type TagChipVariant = 'bright' | 'dark';
 
 interface OPTagChipProps {
   text: string;
-  size: TagChipSize;
+  size?: TagChipSize;
   color: string;
-  variant: TagChipVariant;
+  variant?: TagChipVariant;
 }
 
-const OPTagChip: React.FC<OPTagChipProps> = ({text, size, color, variant}) => {
-  let labelStyle: TextStyle[] = [styles.tagChipLabel];
-
+const OPTagChip: React.FC<OPTagChipProps> = ({
+  text,
+  size = 'small',
+  color,
+  variant = 'bright',
+}) => {
   return (
     <View
       style={[
-        size === 'large' ? styles.tagChipLarge : styles.tagChipSmall,
+        size && (size === 'large' ? styles.tagChipLarge : styles.tagChipSmall),
         variant === 'dark' ? {borderColor: color} : {backgroundColor: color},
         variant === 'dark' && styles.tagChipDark,
       ]}>
       <Text
         style={[
-          labelStyle,
+          styles.tagChipLabel,
           {color: variant === 'bright' ? Colors.WHITE : color},
         ]}>
         {text.toUpperCase()}
