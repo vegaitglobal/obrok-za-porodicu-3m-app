@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import OPCarousel from '../components/molecules/OPCarousel/OPCarousel';
 import {FontFamily} from '../constants/FontFamily';
 
 const ActionsListScreen = () => {
@@ -9,6 +10,7 @@ const ActionsListScreen = () => {
       <Text style={{fontFamily: FontFamily.CHEWY_REGULAR}}>
         Action List Screen
       </Text>
+      <OPCarousel />
     </SafeAreaView>
   );
 };
