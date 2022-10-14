@@ -1,10 +1,7 @@
-
 import React from 'react';
 
-import { AppRoute } from './Routes';
-import {
-    createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
+import {AppRoute} from './Routes';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import ActionsNavigator from './ActionsNavigator';
 import NewsNavigator from './NewsNavigator';
@@ -12,22 +9,21 @@ import NewsNavigator from './NewsNavigator';
 import AboutUsScreen from '../screens/AboutUsScreen';
 import ContactScreen from '../screens/ContactScreen';
 import DonateScreen from '../screens/DonateScreen';
-import { useTranslation } from 'react-i18next';
-  
+import {useTranslation} from 'react-i18next';
+
 const BottomTab = createBottomTabNavigator();
-  
+
 const TabNavigator = () => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
 
   return (
-    <BottomTab.Navigator
-      initialRouteName={AppRoute.ACTIONS_NAVIGATOR}>
+    <BottomTab.Navigator initialRouteName={AppRoute.ACTIONS_NAVIGATOR}>
       <BottomTab.Screen
         name={AppRoute.ACTIONS_NAVIGATOR}
         component={ActionsNavigator}
         options={{
           tabBarLabel: t('tabNavigator.home'),
-          headerShown: false
+          headerShown: false,
         }}
       />
       <BottomTab.Screen
@@ -35,7 +31,7 @@ const TabNavigator = () => {
         component={NewsNavigator}
         options={{
           tabBarLabel: t('tabNavigator.news'),
-          headerShown: false
+          headerShown: false,
         }}
       />
       <BottomTab.Screen
@@ -43,7 +39,7 @@ const TabNavigator = () => {
         component={DonateScreen}
         options={{
           tabBarLabel: t('tabNavigator.donate'),
-          headerShown: false
+          headerShown: false,
         }}
       />
       <BottomTab.Screen
@@ -51,7 +47,7 @@ const TabNavigator = () => {
         component={AboutUsScreen}
         options={{
           tabBarLabel: t('tabNavigator.about_us'),
-          headerShown: false
+          headerShown: false,
         }}
       />
       <BottomTab.Screen
@@ -59,7 +55,7 @@ const TabNavigator = () => {
         component={ContactScreen}
         options={{
           tabBarLabel: t('tabNavigator.contact'),
-          headerShown: false
+          headerShown: false,
         }}
       />
     </BottomTab.Navigator>

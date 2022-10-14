@@ -1,23 +1,20 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
+interface CardProps {}
 
-interface CardProps {
-}
-
-const Card: React.FC<CardProps> = ({
-}) => {
-    return (
-        <View style={styles.container}>
-            {
-                // TODO: Remove or implement this component
-            }
-        </View>
-    );
+const Card: React.FC<CardProps> = ({}) => {
+  return (
+    <View style={styles.container}>
+      {
+        // TODO: Remove or implement this component
+      }
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {}
+  container: {},
 });
 
 export default Card;
