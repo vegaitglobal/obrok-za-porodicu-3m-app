@@ -6,12 +6,32 @@
       "sha1": "eb245bb578205a32c8b301a41adfff248ee73e53"
     },
     {
+      "path": "assets/fonts/Archivo-SemiBold.ttf",
+      "sha1": "e1fd9e25f72d95830f0e341dccb9c651f36b57ec"
+    },
+    {
       "path": "assets/fonts/Chewy-Regular.ttf",
       "sha1": "a3ad025edbfd8e4c49ca201e2478d51e1027ef1c"
     },
     {
+      "path": "assets/fonts/Dosis-Bold.ttf",
+      "sha1": "9f646e03f99c47f3a361ce86163485cefe9731f7"
+    },
+    {
+      "path": "assets/fonts/Dosis-ExtraBold.ttf",
+      "sha1": "ed4dad385262ec71becfb1f4257a515e964e9b5c"
+    },
+    {
       "path": "assets/fonts/Dosis-Regular.ttf",
       "sha1": "223f2240a8b3da47bb195e560a46f50fcafd43db"
+    },
+    {
+      "path": "assets/fonts/Dosis-SemiBold.ttf",
+      "sha1": "764f5d2ef34074f9b483f0eb09e252fdd828e167"
+    },
+    {
+      "path": "assets/fonts/Inter-Regular.ttf",
+      "sha1": "7237d9cf55f177702066a28a4dde1e4c7e8ab576"
     },
     {
       "path": "assets/fonts/Montserrat-Regular.ttf",
