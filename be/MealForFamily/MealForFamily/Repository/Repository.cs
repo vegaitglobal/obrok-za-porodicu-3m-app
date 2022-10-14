@@ -2,7 +2,7 @@
 using WebApplication1.Data;
 using WebApplication1.RepositoryInterface;
 
-namespace WebApplication1.Repositories
+namespace WebApplication1.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {

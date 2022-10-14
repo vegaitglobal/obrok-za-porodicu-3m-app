@@ -8,6 +8,7 @@ import CallFull from '../../assets/icons/call_full.svg';
 import Call from '../../assets/icons/call.svg';
 import Contact from '../../assets/icons/contact.svg';
 import Donate from '../../assets/icons/donate.svg';
+import DonateWhite from '../../assets/icons/donate_white.svg';
 import FileFull from '../../assets/icons/file_full.svg';
 import File from '../../assets/icons/file.svg';
 import Filter from '../../assets/icons/filter.svg';
@@ -32,6 +33,7 @@ export default {
   CALL_FULL: <CallFull />,
   CONTACT: <Contact />,
   DONATE: <Donate />,
+  DONATE_WHITE: <DonateWhite />,
   FILE: <File />,
   FILE_FULL: <FileFull />,
   FILTER: <Filter />,
@@ -40,7 +42,8 @@ export default {
   NOTIFICATION_FULL: <NotificationFull />,
   NOTIFICATION: <Notification />,
   PLAY: <Play />,
-  SEARCH: <Search />,
+  SEARCH: <Search color={Colors.DARK_GRAY} />,
+  LIGHTER_GRAY_SEARCH: <Search color={Colors.LIGHTER_GRAY} />,
   SHARE: <Share />,
   STAR: <Star />,
   USER_FULL: <UserFull />,
