@@ -20,6 +20,7 @@ import Star from '../../assets/icons/star.svg';
 import UserFull from '../../assets/icons/user_full.svg';
 import User from '../../assets/icons/user.svg';
 import Warning from '../../assets/icons/warning.svg';
+import {Colors} from './Colors';
 
 export default {
   ARROW_DOWN: <ArrowDown />,
@@ -36,7 +37,8 @@ export default {
   NOTIFICATION_FULL: <NotificationFull />,
   NOTIFICATION: <Notification />,
   PLAY: <Play />,
-  SEARCH: <Search />,
+  SEARCH: <Search color={Colors.DARK_GRAY} />,
+  LIGHTER_GRAY_SEARCH: <Search color={Colors.LIGHTER_GRAY} />,
   SHARE: <Share />,
   STAR: <Star />,
   USER_FULL: <UserFull />,
