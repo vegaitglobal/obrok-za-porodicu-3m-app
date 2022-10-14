@@ -18,7 +18,7 @@ const BottomTab = createBottomTabNavigator();
 export type TabType = 'home' | 'news' | 'donate' | 'about_us' | 'contact';
 
 const TabNavigator = () => {
-  const {t, i18n} = useTranslation();
+  const {t} = useTranslation();
 
   return (
     <BottomTab.Navigator
