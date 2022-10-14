@@ -1,22 +1,20 @@
 import {Platform, StyleSheet} from 'react-native';
 import {Colors} from '../../../../constants/Colors';
-import {FontFamily} from '../../../../constants/FontFamily';
+import {TextStyles} from '../../../../constants/TextStyles';
 
 export const styles = StyleSheet.create({
   container: {
     marginTop: 15,
   },
   label: {
-    fontFamily: FontFamily.DOSIS_REGULAR,
+    ...TextStyles.DOSIS_BOLD,
     fontWeight: '500',
-
-    fontSize: 16,
-    lineHeight: 16,
+    fontSize: 12,
+    lineHeight: 12,
     alignSelf: 'flex-start',
     marginBottom: 4,
     paddingHorizontal: 5,
     backgroundColor: 'transparent',
-    color: Colors.GRAY,
   },
   inputWrapper: {
     height: 58,
@@ -29,11 +27,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   inputField: {
-    fontFamily: FontFamily.ARCHIVO_REGULAR,
-    fontSize: 16,
-    lineHeight: 16,
+    ...TextStyles.ARCHIVO_REGULAR,
+    fontSize: 14,
+    lineHeight: 14,
     width: 327,
-    borderRadius: 4,
     height: Platform.OS === 'android' ? 40 : 20,
     alignSelf: 'center',
     backgroundColor: 'transparent',
@@ -41,17 +38,15 @@ export const styles = StyleSheet.create({
     textAlign: 'left',
   },
   focusedText: {
-    fontFamily: FontFamily.ARCHIVO_REGULAR,
-    fontSize: 16,
-    lineHeight: 16,
-    color: Colors.BROWN,
+    ...TextStyles.ARCHIVO_REGULAR,
+    fontSize: 14,
+    lineHeight: 14,
+    color: Colors.ORANGE,
     textAlign: 'left',
   },
   text: {
-    fontFamily: FontFamily.ARCHIVO_REGULAR,
-    fontSize: 16,
-    lineHeight: 16,
-    color: Colors.GRAY,
+    ...TextStyles.ARCHIVO_REGULAR,
+    color: Colors.LIGHTER_GRAY,
     textAlign: 'left',
   },
   icon: {
@@ -59,20 +54,21 @@ export const styles = StyleSheet.create({
     marginLeft: 9,
   },
   errorMessage: {
-    fontFamily: FontFamily.ARCHIVO_REGULAR,
-    fontSize: 14,
-    lineHeight: 14,
+    ...TextStyles.DOSIS_REGULAR,
+    fontSize: 10,
+    lineHeight: 10,
     color: Colors.RED_ERROR,
     marginVertical: 5,
+    marginTop: 8,
     marginLeft: 3,
   },
   errorContainer: {
     height: 20,
   },
   textArea: {
-    height: 339,
+    height: 131,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 30,
     paddingHorizontal: 5,
     paddingVertical: 10,
     textAlignVertical: 'top',

@@ -14,6 +14,7 @@ import {testSchema} from '../validation/TestSchema';
 const ActionsListScreen = () => {
   const initialValues = {
     comment: '',
+    nesto: '',
   };
   const handleOnDeclinePress = (comment: string) => {
     console.log(comment);
@@ -39,9 +40,18 @@ const ActionsListScreen = () => {
                 validateOnChange
                 component={FormikTextInput}
                 loseFocus={loseFocus}
-                // mandatory
                 editable
                 name={'comment'}
+                label={'Ime i Prezime'}
+                placeholder={'Ime i Prezime'}
+              />
+              <Field
+                validateOnChange
+                component={FormikTextInput}
+                loseFocus={loseFocus}
+                editable
+                name={'nesto'}
+                textArea
                 label={'Ime i Prezime'}
                 placeholder={'Ime i Prezime'}
               />
