@@ -1,10 +1,10 @@
 {
-    "tabNavigator__home": "Home",
-    "tabNavigator": {
-        "home": "Početak",
-        "news": "Novosti",
-        "donate": "Doniraj",
-        "about_us": "O nama",
-        "contact": "Kontakt"
-    }
+  "tabNavigator__home": "Home",
+  "tabNavigator": {
+    "home": "Početak",
+    "news": "Novosti",
+    "donate": "Doniraj",
+    "about_us": "O nama",
+    "contact": "Kontakt"
+  }
 }
