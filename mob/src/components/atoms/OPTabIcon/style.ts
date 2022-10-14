@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '../../../constants/Colors';
+import {TextStyles} from '../../../constants/TextStyles';
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,9 +9,9 @@ export const styles = StyleSheet.create({
   icon: {
     height: 24,
     width: 24,
-    // backgroundColor: Colors.RED,
   },
   text: {
+    ...TextStyles.DOSIS_SEMI_BOLD,
     fontSize: 12,
     textTransform: 'uppercase',
     lineHeight: 30,

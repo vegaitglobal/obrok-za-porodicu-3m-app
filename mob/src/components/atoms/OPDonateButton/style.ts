@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../constants/Colors';
+import {TextStyles} from '../../../constants/TextStyles';
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,6 +16,7 @@ export const styles = StyleSheet.create({
     paddingTop: -5,
   },
   text: {
+    ...TextStyles.DOSIS_BOLD,
     fontSize: 12,
     color: Colors.RED,
     textTransform: 'uppercase',
