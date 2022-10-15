@@ -1,5 +1,5 @@
-import { VolunteerActionModel } from "../../models/VolunteerActionModel";
+import { VolunteerActionTypeModel } from "../../models/VolunteerActionTypeModel";
 
 export interface VolunteerActionSliceModel {
-  volunteerActions: VolunteerActionModel[];
+  volunteerActions: VolunteerActionTypeModel[];
 }

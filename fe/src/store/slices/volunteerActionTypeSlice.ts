@@ -1,14 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { VolunteerActionSliceModel } from "../model/volunteerActionSliceModel";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { VolunteerActionTypeModel } from "../../models/VolunteerActionTypeModel";
+import { VolunteerActionTypeSliceModel } from "../model/volunteerActionTypeSliceModel";
 
-const initVolunteerActionSlice: VolunteerActionSliceModel = {
-  volunteerActions: [],
+const initVolunteerActionSlice: VolunteerActionTypeSliceModel = {
+  volunteerActionTypes: [],
 };
 
 const volunteerActionTypeSlice = createSlice({
   name: "volunteerActionType",
   initialState: initVolunteerActionSlice,
-  reducers: {},
+  reducers: {
+    setVolunteerActionTypes(
+      state,
+      action: PayloadAction<VolunteerActionTypeModel[]>
+    ) {
+      state.volunteerActionTypes = action.payload;
+    },
+  },
 });
+
+export const { setVolunteerActionTypes } = volunteerActionTypeSlice.actions;
 
 export default volunteerActionTypeSlice.reducer;
