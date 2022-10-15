@@ -12,6 +12,7 @@ import type {RootState} from '../../store/reducers/RootReducer';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
+import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
 
 export const setAppliedFilters =
   (newFilters: ActionType, color: string) =>
