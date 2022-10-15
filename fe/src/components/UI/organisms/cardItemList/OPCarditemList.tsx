@@ -1,9 +1,9 @@
-import CardItem from "../../molecules/cardItem/CardItem";
+import OPCardItem from "../../molecules/cardItem/OPCardItem";
 
-const CarditemList = () => {
+const OPCarditemList = () => {
   return (
     <div>
-      <CardItem
+      <OPCardItem
         id={1}
         type="Novac"
         title="Akcija prikupljanja sredstava za porodicu Popovic"
@@ -15,4 +15,4 @@ const CarditemList = () => {
   );
 };
 
-export default CarditemList;
+export default OPCarditemList;

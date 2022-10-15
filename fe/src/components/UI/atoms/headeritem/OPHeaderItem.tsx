@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-import classes from "./HeaderItem.module.scss";
+import classes from "./OPHeaderItem.module.scss";
 
-interface IHeaderItemProps {
+interface IOPHeaderItemProps {
   text: string;
   link: string;
 }
 
-const HeaderItem: React.FC<IHeaderItemProps> = ({ text, link }) => {
+const OPHeaderItem: React.FC<IOPHeaderItemProps> = ({ text, link }) => {
   const activeStyle = {
     background: "#EF6852",
     borderRadius: "7px",
@@ -27,4 +27,4 @@ const HeaderItem: React.FC<IHeaderItemProps> = ({ text, link }) => {
   );
 };
 
-export default HeaderItem;
+export default OPHeaderItem;

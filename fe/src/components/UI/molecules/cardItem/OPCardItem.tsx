@@ -1,6 +1,6 @@
-import classes from "./CardItem.module.scss";
+import classes from "./OPCardItem.module.scss";
 
-interface ICardItemProps {
+interface IOPCardItemProps {
   id: number;
   type: string;
   title: string;
@@ -9,7 +9,7 @@ interface ICardItemProps {
   imageUrl?: string;
 }
 
-const CardItem: React.FC<ICardItemProps> = ({
+const OPCardItem: React.FC<IOPCardItemProps> = ({
   id,
   type,
   title,
@@ -20,4 +20,4 @@ const CardItem: React.FC<ICardItemProps> = ({
   return <div className={classes["card-item-wrapper"]}>CardItem</div>;
 };
 
-export default CardItem;
+export default OPCardItem;

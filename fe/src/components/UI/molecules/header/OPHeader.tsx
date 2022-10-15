@@ -1,7 +1,7 @@
 import { IHeaderValues } from "../../../../typings/headerValues";
-import HeaderItem from "../../atoms/headeritem/HeaderItem";
+import OPHeaderItem from "../../atoms/headeritem/OPHeaderItem";
 
-import classes from "./Header.module.scss";
+import classes from "./OPHeader.module.scss";
 
 const HEADER_VALUES: IHeaderValues[] = [
   {
@@ -30,15 +30,15 @@ const HEADER_VALUES: IHeaderValues[] = [
   },
 ];
 
-const Header = () => {
+const OPHeader = () => {
   return (
     <div className={classes["header-wrapper"]}>
       <div className={classes["logo-wrapper"]}>Logo</div>
       {HEADER_VALUES.map((value) => (
-        <HeaderItem text={value.text} link={value.link} />
+        <OPHeaderItem text={value.text} link={value.link} />
       ))}
     </div>
   );
 };
 
-export default Header;
+export default OPHeader;

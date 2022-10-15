@@ -1,5 +1,5 @@
-import Header from "../../UI/molecules/header/Header";
-import CarditemList from "../../UI/organisms/cardItemList/CarditemList";
+import Header from "../../UI/molecules/header/OPHeader";
+import OPCarditemList from "../../UI/organisms/cardItemList/OPCarditemList";
 import classes from "./VolunteerActionsPage.module.scss";
 
 const VolunteerActionsPage = () => {
@@ -9,7 +9,7 @@ const VolunteerActionsPage = () => {
         <div className={classes["header-wrapper"]}>
           <Header />
         </div>
-        <CarditemList />
+        <OPCarditemList />
       </div>
     </div>
   );
