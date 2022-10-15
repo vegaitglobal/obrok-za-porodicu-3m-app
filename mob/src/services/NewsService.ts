@@ -9,7 +9,9 @@ interface INewsService {
 class NewsService implements INewsService {
   async getNews(page: number): Promise<ResponseModel> {
     try {
-      const response = await axios.get(`${BASE_URL}/api/news`);
+      const response = await axios.get(
+        `${BASE_URL}/api/news?pageNumber=${page}&pageSize=10`,
+      );
       return {
         data: response.data,
         code: 200,
