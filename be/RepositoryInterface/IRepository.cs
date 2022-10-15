@@ -1,4 +1,6 @@
-﻿namespace MealForFamily.RepositoryInterface
+﻿using MealForFamily.Models;
+
+namespace MealForFamily.RepositoryInterface
 {
     public interface IRepository<T> where T : class
     {
@@ -6,7 +8,7 @@
 
         public Task<IEnumerable<T>> GetAll();
 
-        public Task<IEnumerable<T>> GetAllByPage(int pageNumber, int pageSize);
+        public Task<Page<T>> GetAllByPage(int pageNumber, int pageSize);
 
         public Task Save();
 

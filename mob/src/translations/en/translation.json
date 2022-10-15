@@ -12,6 +12,10 @@
     "socialMedia": "Social Media",
     "contactUs": "Contact Us",
     "callUs": "Call",
-    "sendEmail": "Mail"      
+    "sendEmail": "Mail"
+  },      
+  "actionsList": {
+    "find_out_more": "Find out more",
+    "status": "Status"
   }
 }

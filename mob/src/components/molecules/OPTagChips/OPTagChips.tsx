@@ -11,60 +11,7 @@ interface OPTagChipsProps {
   statuses?: VolunteerActionStatus[];
 }
 
-const volunteerActions: string | any[] = [
-  {
-    id: 1,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 2,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 3,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 4,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 5,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 6,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 7,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 8,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-];
-
-const OPTagChips: React.FC<OPTagChipsProps> = ({
-  statuses = volunteerActions,
-}) => {
+const OPTagChips: React.FC<OPTagChipsProps> = ({statuses}) => {
   const dispatch = useDispatch<AppDispatch>();
   const filters = useSelector(
     (state: RootState) => state.volunteerActions.appliedVolunteerActions,

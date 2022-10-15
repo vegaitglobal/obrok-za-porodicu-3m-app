@@ -1,13 +1,51 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
+import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {TextStyles} from '../constants/TextStyles';
+import {getVolunteerActions} from '../store/actions/VolunteerAction';
+import {RootState} from '../store/reducers/RootReducer';
 
 const ActionsListScreen = () => {
+  const dispatch: any = useDispatch();
+  const {volunteerActions} = useSelector(
+    (state: RootState) => state.volunteerActions,
+  );
+  const [page, setPage] = useState<number>(1);
+
+  const getData = useCallback(
+    (newPage: number) => {
+      dispatch(getVolunteerActions(newPage));
+    },
+    [dispatch],
+  );
+
+  useEffect(() => {
+    getData(1);
+  }, [getData]);
+
+  const handleLoadNextPage = () => {
+    getData(page + 1);
+    setPage(page + 1);
+  };
+
+  const handleRefresh = () => {
+    getData(1);
+    setPage(1);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.a}>Action List Screen</Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <OPHeader />
+      <OPActionsList
+        actions={volunteerActions}
+        onPress={() => {}}
+        onLoadMore={handleLoadNextPage}
+        onRefresh={handleRefresh}
+      />
+    </View>
   );
 };
 

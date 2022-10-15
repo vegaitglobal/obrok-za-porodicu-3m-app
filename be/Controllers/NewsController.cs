@@ -1,3 +1,5 @@
+using System.Net.Mime;
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MealForFamily.ServiceInterface;
@@ -20,9 +22,9 @@ namespace MealForFamily.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetNews()
+        public async Task<IActionResult> GetNews([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            return Ok(await _newsService.GetNews());
+            return Ok(await _newsService.GetNews(pageNumber, pageSize));
         }
 
         [HttpGet("{id:int}")]

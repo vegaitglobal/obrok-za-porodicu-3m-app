@@ -13,6 +13,10 @@
       "contactUs": "Kontaktirajte Nas",
       "callUs": "Pozovite",
       "sendEmail": "Mail"
+    },
+    "actionsList": {
+      "find_out_more": "Saznaj Više",
+      "status": "Status"
     }
   }
 }
