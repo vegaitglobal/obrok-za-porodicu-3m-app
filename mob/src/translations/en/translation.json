@@ -6,5 +6,12 @@
     "donate": "Doniraj",
     "about_us": "O nama",
     "contact": "Kontakt"
+  },
+  "contactScreen": {
+    "contact": "CONTACT",
+    "socialMedia": "Social Media",
+    "contactUs": "Contact Us",
+    "callUs": "Call",
+    "sendEmail": "Mail"      
   }
 }

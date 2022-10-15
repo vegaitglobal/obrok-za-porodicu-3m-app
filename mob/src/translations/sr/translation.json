@@ -9,7 +9,10 @@
     },
     "contactScreen": {
       "contact": "KONTAKT",
-      "socialMedia": "Društvene mreže"
+      "socialMedia": "Društvene mreže",
+      "contactUs": "Kontaktirajte Nas",
+      "callUs": "Pozovite",
+      "sendEmail": "Mail"
     }
   }
 }
