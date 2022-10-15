@@ -1,4 +1,5 @@
 using AutoMapper;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
 using MealForFamily.DTOs;
 using MealForFamily.Models;
@@ -38,6 +39,7 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<NewsDTO>(await _newsService.GetSingleById(id)));
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateNews(RequestNewsDTO request)
         {
@@ -45,6 +47,7 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<NewsDTO>(await _newsService.CreateNews(model)));
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateNews(RequestNewsDTO request)
         {

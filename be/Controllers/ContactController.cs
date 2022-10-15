@@ -1,4 +1,5 @@
 using AutoMapper;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
 using MealForFamily.DTOs;
 using MealForFamily.Models;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
+
     [Route("api/contacts")]
     [ApiController]
     public class ContactController : BaseController
@@ -37,6 +39,7 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<ContactDTO>(await _contactService.GetSingleById(id)));
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateContact(RequestContactDTO request)
         {
@@ -44,6 +47,7 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<ContactDTO>(await _contactService.CreateContact(model)));
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateContact(RequestContactDTO request)
         {
