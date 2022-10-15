@@ -53,7 +53,7 @@ const LoginForm = () => {
             styleForInput={classes["input-box"]}
             value=""
           />
-          <li
+          <div
             className={`${classes["button-wrapper"]}  ${classes["form-item"]}`}
           >
             <OPPrimaryButton
@@ -61,7 +61,7 @@ const LoginForm = () => {
               text="LOGIN"
               type="submit"
             />
-          </li>
+          </div>
         </div>
       )}
     </Formik>

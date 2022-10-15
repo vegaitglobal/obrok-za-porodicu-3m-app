@@ -8,6 +8,7 @@
 
 .login-form {
   width: 30%;
+  min-width: 240px;
   height: inherit;
   align-items: center;
   text-align: center;
@@ -16,6 +17,7 @@
 
 .logo-wrapper {
   padding-top: 10vh;
+  margin-bottom: 50px;
 }
 
 .logo {
@@ -23,7 +25,6 @@
 }
 
 .form-wrapper {
-  list-style: none;
   width: 80%;
   min-width: 200px;
   padding-right: 10%;

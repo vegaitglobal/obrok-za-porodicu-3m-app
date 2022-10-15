@@ -56,7 +56,7 @@ const OPPrimaryInput: React.FC<IOPPrimaryInputProps> = (props) => {
   return (
     <div>
       <label className={`${classes["input-label"]}  ${style}`}>{label}</label>
-      <div>
+      <div className={`${classes["input-container"]}`} >
         <input
           placeholder={placeholder}
           name={name}
@@ -114,12 +114,16 @@ const OPPrimaryInput: React.FC<IOPPrimaryInputProps> = (props) => {
 const stylesObject = {
   eyeIconContainer: {
     position: "absolute" as "absolute",
+    right: "5px",
+    top: "28px",
     marginLeft: -30,
     marginTop: 10,
     cursor: "pointer",
   },
   errorIconContainer: {
     position: "absolute" as "absolute",
+    right: "5px",
+    top: "28px",
     marginTop: 10,
     marginLeft: -30,
   },

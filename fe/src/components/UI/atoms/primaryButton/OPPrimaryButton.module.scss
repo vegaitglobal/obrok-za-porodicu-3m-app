@@ -10,10 +10,15 @@
   border-radius: 7px;
   font-family: "Bulldog";
   font-size: 14px;
+  font-weight: 600;
   color: $white;
+  transition-property: background-color, border-color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
   &:hover {
     cursor: pointer;
     background-color: $lightOrange;
-    border: 2px solid $lightOrange;
+    border-color: $lightOrange;
   }
+
 }
