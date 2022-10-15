@@ -1,6 +1,7 @@
 import {ImageSourcePropType} from 'react-native';
 
 export enum SocialMediaType {
+  MESSENGER = 'Messenger',
   FACEBOOK = 'Facebook',
   INSTAGRAM = 'Instagram',
   YOUTUBE = 'Youtube',
