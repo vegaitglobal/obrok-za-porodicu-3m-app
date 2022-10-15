@@ -17,6 +17,8 @@ builder.Services.AddTransient<IContactService, ContactService>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
 builder.Services.AddTransient<INewsletterSubscriptionService, NewsletterSubscriptionService>();
 builder.Services.AddTransient<INewsletterSubscriptionRepository, NewsletterSubscriptionRepository>();
+builder.Services.AddTransient<INewsService, NewsService>();
+builder.Services.AddTransient<INewsRepository, NewsRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -13,7 +13,7 @@ namespace MealForFamily.Controllers
         {
             _contactService = contactService;
         }
-        
+
         [HttpGet("")]
         public async Task<IActionResult> GetContacts()
         {

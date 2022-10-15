@@ -44,6 +44,36 @@ namespace MealForFamily.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("MealForFamily.Models.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descrition")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RawDescrition")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ShortDescription")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("News");
+                });
+
             modelBuilder.Entity("MealForFamily.Models.NewsletterSubscription", b =>
                 {
                     b.Property<int>("Id")

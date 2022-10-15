@@ -9,5 +9,6 @@ namespace MealForFamily.Data
 
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<NewsletterSubscription> NewsletterSubscriptions { get; set; }
+        public DbSet<News> News { get; set; }
     }
 }
