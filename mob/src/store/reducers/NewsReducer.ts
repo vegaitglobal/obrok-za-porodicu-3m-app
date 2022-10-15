@@ -21,7 +21,11 @@ const newsSlice = createSlice({
   name: 'newsActions',
   reducers: {
     setNews(state, {payload}: PayloadAction<NewsPageModel>) {
-      state.news = payload.content;
+      if (payload.pagination.currentPage === 1) {
+        state.news = payload.content;
+      } else {
+        state.news = [...state.news, ...payload.content];
+      }
       state.currentPage = payload.pagination.currentPage;
       state.totalData = payload.pagination.totalResults;
       state.totalPages = payload.pagination.totalPages;

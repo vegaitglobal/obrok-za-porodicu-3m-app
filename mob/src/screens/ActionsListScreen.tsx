@@ -1,68 +1,51 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
-import {TextStyles} from '../constants/TextStyles';
-import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
-import {VolunteerActionDTO} from '../models/VolunteerAction/VolunteerActionDTO';
+import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../store/reducers/RootReducer';
+import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
+import OPHeader from '../components/organisms/OPHeader/OPHeader';
+import {TextStyles} from '../constants/TextStyles';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';
-
-const actions: Array<VolunteerActionDTO> = [
-  {
-    id: 1,
-    type: {
-      id: 1,
-      name: 'NOVAC',
-    },
-    title: 'Akcija prikupljanja sredstava za porodicu Popovic',
-    shortDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...',
-    status: {
-      id: 2,
-      name: 'Trenutno u toku',
-    },
-    imageUrl:
-      'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVuc3xlbnwwfHwwfHw%3D&w=1000&q=80',
-  },
-  {
-    id: 2,
-    type: {
-      id: 1,
-      name: 'NOVAC',
-    },
-    title: 'Akcija prikupljanja sredstava za porodicu Popovic',
-    shortDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...',
-    status: {
-      id: 1,
-      name: 'Sredstva prikupljena',
-    },
-
-    imageUrl:
-      'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVuc3xlbnwwfHwwfHw%3D&w=1000&q=80',
-  },
-];
+import {RootState} from '../store/reducers/RootReducer';
 
 const ActionsListScreen = () => {
   const dispatch: any = useDispatch();
   const {volunteerActions} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
+  const [page, setPage] = useState<number>(1);
 
-  const getData = useCallback(() => {
-    // dispatch(getVolunteerActions(1));
-  }, []);
+  const getData = useCallback(
+    (newPage: number) => {
+      dispatch(getVolunteerActions(newPage));
+    },
+    [dispatch],
+  );
 
   useEffect(() => {
-    getData();
+    getData(1);
   }, [getData]);
 
+  const handleLoadNextPage = () => {
+    getData(page + 1);
+    setPage(page + 1);
+  };
+
+  const handleRefresh = () => {
+    getData(1);
+    setPage(1);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Action List Screen</Text>
-      <OPActionsList actions={actions} onPress={() => {}} />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <OPHeader />
+      <OPActionsList
+        actions={volunteerActions}
+        onPress={() => {}}
+        onLoadMore={handleLoadNextPage}
+        onRefresh={handleRefresh}
+      />
+    </View>
   );
 };
 

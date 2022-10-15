@@ -19,7 +19,9 @@ const OPNewsListItem: React.FC<OPNewsListItemProps> = ({news, onPress}) => {
   };
   return (
     <View style={styles.container}>
-      <OPImage source={{uri: news.imageUrl}} style={styles.image} />
+      {news.imageURL && news.imageURL.length > 0 && (
+        <OPImage source={{uri: news.imageURL}} style={styles.image} />
+      )}
       <View style={styles.content}>
         <Text style={styles.title}>{news.title}</Text>
         <Text style={styles.description}>{news.shortDescription}</Text>

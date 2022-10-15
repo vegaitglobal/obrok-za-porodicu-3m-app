@@ -1,4 +1,5 @@
 @import "../../../../constants/Colors.scss";
+@import "../../../../constants/Styles.scss";
 
 .input-label {
   float: left;
@@ -21,8 +22,8 @@
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
 
-  border-radius: 7px;
-  -khtml-border-radius: 7px;
+  border-radius: $borderRadius;
+  -khtml-border-radius: $borderRadius;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding-left: 10px;
