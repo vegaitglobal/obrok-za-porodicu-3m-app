@@ -25,13 +25,13 @@ namespace MealForFamily.Controllers
             return Ok(await _contactService.GetContacts());
         }
 
-        [HttpGet("/{id:int}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleContact([FromRoute] int id)
         {
             return Ok(await _contactService.GetSingleById(id));
         }
 
-        [HttpPost("/create")]
+        [HttpPost("")]
         public async Task<IActionResult> CreateContact(RequestContactDTO request)
         {
             // TODO: Fix AutoMapper
@@ -45,7 +45,7 @@ namespace MealForFamily.Controllers
             return Ok(await _contactService.CreateContact(model));
         }
 
-        [HttpPost("/update")]
+        [HttpPut("")]
         public async Task<IActionResult> UpdateContact(RequestContactDTO request)
         {
             // TODO: Fix AutoMapper

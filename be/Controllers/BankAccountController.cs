@@ -25,7 +25,7 @@ namespace MealForFamily.Controllers
             return Ok(await _bankAccountService.GetBankAccount());
         }
 
-        [HttpPost("/update")]
+        [HttpPut("")]
         public async Task<IActionResult> UpdateBankAccount(RequestBankAccountDTO request)
         {
             // TODO: Fix AutoMapper

@@ -25,13 +25,13 @@ namespace MealForFamily.Controllers
             return Ok(await _newsService.GetNews());
         }
 
-        [HttpGet("/{id:int}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleNews([FromRoute] int id)
         {
             return Ok(await _newsService.GetSingleById(id));
         }
 
-        [HttpPost("/create")]
+        [HttpPost("")]
         public async Task<IActionResult> CreateNews(RequestNewsDTO request)
         {
             // TODO: Fix AutoMapper
@@ -47,7 +47,7 @@ namespace MealForFamily.Controllers
             return Ok(await _newsService.CreateNews(model));
         }
 
-        [HttpPost("/update")]
+        [HttpPut("")]
         public async Task<IActionResult> UpdateNews(RequestNewsDTO request)
         {
             // TODO: Fix AutoMapper

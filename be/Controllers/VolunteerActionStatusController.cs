@@ -25,13 +25,13 @@ namespace MealForFamily.Controllers
             return Ok(await _volunteerActionStatusService.GetVolunteerActionStatuses());
         }
 
-        [HttpGet("/{id:int}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleVolunteerActionStatus([FromRoute] int id)
         {
             return Ok(await _volunteerActionStatusService.GetSingleById(id));
         }
 
-        [HttpPost("/create")]
+        [HttpPost("")]
         public async Task<IActionResult> CreateVolunteerActionStatus(RequestVolunteerActionStatusDTO request)
         {
             // TODO: Fix AutoMapper
@@ -43,7 +43,7 @@ namespace MealForFamily.Controllers
             return Ok(await _volunteerActionStatusService.CreateVolunteerActionStatus(model));
         }
 
-        [HttpPost("/update")]
+        [HttpPut("")]
         public async Task<IActionResult> UpdateVolunteerActionStatus(RequestVolunteerActionStatusDTO request)
         {
             // TODO: Fix AutoMapper

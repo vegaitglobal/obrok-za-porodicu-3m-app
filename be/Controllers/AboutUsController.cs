@@ -25,7 +25,7 @@ namespace MealForFamily.Controllers
             return Ok(await _aboutUsService.GetAboutUs());
         }
 
-        [HttpPost("/update")]
+        [HttpPut("")]
         public async Task<IActionResult> UpdateAboutUs(RequestAboutUsDTO request)
         {
             // TODO: Fix AutoMapper
