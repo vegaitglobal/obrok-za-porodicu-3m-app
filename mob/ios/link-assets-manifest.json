@@ -10,6 +10,10 @@
       "sha1": "e1fd9e25f72d95830f0e341dccb9c651f36b57ec"
     },
     {
+      "path": "assets/fonts/Bulldog Medium.otf",
+      "sha1": "00fcc87961567bba923eea160bf7ff0e861b9dc4"
+    },
+    {
       "path": "assets/fonts/Chewy-Regular.ttf",
       "sha1": "a3ad025edbfd8e4c49ca201e2478d51e1027ef1c"
     },
@@ -36,6 +40,10 @@
     {
       "path": "assets/fonts/Montserrat-Regular.ttf",
       "sha1": "de57aa03e4821fdbe6c34ec2c895e8b5c914e837"
+    },
+    {
+      "path": "assets/fonts/dosis_regular.otf",
+      "sha1": "37a7b38563456a41eda660325dd0c6cf64d870fa"
     }
   ]
 }

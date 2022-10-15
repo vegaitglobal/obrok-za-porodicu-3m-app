@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		15B0C093DFE8B03DFE699CA4 /* libPods-ObrokZaPorodicu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B18AFB9B1CC3E475C34B920A /* libPods-ObrokZaPorodicu.a */; };
+		47716B0828FA2A0500E94ED1 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47716B0728FA2A0500E94ED1 /* BootSplash.storyboard */; };
 		53C6843E87C985CDDF202274 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4B4605F40F4401D6188E69 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */; };
 		5F9C53803E524253AD63240F /* Archivo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA01D8B1A521413FA087BA9C /* Archivo-Regular.ttf */; };
 		60C840239D2746AA854C5D3E /* Dosis-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7900266BC259484CA768638D /* Dosis-SemiBold.ttf */; };
@@ -47,21 +48,22 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ObrokZaPorodicu/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ObrokZaPorodicu/main.m; sourceTree = "<group>"; };
 		30BFFB0E2D37FB49C7B91409 /* Pods-ObrokZaPorodicu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu.debug.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu.debug.xcconfig"; sourceTree = "<group>"; };
-		46908102C52C4B4D8CE61035 /* Chewy-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Chewy-Regular.ttf"; path = "../assets/fonts/Chewy-Regular.ttf"; sourceTree = "<group>"; };
-		5AA1BF9F932140029D6DD444 /* Archivo-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-SemiBold.ttf"; path = "../assets/fonts/Archivo-SemiBold.ttf"; sourceTree = "<group>"; };
+		46908102C52C4B4D8CE61035 /* Chewy-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Chewy-Regular.ttf"; path = "../assets/fonts/Chewy-Regular.ttf"; sourceTree = "<group>"; };
+		47716B0728FA2A0500E94ED1 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = ObrokZaPorodicu/BootSplash.storyboard; sourceTree = "<group>"; };
+		5AA1BF9F932140029D6DD444 /* Archivo-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-SemiBold.ttf"; path = "../assets/fonts/Archivo-SemiBold.ttf"; sourceTree = "<group>"; };
 		5B9C6521C9464ECC83904570 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		5F142555612142DBBEFB8B55 /* Dosis-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-Regular.ttf"; path = "../assets/fonts/Dosis-Regular.ttf"; sourceTree = "<group>"; };
-		7900266BC259484CA768638D /* Dosis-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-SemiBold.ttf"; path = "../assets/fonts/Dosis-SemiBold.ttf"; sourceTree = "<group>"; };
+		7900266BC259484CA768638D /* Dosis-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-SemiBold.ttf"; path = "../assets/fonts/Dosis-SemiBold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ObrokZaPorodicu/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		85ACBD9334C64B1896EAA2E1 /* Dosis-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-ExtraBold.ttf"; path = "../assets/fonts/Dosis-ExtraBold.ttf"; sourceTree = "<group>"; };
-		875381211C3345DD864D2B4C /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		85ACBD9334C64B1896EAA2E1 /* Dosis-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-ExtraBold.ttf"; path = "../assets/fonts/Dosis-ExtraBold.ttf"; sourceTree = "<group>"; };
+		875381211C3345DD864D2B4C /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
 		B18AFB9B1CC3E475C34B920A /* libPods-ObrokZaPorodicu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObrokZaPorodicu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC33CB76DDD4FB4535112F02 /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C952D0C228F9EC530029786F /* hermes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = hermes.xcframework; path = "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework"; sourceTree = "<group>"; };
 		DA01D8B1A521413FA087BA9C /* Archivo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Archivo-Regular.ttf"; path = "../assets/fonts/Archivo-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED996BA8FF5F45BEE6FF2A3A /* Pods-ObrokZaPorodicu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu.release.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu/Pods-ObrokZaPorodicu.release.xcconfig"; sourceTree = "<group>"; };
-		FB51DCBC9B154AF0BAA60CC6 /* Dosis-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-Bold.ttf"; path = "../assets/fonts/Dosis-Bold.ttf"; sourceTree = "<group>"; };
+		FB51DCBC9B154AF0BAA60CC6 /* Dosis-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-Bold.ttf"; path = "../assets/fonts/Dosis-Bold.ttf"; sourceTree = "<group>"; };
 		FEEC3CF18B41270DC9A6F01A /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF4B4605F40F4401D6188E69 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				47716B0728FA2A0500E94ED1 /* BootSplash.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = ObrokZaPorodicu;
@@ -284,6 +287,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				5F9C53803E524253AD63240F /* Archivo-Regular.ttf in Resources */,
+				47716B0828FA2A0500E94ED1 /* BootSplash.storyboard in Resources */,
 				7427B66411F243E8A4D439C4 /* Dosis-Regular.ttf in Resources */,
 				01817FAE84964930BCD61CC1 /* Montserrat-Regular.ttf in Resources */,
 				AD27FF8C7F144D7AA7F97094 /* Chewy-Regular.ttf in Resources */,
