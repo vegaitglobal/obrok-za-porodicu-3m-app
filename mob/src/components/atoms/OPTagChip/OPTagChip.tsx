@@ -13,7 +13,7 @@ interface OPTagChipProps {
   fill?: boolean;
   disabled?: boolean;
   style?: ViewStyle;
-  onPress?: (value: ActionType) => void;
+  onPress?: (value: ActionType, color: string) => void;
 }
 
 const OPTagChip: React.FC<OPTagChipProps> = ({
@@ -36,10 +36,10 @@ const OPTagChip: React.FC<OPTagChipProps> = ({
         style={[
           size &&
             (size === 'large' ? styles.tagChipLarge : styles.tagChipSmall),
+          style,
           !fill
             ? {borderColor: color}
             : {...styles.tagChipDark, backgroundColor: color},
-          style,
         ]}>
         <Text
           style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}>
