@@ -32,7 +32,9 @@ const OPContactView: React.FC<OPContactViewProps> = ({
 }) => (
   <SafeAreaView>
     <OPSubheader heading={headerTitle} showDropdown={false} />
-    <ScrollView contentContainerStyle={styles.contentContainer}>
+    <ScrollView
+      contentContainerStyle={styles.contentContainer}
+      showsVerticalScrollIndicator={false}>
       <OPImageButton onPress={onHeaderImagePress} imageSource={IMAGE_URL} />
       <View style={styles.listContainer}>
         <OPMappedListWithTitle
