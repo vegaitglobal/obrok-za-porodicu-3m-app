@@ -5,7 +5,7 @@
   clear: left;
   padding-left: 6px;
   font-family: "Dosis";
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -27,7 +27,7 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding-left: 10px;
   font-family: "Dosis";
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   transition-property: background-color, border-color, color;
   transition-duration: 0.25s;
@@ -54,7 +54,7 @@
   margin-top: -26px;
   padding-left: 5px;
   font-family: "Dosis";
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: $redError;
 }
@@ -80,10 +80,9 @@
   padding-left: 10px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   font-family: "Dosis";
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   background-color: #ffcccb;
-  font-size: 14px;
   transition-property: background-color, border-color, color;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
