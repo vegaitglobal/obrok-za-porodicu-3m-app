@@ -9,11 +9,11 @@ type TagChipSize = 'small' | 'large';
 interface OPTagChipProps {
   size?: TagChipSize;
   color: string;
-  volunteerAction: ActionType;
+  volunteerAction: ActionType | string;
   fill?: boolean;
   disabled?: boolean;
   style?: ViewStyle;
-  onPress?: (value: ActionType, color: string) => void;
+  onPress?: (value: ActionType | string, color: string) => void;
 }
 
 const OPTagChip: React.FC<OPTagChipProps> = ({
@@ -41,7 +41,9 @@ const OPTagChip: React.FC<OPTagChipProps> = ({
         ]}>
         <Text
           style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}>
-          {volunteerAction?.name?.toUpperCase()}
+          {typeof volunteerAction === 'string'
+            ? volunteerAction.toUpperCase()
+            : volunteerAction?.name.toUpperCase()}
         </Text>
       </View>
     </TouchableOpacity>

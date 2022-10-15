@@ -8,8 +8,6 @@ interface IAboutUsService {
 
 class AboutUsService implements IAboutUsService {
   async getAboutUs(): Promise<ResponseModel> {
-    console.log(`${BASE_URL}/api/about-us`);
-
     try {
       const response = await axios.get(`${BASE_URL}/api/about-us`);
       return {

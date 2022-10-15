@@ -12,6 +12,7 @@ import OPTabIcon from '../components/atoms/OPTabIcon/OPTabIcon';
 import AboutUsScreen from '../screens/AboutUsScreen';
 import ContactScreen from '../screens/ContactScreen';
 import DonateScreen from '../screens/DonateScreen';
+import OPHeaderSimple from '../components/organisms/OPHeaderSimple/OPHeaderSimple';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -100,7 +101,7 @@ const TabNavigator = () => {
         name={AppRoute.CONTACT_SCREEN}
         component={ContactScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => {
             return (
@@ -111,6 +112,7 @@ const TabNavigator = () => {
               />
             );
           },
+          header: () => <OPHeaderSimple />,
         }}
       />
     </BottomTab.Navigator>

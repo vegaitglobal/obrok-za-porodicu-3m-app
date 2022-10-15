@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     flexGrow: 1,
     height: '100%',
     marginTop: 15,
+    zIndex: -1,
   },
   content: {
     flexGrow: 1,
