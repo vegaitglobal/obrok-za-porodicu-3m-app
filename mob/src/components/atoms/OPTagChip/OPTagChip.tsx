@@ -11,7 +11,7 @@ interface OPTagChipProps {
   color: string;
   volunteerAction: VolunteerActionStatus;
   fill?: boolean;
-  onPress?: (value: VolunteerActionStatus) => void;
+  onPress?: (value: VolunteerActionStatus, color: string) => void;
 }
 
 const OPTagChip: React.FC<OPTagChipProps> = ({
@@ -21,7 +21,7 @@ const OPTagChip: React.FC<OPTagChipProps> = ({
   fill = false,
   onPress = () => {},
 }) => {
-  const onPressHandler = (): void => onPress(volunteerAction);
+  const onPressHandler = (): void => onPress(volunteerAction, color);
 
   return (
     <TouchableOpacity onPress={onPressHandler}>
@@ -32,11 +32,9 @@ const OPTagChip: React.FC<OPTagChipProps> = ({
           !fill
             ? {borderColor: color}
             : {...styles.tagChipDark, backgroundColor: color},
-        ]}
-      >
+        ]}>
         <Text
-          style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}
-        >
+          style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}>
           {volunteerAction.name.toUpperCase()}
         </Text>
       </View>
