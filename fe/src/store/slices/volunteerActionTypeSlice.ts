@@ -5,10 +5,10 @@ const initVolunteerActionSlice: VolunteerActionSliceModel = {
   volunteerActions: [],
 };
 
-const volunteerActionSlice = createSlice({
-  name: "volunteerAction",
+const volunteerActionTypeSlice = createSlice({
+  name: "volunteerActionType",
   initialState: initVolunteerActionSlice,
   reducers: {},
 });
 
-export default volunteerActionSlice.reducer;
+export default volunteerActionTypeSlice.reducer;

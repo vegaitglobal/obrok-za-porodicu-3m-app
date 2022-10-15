@@ -1,4 +1,4 @@
-import { ReactComponent as SearchIcon } from "../../../assets/svg/search.svg";
+import { ReactComponent as SearchIcon } from "../../../../assets/icons/search.svg";
 
 import classes from "./OPSearchBar.module.scss";
 

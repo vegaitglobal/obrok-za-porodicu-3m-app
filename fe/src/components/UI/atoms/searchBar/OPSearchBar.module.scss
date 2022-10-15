@@ -1,12 +1,42 @@
+@import "../../../../constants/Colors.scss";
+
 .search-bar-wrapper {
-  width: 90%;
+  width: 30%;
   margin: 0 auto;
   padding: 5px 15px;
 
-  background: #fff;
-  border: 1px solid grey;
-  border-radius: 7px;
+  background: $white;
+  border: 1px solid $bgLightGrey;
+  border-radius: 10px;
 
   display: flex;
   align-items: center;
+}
+
+.search-bar-wrapper:focus-within {
+  border: 1px solid $orange;
+}
+
+.search-bar {
+  box-sizing: border-box;
+
+  height: 39px;
+  width: 100%;
+  padding-left: 11px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  font-size: 16px;
+  line-height: 22px;
+
+  color: $black;
+}
+
+.search-bar::placeholder {
+  color: $grey;
+}
+
+.search-bar:focus {
+  outline: none;
 }
