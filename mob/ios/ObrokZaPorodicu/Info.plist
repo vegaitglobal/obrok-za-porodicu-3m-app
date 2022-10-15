@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Archivo-Regular.ttf</string>
@@ -48,6 +48,8 @@
 		<string>Dosis-ExtraBold.ttf</string>
 		<string>Dosis-SemiBold.ttf</string>
 		<string>Inter-Regular.ttf</string>
+		<string>Bulldog Medium.otf</string>
+		<string>dosis_regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>BootSplash</string>
