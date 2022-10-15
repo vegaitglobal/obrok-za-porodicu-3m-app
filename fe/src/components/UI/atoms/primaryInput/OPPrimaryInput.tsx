@@ -96,9 +96,9 @@ const OPPrimaryInput: React.FC<IOPPrimaryInputProps> = (props) => {
             onClick={handleSecureTextEntry}
           >
             {passwordShown ? (
-              <SlashedEyeIcon width={20} height={16} />
+              <SlashedEyeIcon width={20} height={16}/>
             ) : (
-              <EyeIcon width={20} height={13} />
+              <EyeIcon width={20} height={14}  style={{paddingBottom: "1px"}}/>
             )}
           </span>
         )}
@@ -116,7 +116,7 @@ const stylesObject = {
   eyeIconContainer: {
     position: "absolute" as "absolute",
     right: "14px",
-    top: "38px",
+    top: "39px",
     cursor: "pointer",
   },
   errorIconContainer: {
