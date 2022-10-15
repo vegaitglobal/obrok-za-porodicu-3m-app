@@ -1,4 +1,5 @@
 import {ResponseModel} from '../models/ResponseModel';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 interface IContactService {
   getContacts(): Promise<ResponseModel | null>;
@@ -11,6 +12,7 @@ class ContactService implements IContactService {
       // TODO: Remove or implement this method
       // return Promise.resolve();
     } catch (error: any) {
+      crashlytics().log(error.toString());
       return Promise.reject(error);
     }
   }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 interface IAboutUsService {
   getAboutUs(): Promise<ResponseModel | null>;
@@ -14,7 +15,8 @@ class AboutUsService implements IAboutUsService {
         data: response.data,
         code: 200,
       };
-    } catch (error) {
+    } catch (error: any) {
+      crashlytics().log(error.toString());
       console.log(error);
       return Promise.reject(error);
     }
@@ -34,6 +36,7 @@ export class MockAboutUsService implements IAboutUsService {
         },
       });
     } catch (error: any) {
+      crashlytics().log(error.toString());
       return Promise.reject(error);
     }
   }
