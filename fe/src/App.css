@@ -1,0 +1,4 @@
+@font-face {
+  font-family: "Dosis";
+  src: local("Dosis"), url(./fonts/dosis.ttf) format("opentype");
+}

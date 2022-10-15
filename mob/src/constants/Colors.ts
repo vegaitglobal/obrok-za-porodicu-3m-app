@@ -2,6 +2,8 @@ export const Colors = {
   WHITE: '#FFFFFF',
   BACKGROUND: '#F5F5F5',
 
+  BLACK: '#373737',
+
   BG_LIGHT_GRAY: '#D7D7D7',
   LIGHTER_GRAY: '#B3B3B3',
   LIGHT_GRAY: '#848484',
@@ -14,6 +16,7 @@ export const Colors = {
 
   GREEN_SUCCESS: '#65FB98',
   GREEN: '#98D3A9',
+  BG_GREEN: '#f5fbf6',
 
   LIGHT_ORANGE: '#FFD9A6',
   ORANGE: '#EF8D56',

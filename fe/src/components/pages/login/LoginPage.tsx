@@ -1,5 +1,5 @@
 import { Images } from "../../../constants/Images";
-import LoginForm from "../../UI/molecules/loginForm/LoginForm";
+import OPLoginForm from "../../UI/molecules/loginForm/OPLoginForm";
 
 import classes from "./LoginPage.module.scss";
 
@@ -11,7 +11,7 @@ const LoginPage = () => {
           <img src={Images.Logo} alt="logo" className={classes.logo} />
         </div>
         <div className={classes["form-wrapper"]}>
-          <LoginForm />
+          <OPLoginForm />
         </div>
       </div>
       <div className={classes["right-panel"]} />

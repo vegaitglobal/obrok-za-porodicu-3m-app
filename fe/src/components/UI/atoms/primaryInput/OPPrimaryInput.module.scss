@@ -2,17 +2,23 @@
 @import "../../../../constants/Styles.scss";
 
 .input-label {
-  font-family: "Bulldog";
   float: left;
   clear: left;
-  width: "100%";
   padding-left: 6px;
+  font-family: "Dosis";
+  font-size: 18px;
+  font-weight: 600;
 }
+
+.input-container {
+  position: relative;
+}
+
 .input-field {
   width: 97%;
   height: 36px;
-  margin-bottom: 2.5vh;
-  margin-top: 0.5vh;
+  margin-bottom: 30px;
+  margin-top: 6px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
 
@@ -21,8 +27,12 @@
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding-left: 10px;
-  font-family: bulldog;
-  font-size: 14px;
+  font-family: "Dosis";
+  font-size: 15px;
+  font-weight: 600;
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
   z-index: 0;
   &:focus {
     outline: 2px solid $lightOrange;
@@ -30,7 +40,8 @@
 }
 
 .input-field::placeholder {
-  font: 14px bulldog;
+  font-family: "Dosis";
+  font-weight: 400 !important;
   color: $bgLightGrey;
 }
 
@@ -39,11 +50,13 @@
 }
 
 .error {
-  font: 12px bulldog;
   float: left;
   clear: left;
-  margin-top: -20px;
-  margin-bottom: 10px;
+  margin-top: -26px;
+  padding-left: 5px;
+  font-family: "Dosis";
+  font-size: 12px;
+  font-weight: 600;
   color: $redError;
 }
 
@@ -58,8 +71,8 @@
 .input-error {
   width: 98%;
   height: 36px;
-  margin-bottom: 2.5vh;
-  margin-top: 0.5vh;
+  margin-bottom: 30px;
+  margin-top: 6px;
   border-radius: 7px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -67,10 +80,19 @@
   -khtml-border-radius: 7px;
   padding-left: 10px;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  font-family: bulldog;
+  font-family: "Dosis";
+  font-size: 15px;
+  font-weight: 600;
   background-color: #ffcccb;
-  font-size: 14px;
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
   &:focus {
     outline: 1px solid #b30000;
   }
 }
+
+.input-error::placeholder {
+	font-family: "Dosis";
+	font-weight: 400 !important;
+  }

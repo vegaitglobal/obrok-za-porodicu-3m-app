@@ -1,3 +1,5 @@
+.DS_Store
+
 # Xcode
 !**/*.xcodeproj
 !**/*.pbxproj
@@ -20,6 +22,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+
+
+
 **/.xcode.env.local
 
 # Gradle
@@ -64,13 +69,16 @@ buck-out
 .gradle
 local.properties
 *.iml
-/android/
+build/
+*.hprof
 
 # Node
 node_modules
 *.log
 .nvm
 package-lock.json
+.yarn-integrity
+yarn.lock
 
 # OS X
 .DS_Store
@@ -126,9 +134,6 @@ package-lock.json
 # Visual studio
 .vscode
 .vs
-
-# Android memory profiler files
-*.hprof
 
 #pods
 /ios/Pods

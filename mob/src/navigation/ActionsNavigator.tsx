@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {AppRoute} from './Routes';
 import {createStackNavigator} from '@react-navigation/stack';
+import {AppRoute} from './Routes';
 
-import ActionsListScreen from '../screens/ActionsListScreen';
 import ActionScreen from '../screens/ActionScreen';
+import ActionsListScreen from '../screens/ActionsListScreen';
 
 const Stack = createStackNavigator();
 

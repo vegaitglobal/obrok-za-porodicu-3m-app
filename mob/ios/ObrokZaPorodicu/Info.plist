@@ -24,21 +24,43 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	
 	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>localhost</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>performative.sitesstage.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Archivo-Regular.ttf</string>
+		<string>Dosis-Regular.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Chewy-Regular.ttf</string>
+		<string>Archivo-SemiBold.ttf</string>
+		<string>Dosis-Bold.ttf</string>
+		<string>Dosis-ExtraBold.ttf</string>
+		<string>Dosis-SemiBold.ttf</string>
+		<string>Inter-Regular.ttf</string>
+		<string>Bulldog Medium.otf</string>
+		<string>dosis_regular.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>BootSplash</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

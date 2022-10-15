@@ -1,0 +1,18 @@
+.input-box {
+  &::placeholder {
+    font-family: "Bulldog";
+    font-size: 14px;
+  }
+}
+
+.button-wrapper {
+  width: 100%;
+  padding-top: 36px;
+}
+
+.form-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
