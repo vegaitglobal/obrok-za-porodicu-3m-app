@@ -1,27 +1,23 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {AboutUsParagraphModel} from '../../models/AboutUsParagraphModel';
 
 interface AboutUsState {
-  paragraphs: Array<AboutUsParagraphModel>;
+  html: string;
 }
 
 const initialState: AboutUsState = {
-  paragraphs: [],
+  html: '<p>Loading, please wait.</p>',
 };
 
 const aboutUsSlice = createSlice({
   initialState,
   name: 'aboutUsReducer',
   reducers: {
-    setAboutUsParagraphs(
-      state,
-      {payload}: PayloadAction<Array<AboutUsParagraphModel>>,
-    ) {
-      state.paragraphs = payload;
+    setAboutUsText(state, {payload}: PayloadAction<string>) {
+      state.html = payload;
     },
   },
 });
 
-export const {setAboutUsParagraphs} = aboutUsSlice.actions;
+export const {setAboutUsText} = aboutUsSlice.actions;
 
 export default aboutUsSlice.reducer;

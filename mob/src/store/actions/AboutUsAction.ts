@@ -1,19 +1,18 @@
 import {createAsyncThunk, Dispatch} from '@reduxjs/toolkit';
-import {AboutUsParagraphModel} from '../../models/AboutUsParagraphModel';
+import {AboutUsResponseModel} from '../../models/AboutUsResponseModel';
 import {ResponseModel} from '../../models/ResponseModel';
-import AboutUsService, {
-  MockAboutUsService,
-} from '../../services/AboutUsService';
-import {setAboutUsParagraphs} from '../reducers/AboutUsReducer';
+import AboutUsService from '../../services/AboutUsService';
+import {setAboutUsText} from '../reducers/AboutUsReducer';
 
 export const getAboutUs = createAsyncThunk(
   'aboutUs/getAboutUs',
   async (dispatch: Dispatch) => {
-    const service: typeof AboutUsService = new MockAboutUsService();
+    const service: typeof AboutUsService = AboutUsService;
 
     const response: ResponseModel = await service.getAboutUs();
-    const paragraphs: AboutUsParagraphModel[] = response.data;
+    const aboutResponse: AboutUsResponseModel = response.data;
+    const html: string = aboutResponse.description;
 
-    dispatch(setAboutUsParagraphs(paragraphs));
+    dispatch(setAboutUsText(html));
   },
 );
