@@ -7,10 +7,10 @@
   justify-content: center;
   color: $white;
   text-decoration: none;
-  padding: 6px 15px;
+  padding: 8px 15px;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 16px;
   color: $orange;
   background-color: $white;
   border-radius: $borderRadius;
@@ -21,6 +21,7 @@
 
   &:hover {
     background: $lightOrange;
+    color: $orange;
   }
 
   &:not(:last-of-type) {
@@ -33,22 +34,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $white;
   text-decoration: none;
-  padding: 6px 15px;
+  padding: 8px 15px;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 14px;
+  font-size: 16px;
+  line-height: 16px;
   color: $white;
   background-color: $orange;
   border-radius: $borderRadius;
   border: 1px solid $orange;
-  transition-property: background-color, color;
+  transition-property: background-color, border-color, color;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
 
   &:hover {
     background-color: $red;
+    border-color: $red;
+    color: $white;
   }
 
   &:not(:last-of-type) {
