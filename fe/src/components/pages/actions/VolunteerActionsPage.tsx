@@ -1,4 +1,5 @@
 import OPSearchBar from "../../UI/atoms/searchBar/OPSearchBar";
+import OPFilterItemList from "../../UI/molecules/filterItemList/OPFilterItemList";
 import Header from "../../UI/molecules/header/OPHeader";
 import OPCarditemList from "../../UI/organisms/cardItemList/OPCarditemList";
 import classes from "./VolunteerActionsPage.module.scss";
@@ -10,8 +11,9 @@ const VolunteerActionsPage = () => {
         <div className={classes["header-wrapper"]}>
           <Header />
         </div>
-        <div>
+        <div className={classes["filter-wrapper"]}>
           <OPSearchBar placeholder="Search" />
+          <OPFilterItemList />
         </div>
         <OPCarditemList />
       </div>

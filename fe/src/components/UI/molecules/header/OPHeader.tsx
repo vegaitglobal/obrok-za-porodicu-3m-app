@@ -34,8 +34,8 @@ const OPHeader = () => {
   return (
     <div className={classes["header-wrapper"]}>
       <div className={classes["logo-wrapper"]}>Logo</div>
-      {HEADER_VALUES.map((value) => (
-        <OPHeaderItem text={value.text} link={value.link} />
+      {HEADER_VALUES.map((value, index) => (
+        <OPHeaderItem key={index} text={value.text} link={value.link} />
       ))}
     </div>
   );
