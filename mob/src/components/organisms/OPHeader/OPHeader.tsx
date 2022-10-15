@@ -10,7 +10,7 @@ import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
 import {styles} from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const Header = () => {
+const OPHeader = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topHeader}>
@@ -38,4 +38,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default OPHeader;

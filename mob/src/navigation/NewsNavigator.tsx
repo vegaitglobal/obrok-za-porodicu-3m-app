@@ -9,7 +9,7 @@ import {
 import NewsScreen from '../screens/NewsListScreen';
 import NewsListScreen from '../screens/NewsListScreen';
 
-import Header from '../components/organisms/Header/Header';
+import Header from '../components/organisms/OPHeader/OPHeader';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +21,8 @@ const NewsNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName={AppRoute.NEWS_LIST_SCREEN}
-      screenOptions={screenOptions}>
+      screenOptions={screenOptions}
+    >
       <Stack.Screen
         name={AppRoute.NEWS_LIST_SCREEN}
         component={NewsListScreen}

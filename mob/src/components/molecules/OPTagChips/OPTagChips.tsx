@@ -1,11 +1,15 @@
 import React from 'react';
 import {View} from 'react-native';
 import {styles} from './style';
-import {Colors} from '../../../constants/Colors';
 import OPTagChip from '../../atoms/OPTagChip/OPTagChip';
 import {VolunteerActionStatus} from '../../../models/VolunteerAction/VolunteerActionStatus';
-
-interface OPTagChipsProps {}
+import {getRandomColor} from '../../../utils/getRandomColor';
+import {useSelector, useDispatch} from 'react-redux';
+import {setAppliedFilters} from '../../../store/actions/VolunteerAction';
+import type {RootState, AppDispatch} from '../../../store/reducers/RootReducer';
+interface OPTagChipsProps {
+  statuses?: VolunteerActionStatus[];
+}
 
 const volunteerActions: string | any[] = [
   {
@@ -58,20 +62,33 @@ const volunteerActions: string | any[] = [
   },
 ];
 
-const renderItems = (data: VolunteerActionStatus[]) =>
-  data.map(item => (
-    <View key={item.id.toString()} style={styles.tagContainer}>
-      <OPTagChip volunteerAction={item} color={Colors.ORANGE} size="large" />
-      <View style={styles.divider} />
-    </View>
-  ));
-
-const OPTagChips: React.FC<OPTagChipsProps> = ({}) => {
-  return (
-    <View style={styles.container}>
-      {volunteerActions?.length > 0 && renderItems(volunteerActions)}
-    </View>
+const OPTagChips: React.FC<OPTagChipsProps> = ({
+  statuses = volunteerActions,
+}) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const filters = useSelector(
+    (state: RootState) => state.volunteerActions.appliedVolunteerActions,
   );
+
+  const onPress = (status: VolunteerActionStatus, color: string) =>
+    dispatch(setAppliedFilters(status, color));
+
+  const renderItems = () =>
+    statuses &&
+    statuses.map((item, index) => (
+      <View key={item.id.toString()} style={styles.tagContainer}>
+        <OPTagChip
+          volunteerAction={item}
+          color={getRandomColor(index)}
+          size="large"
+          onPress={onPress}
+          fill={Boolean(filters[item.id])}
+        />
+        <View style={styles.divider} />
+      </View>
+    ));
+
+  return <View style={styles.container}>{renderItems()}</View>;
 };
 
 export default OPTagChips;
