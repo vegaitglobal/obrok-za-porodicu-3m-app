@@ -54,5 +54,13 @@ namespace MealForFamily.Controllers
             News model = _mapper.Map<News>(request);
             return Ok(_mapper.Map<NewsDTO>(await _newsService.UpdateNews(model)));
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteNews(int id)
+        {
+            await _newsService.DeleteNews(id);
+            return Ok("News deleted successfully");
+        }
     }
 }

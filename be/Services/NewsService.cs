@@ -37,5 +37,14 @@ namespace MealForFamily.Service
         {
             return await _newsRepository.Update(news);
         }
+
+        public async Task DeleteNews(int id)
+        {
+            News news = await GetSingleById(id);
+            if (news == null)
+                throw new CustomException("News not found", 404);
+
+            await _newsRepository.Delete(news);
+        }
     }
 }
