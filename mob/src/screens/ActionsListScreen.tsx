@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {TextStyles} from '../constants/TextStyles';
 import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
 import {VolunteerActionDTO} from '../models/VolunteerAction/VolunteerAction';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../store/reducers/RootReducer';
+import {getVolunteerActions} from '../store/actions/VolunteerAction';
 
 const actions: Array<VolunteerActionDTO> = [
   {
@@ -42,6 +45,19 @@ const actions: Array<VolunteerActionDTO> = [
 ];
 
 const ActionsListScreen = () => {
+  const dispatch: any = useDispatch();
+  const {volunteerActions} = useSelector(
+    (state: RootState) => state.volunteerActions,
+  );
+
+  const getData = useCallback(() => {
+    // dispatch(getVolunteerActions(1));
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text>Action List Screen</Text>
