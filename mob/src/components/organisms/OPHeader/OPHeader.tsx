@@ -1,4 +1,4 @@
-import React, {FC, useState, useRef} from 'react';
+import React, {FC, useState, useRef, useEffect} from 'react';
 import {View, Image, Text} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Animated, {
@@ -17,6 +17,7 @@ import {
   filterVolunteerActionsByTagsAndSearchTerm,
   onSetSearchTerm,
   onClearFilters,
+  getVolunteerActionTypes,
 } from '../../../store/actions/VolunteerAction';
 import {useDispatch} from 'react-redux';
 import {styles} from './style';
@@ -86,8 +87,11 @@ const OPHeader: FC<OPHeaderProps> = ({
   buttonTitle = 'PRETRAZI',
   searchPlaceholder = 'Pretrazi po ključnim rečima',
 }) => {
-  const [data, setData] = useState([...volunteerActions]);
   const dispatch = useDispatch<AppDispatch>();
+
+  const {volunteerActionTypes} = useSelector(
+    (state: RootState) => state.volunteerActions,
+  );
   const {appliedVolunteerActions, searchTerm} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
@@ -117,7 +121,9 @@ const OPHeader: FC<OPHeaderProps> = ({
       isOpening.current = true;
 
       height.value = withTiming(
-        height.value === 0 ? Math.ceil(data?.length / 3) * 40 + 200 : 0,
+        height.value === 0
+          ? Math.ceil(volunteerActionTypes?.length / 3) * 40 + 200
+          : 0,
         {
           duration: 500,
         },
@@ -140,6 +146,8 @@ const OPHeader: FC<OPHeaderProps> = ({
       onPressFilterIcon();
     }
   };
+
+  useEffect(() => dispatch(getVolunteerActionTypes()), [dispatch]);
 
   const onClearAll = () => {
     setSearchValue('');
@@ -172,7 +180,7 @@ const OPHeader: FC<OPHeaderProps> = ({
               </TouchableOpacity>
             </View>
           ) : null}
-          <OPTagChips statuses={data} heading={filterTitle} />
+          <OPTagChips statuses={volunteerActionTypes} heading={filterTitle} />
         </View>
         <View style={styles.buttonContainer}>
           <OPPrimaryButton
