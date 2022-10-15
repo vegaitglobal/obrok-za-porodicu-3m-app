@@ -7,14 +7,14 @@ import { loginValidationScheme } from "../../../validators/loginValidationScheme
 import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
 
-import classes from "./LoginForm.module.scss";
+import classes from "./OPLoginForm.module.scss";
 
 const initialValues: LoginUserModel = {
   email: "",
   password: "",
 };
 
-const LoginForm = () => {
+const OPLoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -68,4 +68,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default OPLoginForm;
