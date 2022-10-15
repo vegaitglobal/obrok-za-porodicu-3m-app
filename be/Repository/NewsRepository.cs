@@ -9,12 +9,6 @@ namespace MealForFamily.Repositories
     {
         public NewsRepository(DataContext context) : base(context) { }
 
-        public async Task<List<News>> GetNews()
-        {
-            return await _context.News
-                .ToListAsync();
-        }
-        
         public async Task<News> GetSingleById(int id)
         {
             return await _context.News.Where(x => x.Id == id).FirstOrDefaultAsync();
