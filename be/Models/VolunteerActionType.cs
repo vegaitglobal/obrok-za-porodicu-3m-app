@@ -14,5 +14,9 @@ namespace MealForFamily.Models
         public bool? HasPickup { get; set; } = true;
 
         public bool? HasPayment { get; set; } = false;
+
+        public ICollection<Donation>? Donations { get; set; }
+
+        public ICollection<VolunteerAction>? VolunteerActions { get; set; }
     }
 }

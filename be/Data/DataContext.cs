@@ -41,5 +41,6 @@ namespace MealForFamily.Data
         public DbSet<VolunteerAction> VolunteerActions { get; set; }
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<BankAccount> BankAccount { get; set; }
+        public DbSet<Donation> Donations { get; set; }
     }
 }

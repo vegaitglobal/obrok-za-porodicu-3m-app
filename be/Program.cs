@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using MealForFamily.Data;
 using MealForFamily.Repositories;
 using MealForFamily.RepositoryInterface;
@@ -37,6 +36,9 @@ builder.Services.AddTransient<IAboutUsRepository, AboutUsRepository>();
 
 builder.Services.AddTransient<IBankAccountService, BankAccountService>();
 builder.Services.AddTransient<IBankAccountRepository, BankAccountRepository>();
+
+builder.Services.AddTransient<IDonationService,DonationService>();
+builder.Services.AddTransient<IDonationRepository, DonationRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
