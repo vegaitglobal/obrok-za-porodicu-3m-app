@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 
 import {SafeAreaView, StyleSheet} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import OPNewsList from '../components/organisms/OPNewsList/OPNewsList';
 import {NewsDTO} from '../models/News/NewsDTO';
+import {getNews} from '../store/actions/NewsAction';
+import {RootState} from '../store/reducers/RootReducer';
 
-const news: Array<NewsDTO> = [
+const newsList: Array<NewsDTO> = [
   {
     id: 1,
     title: 'Vest naslov vesti #1',
@@ -32,9 +35,20 @@ const news: Array<NewsDTO> = [
 ];
 
 const NewsListScreen = () => {
+  const dispatch: any = useDispatch();
+  const {news} = useSelector((state: RootState) => state.news);
+
+  const getData = useCallback(() => {
+    // dispatch(getNews(1));
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
   return (
     <SafeAreaView style={styles.container}>
-      <OPNewsList news={news} onPress={() => {}} />
+      <OPNewsList news={newsList} onPress={() => {}} />
     </SafeAreaView>
   );
 };

@@ -2,10 +2,12 @@ import {combineReducers} from '@reduxjs/toolkit';
 
 import contactSlice from './ContactReducer';
 import volunteerActionsSlice from './VolunteerActionReducer';
+import newsSlice from './NewsReducer';
 
 const rootReducer = combineReducers({
   contact: contactSlice,
   volunteerActions: volunteerActionsSlice,
+  news: newsSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
