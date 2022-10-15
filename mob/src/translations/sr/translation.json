@@ -9,7 +9,8 @@
     },
     "actionsList": {
       "find_out_more": "Saznaj Više",
-      "status": "Status"
+      "status": "Status",
+      "trending": "Aktuelno"
     }
   }
 }
