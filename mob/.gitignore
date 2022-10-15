@@ -78,6 +78,7 @@ node_modules
 .nvm
 package-lock.json
 .yarn-integrity
+.yarn.lock
 
 # OS X
 .DS_Store
