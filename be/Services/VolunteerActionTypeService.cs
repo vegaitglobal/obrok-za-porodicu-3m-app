@@ -18,5 +18,10 @@ namespace MealForFamily.Service
         {
             return await _volunteerActionTypeRepository.GetVolunteerActionTypes();
         }
+
+        public async Task<VolunteerActionType> GetSingleById(int id)
+        {
+            return await _volunteerActionTypeRepository.GetById(id);
+        }
     }
 }

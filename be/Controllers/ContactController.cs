@@ -19,5 +19,11 @@ namespace MealForFamily.Controllers
         {
             return Ok(await _contactService.GetContacts());
         }
+
+        [HttpGet("campaign/{id:int}")]
+        public async Task<IActionResult> GetSingleContact([FromRoute] int id)
+        {
+            return Ok(await _contactService.GetSingleById(id));
+        }
     }
 }

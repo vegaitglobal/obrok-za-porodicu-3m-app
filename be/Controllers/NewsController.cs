@@ -19,5 +19,11 @@ namespace MealForFamily.Controllers
         {
             return Ok(await _newsService.GetNews());
         }
+
+        [HttpGet("campaign/{id:int}")]
+        public async Task<IActionResult> GetSingleNews([FromRoute] int id)
+        {
+            return Ok(await _newsService.GetSingleById(id));
+        }
     }
 }

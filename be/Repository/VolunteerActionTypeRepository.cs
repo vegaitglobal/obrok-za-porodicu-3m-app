@@ -14,5 +14,10 @@ namespace MealForFamily.Repositories
             return await _context.VolunteerActionTypes
                 .ToListAsync();
         }
+        
+        public async Task<VolunteerActionType> GetSingleById(int id)
+        {
+            return await _context.VolunteerActionTypes.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

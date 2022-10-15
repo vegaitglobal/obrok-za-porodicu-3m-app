@@ -18,5 +18,10 @@ namespace MealForFamily.Service
         {
             return await _contactRepository.GetContacts();
         }
+
+        public async Task<Contact> GetSingleById(int id)
+        {
+            return await _contactRepository.GetById(id);
+        }
     }
 }

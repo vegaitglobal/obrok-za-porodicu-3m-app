@@ -19,5 +19,11 @@ namespace MealForFamily.Controllers
         {
             return Ok(await _volunteerActionService.GetVolunteerActions());
         }
+
+        [HttpGet("campaign/{id:int}")]
+        public async Task<IActionResult> GetSingleVolunteerAction([FromRoute] int id)
+        {
+            return Ok(await _volunteerActionService.GetSingleById(id));
+        }
     }
 }

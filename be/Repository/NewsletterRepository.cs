@@ -14,5 +14,10 @@ namespace MealForFamily.Repositories
             return await _context.NewsletterSubscriptions
                 .ToListAsync();
         }
+        
+        public async Task<NewsletterSubscription> GetSingleById(int id)
+        {
+            return await _context.NewsletterSubscriptions.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
     }
 }

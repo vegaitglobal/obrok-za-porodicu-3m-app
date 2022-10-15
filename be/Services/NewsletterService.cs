@@ -18,5 +18,10 @@ namespace MealForFamily.Service
         {
             return await _newsletterSubscriptionRepository.GetNewsletterSubscriptions();
         }
+
+        public async Task<NewsletterSubscription> GetSingleById(int id)
+        {
+            return await _newsletterSubscriptionRepository.GetById(id);
+        }
     }
 }

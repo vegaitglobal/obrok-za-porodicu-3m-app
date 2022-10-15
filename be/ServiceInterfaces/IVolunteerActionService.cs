@@ -5,5 +5,7 @@ namespace MealForFamily.ServiceInterface
     public interface IVolunteerActionService
     {
         Task<List<VolunteerAction>> GetVolunteerActions();
+        
+        Task<VolunteerAction> GetSingleById(int id);
     }
 }

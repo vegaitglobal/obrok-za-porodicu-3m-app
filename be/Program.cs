@@ -13,12 +13,30 @@ builder.Configuration.AddEnvironmentVariables();
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 builder.Services.AddTransient<IContactService, ContactService>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
+
 builder.Services.AddTransient<INewsletterSubscriptionService, NewsletterSubscriptionService>();
 builder.Services.AddTransient<INewsletterSubscriptionRepository, NewsletterSubscriptionRepository>();
+
 builder.Services.AddTransient<INewsService, NewsService>();
 builder.Services.AddTransient<INewsRepository, NewsRepository>();
+
+builder.Services.AddTransient<IVolunteerActionService, VolunteerActionService>();
+builder.Services.AddTransient<IVolunteerActionRepository, VolunteerActionRepository>();
+
+builder.Services.AddTransient<IVolunteerActionStatusService, VolunteerActionStatusService>();
+builder.Services.AddTransient<IVolunteerActionStatusRepository, VolunteerActionStatusRepository>();
+
+builder.Services.AddTransient<IVolunteerActionService, VolunteerActionService>();
+builder.Services.AddTransient<IVolunteerActionRepository, VolunteerActionRepository>();
+
+builder.Services.AddTransient<IAboutUsService, AboutUsService>();
+builder.Services.AddTransient<IAboutUsRepository, AboutUsRepository>();
+
+builder.Services.AddTransient<IBankAccountService, BankAccountService>();
+builder.Services.AddTransient<IBankAccountRepository, BankAccountRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
