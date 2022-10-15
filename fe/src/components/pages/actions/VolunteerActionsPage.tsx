@@ -24,13 +24,13 @@ const VolunteerActionsPage = () => {
     <div className={globalClasses["page-wrapper"]}>
       <Header />
       <div className={globalClasses["content-wrapper"]}>
-        <div className={classes["filter-wrapper"]}>
-          <OPSearchBar placeholder="Search" />
-          <div className={classes["filter-items"]}>
+        <div className={globalClasses["content"]}>
+          <div className={classes["filter-wrapper"]}>
+            <OPSearchBar placeholder="Search" />
             <OPFilterItemList filterItems={filterItems} />
-          </div>
-          <div className={classes["search-button-wrapper"]}>
-            <OPPrimaryButton text="Pretrazi" onClick={() => {}} />
+            <div className={classes["search-button-wrapper"]}>
+              <OPPrimaryButton text="Pretrazi" onClick={() => {}} />
+            </div>
           </div>
         </div>
       </div>
