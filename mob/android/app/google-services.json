@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "978230351336",
+    "project_id": "obrok-za-porodicu",
+    "storage_bucket": "obrok-za-porodicu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978230351336:android:f1e3952919b703edc3805d",
+        "android_client_info": {
+          "package_name": "com.obrokzaporodicu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978230351336-lfauqidocr9svlp2vo49baoucs8bgo20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.obrokzaporodicu",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "978230351336-ehehpb134eijnoqr4bk8pj56i6h5sv0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdCyvBvytwdl1Qi7wr8dAmLwHPurcsmyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978230351336-ehehpb134eijnoqr4bk8pj56i6h5sv0h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "978230351336-9c0p62phei5eptmttl4q9jpcq995afge.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.vegait.ObrokZaPorodicu"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
