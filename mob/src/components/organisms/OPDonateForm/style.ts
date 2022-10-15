@@ -23,7 +23,6 @@ export const styles = StyleSheet.create({
   locationContainer: {
     flex: 1,
     marginTop: 10,
-    marginBottom: 50,
   },
   locationTitle: {
     ...TextStyles.DOSIS_SEMI_BOLD,
@@ -50,7 +49,6 @@ export const styles = StyleSheet.create({
   paymentDataContainer: {
     flex: 1,
     marginTop: 20,
-    marginBottom: 50,
   },
   subtitle: {
     ...TextStyles.DOSIS_SEMI_BOLD,
@@ -66,5 +64,8 @@ export const styles = StyleSheet.create({
     lineHeight: 18,
     color: Colors.BLACK,
     marginBottom: 5,
+  },
+  button: {
+    marginTop: 40,
   },
 });

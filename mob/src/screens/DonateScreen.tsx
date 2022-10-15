@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 
-import {
-  Keyboard,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
+import OPTagChips from '../components/molecules/OPTagChips/OPTagChips';
 import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
 import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {Colors} from '../constants/Colors';
@@ -16,7 +10,7 @@ import {Colors} from '../constants/Colors';
 const DonateScreen = () => {
   return (
     <>
-      <OPHeader />
+      <OPHeader hasFilter={false} />
       <OPSubheader heading={'DONIRAJ'} items={[]} />
 
       <ScrollView
@@ -24,6 +18,7 @@ const DonateScreen = () => {
         style={styles.container}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}>
+        <OPTagChips />
         <OPDonateForm />
       </ScrollView>
     </>
@@ -37,7 +32,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flexGrow: 1,
-    paddingBottom: 200,
+    paddingBottom: 100,
   },
   viewContainer: {
     flex: 1,
