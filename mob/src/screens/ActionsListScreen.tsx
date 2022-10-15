@@ -47,7 +47,7 @@ const ActionsListScreen = ({navigation}) => {
       <OPActionsList
         actions={volunteerActions}
         onPress={actionId =>
-          navigation.navigate(AppRoute.ACTION_SCREEN, {actionId})
+          navigation.replace(AppRoute.ACTION_SCREEN, {actionId})
         }
         onLoadMore={handleLoadNextPage}
         onRefresh={handleRefresh}
