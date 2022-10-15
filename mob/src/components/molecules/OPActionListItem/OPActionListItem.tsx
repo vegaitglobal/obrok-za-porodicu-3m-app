@@ -25,26 +25,28 @@ const OPActionListItem: React.FC<OPActionListItemProps> = ({
   };
 
   const backgroundColor: string =
-    action.status.id === 1 ? Colors.BG_GREEN : Colors.WHITE;
+    action.status?.id === 1 ? Colors.BG_GREEN : Colors.WHITE;
   const statusColor: string =
-    action.status.id === 1 ? Colors.GREEN : Colors.ORANGE;
+    action.status?.id === 1 ? Colors.GREEN : Colors.ORANGE;
   return (
     <View style={[styles.container, {backgroundColor: backgroundColor}]}>
       <OPTagChip
         fill
         disabled
         size={'large'}
-        color={getRandomColor(action.type.id)}
+        color={getRandomColor(action.type?.id || 0)}
         volunteerAction={action.type}
         style={styles.chip}
       />
-      <OPImage source={{uri: action.imageUrl}} style={styles.image} />
+      {action.imageURL && action.imageURL.length > 0 && (
+        <OPImage source={{uri: action.imageURL}} style={styles.image} />
+      )}
       <View style={styles.content}>
         <Text style={styles.title}>{action.title}</Text>
         <View style={styles.statusContainer}>
           <Text style={styles.statusLabel}>{t('actionsList.status')}</Text>
           <Text style={[styles.status, {color: statusColor}]}>
-            {action.status.name}
+            {action.status?.name}
           </Text>
         </View>
         <Text style={styles.description}>{action.shortDescription}</Text>

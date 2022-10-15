@@ -1,7 +1,7 @@
 export interface VolunteerActionDTO {
   id: number;
   type: ActionType;
-  imageUrl?: string;
+  imageURL?: string;
   title: string;
   status: ActionStatus;
   shortDescription: string;
