@@ -147,6 +147,38 @@ namespace MealForFamily.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Donations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    VolunteerActionTypeId = table.Column<int>(type: "integer", nullable: true),
+                    IsCompany = table.Column<bool>(type: "boolean", nullable: true),
+                    CompanyName = table.Column<string>(type: "text", nullable: true),
+                    FullName = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    IsPickup = table.Column<bool>(type: "boolean", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    VolunteerActionId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Donations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Donations_VolunteerActions_VolunteerActionId",
+                        column: x => x.VolunteerActionId,
+                        principalTable: "VolunteerActions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Donations_VolunteerActionTypes_VolunteerActionTypeId",
+                        column: x => x.VolunteerActionTypeId,
+                        principalTable: "VolunteerActionTypes",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "AboutUs",
                 columns: new[] { "Id", "Description", "RawDescription" },
@@ -184,6 +216,16 @@ namespace MealForFamily.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Donations_VolunteerActionId",
+                table: "Donations",
+                column: "VolunteerActionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Donations_VolunteerActionTypeId",
+                table: "Donations",
+                column: "VolunteerActionTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VolunteerActions_StatusId",
                 table: "VolunteerActions",
                 column: "StatusId");
@@ -204,6 +246,9 @@ namespace MealForFamily.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contacts");
+
+            migrationBuilder.DropTable(
+                name: "Donations");
 
             migrationBuilder.DropTable(
                 name: "News");
