@@ -1,0 +1,32 @@
+@import "../../../../constants/Colors.scss";
+@import "../../../../constants/Styles.scss";
+
+.header-item {
+  height: 4vh;
+
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  margin-right: 5px;
+
+  background-color: $orange;
+  border-radius: $borderRadius;
+}
+
+.header-item:hover {
+  background: $lightOrange;
+}
+
+.header-link {
+  color: $white;
+  text-decoration: none;
+
+  border-radius: var(--BORDER-RADIUS);
+  padding: 7px 15px;
+}
