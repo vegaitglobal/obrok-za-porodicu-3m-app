@@ -15,10 +15,8 @@ export const styles = StyleSheet.create({
     borderRadius: 100,
     paddingHorizontal: 10,
     paddingVertical: 7,
-    alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
   } as ViewStyle,
   tagChipDark: {
     borderColor: 'transaparent',

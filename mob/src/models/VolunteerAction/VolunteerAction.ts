@@ -1,17 +1,19 @@
-import {VolunteerActionStatus} from './VolunteerActionStatus';
-import {VolunteerActionType} from './VolunteerActionType';
-
-export interface VolunteerAction {
+export interface VolunteerActionDTO {
   id: number;
-  type: VolunteerActionType;
+  type: ActionType;
   imageUrl?: string;
   title: string;
-  status: VolunteerActionStatus;
+  status: ActionStatus;
   shortDescription: string;
-  rawDescription: string;
-  description: string;
   referenceNumber?: string;
-  createdAt: string;
-  updatedAt: string;
-  isDeleted: boolean;
+}
+
+export interface ActionType {
+  id: number;
+  name: string;
+}
+
+interface ActionStatus {
+  id: number;
+  name: string;
 }
