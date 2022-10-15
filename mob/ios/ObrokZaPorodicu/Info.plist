@@ -36,6 +36,11 @@
                 <key>NSExceptionAllowsInsecureHTTPLoads</key>
                 <true/>
             </dict>
+            <key>performative.sitesstage.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
         </dict>
     </dict>
 	<key>NSLocationWhenInUseUsageDescription</key>

@@ -69,7 +69,8 @@ buck-out
 .gradle
 local.properties
 *.iml
-/android/
+build/
+*.hprof
 
 # Node
 node_modules
@@ -132,9 +133,6 @@ package-lock.json
 # Visual studio
 .vscode
 .vs
-
-# Android memory profiler files
-*.hprof
 
 #pods
 /ios/Pods

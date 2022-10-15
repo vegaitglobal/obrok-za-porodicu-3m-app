@@ -11,7 +11,7 @@ const initialState: ContactState = {
 
 const contactSlice = createSlice({
   initialState,
-  name: 'brandCampaignReducer',
+  name: 'contactReducer',
   reducers: {
     setContacts(state, {payload}: PayloadAction<Array<ContactModel>>) {
       state.contacts = payload;

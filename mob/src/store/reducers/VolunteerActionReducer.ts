@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {AppliedVolunteerAction} from '../../models/VolunteerAction/AppliedVolunteerAction';
-import {VolunteerActionDTO} from '../../models/VolunteerAction/VolunteerAction';
+import {VolunteerActionDTO} from '../../models/VolunteerAction/VolunteerActionDTO';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
 
 interface VolunteerActionState {
