@@ -50,7 +50,7 @@ const ContactScreen = () => {
       socialMediaTitle={t('contactScreen.socialMedia')}
       socialMedias={socialMedia}
       renderSociaMediaItem={renderSocialItem}
-      contacts={contacts}
+      contacts={contacts || []}
       contactsTitle={t('contactScreen.contactUs')}
       renderContactItem={renderContactItem}
     />
