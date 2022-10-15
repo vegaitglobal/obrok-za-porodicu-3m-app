@@ -34,4 +34,18 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     paddingHorizontal: 16,
   },
+  clearButton: {
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    alignContent: 'flex-end',
+    top: 82,
+    right: 20,
+    zIndex: 10,
+  },
+  clearText: {
+    ...TextStyles.DOSIS_BOLD,
+    color: Colors.LIGHT_GRAY,
+    fontSize: 14,
+    textDecorationLine: 'underline',
+  },
 });

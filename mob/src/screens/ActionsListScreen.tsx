@@ -11,6 +11,7 @@ import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {TextStyles} from '../constants/TextStyles';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';
 
+
 const ActionsListScreen = ({navigation}) => {
   const {t} = useTranslation();
   const dispatch: any = useDispatch();
@@ -47,7 +48,7 @@ const ActionsListScreen = ({navigation}) => {
       <OPActionsList
         actions={volunteerActions}
         onPress={actionId =>
-          navigation.replace(AppRoute.ACTION_SCREEN, {actionId})
+          navigation.navigate(AppRoute.ACTION_SCREEN, {actionId})
         }
         onLoadMore={handleLoadNextPage}
         onRefresh={handleRefresh}

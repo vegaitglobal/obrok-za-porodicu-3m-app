@@ -12,8 +12,13 @@ import OPSearch from '../../atoms/OPSearch/OPSearch';
 import OPTagChips from '../../molecules/OPTagChips/OPTagChips';
 import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
 import {useSelector} from 'react-redux';
-import type {RootState} from '../../../store/reducers/RootReducer';
-
+import type {RootState, AppDispatch} from '../../../store/reducers/RootReducer';
+import {
+  filterVolunteerActionsByTagsAndSearchTerm,
+  onSetSearchTerm,
+  onClearFilters,
+} from '../../../store/actions/VolunteerAction';
+import {useDispatch} from 'react-redux';
 import {styles} from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
@@ -80,15 +85,16 @@ const OPHeader: FC<OPHeaderProps> = ({
   filterTitle = 'Kategorije',
   buttonTitle = 'PRETRAZI',
   searchPlaceholder = 'Pretrazi po ključnim rečima',
-  hasFilter = true,
 }) => {
   const [data, setData] = useState([...volunteerActions]);
-  const [searchValue, setSearchValue] = useState<string>('');
-  const filters = useSelector(
-    (state: RootState) => state.volunteerActions.appliedVolunteerActions,
+  const dispatch = useDispatch<AppDispatch>();
+  const {appliedVolunteerActions, searchTerm} = useSelector(
+    (state: RootState) => state.volunteerActions,
   );
+  const [searchValue, setSearchValue] = useState<string>(searchTerm);
   const badgeValue: number =
-    Object.keys(filters).length + +(searchValue?.length > 0 ? 1 : 0);
+    Object.keys(appliedVolunteerActions).length +
+    +(searchValue?.length > 0 ? 1 : 0);
 
   const isOpening: any = useRef<any>(false);
 
@@ -127,33 +133,51 @@ const OPHeader: FC<OPHeaderProps> = ({
     }
   };
 
+  const onButtonPress = async () => {
+    dispatch(onSetSearchTerm(searchValue));
+    const res = await dispatch(filterVolunteerActionsByTagsAndSearchTerm());
+    if (res.data) {
+      onPressFilterIcon();
+    }
+  };
+
+  const onClearAll = () => {
+    setSearchValue('');
+    dispatch(onClearFilters());
+  };
+
   return (
     <SafeAreaView edges={['top']} style={styles.container}>
       <View style={styles.topHeader}>
         <Image source={LOGO_PATH} resizeMode="contain" />
-        {hasFilter ? (
-          <TouchableOpacity
-            style={styles.filterContainer}
-            onPress={onPressFilterIcon}>
-            <View>{Icons.FILTER}</View>
-            <Text style={styles.filterText}>Filter</Text>
-            {badgeValue ? <OPBadge value={badgeValue} /> : null}
-          </TouchableOpacity>
-        ) : null}
+        <TouchableOpacity
+          style={styles.filterContainer}
+          onPress={onPressFilterIcon}>
+          <View>{Icons.FILTER}</View>
+          <Text style={styles.filterText}>Filter</Text>
+          {badgeValue ? <OPBadge value={badgeValue} /> : null}
+        </TouchableOpacity>
       </View>
       <Animated.View style={[styles.animationWrapper, animatedStyles]}>
         <View style={styles.bottomHeader}>
           <OPSearch
             placeholder={searchPlaceholder}
             value={searchValue}
-            onChangeText={(value: string) => setSearchValue(value)}
+            onChangeText={setSearchValue}
           />
+          {badgeValue ? (
+            <View style={styles.clearButton}>
+              <TouchableOpacity onPress={onClearAll}>
+                <Text style={styles.clearText}>Clear all</Text>
+              </TouchableOpacity>
+            </View>
+          ) : null}
           <OPTagChips statuses={data} heading={filterTitle} />
         </View>
         <View style={styles.buttonContainer}>
           <OPPrimaryButton
             text={buttonTitle.toUpperCase()}
-            onPress={() => {}}
+            onPress={onButtonPress}
           />
         </View>
       </Animated.View>

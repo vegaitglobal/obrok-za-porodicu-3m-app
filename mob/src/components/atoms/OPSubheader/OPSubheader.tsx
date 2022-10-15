@@ -12,8 +12,8 @@ import Icons from '../../../constants/Icons';
 
 interface OPSubheaderProps {
   heading: string;
-  showDropdown: boolean;
-  showBackButton: boolean;
+  showDropdown?: boolean;
+  showBackButton?: boolean;
   onSelectionChanged?: (item: any) => void;
   onBackPressed?: () => void;
 }

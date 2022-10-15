@@ -15,7 +15,7 @@ import DonateScreen from '../screens/DonateScreen';
 
 const BottomTab = createBottomTabNavigator();
 
-import Header from '../components/organisms/OPHeader/OPHeader';
+import OPHeader from '../components/organisms/OPHeader/OPHeader';
 
 export type TabType = 'home' | 'news' | 'donate' | 'about_us' | 'contact';
 
@@ -23,7 +23,7 @@ const TabNavigator = () => {
   const {t} = useTranslation();
 
   const screenOptions = {
-    header: () => <Header />,
+    header: () => <OPHeader />,
     title: '',
     tabBarStyle: styles.container,
   };

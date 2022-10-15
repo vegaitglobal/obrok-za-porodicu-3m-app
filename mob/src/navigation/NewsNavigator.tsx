@@ -9,12 +9,12 @@ import {
 import NewsScreen from '../screens/NewsScreen';
 import NewsListScreen from '../screens/NewsListScreen';
 
-import Header from '../components/organisms/OPHeader/OPHeader';
+import OPHeader from '../components/organisms/OPHeader/OPHeader';
 
 const Stack = createStackNavigator();
 
 const screenOptions: StackNavigationOptions = {
-  header: () => <Header />,
+  header: () => <OPHeader />,
 };
 
 const NewsNavigator = () => {

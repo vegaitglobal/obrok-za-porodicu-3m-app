@@ -11,9 +11,10 @@ import {ScrollView} from 'react-native-gesture-handler';
 
 interface IActionProps {
   route: any;
+  navigation: any;
 }
 
-const ActionScreen: FC<IActionProps> = ({route}) => {
+const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
   const [data, setData] = useState({
     id: 1,
     type: {
@@ -36,7 +37,12 @@ const ActionScreen: FC<IActionProps> = ({route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <OPSubheader heading="Nazad" items={[]} />
+      <OPSubheader
+        heading="Nazad"
+        showBackButton
+        onBackPressed={() => navigation.goBack()}
+        showDropdown={false}
+      />
       <ScrollView>
         <OPImage source={{uri: data.imageUrl}} style={styles.images} />
         <View style={styles.contentContainer}>

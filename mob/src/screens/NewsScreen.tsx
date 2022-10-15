@@ -10,9 +10,10 @@ import Icons from '../constants/Icons';
 
 interface INewsProps {
   route: any;
+  navigation: any;
 }
 
-const NewsScreen: FC<INewsProps> = ({route}) => {
+const NewsScreen: FC<INewsProps> = ({navigation, route}) => {
   const [data, setData] = useState({
     id: 1,
     type: {
@@ -35,7 +36,12 @@ const NewsScreen: FC<INewsProps> = ({route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <OPSubheader heading="Nazad" items={[]} />
+      <OPSubheader
+        heading="Nazad"
+        showBackButton
+        onBackPressed={() => navigation.goBack()}
+        showDropdown={false}
+      />
       <ScrollView>
         <OPImage source={{uri: data.imageUrl}} style={styles.images} />
         <View style={styles.headerTextContainer}>
