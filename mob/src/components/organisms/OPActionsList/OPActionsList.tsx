@@ -1,11 +1,11 @@
 import React from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
-import {VolunteerAction} from '../../../models/VolunteerAction/VolunteerAction';
+import {VolunteerActionDTO} from '../../../models/VolunteerAction/VolunteerActionDTO';
 import OPActionListItem from '../../molecules/OPActionListItem/OPActionListItem';
 import {styles} from './style';
 
 interface OPActionsListProps {
-  actions: Array<VolunteerAction>;
+  actions: Array<VolunteerActionDTO>;
   onPress: (id: number) => void;
 }
 
@@ -13,7 +13,7 @@ const OPActionsList: React.FC<OPActionsListProps> = ({actions, onPress}) => {
   const handleRenderAction = ({
     item,
     index,
-  }: ListRenderItemInfo<VolunteerAction>) => {
+  }: ListRenderItemInfo<VolunteerActionDTO>) => {
     return <OPActionListItem key={index} action={item} onPress={onPress} />;
   };
   return (

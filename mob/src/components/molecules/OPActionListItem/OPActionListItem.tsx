@@ -2,7 +2,7 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
 import {Colors} from '../../../constants/Colors';
-import {VolunteerActionDTO} from '../../../models/VolunteerAction/VolunteerAction';
+import {VolunteerActionDTO} from '../../../models/VolunteerAction/VolunteerActionDTO';
 import {getRandomColor} from '../../../utils/getRandomColor';
 import OPImage from '../../atoms/OPImage/OPImage';
 import OPLinkButton from '../../atoms/OPLinkButton/OPLinkButton';
