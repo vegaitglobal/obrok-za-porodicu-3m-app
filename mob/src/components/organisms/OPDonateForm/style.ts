@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    paddingTop: 30,
   },
   mainView: {
     flex: 1,

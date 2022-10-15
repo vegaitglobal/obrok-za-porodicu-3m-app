@@ -68,7 +68,6 @@ const TabNavigator = () => {
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarHideOnKeyboard: true,
           tabBarIcon: ({focused}) => {
             return (
               <OPTabIcon

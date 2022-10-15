@@ -8,18 +8,25 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from 'react-native';
+import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
+import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {Colors} from '../constants/Colors';
 
 const DonateScreen = () => {
   return (
-    <ScrollView
-      bounces={false}
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.content}>
-      <OPDonateForm />
-    </ScrollView>
+    <>
+      <OPHeader />
+      <OPSubheader heading={'DONIRAJ'} items={[]} />
+
+      <ScrollView
+        bounces={false}
+        style={styles.container}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}>
+        <OPDonateForm />
+      </ScrollView>
+    </>
   );
 };
 
@@ -27,7 +34,6 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     height: '100%',
-    paddingTop: 100,
   },
   content: {
     flexGrow: 1,
