@@ -1,0 +1,23 @@
+@import "../../../../constants/Colors.scss";
+
+.login-btn {
+  width: 100%;
+  height: 40px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  background-color: $orange;
+  border: 2px solid $orange;
+  border-radius: 7px;
+  font-family: "Bulldog";
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+  transition-property: opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+}
