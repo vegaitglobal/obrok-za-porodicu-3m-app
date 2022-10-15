@@ -1,8 +1,9 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
@@ -28,7 +29,7 @@ namespace MealForFamily.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleVolunteerActionStatus([FromRoute] int id)
         {
-            return Ok(await _volunteerActionStatusService.GetSingleById(id));
+            return Ok(_mapper.Map<VolunteerActionStatusDTO>(await _volunteerActionStatusService.GetSingleById(id)));
         }
 
         [HttpPost("")]

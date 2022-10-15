@@ -1,5 +1,6 @@
 using AutoMapper;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
 using MealForFamily.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
@@ -22,27 +23,32 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetNews()
         {
-            return Ok(await _newsService.GetNews());
+            List<NewsDTO> dtos = new();
+            List<News> news = await _newsService.GetNews();
+            foreach (News news1 in news)
+                dtos.Add(_mapper.Map<NewsDTO>(news1));
+
+            return Ok(dtos);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleNews([FromRoute] int id)
         {
-            return Ok(await _newsService.GetSingleById(id));
+            return Ok(_mapper.Map<NewsDTO>(await _newsService.GetSingleById(id)));
         }
 
         [HttpPost("")]
         public async Task<IActionResult> CreateNews(RequestNewsDTO request)
         {
             News model = _mapper.Map<News>(request);
-            return Ok(await _newsService.CreateNews(model));
+            return Ok(_mapper.Map<NewsDTO>(await _newsService.CreateNews(model)));
         }
 
         [HttpPut("")]
         public async Task<IActionResult> UpdateNews(RequestNewsDTO request)
         {
             News model = _mapper.Map<News>(request);
-            return Ok(await _newsService.UpdateNews(model));
+            return Ok(_mapper.Map<NewsDTO>(await _newsService.UpdateNews(model)));
         }
     }
 }

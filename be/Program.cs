@@ -1,9 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using MealForFamily.Data;
+using MealForFamily.Helpers.Exceptions;
 using MealForFamily.Repositories;
 using MealForFamily.RepositoryInterface;
 using MealForFamily.Service;
 using MealForFamily.ServiceInterface;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json", false, true);
@@ -38,7 +39,7 @@ builder.Services.AddTransient<IAboutUsRepository, AboutUsRepository>();
 builder.Services.AddTransient<IBankAccountService, BankAccountService>();
 builder.Services.AddTransient<IBankAccountRepository, BankAccountRepository>();
 
-builder.Services.AddTransient<IDonationService,DonationService>();
+builder.Services.AddTransient<IDonationService, DonationService>();
 builder.Services.AddTransient<IDonationRepository, DonationRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -63,16 +64,21 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseCors(x => x
+    .SetIsOriginAllowed(origin => true)
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials());
+//}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
+//app.UseAuthorization();
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.MapControllers();
 
 app.Run();

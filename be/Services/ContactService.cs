@@ -1,3 +1,4 @@
+using MealForFamily.Helpers.Exceptions;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
 using MealForFamily.ServiceInterface;
@@ -20,7 +21,11 @@ namespace MealForFamily.Service
 
         public async Task<Contact> GetSingleById(int id)
         {
-            return await _contactRepository.GetById(id);
+            Contact contact = await _contactRepository.GetById(id);
+            if (contact == null)
+                throw new CustomException("Contact not found", 404);
+
+            return contact;
         }
 
         public async Task<Contact> CreateContact(Contact contact)

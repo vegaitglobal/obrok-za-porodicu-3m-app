@@ -6,6 +6,6 @@ namespace MealForFamily.RepositoryInterface
     {
         Task<List<Donation>> GetDonations();
 
-        Task<Donation> GetSingleById(int id);
+        Task<Donation?> GetSingleById(int id);
     }
 }

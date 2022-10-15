@@ -1,5 +1,6 @@
 using AutoMapper;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
 using MealForFamily.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
@@ -30,44 +31,36 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetVolunteerActions()
         {
-            return Ok(await _volunteerActionService.GetVolunteerActions());
+            List<VolunteerActionDTO> dtos = new();
+            List<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions();
+            foreach (VolunteerAction action in actions)
+                dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
+
+            return Ok(dtos);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleVolunteerAction([FromRoute] int id)
         {
-            return Ok(await _volunteerActionService.GetSingleById(id));
+            return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.GetSingleById(id)));
         }
 
         [HttpPost("")]
         public async Task<IActionResult> CreateVolunteerAction(RequestVolunteerActionDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerAction model = _mapper.Map<RequestVolunteerActionDTO>(request);
-
-            VolunteerAction model = new();
-
-            return Ok(await _volunteerActionService.CreateVolunteerAction(model));
+            VolunteerAction model = _mapper.Map<VolunteerAction>(request);
+            model.Type = await _volunteerActionTypeService.GetSingleById(request.TypeId);
+            model.Status = await _volunteerActionStatusService.GetSingleById(request.StatusId);
+            return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.CreateVolunteerAction(model)));
         }
 
         [HttpPut("")]
         public async Task<IActionResult> UpdateVolunteerAction(RequestVolunteerActionDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerAction model = _mapper.Map<RequestVolunteerActionDTO>(request);
-
-            VolunteerAction model = new();
-            model.Id = request.Id;
+            VolunteerAction model = _mapper.Map<VolunteerAction>(request);
             model.Type = await _volunteerActionTypeService.GetSingleById(request.TypeId);
-            model.ImageURL = request.ImageURL;
-            model.Title = request.Title;
             model.Status = await _volunteerActionStatusService.GetSingleById(request.StatusId);
-            model.ShortDescription = request.ShortDescription;
-            model.RawDescription = request.RawDescription;
-            model.Description = request.Description;
-            model.ReferenceNumber = request.ReferenceNumber;
-
-            return Ok(await _volunteerActionService.UpdateVolunteerAction(model));
+            return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.UpdateVolunteerAction(model)));
         }
     }
 }

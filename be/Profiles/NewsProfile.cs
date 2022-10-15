@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
 
 namespace MealForFamily.Profiles
@@ -9,6 +10,7 @@ namespace MealForFamily.Profiles
         public NewsProfile()
         {
             CreateMap<RequestNewsDTO, News>();
+            CreateMap<News, NewsDTO>();
         }
     }
 }
