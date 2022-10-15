@@ -1,8 +1,8 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
@@ -34,25 +34,14 @@ namespace MealForFamily.Controllers
         [HttpPost("")]
         public async Task<IActionResult> CreateNewsletterSubscription(RequestNewsletterSubscriptionDTO request)
         {
-            // TODO: Fix AutoMapper
-            // NewsletterSubscription model = _mapper.Map<RequestNewsletterSubscriptionDTO>(request);
-
-            NewsletterSubscription model = new();
-            model.Email = request.Email;
-
+            NewsletterSubscription model = _mapper.Map<NewsletterSubscription>(request);
             return Ok(await _newsletterSubscriptionService.CreateNewsletterSubscription(model));
         }
 
         [HttpPut("")]
         public async Task<IActionResult> UpdateNewsletterSubscription(RequestNewsletterSubscriptionDTO request)
         {
-            // TODO: Fix AutoMapper
-            // NewsletterSubscription model = _mapper.Map<RequestNewsletterSubscriptionDTO>(request);
-
-            NewsletterSubscription model = new();
-            model.Id = request.Id;
-            model.Email = request.Email;
-
+            NewsletterSubscription model = _mapper.Map<NewsletterSubscription>(request);
             return Ok(await _newsletterSubscriptionService.UpdateNewsletterSubscription(model));
         }
     }

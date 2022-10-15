@@ -1,8 +1,8 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
@@ -16,9 +16,9 @@ namespace MealForFamily.Controllers
         private readonly IMapper _mapper;
 
         public VolunteerActionController(
-            IVolunteerActionService volunteerActionService, 
-            IVolunteerActionStatusService volunteerActionStatusService, 
-            IVolunteerActionTypeService volunteerActionTypeService, 
+            IVolunteerActionService volunteerActionService,
+            IVolunteerActionStatusService volunteerActionStatusService,
+            IVolunteerActionTypeService volunteerActionTypeService,
             IMapper mapper)
         {
             _volunteerActionService = volunteerActionService;

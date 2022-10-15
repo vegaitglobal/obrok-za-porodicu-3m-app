@@ -1,4 +1,3 @@
-using AutoMapper;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
 using MealForFamily.ServiceInterface;
@@ -24,11 +23,13 @@ namespace MealForFamily.Service
             return await _contactRepository.GetById(id);
         }
 
-        public async Task<Contact> CreateContact(Contact contact) {
+        public async Task<Contact> CreateContact(Contact contact)
+        {
             return await _contactRepository.Create(contact);
         }
 
-        public async Task<Contact> UpdateContact(Contact contact) {
+        public async Task<Contact> UpdateContact(Contact contact)
+        {
             return await _contactRepository.Update(contact);
         }
     }

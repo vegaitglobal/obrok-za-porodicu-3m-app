@@ -1,8 +1,8 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
@@ -28,19 +28,7 @@ namespace MealForFamily.Controllers
         [HttpPut("")]
         public async Task<IActionResult> UpdateBankAccount(RequestBankAccountDTO request)
         {
-            // TODO: Fix AutoMapper
-            // BankAccount model = _mapper.Map<RequestBankAccountDTO>(request);
-
-            BankAccount model = new();
-            model.Id = request.Id;
-            model.ReceiverName = request.ReceiverName;
-            model.ReceiverCity = request.ReceiverCity;
-            model.ReceiverAddress = request.ReceiverAddress;
-            model.AccountNumber = request.AccountNumber;
-            model.TransactionModel = request.TransactionModel;
-            model.ReferenceNumber = request.ReferenceNumber;
-            model.PhoneNumber = request.PhoneNumber;
-
+            BankAccount model = _mapper.Map<BankAccount>(request);
             return Ok(await _bankAccountService.UpdateBankAccount(model));
         }
     }

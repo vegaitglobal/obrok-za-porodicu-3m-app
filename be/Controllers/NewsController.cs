@@ -1,8 +1,8 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
@@ -34,33 +34,14 @@ namespace MealForFamily.Controllers
         [HttpPost("")]
         public async Task<IActionResult> CreateNews(RequestNewsDTO request)
         {
-            // TODO: Fix AutoMapper
-            // News model = _mapper.Map<RequestNewsDTO>(request);
-
-            News model = new();
-            model.ImageURL = request.ImageURL;
-            model.Title = request.Title;
-            model.ShortDescription = request.ShortDescription;
-            model.RawDescrition = request.RawDescrition;
-            model.Descrition = request.Descrition;
-
+            News model = _mapper.Map<News>(request);
             return Ok(await _newsService.CreateNews(model));
         }
 
         [HttpPut("")]
         public async Task<IActionResult> UpdateNews(RequestNewsDTO request)
         {
-            // TODO: Fix AutoMapper
-            // News model = _mapper.Map<RequestNewsDTO>(request);
-
-            News model = new();
-            model.Id = request.Id;
-            model.ImageURL = request.ImageURL;
-            model.Title = request.Title;
-            model.ShortDescription = request.ShortDescription;
-            model.RawDescrition = request.RawDescrition;
-            model.Descrition = request.Descrition;
-
+            News model = _mapper.Map<News>(request);
             return Ok(await _newsService.UpdateNews(model));
         }
     }

@@ -41,15 +41,7 @@ namespace MealForFamily.Controllers
         [HttpPut("")]
         public async Task<IActionResult> UpdateContact(RequestContactDTO request)
         {
-            // TODO: Fix AutoMapper
-            // Contact model = _mapper.Map<RequestContactDTO>(request);
-
-            Contact model = new();
-            model.Id = request.Id;
-            model.Title = request.Title;
-            model.Email = request.Email;
-            model.PhoneNumber = request.PhoneNumber;
-
+            Contact model = _mapper.Map<Contact>(request);
             return Ok(await _contactService.UpdateContact(model));
         }
     }
