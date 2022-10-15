@@ -12,16 +12,11 @@ interface VolunteerActionState {
 }
 
 const initialState: VolunteerActionState = {
+  appliedVolunteerActions: {},
   volunteerActions: [],
   currentPage: 0,
   totalData: 0,
   totalPages: 0,
-  appliedVolunteerActions: {
-    id: {
-      name: 'e',
-      color: 'red',
-    },
-  },
 };
 
 const volunteerActionsSlice = createSlice({

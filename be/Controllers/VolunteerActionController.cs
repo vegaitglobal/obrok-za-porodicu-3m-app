@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MealForFamily.ServiceInterface;
@@ -28,9 +29,9 @@ namespace MealForFamily.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetVolunteerActions()
+        public async Task<IActionResult> GetVolunteerActions([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            return Ok(await _volunteerActionService.GetVolunteerActions());
+            return Ok(await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize));
         }
 
         [HttpGet("{id:int}")]
