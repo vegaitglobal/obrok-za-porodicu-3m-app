@@ -1,7 +1,29 @@
+@import "../../../../constants/Colors.scss";
+
 .header-wrapper {
   display: flex;
-  flex-direction: row;
-  gap: 5%;
-  padding-top: 3vh;
-  padding-left: 3%;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $background;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  max-width: 1408px;
+  width: 100%;
+  min-height: 72px;
+  margin: 16px 16px 0 16px;
+  padding: 0 22px;
+  background-color: $white;
+  border-radius: 4px 4px 0px 0px;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.header-logo-wrapper {
+	margin-right: 6px;
 }

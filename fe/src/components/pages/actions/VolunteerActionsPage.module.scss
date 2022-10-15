@@ -1,22 +1,12 @@
 @import "../../../constants/Colors.scss";
 
 .volunteer-actions-page {
-  background-color: $white;
+  background-color: $background;
   width: 100%;
   height: 100%;
-  display: flex;
+  padding-top: 88px;
 }
 
 .content-wrapper {
   width: 100%;
-}
-
-.header-wrapper {
-  width: 100%;
-  height: 10vh;
-  background-color: $background;
-  border-bottom: 1px solid $white;
-  position: sticky;
-  top: 0px;
-  z-index: 1000;
 }

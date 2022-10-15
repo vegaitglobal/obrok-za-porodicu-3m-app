@@ -6,10 +6,8 @@ import classes from "./VolunteerActionsPage.module.scss";
 const VolunteerActionsPage = () => {
   return (
     <div className={classes["volunteer-actions-page"]}>
+      <Header />
       <div className={classes["content-wrapper"]}>
-        <div className={classes["header-wrapper"]}>
-          <Header />
-        </div>
         <div>
           <OPSearchBar placeholder="Search" />
         </div>
