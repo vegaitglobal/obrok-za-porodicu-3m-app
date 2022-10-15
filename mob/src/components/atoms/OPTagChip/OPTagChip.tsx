@@ -41,7 +41,7 @@ const OPTagChip: React.FC<OPTagChipProps> = ({
         ]}>
         <Text
           style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}>
-          {volunteerAction.name.toUpperCase()}
+          {volunteerAction?.name?.toUpperCase()}
         </Text>
       </View>
     </TouchableOpacity>

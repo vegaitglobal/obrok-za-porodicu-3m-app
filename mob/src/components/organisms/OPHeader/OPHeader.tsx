@@ -122,7 +122,7 @@ const OPHeader: FC<OPHeaderProps> = ({
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <View style={styles.topHeader}>
         <Image source={LOGO_PATH} resizeMode="contain" />
         <TouchableOpacity
