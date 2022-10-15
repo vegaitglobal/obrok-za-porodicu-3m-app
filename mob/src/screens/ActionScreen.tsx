@@ -8,6 +8,7 @@ import {TextStyles} from '../constants/TextStyles';
 import {getRandomColor} from '../utils/getRandomColor';
 import {Colors} from '../constants/Colors';
 import {ScrollView} from 'react-native-gesture-handler';
+import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
 
 interface IActionProps {
   route: any;
@@ -43,7 +44,7 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
         onBackPressed={() => navigation.goBack()}
         showDropdown={false}
       />
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <OPImage source={{uri: data.imageUrl}} style={styles.images} />
         <View style={styles.contentContainer}>
           <View style={styles.chipContainer}>
@@ -65,6 +66,7 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
         <View style={styles.htmlContainer}>
           <OPHtml html={data?.html} />
         </View>
+        <OPDonateForm actionType={data?.type?.id} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -73,6 +75,9 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollViewContainer: {
+    paddingBottom: 70,
   },
   contentContainer: {
     paddingHorizontal: 16,
