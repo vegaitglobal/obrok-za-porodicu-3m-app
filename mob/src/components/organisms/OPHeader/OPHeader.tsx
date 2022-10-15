@@ -71,6 +71,7 @@ interface OPHeaderProps {
   filterTitle?: string;
   buttonTitle?: string;
   searchPlaceholder?: string;
+  hasFilter?: boolean;
 }
 
 const LOGO_PATH = require('../../../../assets/images/LogoHoriz1.png');
@@ -79,6 +80,7 @@ const OPHeader: FC<OPHeaderProps> = ({
   filterTitle = 'Kategorije',
   buttonTitle = 'PRETRAZI',
   searchPlaceholder = 'Pretrazi po ključnim rečima',
+  hasFilter = true,
 }) => {
   const [data, setData] = useState([...volunteerActions]);
   const [searchValue, setSearchValue] = useState<string>('');
@@ -125,13 +127,15 @@ const OPHeader: FC<OPHeaderProps> = ({
     <SafeAreaView style={styles.container}>
       <View style={styles.topHeader}>
         <Image source={LOGO_PATH} resizeMode="contain" />
-        <TouchableOpacity
-          style={styles.filterContainer}
-          onPress={onPressFilterIcon}>
-          <View>{Icons.FILTER}</View>
-          <Text style={styles.filterText}>Filter</Text>
-          {badgeValue ? <OPBadge value={badgeValue} /> : null}
-        </TouchableOpacity>
+        {hasFilter ? (
+          <TouchableOpacity
+            style={styles.filterContainer}
+            onPress={onPressFilterIcon}>
+            <View>{Icons.FILTER}</View>
+            <Text style={styles.filterText}>Filter</Text>
+            {badgeValue ? <OPBadge value={badgeValue} /> : null}
+          </TouchableOpacity>
+        ) : null}
       </View>
       <Animated.View style={[styles.animationWrapper, animatedStyles]}>
         <View style={styles.bottomHeader}>
@@ -140,8 +144,7 @@ const OPHeader: FC<OPHeaderProps> = ({
             value={searchValue}
             onChangeText={(value: string) => setSearchValue(value)}
           />
-          <Text style={styles.categoryText}>{filterTitle}</Text>
-          <OPTagChips statuses={data} />
+          <OPTagChips statuses={data} heading={filterTitle} />
         </View>
         <View style={styles.buttonContainer}>
           <OPPrimaryButton

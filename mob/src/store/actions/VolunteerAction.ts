@@ -3,14 +3,14 @@ import {
   setAppliedVolunteerActions,
   setVolunteerActions,
 } from '../reducers/VolunteerActionReducer';
-import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
+import {ActionType} from '../../models/VolunteerAction/VolunteerActionDTO';
 import type {RootState} from '../../store/reducers/RootReducer';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
 
 export const setAppliedFilters =
-  (newFilters: VolunteerActionStatus, color: string) =>
+  (newFilters: ActionType, color: string) =>
   (dispatch: Dispatch, getState: () => RootState) => {
     const {appliedVolunteerActions} = getState().volunteerActions;
 
