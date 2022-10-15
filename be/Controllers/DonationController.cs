@@ -50,6 +50,14 @@ namespace MealForFamily.Controllers
         public async Task<IActionResult> CreateDonation(RequestDonationDTO request)
         {
             Donation model = _mapper.Map<Donation>(request);
+            if (request.VolunteerActionTypeId != null)
+            {
+                model.VolunteerActionType = await _volunteerActionTypeService.GetSingleById((int)request.VolunteerActionTypeId);
+            }
+            if (request.VolunteerActionId != null)
+            {
+                model.VolunteerAction = await _volunteerActionService.GetSingleById((int)request.VolunteerActionId);
+            }
             return Ok(_mapper.Map<DonationDTO>(await _donationService.CreateDonation(model)));
         }
 

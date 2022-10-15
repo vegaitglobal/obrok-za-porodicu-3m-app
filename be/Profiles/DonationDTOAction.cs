@@ -16,12 +16,8 @@ namespace MealForFamily.Profiles
             _volunteerActionService = volunteerActionService;
         }
 
-        public async void Process(RequestDonationDTO source, Donation destination, ResolutionContext context)
+        public void Process(RequestDonationDTO source, Donation destination, ResolutionContext context)
         {
-            if (source.VolunteerActionTypeId != null)
-            {
-                destination.VolunteerActionType = await _volunteerActionTypeService.GetSingleById((int)source.VolunteerActionTypeId);
-            }
             destination.IsCompany = source.IsCompany;
             destination.CompanyName = source.CompanyName;
             destination.FullName = source.FullName;
@@ -30,10 +26,6 @@ namespace MealForFamily.Profiles
             destination.Description = source.Description;
             destination.IsPickup = source.IsPickup;
             destination.Address = source.Address;
-            if (source.VolunteerActionId != null)
-            {
-                destination.VolunteerAction = await _volunteerActionService.GetSingleById((int)source.VolunteerActionId);
-            }
         }
     }
 }
