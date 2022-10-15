@@ -6,6 +6,7 @@ import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
 import {VolunteerActionDTO} from '../models/VolunteerAction/VolunteerActionDTO';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../store/reducers/RootReducer';
+import {AppRoute} from '../navigation/Routes';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';
 
 const actions: Array<VolunteerActionDTO> = [
@@ -44,7 +45,7 @@ const actions: Array<VolunteerActionDTO> = [
   },
 ];
 
-const ActionsListScreen = () => {
+const ActionsListScreen = ({navigation}) => {
   const dispatch: any = useDispatch();
   const {volunteerActions} = useSelector(
     (state: RootState) => state.volunteerActions,
@@ -61,7 +62,12 @@ const ActionsListScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text>Action List Screen</Text>
-      <OPActionsList actions={actions} onPress={() => {}} />
+      <OPActionsList
+        actions={actions}
+        onPress={actionId =>
+          navigation.navigate(AppRoute.ACTION_SCREEN, {actionId})
+        }
+      />
     </SafeAreaView>
   );
 };
