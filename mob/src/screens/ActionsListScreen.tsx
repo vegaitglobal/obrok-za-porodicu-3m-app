@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 
-import {StyleSheet, SafeAreaView} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../store/reducers/RootReducer';
 import {AppRoute} from '../navigation/Routes';
@@ -41,7 +41,7 @@ const ActionsListScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <OPHeader />
       <OPSubheader heading={t('actionsList.trending')} items={[]} />
       <OPActionsList
@@ -52,7 +52,7 @@ const ActionsListScreen = ({navigation}) => {
         onLoadMore={handleLoadNextPage}
         onRefresh={handleRefresh}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
