@@ -27,13 +27,6 @@ export const styles = StyleSheet.create({
     marginRight: 4,
     fontSize: 18,
   },
-  categoryText: {
-    ...TextStyles.DOSIS_SEMI_BOLD,
-    color: Colors.BLACK,
-    marginTop: 16,
-    marginBottom: 13,
-    fontSize: 18,
-  },
   animationWrapper: {
     overflow: 'hidden',
     justifyContent: 'flex-end',
