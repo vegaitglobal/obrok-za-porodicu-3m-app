@@ -37,5 +37,14 @@ namespace MealForFamily.Service
         {
             return await _contactRepository.Update(contact);
         }
+
+        public async Task DeleteContact(int id)
+        {
+            Contact contact = await GetSingleById(id);
+            if (contact == null)
+                throw new CustomException("Contact not found", 404);
+
+            await _contactRepository.Delete(contact);
+        }
     }
 }

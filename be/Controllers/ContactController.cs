@@ -54,5 +54,13 @@ namespace MealForFamily.Controllers
             Contact model = _mapper.Map<Contact>(request);
             return Ok(_mapper.Map<ContactDTO>(await _contactService.UpdateContact(model)));
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteContact(int id)
+        {
+            await _contactService.DeleteContact(id);
+            return Ok("Contact deleted successfully");
+        }
     }
 }
