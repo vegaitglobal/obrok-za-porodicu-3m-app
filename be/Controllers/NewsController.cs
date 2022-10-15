@@ -1,11 +1,10 @@
-using System.Net.Mime;
-using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using MealForFamily.Dtos;
 using MealForFamily.DTOs;
 using MealForFamily.Models;
 using MealForFamily.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MealForFamily.Controllers
 {
@@ -25,13 +24,12 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetNews([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            // List<NewsDTO> dtos = new();
-            // List<News> news = await _newsService.GetNews();
-            // foreach (News news1 in news)
-            //     dtos.Add(_mapper.Map<NewsDTO>(news1));
+            List<NewsDTO> dtos = new();
+            Page<News> news = await _newsService.GetNews(pageNumber, pageSize);
+            foreach (News news1 in news.Content)
+                dtos.Add(_mapper.Map<NewsDTO>(news1));
 
-            // return Ok(dtos);
-            return Ok(await _newsService.GetNews(pageNumber, pageSize));
+            return Ok(new Page<NewsDTO>(pageNumber, pageSize, news.Pagination.TotalPages, news.Pagination.TotalResults, dtos));
         }
 
         [HttpGet("{id:int}")]

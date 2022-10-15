@@ -21,7 +21,7 @@ namespace MealForFamily.Service
 
         public async Task<VolunteerAction> GetSingleById(int id)
         {
-            VolunteerAction action = await _volunteerActionRepository.GetById(id);
+            VolunteerAction action = await _volunteerActionRepository.GetSingleById(id);
             if (action == null)
                 throw new CustomException("Volunteer Action not found", 404);
 

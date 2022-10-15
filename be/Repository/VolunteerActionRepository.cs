@@ -24,5 +24,16 @@ namespace MealForFamily.Repositories
                 .Include(v => v.Status)
                 .Where(x => x.Id == id).FirstOrDefaultAsync();
         }
+
+        public new async Task<Page<VolunteerAction>> GetAllByPage(int pageNumber, int pageSize)
+        {
+            // TODO: Optimize count query
+            int totalCount = _context.VolunteerActions.Count();
+
+            // TODO: Add OrderBy
+            IEnumerable<VolunteerAction> content = await _context.Set<VolunteerAction>().Include(v => v.Type).Include(v => v.Status).Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
+
+            return createPage(pageNumber, pageSize, totalCount, content);
+        }
     }
 }

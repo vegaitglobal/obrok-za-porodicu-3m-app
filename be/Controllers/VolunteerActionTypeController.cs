@@ -23,7 +23,12 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetVolunteerActionTypes()
         {
-            return Ok(await _volunteerActionTypeService.GetVolunteerActionTypes());
+            List<VolunteerActionTypeDTO> dtos = new();
+            List<VolunteerActionType> types = await _volunteerActionTypeService.GetVolunteerActionTypes();
+            foreach (VolunteerActionType type in types)
+                dtos.Add(_mapper.Map<VolunteerActionTypeDTO>(type));
+
+            return Ok(dtos);
         }
 
         [HttpGet("{id:int}")]
@@ -35,30 +40,15 @@ namespace MealForFamily.Controllers
         [HttpPost("")]
         public async Task<IActionResult> CreateVolunteerActionType(RequestVolunteerActionTypeDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerActionType model = _mapper.Map<RequestVolunteerActionTypeDTO>(request);
-
-            VolunteerActionType model = new();
-            model.Name = request.Name;
-            model.HasPickup = request.HasPickup;
-            model.HasPayment = request.HasPayment;
-
-            return Ok(await _volunteerActionTypeService.CreateVolunteerActionType(model));
+            VolunteerActionType model = _mapper.Map<VolunteerActionType>(request);
+            return Ok(_mapper.Map<VolunteerActionTypeDTO>(await _volunteerActionTypeService.CreateVolunteerActionType(model)));
         }
 
         [HttpPut("")]
         public async Task<IActionResult> UpdateVolunteerActionType(RequestVolunteerActionTypeDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerActionType model = _mapper.Map<RequestVolunteerActionTypeDTO>(request);
-
-            VolunteerActionType model = new();
-            model.Id = request.Id;
-            model.Name = request.Name;
-            model.HasPickup = request.HasPickup;
-            model.HasPayment = request.HasPayment;
-
-            return Ok(await _volunteerActionTypeService.UpdateVolunteerActionType(model));
+            VolunteerActionType model = _mapper.Map<VolunteerActionType>(request);
+            return Ok(_mapper.Map<VolunteerActionTypeDTO>(await _volunteerActionTypeService.UpdateVolunteerActionType(model)));
         }
     }
 }

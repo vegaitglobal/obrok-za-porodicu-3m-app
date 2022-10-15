@@ -1,10 +1,10 @@
-using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using MealForFamily.Dtos;
 using MealForFamily.DTOs;
 using MealForFamily.Models;
 using MealForFamily.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MealForFamily.Controllers
 {
@@ -32,13 +32,12 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetVolunteerActions([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            // List<VolunteerActionDTO> dtos = new();
-            // List<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions();
-            // foreach (VolunteerAction action in actions)
-            //     dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
+            List<VolunteerActionDTO> dtos = new();
+            Page<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize);
+            foreach (VolunteerAction action in actions.Content)
+                dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
 
-            // return Ok(dtos);
-            return Ok(await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize));
+            return Ok(new Page<VolunteerActionDTO>(pageNumber, pageSize, actions.Pagination.TotalPages, actions.Pagination.TotalResults, dtos));
         }
 
         [HttpGet("{id:int}")]
