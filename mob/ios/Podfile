@@ -3,6 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
+$RNFirebaseAsStaticFramework = true
 
 target 'ObrokZaPorodicu' do
   config = use_native_modules!
@@ -21,15 +22,19 @@ target 'ObrokZaPorodicu' do
     #
     # Note that if you have use_frameworks! enabled, Flipper will not work and
     # you should disable the next line.
-    :flipper_configuration => FlipperConfiguration.enabled,
+    # :flipper_configuration => FlipperConfiguration.enabled,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  pod 'FirebaseMessaging'
 
   target 'ObrokZaPorodicuTests' do
     inherit! :complete
     # Pods for testing
   end
+
+  use_frameworks! :linkage => :static
 
   post_install do |installer|
     react_native_post_install(

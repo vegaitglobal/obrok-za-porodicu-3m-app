@@ -10,18 +10,17 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'transparent',
   } as ViewStyle,
   tagChipLarge: {
     borderRadius: 100,
     paddingHorizontal: 10,
     paddingVertical: 7,
-    alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-  } as ViewStyle,
-  tagChipDark: {
-    borderColor: 'transaparent',
+    borderColor: 'transparent',
   } as ViewStyle,
   tagChipLabel: {
     ...TextStyles.DOSIS_BOLD,

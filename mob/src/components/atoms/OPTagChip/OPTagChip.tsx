@@ -1,17 +1,19 @@
-import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {styles} from './style';
+import {Text, TouchableOpacity, View, ViewStyle} from 'react-native';
 import {Colors} from '../../../constants/Colors';
-import {VolunteerActionStatus} from '../../../models/VolunteerAction/VolunteerActionStatus';
+import {ActionType} from '../../../models/VolunteerAction/VolunteerActionDTO';
+import {styles} from './style';
 
 type TagChipSize = 'small' | 'large';
 
 interface OPTagChipProps {
   size?: TagChipSize;
   color: string;
-  volunteerAction: VolunteerActionStatus;
+  volunteerAction: ActionType;
   fill?: boolean;
-  onPress?: (value: VolunteerActionStatus) => void;
+  disabled?: boolean;
+  style?: ViewStyle;
+  onPress?: (value: ActionType, color: string) => void;
 }
 
 const OPTagChip: React.FC<OPTagChipProps> = ({
@@ -19,24 +21,26 @@ const OPTagChip: React.FC<OPTagChipProps> = ({
   color,
   volunteerAction,
   fill = false,
+  style,
   onPress = () => {},
+  disabled = false,
 }) => {
-  const onPressHandler = (): void => onPress(volunteerAction);
+  const onPressHandler = (): void => onPress(volunteerAction, color);
 
   return (
-    <TouchableOpacity onPress={onPressHandler}>
+    <TouchableOpacity
+      onPress={onPressHandler}
+      disabled={disabled}
+      activeOpacity={disabled ? 1 : 0.6}>
       <View
         style={[
           size &&
             (size === 'large' ? styles.tagChipLarge : styles.tagChipSmall),
-          !fill
-            ? {borderColor: color}
-            : {...styles.tagChipDark, backgroundColor: color},
-        ]}
-      >
+          !fill ? {borderColor: color} : {backgroundColor: color},
+          style,
+        ]}>
         <Text
-          style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}
-        >
+          style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}>
           {volunteerAction.name.toUpperCase()}
         </Text>
       </View>

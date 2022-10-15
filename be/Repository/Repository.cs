@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MealForFamily.Data;
 using MealForFamily.RepositoryInterface;
+using MealForFamily.Models;
 
 namespace MealForFamily.Repositories
 {
@@ -34,13 +35,16 @@ namespace MealForFamily.Repositories
             return entities;
         }
 
-        public async Task<IEnumerable<T>> GetAllByPage(int pageNumber, int pageSize)
+        public async Task<Page<T>> GetAllByPage(int pageNumber, int pageSize)
         {
-            List<T> entities = await _context.Set<T>().Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
+            // TODO: Optimize count query
+            int totalCount = _context.Set<T>().Count();
 
-            return entities;
+            // TODO: Add OrderBy
+            IEnumerable<T> content = await _context.Set<T>().Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
+
+            return createPage(pageNumber, pageSize, totalCount, content);
         }
-
         public async Task<T> GetById(int id)
         {
             T entity = await _context.Set<T>().FindAsync(id);
@@ -63,6 +67,13 @@ namespace MealForFamily.Repositories
         public int GetNumberOfElements(int pageNumber, int pageSize)
         {
             return (pageNumber - 1) * pageSize;
+        }
+
+        private Page<T> createPage(int currentPage, int pageSize, int totalResults, IEnumerable<T> content)
+        {
+            int totalPages = (int)Math.Ceiling((double)totalResults / pageSize);
+
+            return new Page<T>(currentPage, pageSize, totalPages, totalResults, content);
         }
     }
 }

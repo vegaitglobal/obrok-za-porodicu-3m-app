@@ -69,7 +69,8 @@ buck-out
 .gradle
 local.properties
 *.iml
-/android/
+build/
+*.hprof
 
 # Node
 node_modules
@@ -77,6 +78,7 @@ node_modules
 .nvm
 package-lock.json
 .yarn-integrity
+yarn.lock
 
 # OS X
 .DS_Store
@@ -132,9 +134,6 @@ package-lock.json
 # Visual studio
 .vscode
 .vs
-
-# Android memory profiler files
-*.hprof
 
 #pods
 /ios/Pods

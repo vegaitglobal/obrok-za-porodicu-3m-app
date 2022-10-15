@@ -10,7 +10,7 @@ interface OPBadgeProps {
 const OPBadge: FC<OPBadgeProps> = ({value}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{value}</Text>
+      <Text style={styles.text}>{value.toString()}</Text>
     </View>
   );
 };

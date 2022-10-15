@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using MealForFamily.Dtos;
 using MealForFamily.DTOs;
@@ -29,14 +30,15 @@ namespace MealForFamily.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetVolunteerActions()
+        public async Task<IActionResult> GetVolunteerActions([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            List<VolunteerActionDTO> dtos = new();
-            List<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions();
-            foreach (VolunteerAction action in actions)
-                dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
+            // List<VolunteerActionDTO> dtos = new();
+            // List<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions();
+            // foreach (VolunteerAction action in actions)
+            //     dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
 
-            return Ok(dtos);
+            // return Ok(dtos);
+            return Ok(await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize));
         }
 
         [HttpGet("{id:int}")]

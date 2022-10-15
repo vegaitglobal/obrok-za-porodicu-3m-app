@@ -1,3 +1,5 @@
+using System.Net.Mime;
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using MealForFamily.Dtos;
 using MealForFamily.DTOs;
@@ -21,14 +23,15 @@ namespace MealForFamily.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetNews()
+        public async Task<IActionResult> GetNews([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            List<NewsDTO> dtos = new();
-            List<News> news = await _newsService.GetNews();
-            foreach (News news1 in news)
-                dtos.Add(_mapper.Map<NewsDTO>(news1));
+            // List<NewsDTO> dtos = new();
+            // List<News> news = await _newsService.GetNews();
+            // foreach (News news1 in news)
+            //     dtos.Add(_mapper.Map<NewsDTO>(news1));
 
-            return Ok(dtos);
+            // return Ok(dtos);
+            return Ok(await _newsService.GetNews(pageNumber, pageSize));
         }
 
         [HttpGet("{id:int}")]

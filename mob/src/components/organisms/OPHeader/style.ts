@@ -3,13 +3,16 @@ import {Colors} from '../../../constants/Colors';
 import {TextStyles} from '../../../constants/TextStyles';
 
 export const styles = StyleSheet.create({
-  container: {},
+  container: {
+    backgroundColor: Colors.BACKGROUND,
+  },
   topHeader: {
     paddingHorizontal: 16,
     paddingVertical: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: Colors.BACKGROUND,
   },
   bottomHeader: {
     padding: 16,
@@ -30,6 +33,10 @@ export const styles = StyleSheet.create({
     marginTop: 16,
     marginBottom: 13,
     fontSize: 18,
+  },
+  animationWrapper: {
+    overflow: 'hidden',
+    justifyContent: 'flex-end',
   },
   buttonContainer: {
     paddingHorizontal: 16,
