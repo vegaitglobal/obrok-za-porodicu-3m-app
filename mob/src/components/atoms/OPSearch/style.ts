@@ -16,5 +16,6 @@ export const styles = StyleSheet.create({
     ...TextStyles.DOSIS_REGULAR,
     color: Colors.LIGHTER_GRAY,
     marginLeft: 8,
+    fontSize: 14,
   } as ViewStyle,
 });
