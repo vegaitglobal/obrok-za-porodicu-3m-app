@@ -1,35 +1,45 @@
 import {Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {styles} from '../OPSubheader/style';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Shadow} from 'react-native-shadow-2';
+import {RootState} from '../../../store/reducers/RootReducer';
+import {useSelector} from 'react-redux';
+import {useAppThunkDispatch} from '../../../store/Store';
+import {getVolunteerActionStatuses} from '../../../store/actions/VolunteerAction';
 
 interface OPSubheaderProps {
   heading: string;
-  items: OPSubheaderDropdownItem[];
   onSelectionChanged?: (item: any) => void;
-}
-
-interface OPSubheaderDropdownItem {
-  label: string;
-  value: number;
 }
 
 const OPSubheader: React.FC<OPSubheaderProps> = ({
   heading,
-  items,
   onSelectionChanged,
 }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [allItems, setItems] = useState([
-    {label: 'Najnovije', value: 0},
-    ...items,
-  ]);
+  const [allItems, setItems] = useState([{label: 'Najnovije', value: 0}]);
+  const {volunteerActionStatuses} = useSelector(
+    (state: RootState) => state.volunteerActions,
+  );
+  const dispatch = useAppThunkDispatch();
+  useEffect(() => {
+    dispatch(getVolunteerActionStatuses());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setItems([
+      {label: 'Najnovije', value: 0},
+      ...volunteerActionStatuses.map(e => {
+        return {label: e.name, value: e.id};
+      }),
+    ]);
+  }, [volunteerActionStatuses]);
 
   return (
     <Shadow offset={[0, 2]} distance={2} stretch>
-      <View style={styles.container}>
+      <View style={[styles.container]}>
         <Text style={styles.heading}>{heading.toUpperCase()}</Text>
         <DropDownPicker
           open={open}
