@@ -1,32 +1,27 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {styles} from './style';
 import {Colors} from '../../../constants/Colors';
+import {VolunteerActionTypeModel} from '../../../models/VolunteerActionTypeModel';
 
 type TagChipSize = 'small' | 'large';
-type TagChipVariant = 'bright' | 'dark';
 
 interface OPTagChipProps {
-  text: string;
   size?: TagChipSize;
   color: string;
-  initialVariant?: TagChipVariant;
-  onPress?: (value: string) => void;
+  volunteerAction: VolunteerActionTypeModel;
+  fill?: boolean;
+  onPress?: (value: VolunteerActionTypeModel) => void;
 }
 
 const OPTagChip: React.FC<OPTagChipProps> = ({
-  text,
   size = 'small',
   color,
-  initialVariant = 'dark',
+  volunteerAction,
+  fill = false,
   onPress = () => {},
 }) => {
-  const [variant, setVariant] = useState(initialVariant);
-
-  const onPressHandler = (): void => {
-    setVariant(variant === 'bright' ? 'dark' : 'bright');
-    onPress(text);
-  };
+  const onPressHandler = (): void => onPress(volunteerAction);
 
   return (
     <TouchableOpacity onPress={onPressHandler}>
@@ -34,18 +29,15 @@ const OPTagChip: React.FC<OPTagChipProps> = ({
         style={[
           size &&
             (size === 'large' ? styles.tagChipLarge : styles.tagChipSmall),
-          variant === 'dark'
+          !fill
             ? {borderColor: color}
             : {...styles.tagChipDark, backgroundColor: color},
         ]}
       >
         <Text
-          style={[
-            styles.tagChipLabel,
-            {color: variant === 'bright' ? Colors.WHITE : color},
-          ]}
+          style={[styles.tagChipLabel, {color: fill ? Colors.WHITE : color}]}
         >
-          {text.toUpperCase()}
+          {volunteerAction.name.toUpperCase()}
         </Text>
       </View>
     </TouchableOpacity>

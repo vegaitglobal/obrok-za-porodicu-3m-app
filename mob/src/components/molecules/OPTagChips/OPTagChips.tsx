@@ -1,26 +1,75 @@
-import {View} from 'react-native';
 import React from 'react';
+import {View} from 'react-native';
 import {styles} from './style';
 import {Colors} from '../../../constants/Colors';
 import OPTagChip from '../../atoms/OPTagChip/OPTagChip';
+import {VolunteerActionTypeModel} from '../../../models/VolunteerActionTypeModel';
 
 interface OPTagChipsProps {}
 
+const volunteerActions: string | any[] = [
+  {
+    id: 1,
+    name: 'Novac',
+    hasPickup: false,
+    hasPayment: true,
+  },
+  {
+    id: 2,
+    name: 'Odeća i obuća',
+    hasPickup: true,
+    hasPayment: false,
+  },
+  {
+    id: 3,
+    name: 'Novac',
+    hasPickup: false,
+    hasPayment: true,
+  },
+  {
+    id: 4,
+    name: 'Odeća i obuća',
+    hasPickup: true,
+    hasPayment: false,
+  },
+  {
+    id: 5,
+    name: 'Novac',
+    hasPickup: false,
+    hasPayment: true,
+  },
+  {
+    id: 6,
+    name: 'Odeća i obuća',
+    hasPickup: true,
+    hasPayment: false,
+  },
+  {
+    id: 7,
+    name: 'Novac',
+    hasPickup: false,
+    hasPayment: true,
+  },
+  {
+    id: 8,
+    name: 'Odeća i obuća',
+    hasPickup: true,
+    hasPayment: false,
+  },
+];
+
+const renderItems = (data: VolunteerActionTypeModel[]) =>
+  data.map(item => (
+    <View key={item.id.toString()} style={styles.tagContainer}>
+      <OPTagChip volunteerAction={item} color={Colors.ORANGE} size="large" />
+      <View style={styles.divider} />
+    </View>
+  ));
+
 const OPTagChips: React.FC<OPTagChipsProps> = ({}) => {
   return (
-    <View>
-      <View style={styles.topRow}>
-        <OPTagChip text="HRANA" color={Colors.ORANGE} size="large" />
-        <View style={styles.divider} />
-        <OPTagChip text="NOVAC" color={Colors.GREEN} size="large" />
-        <View style={styles.divider} />
-        <OPTagChip text="ODEĆA I OBUĆA" color={Colors.PURPLE} size="large" />
-      </View>
-      <View style={styles.bottomRow}>
-        <OPTagChip text="OSTALO" color={Colors.BROWN} size="large" />
-        <View style={styles.divider} />
-        <OPTagChip text="ROĐENDANI" color={Colors.LIGHT_PINK} size="large" />
-      </View>
+    <View style={styles.container}>
+      {volunteerActions?.length > 0 && renderItems(volunteerActions)}
     </View>
   );
 };

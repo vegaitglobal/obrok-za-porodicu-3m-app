@@ -1,13 +1,14 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  topRow: {
+  container: {
+    flexWrap: 'wrap',
+    width: '100%',
     flexDirection: 'row',
-    marginBottom: 8,
   },
-  bottomRow: {
+  tagContainer: {
+    marginBottom: 8,
     flexDirection: 'row',
-    marginBottom: 24,
   },
   divider: {
     width: 8,
