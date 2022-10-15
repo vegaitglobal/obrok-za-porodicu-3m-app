@@ -21,8 +21,7 @@ const NewsNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName={AppRoute.NEWS_LIST_SCREEN}
-      screenOptions={screenOptions}
-    >
+      screenOptions={screenOptions}>
       <Stack.Screen
         name={AppRoute.NEWS_LIST_SCREEN}
         component={NewsListScreen}

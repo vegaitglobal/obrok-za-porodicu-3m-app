@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import OPNewsList from '../components/organisms/OPNewsList/OPNewsList';
 import {NewsDTO} from '../models/News/NewsDTO';
 import {getNews} from '../store/actions/NewsAction';
@@ -63,6 +64,7 @@ const NewsListScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <OPSubheader heading="Vesti" showDropdown={false} />
       <OPNewsList
         news={news}
         onPress={() => {}}

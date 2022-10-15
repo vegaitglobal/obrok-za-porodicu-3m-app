@@ -8,10 +8,20 @@ interface IVolunteerActionService {
 }
 
 class VolunteerActionService implements IVolunteerActionService {
-  async getActions(page: number): Promise<ResponseModel> {
+  async getActions(
+    page: number,
+    pageSize: number = 10,
+    searchQuery?: string,
+    categoryIds?: number[],
+  ): Promise<ResponseModel> {
+    const searchFragment: string = searchQuery ? `&search=${searchQuery}` : '';
+    const filterFragment: string =
+      categoryIds && categoryIds?.length > 0
+        ? `&filters=[${categoryIds?.map(e => e.toString).join(',')}]`
+        : '';
     try {
       const response = await axios.get(
-        `${BASE_URL}/api/volunteer-actions?pageNumber=${page}&pageSize=10`,
+        `${BASE_URL}/api/volunteer-actions?pageNumber=${page}&pageSize=${pageSize}${searchFragment}${filterFragment}`,
       );
 
       return {

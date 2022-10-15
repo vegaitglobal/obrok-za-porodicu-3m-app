@@ -9,6 +9,7 @@ import type {RootState} from '../../store/reducers/RootReducer';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
+import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
 
 export const setAppliedFilters =
   (newFilters: ActionType, color: string) =>
@@ -25,13 +26,20 @@ export const setAppliedFilters =
     dispatch(setAppliedVolunteerActions(filterUpdate));
   };
 
-export const getVolunteerActions = (page: number) => (dispatch: Dispatch) => {
-  VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
-    if (res) {
-      dispatch(setVolunteerActions(res.data as VolunteerPageModel));
-    }
-  });
-};
+export const getVolunteerActions =
+  (page: number, pageSize?: number, filter?: number[], searchQuery?: string) =>
+  (dispatch: Dispatch) => {
+    VolunteerActionsService.getActions(
+      page,
+      pageSize,
+      searchQuery,
+      filter,
+    ).then((res: ResponseModel) => {
+      if (res) {
+        dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+      }
+    });
+  };
 
 export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
   VolunteerActionsService.getActionStatuses().then((res: ResponseModel) => {
