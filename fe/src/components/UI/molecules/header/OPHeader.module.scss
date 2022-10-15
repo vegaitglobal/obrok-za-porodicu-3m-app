@@ -9,7 +9,6 @@
   width: 100%;
   background-color: $background;
   z-index: 100;
-
   font-family: "Dosis";
 }
 
@@ -23,7 +22,7 @@
   padding: 0 22px;
   background-color: $white;
   border-radius: 4px 4px 0px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .header-logo-wrapper {

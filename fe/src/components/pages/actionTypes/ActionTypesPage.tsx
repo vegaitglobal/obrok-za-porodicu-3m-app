@@ -40,18 +40,20 @@ const ActionTypesPage = () => {
     <div className={globalClasses["page-wrapper"]}>
       <Header />
       <div className={globalClasses["content-wrapper"]}>
-        <div>
-          <span>Add Action Type</span>
-          <button onClick={() => setModalShow(true)}>
-            add
-          </button>
-        </div>
-        <div className={classes["table-wrapper"]}>
-          <Table
-            headers={headers}
-            data={actionTypes}
-            columns={columnsToRender}
-            />
+        <div className={globalClasses["content"]}>
+          <div>
+            <span>Add Action Type</span>
+            <button onClick={() => setModalShow(true)}>
+              add
+            </button>
+          </div>
+          <div className={classes["table-wrapper"]}>
+            <Table
+              headers={headers}
+              data={actionTypes}
+              columns={columnsToRender}
+              />
+          </div>
         </div>
       </div>
       <ActionTypeModal

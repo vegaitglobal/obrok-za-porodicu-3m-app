@@ -40,22 +40,24 @@ const ContactPage = () => {
     <div className={globalClasses["page-wrapper"]}>
       <Header />
       <div className={globalClasses["content-wrapper"]}>
-        <div>
-          Add Contact
-          <button onClick={() => setModalShow(true)}>
-            add
-          </button>
+        <div className={globalClasses["content"]}>
+          <div>
+            Add Contact
+            <button onClick={() => setModalShow(true)}>
+              add
+            </button>
+          </div>
+          <div className={classes["table-wrapper"]}>
+            <Table headers={headers} data={contacts} columns={columnsToRender} />
+          </div>
         </div>
-        <div className={classes["table-wrapper"]}>
-          <Table headers={headers} data={contacts} columns={columnsToRender} />
-        </div>
+        <ContactModal
+          show={modalShow}
+          onClick={addContact}
+          onHide={() => setModalShow(false)}
+          label={"Add action type"}
+          />
       </div>
-      <ContactModal
-        show={modalShow}
-        onClick={addContact}
-        onHide={() => setModalShow(false)}
-        label={"Add action type"}
-      />
     </div>
   );
 };
