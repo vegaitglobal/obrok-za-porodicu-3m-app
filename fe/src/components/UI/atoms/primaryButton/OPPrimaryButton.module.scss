@@ -12,13 +12,12 @@
   font-size: 14px;
   font-weight: 600;
   color: $white;
-  transition-property: background-color, border-color;
+  transition-property: opacity;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   &:hover {
     cursor: pointer;
-    background-color: $lightOrange;
-    border-color: $lightOrange;
+    opacity: 0.8;
   }
 
 }

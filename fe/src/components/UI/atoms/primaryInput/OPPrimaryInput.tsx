@@ -115,17 +115,13 @@ const stylesObject = {
   eyeIconContainer: {
     position: "absolute" as "absolute",
     right: "5px",
-    top: "28px",
-    marginLeft: -30,
-    marginTop: 10,
+    top: "45px",
     cursor: "pointer",
   },
   errorIconContainer: {
     position: "absolute" as "absolute",
     right: "5px",
-    top: "28px",
-    marginTop: 10,
-    marginLeft: -30,
+    top: "45px",
   },
 };
 
