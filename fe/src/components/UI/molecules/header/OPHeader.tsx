@@ -22,12 +22,12 @@ const HEADER_VALUES: IHeaderValues[] = [
     link: "/news",
   },
   {
-    text: "About us",
-    link: "/about-us",
-  },
-  {
     text: "Contact",
     link: "/contact",
+  },
+  {
+    text: "About us",
+    link: "/about-us",
   },
 ];
 
