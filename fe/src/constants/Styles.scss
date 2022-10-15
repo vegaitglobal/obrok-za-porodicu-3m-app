@@ -1,1 +1,7 @@
+@import "./Colors.scss";
+
 $borderRadius: 7px;
+
+body {
+  background-color: $background;
+}
