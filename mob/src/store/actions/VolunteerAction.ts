@@ -25,8 +25,6 @@ export const setAppliedFilters =
   };
 
 export const getVolunteerActions = (page: number) => (dispatch: Dispatch) => {
-  console.log('dodje');
-
   VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
     if (res) {
       dispatch(setVolunteerActions(res.data as VolunteerPageModel));

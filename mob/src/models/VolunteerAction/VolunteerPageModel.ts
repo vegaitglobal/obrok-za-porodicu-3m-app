@@ -1,5 +1,5 @@
 import {PaginationModel} from '../PaginationModel';
-import {VolunteerActionDTO} from './VolunteerAction';
+import {VolunteerActionDTO} from './VolunteerActionDTO';
 
 export interface VolunteerPageModel {
   pagination: PaginationModel;
