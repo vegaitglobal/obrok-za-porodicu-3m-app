@@ -8,13 +8,23 @@ import {useSelector} from 'react-redux';
 import {RootState} from './src/store/reducers/RootReducer';
 import {OnboardingNavigator} from './src/navigation/OnboardingNavigator';
 
+import OPMessengerFloater from './src/components/atoms/OPMessengerFloater/OPMessengerFloater';
+
 const App = () => {
   const {isOnboarded} = useSelector((state: RootState) => state.user);
 
   return (
     <NavigationContainer onReady={() => RNBootSplash.hide({fade: true})}>
       <StatusBar barStyle={'dark-content'} />
-      {isOnboarded ? <TabNavigator /> : <OnboardingNavigator />}
+
+      {isOnboarded ? (
+        <>
+          <TabNavigator />
+          <OPMessengerFloater />
+        </>
+      ) : (
+        <OnboardingNavigator />
+      )}
     </NavigationContainer>
   );
 };
