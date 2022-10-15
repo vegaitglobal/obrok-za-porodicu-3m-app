@@ -3,7 +3,7 @@ import React, {useCallback, useEffect} from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {TextStyles} from '../constants/TextStyles';
 import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
-import {VolunteerActionDTO} from '../models/VolunteerAction/VolunteerAction';
+import {VolunteerActionDTO} from '../models/VolunteerAction/VolunteerActionDTO';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../store/reducers/RootReducer';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';

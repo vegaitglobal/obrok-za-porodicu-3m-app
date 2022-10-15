@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "bulldog";
+  src: local("bulldog"), url(./fonts/bulldog.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  src: local("Dosis"), url(./fonts/dosis.ttf) format("opentype");
+}
