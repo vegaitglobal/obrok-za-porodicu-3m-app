@@ -1,0 +1,31 @@
+@import "../../../../constants/Colors.scss";
+
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $background;
+  z-index: 100;
+
+  font-family: "Dosis";
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  max-width: 1408px;
+  width: 100%;
+  min-height: 72px;
+  margin: 16px 16px 0 16px;
+  padding: 0 22px;
+  background-color: $white;
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.header-logo-wrapper {
+  margin-right: 6px;
+}

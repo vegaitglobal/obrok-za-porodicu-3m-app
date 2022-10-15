@@ -1,0 +1,23 @@
+@import "../../../../constants/Colors.scss";
+
+.filter-item {
+  height: 34px;
+  color: $white;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  border-radius: 100px;
+
+  display: flex;
+  width: min-content;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Dosis";
+
+  border: 1px solid transparent;
+
+  cursor: pointer;
+}

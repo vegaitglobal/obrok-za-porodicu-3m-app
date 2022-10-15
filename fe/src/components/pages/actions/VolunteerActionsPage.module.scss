@@ -1,0 +1,45 @@
+@import "../../../constants/Colors.scss";
+
+.volunteer-actions-page {
+  background-color: $background;
+  width: 100%;
+  height: 100vh;
+  padding-top: 89px;
+}
+
+.content-wrapper {
+  width: 100%;
+}
+
+.header-wrapper {
+  width: 100%;
+  height: 10vh;
+  background-color: $background;
+  border-bottom: 1px solid $white;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+
+  margin: 10px 16px 0 16px;
+}
+
+.filter-items {
+  display: flex;
+  overflow-x: scroll;
+  width: 55%;
+  padding-bottom: 7px;
+}
+
+.search-button-wrapper {
+  position: absolute;
+  width: 100px;
+  right: 20px;
+}
