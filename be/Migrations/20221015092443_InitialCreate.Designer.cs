@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MealForFamily.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221015055000_InitialCreate")]
+    [Migration("20221015092443_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -135,6 +135,56 @@ namespace MealForFamily.Migrations
                             PhoneNumber = "(00 381) 60 37-65-017",
                             Title = "Obrok za porodicu 3M"
                         });
+                });
+
+            modelBuilder.Entity("MealForFamily.Models.Donation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool?>("IsCompany")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool?>("IsPickup")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("VolunteerActionId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("VolunteerActionTypeId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VolunteerActionId");
+
+                    b.HasIndex("VolunteerActionTypeId");
+
+                    b.ToTable("Donations");
                 });
 
             modelBuilder.Entity("MealForFamily.Models.News", b =>
@@ -315,16 +365,31 @@ namespace MealForFamily.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MealForFamily.Models.Donation", b =>
+                {
+                    b.HasOne("MealForFamily.Models.VolunteerAction", "VolunteerAction")
+                        .WithMany("Donations")
+                        .HasForeignKey("VolunteerActionId");
+
+                    b.HasOne("MealForFamily.Models.VolunteerActionType", "VolunteerActionType")
+                        .WithMany("Donations")
+                        .HasForeignKey("VolunteerActionTypeId");
+
+                    b.Navigation("VolunteerAction");
+
+                    b.Navigation("VolunteerActionType");
+                });
+
             modelBuilder.Entity("MealForFamily.Models.VolunteerAction", b =>
                 {
                     b.HasOne("MealForFamily.Models.VolunteerActionStatus", "Status")
-                        .WithMany()
+                        .WithMany("VolunteerActions")
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MealForFamily.Models.VolunteerActionType", "Type")
-                        .WithMany()
+                        .WithMany("VolunteerActions")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -332,6 +397,23 @@ namespace MealForFamily.Migrations
                     b.Navigation("Status");
 
                     b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("MealForFamily.Models.VolunteerAction", b =>
+                {
+                    b.Navigation("Donations");
+                });
+
+            modelBuilder.Entity("MealForFamily.Models.VolunteerActionStatus", b =>
+                {
+                    b.Navigation("VolunteerActions");
+                });
+
+            modelBuilder.Entity("MealForFamily.Models.VolunteerActionType", b =>
+                {
+                    b.Navigation("Donations");
+
+                    b.Navigation("VolunteerActions");
                 });
 #pragma warning restore 612, 618
         }
