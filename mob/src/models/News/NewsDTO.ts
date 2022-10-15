@@ -1,6 +1,6 @@
 export interface NewsDTO {
   id: number;
-  imageUrl: string;
+  imageURL: string;
   title: string;
   shortDescription: string;
 }

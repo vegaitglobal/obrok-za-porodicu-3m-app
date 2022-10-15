@@ -2,6 +2,7 @@ import {Dispatch} from '@reduxjs/toolkit';
 import {
   setAppliedVolunteerActions,
   setVolunteerActions,
+  setVolunteerActionStatuses,
 } from '../reducers/VolunteerActionReducer';
 import {ActionType} from '../../models/VolunteerAction/VolunteerActionDTO';
 import type {RootState} from '../../store/reducers/RootReducer';
@@ -28,6 +29,14 @@ export const getVolunteerActions = (page: number) => (dispatch: Dispatch) => {
   VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
     if (res) {
       dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+    }
+  });
+};
+
+export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
+  VolunteerActionsService.getActionStatuses().then((res: ResponseModel) => {
+    if (res) {
+      dispatch(setVolunteerActionStatuses(res.data as VolunteerActionStatus[]));
     }
   });
 };

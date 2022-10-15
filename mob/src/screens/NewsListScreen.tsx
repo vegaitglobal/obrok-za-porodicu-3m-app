@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -38,17 +38,37 @@ const NewsListScreen = () => {
   const dispatch: any = useDispatch();
   const {news} = useSelector((state: RootState) => state.news);
 
-  const getData = useCallback(() => {
-    // dispatch(getNews(1));
-  }, []);
+  const [page, setPage] = useState<number>(1);
+
+  const getData = useCallback(
+    (newPage: number) => {
+      dispatch(getNews(newPage));
+    },
+    [dispatch],
+  );
 
   useEffect(() => {
-    getData();
+    getData(1);
   }, [getData]);
+
+  const handleLoadNextPage = () => {
+    getData(page + 1);
+    setPage(page + 1);
+  };
+
+  const handleRefresh = () => {
+    getData(1);
+    setPage(1);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <OPNewsList news={newsList} onPress={() => {}} />
+      <OPNewsList
+        news={news}
+        onPress={() => {}}
+        onLoadMore={handleLoadNextPage}
+        onRefresh={handleRefresh}
+      />
     </SafeAreaView>
   );
 };

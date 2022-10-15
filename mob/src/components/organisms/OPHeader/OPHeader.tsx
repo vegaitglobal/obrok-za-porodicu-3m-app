@@ -109,9 +109,13 @@ const OPHeader: FC<OPHeaderProps> = ({
   const onPressFilterIcon = () => {
     if (!isOpening.current) {
       isOpening.current = true;
-      height.value = withTiming(height.value === 0 ? data?.length * 40 : 0, {
-        duration: 500,
-      });
+
+      height.value = withTiming(
+        height.value === 0 ? Math.ceil(data?.length / 3) * 40 + 200 : 0,
+        {
+          duration: 500,
+        },
+      );
       opacity.value = withTiming(opacity.value === 1 ? 0 : 1, {
         duration: 500,
       });
@@ -124,7 +128,7 @@ const OPHeader: FC<OPHeaderProps> = ({
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <View style={styles.topHeader}>
         <Image source={LOGO_PATH} resizeMode="contain" />
         {hasFilter ? (
