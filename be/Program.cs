@@ -23,8 +23,8 @@ builder.Services.AddTransient<INewsletterSubscriptionRepository, NewsletterSubsc
 builder.Services.AddTransient<INewsService, NewsService>();
 builder.Services.AddTransient<INewsRepository, NewsRepository>();
 
-builder.Services.AddTransient<IVolunteerActionService, VolunteerActionService>();
-builder.Services.AddTransient<IVolunteerActionRepository, VolunteerActionRepository>();
+builder.Services.AddTransient<IVolunteerActionTypeService, VolunteerActionTypeService>();
+builder.Services.AddTransient<IVolunteerActionTypeRepository, VolunteerActionTypeRepository>();
 
 builder.Services.AddTransient<IVolunteerActionStatusService, VolunteerActionStatusService>();
 builder.Services.AddTransient<IVolunteerActionStatusRepository, VolunteerActionStatusRepository>();

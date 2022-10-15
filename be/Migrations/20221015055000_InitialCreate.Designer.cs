@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MealForFamily.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221015052802_InitialCreate")]
+    [Migration("20221015055000_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,14 @@ namespace MealForFamily.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AboutUs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "<h1>About us</h1></br><p>We are organisation meal for families 3M.</p>",
+                            RawDescription = ""
+                        });
                 });
 
             modelBuilder.Entity("MealForFamily.Models.BankAccount", b =>
@@ -82,6 +90,19 @@ namespace MealForFamily.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BankAccount");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccountNumber = "160-6000001255298-83",
+                            PhoneNumber = "(00 381) 60 37-65-017",
+                            ReceiverAddress = "Miše Dimitrijevića 3B",
+                            ReceiverCity = "Novi Sad",
+                            ReceiverName = "Obrok za porodicu 3M",
+                            ReferenceNumber = "",
+                            TransactionModel = ""
+                        });
                 });
 
             modelBuilder.Entity("MealForFamily.Models.Contact", b =>
@@ -105,6 +126,15 @@ namespace MealForFamily.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "obrokzaporodicu3m@gmail.com",
+                            PhoneNumber = "(00 381) 60 37-65-017",
+                            Title = "Obrok za porodicu 3M"
+                        });
                 });
 
             modelBuilder.Entity("MealForFamily.Models.News", b =>
@@ -211,6 +241,18 @@ namespace MealForFamily.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("VolunteerActionStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Trenutno u toku"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Uspešno završena"
+                        });
                 });
 
             modelBuilder.Entity("MealForFamily.Models.VolunteerActionType", b =>
@@ -234,6 +276,43 @@ namespace MealForFamily.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("VolunteerActionTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            HasPayment = false,
+                            HasPickup = true,
+                            Name = "Hrana"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            HasPayment = true,
+                            HasPickup = false,
+                            Name = "Novac"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            HasPayment = false,
+                            HasPickup = true,
+                            Name = "Odeća i obuća"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            HasPayment = false,
+                            HasPickup = true,
+                            Name = "Igračke"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            HasPayment = false,
+                            HasPickup = true,
+                            Name = "Ostalo"
+                        });
                 });
 
             modelBuilder.Entity("MealForFamily.Models.VolunteerAction", b =>

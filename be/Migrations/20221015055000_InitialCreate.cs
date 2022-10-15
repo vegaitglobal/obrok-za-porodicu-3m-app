@@ -147,6 +147,42 @@ namespace MealForFamily.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AboutUs",
+                columns: new[] { "Id", "Description", "RawDescription" },
+                values: new object[] { 1, "<h1>About us</h1></br><p>We are organisation meal for families 3M.</p>", "" });
+
+            migrationBuilder.InsertData(
+                table: "BankAccount",
+                columns: new[] { "Id", "AccountNumber", "PhoneNumber", "ReceiverAddress", "ReceiverCity", "ReceiverName", "ReferenceNumber", "TransactionModel" },
+                values: new object[] { 1, "160-6000001255298-83", "(00 381) 60 37-65-017", "Miše Dimitrijevića 3B", "Novi Sad", "Obrok za porodicu 3M", "", "" });
+
+            migrationBuilder.InsertData(
+                table: "Contacts",
+                columns: new[] { "Id", "Email", "PhoneNumber", "Title" },
+                values: new object[] { 1, "obrokzaporodicu3m@gmail.com", "(00 381) 60 37-65-017", "Obrok za porodicu 3M" });
+
+            migrationBuilder.InsertData(
+                table: "VolunteerActionStatuses",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Trenutno u toku" },
+                    { 2, "Uspešno završena" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "VolunteerActionTypes",
+                columns: new[] { "Id", "HasPayment", "HasPickup", "Name" },
+                values: new object[,]
+                {
+                    { 1, false, true, "Hrana" },
+                    { 2, true, false, "Novac" },
+                    { 3, false, true, "Odeća i obuća" },
+                    { 4, false, true, "Igračke" },
+                    { 5, false, true, "Ostalo" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_VolunteerActions_StatusId",
                 table: "VolunteerActions",
