@@ -10,11 +10,13 @@ import {getVolunteerActionStatuses} from '../../../store/actions/VolunteerAction
 
 interface OPSubheaderProps {
   heading: string;
+  showDropdown: boolean;
   onSelectionChanged?: (item: any) => void;
 }
 
 const OPSubheader: React.FC<OPSubheaderProps> = ({
   heading,
+  showDropdown = true,
   onSelectionChanged,
 }) => {
   const [open, setOpen] = useState(false);
@@ -40,23 +42,27 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   return (
     <Shadow offset={[0, 2]} distance={2} stretch>
       <View style={[styles.container]}>
-        <Text style={styles.heading}>{heading.toUpperCase()}</Text>
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={allItems}
-          setOpen={setOpen}
-          setValue={selection => {
-            setValue(selection);
-            onSelectionChanged && onSelectionChanged(selection);
-          }}
-          setItems={setItems}
-          style={styles.picker}
-          containerStyle={styles.picker}
-          dropDownContainerStyle={[styles.picker, styles.pickerDropdown]}
-          textStyle={styles.dropdownLabels}
-          labelStyle={[styles.dropdownLabels, styles.dropdownMainLabel]}
-        />
+        <Text style={[styles.heading]}>{heading.toUpperCase()}</Text>
+        {showDropdown && (
+          <DropDownPicker
+            zIndexInverse={7000}
+            zIndex={1000}
+            open={open}
+            value={value}
+            items={allItems}
+            setOpen={setOpen}
+            setValue={selection => {
+              setValue(selection);
+              onSelectionChanged && onSelectionChanged(selection);
+            }}
+            setItems={setItems}
+            style={styles.picker}
+            containerStyle={styles.picker}
+            dropDownContainerStyle={[styles.picker, styles.pickerDropdown]}
+            textStyle={styles.dropdownLabels}
+            labelStyle={[styles.dropdownLabels, styles.dropdownMainLabel]}
+          />
+        )}
       </View>
     </Shadow>
   );
