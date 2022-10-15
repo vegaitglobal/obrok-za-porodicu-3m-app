@@ -4,7 +4,7 @@ namespace MealForFamily.ServiceInterface
 {
     public interface INewsService
     {
-        Task<IEnumerable<News>> GetNews(int pageNumber, int pageSize);
+        Task<Page<News>> GetNews(int pageNumber, int pageSize);
 
         Task<News> GetSingleById(int id);
 

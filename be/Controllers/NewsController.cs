@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;

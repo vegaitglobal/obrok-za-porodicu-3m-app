@@ -14,7 +14,7 @@ namespace MealForFamily.Service
             _newsRepository = newsRepository;
         }
 
-        public async Task<IEnumerable<News>> GetNews(int pageNumber, int pageSize)
+        public async Task<Page<News>> GetNews(int pageNumber, int pageSize)
         {
             return await _newsRepository.GetAllByPage(pageNumber, pageSize);
         }
