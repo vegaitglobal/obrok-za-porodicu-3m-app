@@ -14,9 +14,9 @@ namespace MealForFamily.Service
             _volunteerActionRepository = volunteerActionRepository;
         }
 
-        public async Task<List<VolunteerAction>> GetVolunteerActions()
+        public async Task<Page<VolunteerAction>> GetVolunteerActions(int pageNumber, int pageSize)
         {
-            return await _volunteerActionRepository.GetVolunteerActions();
+            return await _volunteerActionRepository.GetAllByPage(pageNumber, pageSize);
         }
 
         public async Task<VolunteerAction> GetSingleById(int id)
