@@ -7,6 +7,13 @@
     "about_us": "O nama",
     "contact": "Kontakt"
   },
+  "contactScreen": {
+    "contact": "CONTACT",
+    "socialMedia": "Social Media",
+    "contactUs": "Contact Us",
+    "callUs": "Call",
+    "sendEmail": "Mail"
+  },      
   "actionsList": {
     "find_out_more": "Find out more",
     "status": "Status",

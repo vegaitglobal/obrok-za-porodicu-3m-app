@@ -15,18 +15,18 @@
 }
 
 .input-field {
-  width: 97%;
+  width: 98%;
   height: 36px;
   margin-bottom: 30px;
   margin-top: 6px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
-
   border-radius: $borderRadius;
   -khtml-border-radius: $borderRadius;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding-left: 10px;
+  padding-right: 10px;
   font-family: "Dosis";
   font-size: 15px;
   font-weight: 600;
@@ -35,13 +35,13 @@
   transition-timing-function: ease-in-out;
   z-index: 0;
   &:focus {
-    outline: 2px solid $lightOrange;
+    outline: 1px solid $lightOrange;
   }
 }
 
 .input-field::placeholder {
-  font-family: "Dosis";
-  font-weight: 400 !important;
+  font-family: "Dosis" !important;
+  font-weight: 600 !important;
   color: $bgLightGrey;
 }
 
@@ -73,6 +73,7 @@
   height: 36px;
   margin-bottom: 30px;
   margin-top: 6px;
+  padding-right: 30px;
   border-radius: 7px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -93,6 +94,6 @@
 }
 
 .input-error::placeholder {
-	font-family: "Dosis";
-	font-weight: 400 !important;
+	font-family: "Dosis" !important;
+	font-weight: 600 !important;
   }

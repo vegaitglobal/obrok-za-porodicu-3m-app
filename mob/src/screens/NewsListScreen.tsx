@@ -6,6 +6,8 @@ import OPNewsList from '../components/organisms/OPNewsList/OPNewsList';
 import {NewsDTO} from '../models/News/NewsDTO';
 import {getNews} from '../store/actions/NewsAction';
 import {RootState} from '../store/reducers/RootReducer';
+import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
+import {AppRoute} from '../navigation/Routes';
 
 const newsList: Array<NewsDTO> = [
   {
@@ -34,7 +36,7 @@ const newsList: Array<NewsDTO> = [
   },
 ];
 
-const NewsListScreen = () => {
+const NewsListScreen = ({navigation}) => {
   const dispatch: any = useDispatch();
   const {news} = useSelector((state: RootState) => state.news);
 
@@ -63,9 +65,10 @@ const NewsListScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <OPSubheader heading="Vesti" showBackButton={false} />
       <OPNewsList
-        news={news}
-        onPress={() => {}}
+        news={newsList}
+        onPress={newsId => navigation.navigate(AppRoute.NEWS_SCREEN, {newsId})}
         onLoadMore={handleLoadNextPage}
         onRefresh={handleRefresh}
       />

@@ -10,10 +10,11 @@ import {Colors} from '../constants/Colors';
 import {ScrollView} from 'react-native-gesture-handler';
 
 interface IActionProps {
-  route: string;
+  route: any;
+  navigation: any;
 }
 
-const ActionScreen: FC<IActionProps> = ({route}) => {
+const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
   const [data, setData] = useState({
     id: 1,
     type: {
@@ -27,15 +28,21 @@ const ActionScreen: FC<IActionProps> = ({route}) => {
       id: 2,
       name: 'Trenutno u toku',
     },
+    html: '',
     imageUrl:
       'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVuc3xlbnwwfHwwfHw%3D&w=1000&q=80',
   });
 
   useEffect(() => {}, [route]);
-  const html = '';
+
   return (
     <SafeAreaView style={styles.container}>
-      <OPSubheader heading="Nazad" items={[]} />
+      <OPSubheader
+        heading="Nazad"
+        showBackButton
+        onBackPressed={() => navigation.goBack()}
+        showDropdown={false}
+      />
       <ScrollView>
         <OPImage source={{uri: data.imageUrl}} style={styles.images} />
         <View style={styles.contentContainer}>
@@ -56,7 +63,7 @@ const ActionScreen: FC<IActionProps> = ({route}) => {
           </View>
         </View>
         <View style={styles.htmlContainer}>
-          <OPHtml html={html} />
+          <OPHtml html={data?.html} />
         </View>
       </ScrollView>
     </SafeAreaView>

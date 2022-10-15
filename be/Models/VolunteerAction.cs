@@ -26,5 +26,7 @@ namespace MealForFamily.Models
         public string? Description { get; set; } = string.Empty;
 
         public string? ReferenceNumber { get; set; } = string.Empty;
+
+        public ICollection<Donation>? Donations { get; set; }
     }
 }

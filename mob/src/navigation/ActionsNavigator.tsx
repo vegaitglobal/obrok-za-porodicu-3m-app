@@ -4,20 +4,25 @@ import {
   createStackNavigator,
   StackNavigationOptions,
 } from '@react-navigation/stack';
+import {useRoute} from '@react-navigation/native';
 import {AppRoute} from './Routes';
 
 import ActionScreen from '../screens/ActionScreen';
 import ActionsListScreen from '../screens/ActionsListScreen';
 
-import Header from '../components/organisms/OPHeader/OPHeader';
+import OPHeader from '../components/organisms/OPHeader/OPHeader';
 
 const Stack = createStackNavigator();
 
-const screenOptions: StackNavigationOptions = {
-  header: () => <Header />,
-};
-
 const ActionsNavigator = () => {
+  const route = useRoute();
+  const screenOptions: StackNavigationOptions = {
+    header: () => (
+      <OPHeader
+        hasFilter={route.name === AppRoute.ACTIONS_NAVIGATOR ? true : false}
+      />
+    ),
+  };
   return (
     <Stack.Navigator
       initialRouteName={AppRoute.ACTIONS_LIST_SCREEN}

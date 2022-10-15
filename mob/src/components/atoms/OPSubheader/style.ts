@@ -4,16 +4,22 @@ import {TextStyles} from '../../../constants/TextStyles';
 
 export const styles = StyleSheet.create({
   container: {
+    height: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: Colors.BACKGROUND,
+  } as ViewStyle,
+  row: {
+    flexDirection: 'row',
   } as ViewStyle,
   heading: {
     ...TextStyles.DOSIS_EXTRA_BOLD,
     fontSize: 18,
     fontWeight: '800',
     color: Colors.DARK_GRAY,
+  } as TextStyle,
+  headingMargin: {
     marginLeft: 16,
   } as TextStyle,
   dropdownLabels: {

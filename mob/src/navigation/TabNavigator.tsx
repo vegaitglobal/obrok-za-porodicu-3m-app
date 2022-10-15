@@ -15,18 +15,22 @@ import DonateScreen from '../screens/DonateScreen';
 
 const BottomTab = createBottomTabNavigator();
 
+import OPHeader from '../components/organisms/OPHeader/OPHeader';
+
 export type TabType = 'home' | 'news' | 'donate' | 'about_us' | 'contact';
 
 const TabNavigator = () => {
   const {t} = useTranslation();
 
+  const screenOptions = {
+    header: () => <OPHeader />,
+    title: '',
+    tabBarStyle: styles.container,
+  };
+
   return (
     <BottomTab.Navigator
-      screenOptions={{
-        title: '',
-        headerShown: false,
-        tabBarStyle: styles.container,
-      }}
+      screenOptions={screenOptions}
       initialRouteName={AppRoute.ACTIONS_NAVIGATOR}>
       <BottomTab.Screen
         name={AppRoute.ACTIONS_NAVIGATOR}
@@ -83,7 +87,7 @@ const TabNavigator = () => {
         name={AppRoute.ABOUT_US_SCREEN}
         component={AboutUsScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => {
             return (
@@ -100,7 +104,7 @@ const TabNavigator = () => {
         name={AppRoute.CONTACT_SCREEN}
         component={ContactScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => {
             return (
