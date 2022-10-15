@@ -12,10 +12,12 @@ const VolunteerActionsPage = () => {
           <Header />
         </div>
         <div className={classes["filter-wrapper"]}>
-          <OPSearchBar placeholder="Search" />
-          <OPFilterItemList />
+          <div>
+            <OPSearchBar placeholder="Search" />
+            <OPFilterItemList />
+          </div>
+          <OPCarditemList />
         </div>
-        <OPCarditemList />
       </div>
     </div>
   );

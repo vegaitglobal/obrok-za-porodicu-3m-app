@@ -1,32 +1,57 @@
 @import "../../../../constants/Colors.scss";
 @import "../../../../constants/Styles.scss";
 
-.header-item {
-  height: 4vh;
-
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 18px;
-
+.header-link {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  cursor: pointer;
-  margin-right: 5px;
-
-  background-color: $orange;
-  border-radius: $borderRadius;
-}
-
-.header-item:hover {
-  background: $lightOrange;
-}
-
-.header-link {
   color: $white;
   text-decoration: none;
+  padding: 6px 15px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: $orange;
+  background-color: $white;
+  border-radius: $borderRadius;
+  border: 1px solid $orange;
+  transition-property: background-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
 
-  border-radius: var(--BORDER-RADIUS);
-  padding: 7px 15px;
+  &:hover {
+    background: $lightOrange;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 8px;
+  }
+
+}
+
+.header-link--active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  text-decoration: none;
+  padding: 6px 15px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: $white;
+  background-color: $orange;
+  border-radius: $borderRadius;
+  border: 1px solid $orange;
+  transition-property: background-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    background-color: $red;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 8px;
+  }
 }
