@@ -67,6 +67,7 @@ const OPPrimaryInput: React.FC<IOPPrimaryInputProps> = (props) => {
               ? `${classes["input-field"]} ${styleForInput}`
               : `${classes["input-error"]} ${styleForInput}`
           }
+          style={passwordShown ? {paddingRight: "30px"} : {}}
           onFocus={handleOnFocus}
           type={
             secureTextEntry && !passwordShown
@@ -114,14 +115,14 @@ const OPPrimaryInput: React.FC<IOPPrimaryInputProps> = (props) => {
 const stylesObject = {
   eyeIconContainer: {
     position: "absolute" as "absolute",
-    right: "5px",
-    top: "42px",
+    right: "14px",
+    top: "38px",
     cursor: "pointer",
   },
   errorIconContainer: {
     position: "absolute" as "absolute",
-    right: "5px",
-    top: "42px",
+    right: "16px",
+    top: "38px",
   },
 };
 
