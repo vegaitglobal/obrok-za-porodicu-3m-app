@@ -84,7 +84,7 @@ const TabNavigator = () => {
         name={AppRoute.ABOUT_US_SCREEN}
         component={AboutUsScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarShowLabel: false,
           tabBarIcon: ({focused}) => {
             return (
@@ -95,6 +95,7 @@ const TabNavigator = () => {
               />
             );
           },
+          header: () => <OPHeaderSimple />,
         }}
       />
       <BottomTab.Screen
