@@ -2,16 +2,16 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './style';
 import {Colors} from '../../../constants/Colors';
-import {VolunteerActionTypeModel} from '../../../models/VolunteerActionTypeModel';
+import {VolunteerActionStatus} from '../../../models/VolunteerAction/VolunteerActionStatus';
 
 type TagChipSize = 'small' | 'large';
 
 interface OPTagChipProps {
   size?: TagChipSize;
   color: string;
-  volunteerAction: VolunteerActionTypeModel;
+  volunteerAction: VolunteerActionStatus;
   fill?: boolean;
-  onPress?: (value: VolunteerActionTypeModel) => void;
+  onPress?: (value: VolunteerActionStatus) => void;
 }
 
 const OPTagChip: React.FC<OPTagChipProps> = ({

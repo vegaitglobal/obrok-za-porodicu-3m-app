@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {styles} from './style';
 import {Colors} from '../../../constants/Colors';
 import OPTagChip from '../../atoms/OPTagChip/OPTagChip';
-import {VolunteerActionTypeModel} from '../../../models/VolunteerActionTypeModel';
+import {VolunteerActionStatus} from '../../../models/VolunteerAction/VolunteerActionStatus';
 
 interface OPTagChipsProps {}
 
@@ -58,7 +58,7 @@ const volunteerActions: string | any[] = [
   },
 ];
 
-const renderItems = (data: VolunteerActionTypeModel[]) =>
+const renderItems = (data: VolunteerActionStatus[]) =>
   data.map(item => (
     <View key={item.id.toString()} style={styles.tagContainer}>
       <OPTagChip volunteerAction={item} color={Colors.ORANGE} size="large" />
