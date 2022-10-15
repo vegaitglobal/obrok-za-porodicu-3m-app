@@ -1,40 +1,28 @@
 import React from 'react';
 
 import {AppRoute} from './Routes';
-import {
-  createStackNavigator,
-  StackNavigationOptions,
-} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import NewsScreen from '../screens/NewsScreen';
 import NewsListScreen from '../screens/NewsListScreen';
 
-import OPHeader from '../components/organisms/OPHeader/OPHeader';
+import {newsScreenOptions, newsStackOptions} from './screenOptions';
 
 const Stack = createStackNavigator();
-
-const screenOptions: StackNavigationOptions = {
-  header: () => <OPHeader />,
-};
 
 const NewsNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName={AppRoute.NEWS_LIST_SCREEN}
-      screenOptions={screenOptions}>
+      screenOptions={newsStackOptions}>
       <Stack.Screen
         name={AppRoute.NEWS_LIST_SCREEN}
         component={NewsListScreen}
-        options={{
-          headerShown: true,
-        }}
       />
       <Stack.Screen
         name={AppRoute.NEWS_SCREEN}
         component={NewsScreen}
-        options={{
-          headerShown: true,
-        }}
+        options={newsScreenOptions}
       />
     </Stack.Navigator>
   );
