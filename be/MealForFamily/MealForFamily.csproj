@@ -5,11 +5,29 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< Updated upstream:be/MealForFamily/MealForFamily.csproj
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+=======
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+>>>>>>> Stashed changes:be/MealForFamily/MealForFamily/MealForFamily.csproj
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+<<<<<<< Updated upstream:be/MealForFamily/MealForFamily.csproj
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7"/>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+=======
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+>>>>>>> Stashed changes:be/MealForFamily/MealForFamily/MealForFamily.csproj
   </ItemGroup>
 </Project>
