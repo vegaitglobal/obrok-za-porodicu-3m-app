@@ -8,5 +8,6 @@ namespace MealForFamily.Data
         public DataContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<NewsletterSubscription> NewsletterSubscriptions { get; set; }
     }
 }

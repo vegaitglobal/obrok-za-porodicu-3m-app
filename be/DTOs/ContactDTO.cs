@@ -1,5 +1,3 @@
-using MealForFamily.Models;
-
 namespace MealForFamily.Dtos
 {
     public class ContactDTO

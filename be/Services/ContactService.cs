@@ -8,12 +8,10 @@ namespace MealForFamily.Service
     public class ContactService : IContactService
     {
         private readonly IContactRepository _contactRepository;
-        private readonly IMapper _mapper;
 
-        public ContactService(IContactRepository contactRepository, IMapper mapper)
+        public ContactService(IContactRepository contactRepository)
         {
             _contactRepository = contactRepository;
-            _mapper = mapper;
         }
 
         public async Task<List<Contact>> GetContacts()

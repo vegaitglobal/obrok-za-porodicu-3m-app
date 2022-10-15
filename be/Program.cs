@@ -15,6 +15,8 @@ builder.Configuration.AddEnvironmentVariables();
 builder.Services.AddControllers();
 builder.Services.AddTransient<IContactService, ContactService>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
+builder.Services.AddTransient<INewsletterSubscriptionService, NewsletterSubscriptionService>();
+builder.Services.AddTransient<INewsletterSubscriptionRepository, NewsletterSubscriptionRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
