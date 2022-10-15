@@ -374,6 +374,8 @@ PODS:
     - React-jsi (= 0.70.3)
     - React-logger (= 0.70.3)
     - React-perflogger (= 0.70.3)
+  - RNBootSplash (4.3.2):
+    - React-Core
   - RNCAsyncStorage (1.17.10):
     - React-Core
   - RNCMaskedView (0.1.11):
@@ -479,6 +481,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNBootSplash (from `../node_modules/react-native-bootsplash`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
@@ -575,6 +578,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNBootSplash:
+    :path: "../node_modules/react-native-bootsplash"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCMaskedView:
@@ -640,6 +645,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: b9a58ffdd18446f43d493a4b0ecd603ee86be847
   React-runtimeexecutor: e9b1f9310158a1e265bcdfdfd8c62d6174b947a2
   ReactCommon: 01064177e66d652192c661de899b1076da962fd9
+  RNBootSplash: 5f346163977573d6b2aeba1b25df9d2245c0d73c
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPicker: 35b5d45693bb46c0e5514116081509e15a64a145
