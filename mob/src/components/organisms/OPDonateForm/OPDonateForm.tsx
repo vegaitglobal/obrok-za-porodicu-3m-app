@@ -23,9 +23,16 @@ import {
 import FormikTextInput from '../../atoms/Formik/FormikTextInput/FormikTextInput';
 import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
 import OPRadioButtonsRow from '../../molecules/OPRadioButtonsRow/OPRadioButtonsRow';
+import OPDonateTypeSelector from '../OPDonateTypeSelector/OPDonateTypeSelector';
 import {styles} from './style';
 
-const OPDonateForm = () => {
+interface OPDonateFormProps {
+  actionType?: number | undefined;
+}
+
+const OPDonateForm: React.FC<OPDonateFormProps> = ({
+  actionType = undefined,
+}) => {
   const [loseFocus, setLoseFocus] = useState(false);
   const [isCompanySelected, setIsCompanySelected] = useState(false);
   const [isPickupSelected, setIsPickupSelected] = useState(false);
@@ -38,9 +45,9 @@ const OPDonateForm = () => {
 
   const {bankAccount} = useSelector((state: RootState) => state.bankAccount);
 
-  //get from Tag Chips
-  const isOtherSelected = false;
-  const actionType = 2;
+  const [selectedActionType, setSelectedActionType] = useState(
+    actionType ? actionType : -1,
+  );
 
   const initialValues: DonationModel = {
     email: '',
@@ -82,7 +89,7 @@ const OPDonateForm = () => {
     if (isCompanySelected) {
       schema = schema.concat(companyDonateSchema);
     }
-    if (isOtherSelected) {
+    if (selectedActionType === 5) {
       schema = schema.concat(otherDonationDonateSchema);
     }
     if (isPickupSelected && isCompanySelected) {
@@ -91,25 +98,31 @@ const OPDonateForm = () => {
     return schema;
   };
 
+  const handleOnActionTypeSelect = (id: number) => {
+    setSelectedActionType(id);
+  };
+
   return (
     <View style={styles.viewContainer}>
       <Formik
         validationSchema={getValidationSchema()}
         initialValues={initialValues}
         enableReinitialize
-        onSubmit={values => {
+        onSubmit={(values, {resetForm}) => {
           const donation: DonationModel = {
             email: values.email,
             fullName: values.fullName,
             description: values.description,
             phoneNumber: values.phoneNumber,
             address: values.address,
-            volunteerActionTypeId: actionType,
+            volunteerActionTypeId: selectedActionType,
             isCompany: isCompanySelected,
             isPickup: isPickupSelected,
             companyName: values.companyName,
           };
           handleOnDonatePress(donation);
+          resetForm();
+          setSelectedActionType(-1);
         }}>
         {({handleSubmit, isValid}) => (
           <TouchableWithoutFeedback
@@ -118,6 +131,10 @@ const OPDonateForm = () => {
               Keyboard.dismiss();
             }}>
             <View style={styles.mainView}>
+              {!actionType && (
+                <OPDonateTypeSelector onSelect={handleOnActionTypeSelect} />
+              )}
+
               <OPRadioButtonsRow
                 leftText={'Kompanija'}
                 rightText={'Fizičko Lice'}
@@ -159,7 +176,7 @@ const OPDonateForm = () => {
                 name={'phoneNumber'}
                 label={'Broj telefona (Ex. 06573451664)'}
               />
-              {isOtherSelected && (
+              {selectedActionType === 5 && (
                 <Field
                   validateOnChange
                   component={FormikTextInput}

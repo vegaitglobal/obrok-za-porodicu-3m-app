@@ -2,7 +2,6 @@ import React from 'react';
 
 import {ScrollView, StyleSheet} from 'react-native';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
-import OPTagChips from '../components/molecules/OPTagChips/OPTagChips';
 import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
 import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {Colors} from '../constants/Colors';
@@ -12,13 +11,11 @@ const DonateScreen = () => {
     <>
       <OPHeader hasFilter={false} />
       <OPSubheader heading={'DONIRAJ'} items={[]} />
-
       <ScrollView
         bounces={false}
         style={styles.container}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}>
-        <OPTagChips />
         <OPDonateForm />
       </ScrollView>
     </>

@@ -13,7 +13,7 @@ interface OPTagChipProps {
   fill?: boolean;
   disabled?: boolean;
   style?: ViewStyle;
-  onPress?: (value: ActionType | string, color: string) => void;
+  onPress?: (value: ActionType | string, color?: string) => void;
 }
 
 const OPTagChip: React.FC<OPTagChipProps> = ({

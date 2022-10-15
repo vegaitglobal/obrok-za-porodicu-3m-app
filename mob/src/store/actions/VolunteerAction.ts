@@ -3,6 +3,7 @@ import {
   setAppliedVolunteerActions,
   setVolunteerActions,
   setVolunteerActionStatuses,
+  setVolunteerActionTypes,
 } from '../reducers/VolunteerActionReducer';
 import {ActionType} from '../../models/VolunteerAction/VolunteerActionDTO';
 import type {RootState} from '../../store/reducers/RootReducer';
@@ -39,4 +40,14 @@ export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
       dispatch(setVolunteerActionStatuses(res.data as VolunteerActionStatus[]));
     }
   });
+};
+
+export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
+  VolunteerActionsService.getVolunteerActionTypes().then(
+    (res: ResponseModel) => {
+      if (res) {
+        dispatch(setVolunteerActionTypes(res.data as Array<ActionType>));
+      }
+    },
+  );
 };
