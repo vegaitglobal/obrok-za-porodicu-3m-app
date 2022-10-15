@@ -53,5 +53,13 @@ namespace MealForFamily.Controllers
             VolunteerActionType model = _mapper.Map<VolunteerActionType>(request);
             return Ok(_mapper.Map<VolunteerActionTypeDTO>(await _volunteerActionTypeService.UpdateVolunteerActionType(model)));
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteVolunteerActionType(int id)
+        {
+            await _volunteerActionTypeService.DeleteVolunteerActionType(id);
+            return Ok("Volunteer Action Type deleted successfully");
+        }
     }
 }

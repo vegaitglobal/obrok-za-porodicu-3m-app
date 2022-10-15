@@ -21,7 +21,7 @@ namespace MealForFamily.Service
 
         public async Task<News> GetSingleById(int id)
         {
-            News news = await _newsRepository.GetById(id);
+            News news = await _newsRepository.GetSingleById(id);
             if (news == null)
                 throw new CustomException("News not found", 404);
 
@@ -40,11 +40,12 @@ namespace MealForFamily.Service
 
         public async Task DeleteNews(int id)
         {
-            News news = await GetSingleById(id);
+            News news = await _newsRepository.GetSingleById(id);
             if (news == null)
                 throw new CustomException("News not found", 404);
 
-            await _newsRepository.Delete(news);
+            news.IsDeleted = true;
+            await _newsRepository.Update(news);
         }
     }
 }

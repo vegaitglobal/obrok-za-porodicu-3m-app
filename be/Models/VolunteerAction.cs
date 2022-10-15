@@ -28,5 +28,7 @@ namespace MealForFamily.Models
         public string? ReferenceNumber { get; set; } = string.Empty;
 
         public ICollection<Donation>? Donations { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

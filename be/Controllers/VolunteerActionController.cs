@@ -66,5 +66,13 @@ namespace MealForFamily.Controllers
             model.Status = await _volunteerActionStatusService.GetSingleById(request.StatusId);
             return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.UpdateVolunteerAction(model)));
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteVolunteerAction(int id)
+        {
+            await _volunteerActionService.DeleteVolunteerAction(id);
+            return Ok("Volunteer Action deleted successfully");
+        }
     }
 }

@@ -46,7 +46,6 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<DonationDTO>(await _donationService.GetSingleById(id)));
         }
 
-        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateDonation(RequestDonationDTO request)
         {

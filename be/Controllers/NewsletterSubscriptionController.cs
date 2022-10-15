@@ -53,5 +53,13 @@ namespace MealForFamily.Controllers
             NewsletterSubscription model = _mapper.Map<NewsletterSubscription>(request);
             return Ok(_mapper.Map<NewsletterSubscriptionDTO>(await _newsletterSubscriptionService.UpdateNewsletterSubscription(model)));
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteNewsletterSubscription(int id)
+        {
+            await _newsletterSubscriptionService.DeleteNewsletterSubscription(id);
+            return Ok("Newsletter Subscription deleted successfully");
+        }
     }
 }
