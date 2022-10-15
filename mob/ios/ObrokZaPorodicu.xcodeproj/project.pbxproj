@@ -25,8 +25,6 @@
 		B6C6EC2CDE5B41048D7D1566 /* Dosis-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85ACBD9334C64B1896EAA2E1 /* Dosis-ExtraBold.ttf */; };
 		C952D0C328F9EC530029786F /* hermes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C952D0C228F9EC530029786F /* hermes.xcframework */; };
 		F9AFB55BA5E843CAB684625F /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 875381211C3345DD864D2B4C /* Inter-Regular.ttf */; };
-		6CAB006A9462469FAEE76CAB /* Bulldog Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B91AFE6D0054CF9848053DB /* Bulldog Medium.otf */; };
-		19CDE35ECF644CABA34598D2 /* dosis_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 348494856A7745C78F2B4B66 /* dosis_regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +66,6 @@
 		FB51DCBC9B154AF0BAA60CC6 /* Dosis-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Dosis-Bold.ttf"; path = "../assets/fonts/Dosis-Bold.ttf"; sourceTree = "<group>"; };
 		FEEC3CF18B41270DC9A6F01A /* Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; path = "Target Support Files/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests/Pods-ObrokZaPorodicu-ObrokZaPorodicuTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF4B4605F40F4401D6188E69 /* libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObrokZaPorodicu-ObrokZaPorodicuTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B91AFE6D0054CF9848053DB /* Bulldog Medium.otf */ = {isa = PBXFileReference; name = "Bulldog Medium.otf"; path = "../assets/fonts/Bulldog Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		348494856A7745C78F2B4B66 /* dosis_regular.otf */ = {isa = PBXFileReference; name = "dosis_regular.otf"; path = "../assets/fonts/dosis_regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +143,6 @@
 				85ACBD9334C64B1896EAA2E1 /* Dosis-ExtraBold.ttf */,
 				7900266BC259484CA768638D /* Dosis-SemiBold.ttf */,
 				875381211C3345DD864D2B4C /* Inter-Regular.ttf */,
-				5B91AFE6D0054CF9848053DB /* Bulldog Medium.otf */,
-				348494856A7745C78F2B4B66 /* dosis_regular.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -302,8 +296,6 @@
 				B6C6EC2CDE5B41048D7D1566 /* Dosis-ExtraBold.ttf in Resources */,
 				60C840239D2746AA854C5D3E /* Dosis-SemiBold.ttf in Resources */,
 				F9AFB55BA5E843CAB684625F /* Inter-Regular.ttf in Resources */,
-				6CAB006A9462469FAEE76CAB /* Bulldog Medium.otf in Resources */,
-				19CDE35ECF644CABA34598D2 /* dosis_regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
