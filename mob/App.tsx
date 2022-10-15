@@ -7,6 +7,8 @@ import {StatusBar} from 'react-native';
 import {useSelector} from 'react-redux';
 import {RootState} from './src/store/reducers/RootReducer';
 import {OnboardingNavigator} from './src/navigation/OnboardingNavigator';
+import Toast from 'react-native-toast-message';
+import {toastConfig} from './src/utils/toastConfig';
 
 import OPMessengerFloater from './src/components/atoms/OPMessengerFloater/OPMessengerFloater';
 
@@ -21,6 +23,7 @@ const App = () => {
         <>
           <TabNavigator />
           <OPMessengerFloater />
+          <Toast config={toastConfig} position={'bottom'} bottomOffset={0} />
         </>
       ) : (
         <OnboardingNavigator />

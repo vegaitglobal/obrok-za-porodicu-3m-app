@@ -3,6 +3,7 @@ import {
   setAppliedVolunteerActions,
   setVolunteerActions,
   setVolunteerActionStatuses,
+  setVolunteerActionTypes,
   setSearchTerm,
   clearFilters,
 } from '../reducers/VolunteerActionReducer';
@@ -11,6 +12,7 @@ import type {RootState} from '../../store/reducers/RootReducer';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
+import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
 
 export const setAppliedFilters =
   (newFilters: ActionType, color: string) =>
@@ -47,6 +49,16 @@ export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
       dispatch(setVolunteerActionStatuses(res.data as VolunteerActionStatus[]));
     }
   });
+};
+
+export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
+  VolunteerActionsService.getVolunteerActionTypes().then(
+    (res: ResponseModel) => {
+      if (res) {
+        dispatch(setVolunteerActionTypes(res.data as Array<ActionType>));
+      }
+    },
+  );
 };
 
 export const filterVolunteerActionsByTagsAndSearchTerm =

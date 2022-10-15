@@ -76,7 +76,7 @@ const TabNavigator = () => {
             return (
               <OPTabIcon
                 text={t('tabNavigator.donate')}
-                focused={focused}
+                focused={!focused}
                 type={'donate'}
               />
             );

@@ -1,6 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {AppliedVolunteerAction} from '../../models/VolunteerAction/AppliedVolunteerAction';
-import {VolunteerActionDTO} from '../../models/VolunteerAction/VolunteerActionDTO';
+import {
+  ActionType,
+  VolunteerActionDTO,
+} from '../../models/VolunteerAction/VolunteerActionDTO';
 import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
 
@@ -12,6 +15,7 @@ interface VolunteerActionState {
   searchTerm: string;
   appliedVolunteerActions: AppliedVolunteerAction;
   volunteerActionStatuses: Array<VolunteerActionStatus>;
+  volunteerActionTypes: Array<ActionType>;
 }
 
 const initialState: VolunteerActionState = {
@@ -22,6 +26,7 @@ const initialState: VolunteerActionState = {
   totalData: 0,
   totalPages: 0,
   volunteerActionStatuses: [],
+  volunteerActionTypes: [],
 };
 
 const volunteerActionsSlice = createSlice({
@@ -54,6 +59,12 @@ const volunteerActionsSlice = createSlice({
       state.totalData = payload.pagination.totalResults;
       state.totalPages = payload.pagination.totalPages;
     },
+    setVolunteerActionTypes(
+      state,
+      {payload}: PayloadAction<Array<ActionType>>,
+    ) {
+      state.volunteerActionTypes = payload;
+    },
     setVolunteerActionStatuses(
       state,
       {payload}: PayloadAction<VolunteerActionStatus[]>,
@@ -66,6 +77,7 @@ const volunteerActionsSlice = createSlice({
 export const {
   setAppliedVolunteerActions,
   setVolunteerActions,
+  setVolunteerActionTypes,
   setVolunteerActionStatuses,
   setSearchTerm,
   clearFilters,
