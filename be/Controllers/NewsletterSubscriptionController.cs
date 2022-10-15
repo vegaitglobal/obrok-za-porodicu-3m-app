@@ -3,7 +3,7 @@ using MealForFamily.ServiceInterface;
 
 namespace MealForFamily.Controllers
 {
-    [Route("api/newsletter-subscription")]
+    [Route("api/newsletter-subscriptions")]
     [ApiController]
     public class NewsletterSubscriptionController : BaseController
     {
