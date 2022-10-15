@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {configureStore} from '@reduxjs/toolkit';
+import {AnyAction, configureStore, ThunkDispatch} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
 import {persistReducer, persistStore} from 'redux-persist';
 import thunkMiddleware from 'redux-thunk';
 
-import rootReducer from './reducers/RootReducer';
+import rootReducer, {RootState} from './reducers/RootReducer';
 
 const persistConfig = {
   key: 'root',
@@ -20,6 +20,9 @@ const store = configureStore({
 
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
+
+export type AppThunkDispatch = ThunkDispatch<RootState, any, AnyAction>;
+export const useAppThunkDispatch = () => useDispatch<AppThunkDispatch>();
 
 export default store;
 export const persistor = persistStore(store);
