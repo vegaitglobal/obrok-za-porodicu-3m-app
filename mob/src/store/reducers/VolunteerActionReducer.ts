@@ -6,7 +6,7 @@ interface VolunteerActionState {
 }
 
 const initialState: VolunteerActionState = {
-  appliedVolunteerActions: {id: {name: 'e', color: 'red'}},
+  appliedVolunteerActions: {},
 };
 
 const volunteerActionsSlice = createSlice({
