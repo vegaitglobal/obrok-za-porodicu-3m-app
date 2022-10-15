@@ -1,6 +1,6 @@
 namespace MealForFamily.Dtos
 {
-    public class NewsDTO
+    public class RequestNewsDTO
     {
         public int Id { get; set; }
         public string? ImageURL { get; set; } = string.Empty;

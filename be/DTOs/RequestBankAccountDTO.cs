@@ -1,6 +1,6 @@
 namespace MealForFamily.Dtos
 {
-    public class BankAccountDTO
+    public class RequestBankAccountDTO
     {
         public int Id { get; set; }
         public string ReceiverName { get; set; } = string.Empty;

@@ -23,5 +23,13 @@ namespace MealForFamily.Service
         {
             return await _newsRepository.GetById(id);
         }
+
+        public async Task<News> CreateNews(News news) {
+            return await _newsRepository.Create(news);
+        }
+
+        public async Task<News> UpdateNews(News news) {
+            return await _newsRepository.Update(news);
+        }
     }
 }

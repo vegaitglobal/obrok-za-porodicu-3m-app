@@ -1,5 +1,8 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MealForFamily.ServiceInterface;
+using MealForFamily.Dtos;
+using MealForFamily.Models;
 
 namespace MealForFamily.Controllers
 {
@@ -8,10 +11,12 @@ namespace MealForFamily.Controllers
     public class VolunteerActionStatusController : BaseController
     {
         private readonly IVolunteerActionStatusService _volunteerActionStatusService;
+        private readonly IMapper _mapper;
 
-        public VolunteerActionStatusController(IVolunteerActionStatusService volunteerActionStatusService)
+        public VolunteerActionStatusController(IVolunteerActionStatusService volunteerActionStatusService, IMapper mapper)
         {
             _volunteerActionStatusService = volunteerActionStatusService;
+            _mapper = mapper;
         }
 
         [HttpGet("")]
@@ -20,10 +25,35 @@ namespace MealForFamily.Controllers
             return Ok(await _volunteerActionStatusService.GetVolunteerActionStatuses());
         }
 
-        [HttpGet("campaign/{id:int}")]
+        [HttpGet("/{id:int}")]
         public async Task<IActionResult> GetSingleVolunteerActionStatus([FromRoute] int id)
         {
             return Ok(await _volunteerActionStatusService.GetSingleById(id));
+        }
+
+        [HttpPost("/create")]
+        public async Task<IActionResult> CreateVolunteerActionStatus(RequestVolunteerActionStatusDTO request)
+        {
+            // TODO: Fix AutoMapper
+            // VolunteerActionStatus model = _mapper.Map<RequestVolunteerActionStatusDTO>(request);
+
+            VolunteerActionStatus model = new();
+            model.Name = request.Name;
+
+            return Ok(await _volunteerActionStatusService.CreateVolunteerActionStatus(model));
+        }
+
+        [HttpPost("/update")]
+        public async Task<IActionResult> UpdateVolunteerActionStatus(RequestVolunteerActionStatusDTO request)
+        {
+            // TODO: Fix AutoMapper
+            // VolunteerActionStatus model = _mapper.Map<RequestVolunteerActionStatusDTO>(request);
+
+            VolunteerActionStatus model = new();
+            model.Id = request.Id;
+            model.Name = request.Name;
+
+            return Ok(await _volunteerActionStatusService.UpdateVolunteerActionStatus(model));
         }
     }
 }

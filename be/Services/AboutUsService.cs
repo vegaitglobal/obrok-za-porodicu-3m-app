@@ -18,5 +18,9 @@ namespace MealForFamily.Service
         {
             return await _aboutUsRepository.GetAboutUs();
         }
+
+        public async Task<AboutUs> UpdateAboutUs(AboutUs au) {
+            return await _aboutUsRepository.Update(au);
+        }
     }
 }

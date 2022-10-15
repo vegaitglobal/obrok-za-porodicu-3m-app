@@ -1,10 +1,8 @@
 namespace MealForFamily.Dtos
 {
-    public class VolunteerActionTypeDTO
+    public class RequestVolunteerActionStatusDTO
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public bool HasPickup { get; set; }
-        public bool HasPayment { get; set; }
     }
 }

@@ -18,5 +18,9 @@ namespace MealForFamily.Service
         {
             return await _bankAccountRepository.GetBankAccount();
         }
+
+        public async Task<BankAccount> UpdateBankAccount(BankAccount ba) {
+            return await _bankAccountRepository.Update(ba);
+        }
     }
 }

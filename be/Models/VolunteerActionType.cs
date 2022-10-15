@@ -7,8 +7,12 @@ namespace MealForFamily.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; } = string.Empty;
-        public bool HasPickup { get; set; }
-        public bool HasPayment { get; set; }
+
+        public bool? HasPickup { get; set; } = true;
+
+        public bool? HasPayment { get; set; } = false;
     }
 }

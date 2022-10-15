@@ -1,11 +1,11 @@
 using MealForFamily.Models;
 
-namespace MealForFamily.ServiceInterface
+namespace MealForFamily.RepositoryInterface
 {
-    public interface INewsletterSubscriptionService
+    public interface INewsletterSubscriptionRepository : IRepository<NewsletterSubscription>
     {
         Task<List<NewsletterSubscription>> GetNewsletterSubscriptions();
-        
+
         Task<NewsletterSubscription> GetSingleById(int id);
     }
 }

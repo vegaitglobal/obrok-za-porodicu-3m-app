@@ -1,5 +1,8 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MealForFamily.ServiceInterface;
+using MealForFamily.Dtos;
+using MealForFamily.Models;
 
 namespace MealForFamily.Controllers
 {
@@ -8,10 +11,12 @@ namespace MealForFamily.Controllers
     public class NewsletterSubscriptionController : BaseController
     {
         private readonly INewsletterSubscriptionService _newsletterSubscriptionService;
+        private readonly IMapper _mapper;
 
-        public NewsletterSubscriptionController(INewsletterSubscriptionService newsletterSubscriptionService)
+        public NewsletterSubscriptionController(INewsletterSubscriptionService newsletterSubscriptionService, IMapper mapper)
         {
             _newsletterSubscriptionService = newsletterSubscriptionService;
+            _mapper = mapper;
         }
 
         [HttpGet("")]
@@ -20,10 +25,35 @@ namespace MealForFamily.Controllers
             return Ok(await _newsletterSubscriptionService.GetNewsletterSubscriptions());
         }
 
-        [HttpGet("campaign/{id:int}")]
+        [HttpGet("/{id:int}")]
         public async Task<IActionResult> GetSingleNewsletterSubscription([FromRoute] int id)
         {
             return Ok(await _newsletterSubscriptionService.GetSingleById(id));
+        }
+
+        [HttpPost("/create")]
+        public async Task<IActionResult> CreateNewsletterSubscription(RequestNewsletterSubscriptionDTO request)
+        {
+            // TODO: Fix AutoMapper
+            // NewsletterSubscription model = _mapper.Map<RequestNewsletterSubscriptionDTO>(request);
+
+            NewsletterSubscription model = new();
+            model.Email = request.Email;
+
+            return Ok(await _newsletterSubscriptionService.CreateNewsletterSubscription(model));
+        }
+
+        [HttpPost("/update")]
+        public async Task<IActionResult> UpdateNewsletterSubscription(RequestNewsletterSubscriptionDTO request)
+        {
+            // TODO: Fix AutoMapper
+            // NewsletterSubscription model = _mapper.Map<RequestNewsletterSubscriptionDTO>(request);
+
+            NewsletterSubscription model = new();
+            model.Id = request.Id;
+            model.Email = request.Email;
+
+            return Ok(await _newsletterSubscriptionService.UpdateNewsletterSubscription(model));
         }
     }
 }

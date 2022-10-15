@@ -1,6 +1,6 @@
 namespace MealForFamily.Dtos
 {
-    public class AboutUsDTO
+    public class RequestAboutUsDTO
     {
         public int Id { get; set; }
         public string RawDescription { get; set; } = string.Empty;

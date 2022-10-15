@@ -23,5 +23,13 @@ namespace MealForFamily.Service
         {
             return await _volunteerActionRepository.GetById(id);
         }
+
+        public async Task<VolunteerAction> CreateVolunteerAction(VolunteerAction va) {
+            return await _volunteerActionRepository.Create(va);
+        }
+
+        public async Task<VolunteerAction> UpdateVolunteerAction(VolunteerAction va) {
+            return await _volunteerActionRepository.Update(va);
+        }
     }
 }
