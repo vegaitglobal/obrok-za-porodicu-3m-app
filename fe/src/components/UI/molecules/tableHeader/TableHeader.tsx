@@ -2,7 +2,7 @@ interface Props {
     headers: Array<string>;
 }
 
-export function TableHeader({ headers }: Props): JSX.Element {
+const TableHeader: React.FC<Props> = ({ headers }) => {
     return (
         <tr>
             {headers.map((header, headerIndex) => (
@@ -12,4 +12,6 @@ export function TableHeader({ headers }: Props): JSX.Element {
             ))}
         </tr>
     );
-  }
+}
+
+export default TableHeader;

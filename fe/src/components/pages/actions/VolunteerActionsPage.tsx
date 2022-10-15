@@ -2,7 +2,7 @@ import OPSearchBar from "../../UI/atoms/searchBar/OPSearchBar";
 import Header from "../../UI/molecules/header/OPHeader";
 import OPCarditemList from "../../UI/organisms/cardItemList/OPCarditemList";
 import classes from "./VolunteerActionsPage.module.scss";
-import { Table } from "../../UI/molecules/table/Table";
+import Table from "../../UI/molecules/table/Table";
 
 
 const data: any = [

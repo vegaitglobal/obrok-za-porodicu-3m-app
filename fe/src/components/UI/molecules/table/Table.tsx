@@ -1,5 +1,5 @@
-import { TableHeader } from "../tableHeader/TableHeader";
-import { TableRow } from "../tableRow/TableRow";
+import TableHeader from "../tableHeader/TableHeader";
+import TableRow from "../tableRow/TableRow";
 import classes from "./Table.module.scss";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
     columns: Array<string>;
 }
 
-export function Table({ headers, data, columns }: Props): JSX.Element {
+const Table: React.FC<Props> = ({ headers, data, columns }) => {
     return (
         <table className={classes}>
             <thead>
@@ -21,4 +21,6 @@ export function Table({ headers, data, columns }: Props): JSX.Element {
             </tbody>
         </table>
     );
-  }
+}
+
+export default Table;

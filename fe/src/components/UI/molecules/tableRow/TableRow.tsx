@@ -3,7 +3,7 @@ interface Props {
     columns: Array<string>;
 }
 
-export function TableRow({ item, columns }: Props): JSX.Element {
+const TableRow: React.FC<Props> = ({ item, columns }) => {
     return (
         <tr key={`table-row-${item.id}`}>
             {columns.map((column, columnIndex) => (
@@ -13,4 +13,6 @@ export function TableRow({ item, columns }: Props): JSX.Element {
             ))}
         </tr>
     );
-  }
+}
+
+export default TableRow;
