@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {ResponseModel} from '../models/ResponseModel';
 import {BASE_URL} from '../constants/BaseUrl';
-import crashlytics from '@react-native-firebase/crashlytics';
+import {logIfOnline} from '../utils/logging';
 
 interface IContactService {
   getContacts(): Promise<ResponseModel | null>;
@@ -17,7 +17,7 @@ class ContactService implements IContactService {
         data: response.data,
       };
     } catch (error: any) {
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       return Promise.reject(error);
     }
   }

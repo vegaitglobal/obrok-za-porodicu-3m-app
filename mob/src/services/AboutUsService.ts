@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
-import crashlytics from '@react-native-firebase/crashlytics';
+import {logIfOnline} from '../utils/logging';
 
 interface IAboutUsService {
   getAboutUs(): Promise<ResponseModel | null>;
@@ -16,7 +16,7 @@ class AboutUsService implements IAboutUsService {
         code: 200,
       };
     } catch (error: any) {
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       console.log(error);
       return Promise.reject(error);
     }
@@ -36,7 +36,7 @@ export class MockAboutUsService implements IAboutUsService {
         },
       });
     } catch (error: any) {
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       return Promise.reject(error);
     }
   }

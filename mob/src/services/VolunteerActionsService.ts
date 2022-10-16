@@ -2,7 +2,7 @@ import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
 import {FilterVolunteerActionsType} from '../models/VolunteerAction/AppliedVolunteerAction';
-import crashlytics from '@react-native-firebase/crashlytics';
+import {logIfOnline} from '../utils/logging';
 
 interface IVolunteerActionService {
   getActions(page: number): Promise<ResponseModel>;
@@ -22,7 +22,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error: any) {
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       console.log(error);
       return Promise.reject(error);
     }
@@ -39,7 +39,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error: any) {
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       console.log(error);
       return Promise.reject(error);
     }
@@ -55,7 +55,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error: any) {
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       console.log(error);
       return Promise.reject(error);
     }
@@ -75,7 +75,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error: any) {
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       console.log(error);
       return Promise.reject(error);
     }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
-import crashlytics from '@react-native-firebase/crashlytics';
+import {logIfOnline} from '../utils/logging';
 
 interface INewsService {
   getNews(page: number): Promise<ResponseModel>;
@@ -19,7 +19,7 @@ class NewsService implements INewsService {
       };
     } catch (error: any) {
       console.log(error);
-      crashlytics().log(error.toString());
+      logIfOnline(error);
       return Promise.reject(error);
     }
   }
