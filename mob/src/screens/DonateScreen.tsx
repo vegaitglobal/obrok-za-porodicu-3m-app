@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 import {ScrollView, StyleSheet} from 'react-native';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
@@ -7,16 +7,26 @@ import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {Colors} from '../constants/Colors';
 
 const DonateScreen = () => {
+  const scrollRef = useRef<any>(null);
+
+  const handleScrollToTop = () => {
+    scrollRef.current?.scrollTo({
+      y: 0,
+      animated: true,
+    });
+  };
+
   return (
     <>
       <OPHeader hasFilter={false} />
-      <OPSubheader heading={'DONIRAJ'} items={[]} />
+      <OPSubheader heading={'DONIRAJ'} showDropdown={false} />
       <ScrollView
+        ref={scrollRef}
         bounces={false}
         style={styles.container}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}>
-        <OPDonateForm />
+        <OPDonateForm onScrollToTop={handleScrollToTop} />
       </ScrollView>
     </>
   );
