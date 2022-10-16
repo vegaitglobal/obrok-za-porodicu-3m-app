@@ -3,5 +3,13 @@
 $borderRadius: 7px;
 
 body {
+  font-family: "Dosis", sans-serif;
+  --bs-body-font-family: "Dosis", sans-serif;
+  font-weight: 600;
+  --bs-body-font-weight: 600;
   background-color: $background;
+}
+
+p {
+	margin: 0;
 }

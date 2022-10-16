@@ -23,17 +23,19 @@ class AboutUsService implements IAboutUsService {
   }
 
   async subscribeToNewsLetters(email: string): Promise<ResponseModel> {
-    // try {
-    // const response = await axios.get(`${BASE_URL}/api/about-us`);
-    return {
-      data: 'response.data',
-      code: 200,
-    };
-    // } catch (error) {
-    //   logIfOnline(error);
-    //   console.log(error);
-    //   return Promise.reject(error);
-    // }
+    try {
+      await axios.post(`${BASE_URL}/api/newsletter-subscriptions`, {
+        email: email,
+      });
+      return {
+        data: true,
+        code: 200,
+      };
+    } catch (error) {
+      logIfOnline(error);
+      console.log(error);
+      return Promise.reject(error);
+    }
   }
 }
 
