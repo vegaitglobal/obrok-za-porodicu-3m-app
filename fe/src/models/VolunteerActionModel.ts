@@ -4,7 +4,7 @@ import { StatusModel } from "./StatusModel";
 export interface VolunteerActionModel {
   id: number;
   type: TypeModel;
-  imageUrl: string;
+  imageURL: string;
   title: string;
   status: StatusModel;
   shortDescription: string;

@@ -12,21 +12,29 @@ import {
   ADD_CONTACT,
   UPDATE_CONTACT,
   DELETE_DONATION,
+  GET_VOLUNTEER_ACTIONS,
 } from "../actions/actionTypes";
 import { handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation } from "./donationSaga";
-import { handleAddContact, handleDeleteContact, handleGetContacts, handleUpdateContact } from "./contactsSaga";
+import {
+  handleAddContact,
+  handleDeleteContact,
+  handleGetContacts,
+  handleUpdateContact,
+} from "./contactsSaga";
 import {
   handleDeleteActionType,
   handleGetVolunteerActionTypes,
   handleAddVolunteerActionType,
-  handleUpdateVolunteerActionType
+  handleUpdateVolunteerActionType,
 } from "./volunteerActionTypesSaga";
+import { handleGetVolunteerActions } from "./volunteerActionSaga";
 
 export default function* rootSaga() {
   yield all([
     takeLatest(LOGIN, handleLogin),
     takeLatest(LOGOUT, handleLogout),
+    takeLatest(GET_VOLUNTEER_ACTIONS, handleGetVolunteerActions),
     takeLatest(GET_VOLUNTEER_ACTION_TYPES, handleGetVolunteerActionTypes),
     takeLatest(DELETE_VOLUNTEER_ACTION_TYPE, handleDeleteActionType),
     takeLatest(GET_CONTACTS, handleGetContacts),
