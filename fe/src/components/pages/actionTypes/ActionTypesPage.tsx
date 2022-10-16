@@ -9,9 +9,9 @@ import { getVolunteerActionTypes } from "../../../store/actions/volunteerActionT
 import ActionTypeModal from '../../UI/molecules/actionTypeModal/ActionTypeModal';
 import {useState} from 'react';
 
-const headers: string[] = ["Name", "Has pickup", "Has payment"];
+const headers: string[] = ["Name", "Has pickup", "Has payment", "Actions"];
 
-const columnsToRender: string[] = ["name", "hasPickup", "hasPayment"];
+const columnsToRender: string[] = ["name", "hasPickup", "hasPayment", "actions"];
 
 const ActionTypesPage = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const ActionTypesPage = () => {
       hasPayment: hasPayment
     };
     setModalShow(false);
-    console.log(data)
+    console.log(data);
     //dispatch
   };
 
