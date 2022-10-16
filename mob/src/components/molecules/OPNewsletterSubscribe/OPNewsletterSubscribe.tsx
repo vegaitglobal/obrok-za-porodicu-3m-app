@@ -35,7 +35,7 @@ const OPNewsletterSubscribe: React.FC<OPNewsletterSubscribeProps> = ({
           resetForm();
         }}>
         {({handleSubmit}) => (
-          <>
+          <View style={styles.formik}>
             <Field
               validateOnChange
               component={FormikTextInput}
@@ -48,7 +48,7 @@ const OPNewsletterSubscribe: React.FC<OPNewsletterSubscribeProps> = ({
               text={'PRIJAVA'}
               onPress={handleSubmit}
             />
-          </>
+          </View>
         )}
       </Formik>
     </View>

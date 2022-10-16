@@ -23,56 +23,6 @@ import {useDispatch} from 'react-redux';
 import {styles} from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const volunteerActions: string | any[] = [
-  {
-    id: 1,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 2,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 3,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 4,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 5,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 6,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 7,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 8,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-];
 interface OPHeaderProps {
   filterTitle?: string;
   buttonTitle?: string;

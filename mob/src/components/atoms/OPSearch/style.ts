@@ -1,4 +1,4 @@
-import {StyleSheet, ViewStyle} from 'react-native';
+import {Platform, StyleSheet, ViewStyle} from 'react-native';
 import {Colors} from '../../../constants/Colors';
 import {TextStyles} from '../../../constants/TextStyles';
 
@@ -17,5 +17,6 @@ export const styles = StyleSheet.create({
     color: Colors.LIGHTER_GRAY,
     marginLeft: 8,
     fontSize: 14,
+    height: Platform.OS === 'android' ? 40 : 20,
   } as ViewStyle,
 });
