@@ -59,7 +59,6 @@ const DonationPage = () => {
     console.log("CLICK");
   };
 
-
   return (
     <div className={globalClasses["page-wrapper"]}>
       <Header />
@@ -67,7 +66,7 @@ const DonationPage = () => {
         <div className={globalClasses["content"]}>
           <p className={classes["paragraph"]}>
             <div className={globalClasses["add-wrapper"]}>
-              <p className={globalClasses["add-text"]}>Add Contact</p>
+              <p className={globalClasses["add-text"]}>Add Donation</p>
               <button
                 className={globalClasses["add-button"]}
                 onClick={() => {}}
@@ -78,12 +77,14 @@ const DonationPage = () => {
             <div className={classes["table-wrapper"]}>
               <Table
                 headers={headers}
-                data={donations.map((donation: { volunteerActionType: { name: any; }; }) => ({
-                  ...donation,
-                  name: donation.volunteerActionType
-                    ? donation.volunteerActionType.name
-                    : "/",
-                }))}
+                data={donations.map(
+                  (donation: { volunteerActionType: { name: any } }) => ({
+                    ...donation,
+                    name: donation.volunteerActionType
+                      ? donation.volunteerActionType.name
+                      : "/",
+                  })
+                )}
                 columns={columnsToRender}
                 deleteHandler={showDeleteModal}
                 onClickEdit={handleClickEdit}
