@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {NewsDTO} from '../../models/News/NewsDTO';
+import {NewsModel} from '../../models/News/NewsModel';
 import {NewsPageModel} from '../../models/News/NewsPageModel';
 
 interface NewsState {
@@ -7,6 +8,7 @@ interface NewsState {
   currentPage: number;
   totalData: number;
   totalPages: number;
+  currentNews: NewsModel | undefined;
 }
 
 const initialState: NewsState = {
@@ -14,6 +16,7 @@ const initialState: NewsState = {
   currentPage: 0,
   totalData: 0,
   totalPages: 0,
+  currentNews: undefined,
 };
 
 const newsSlice = createSlice({
@@ -30,9 +33,15 @@ const newsSlice = createSlice({
       state.totalData = payload.pagination.totalResults;
       state.totalPages = payload.pagination.totalPages;
     },
+    setCurrentNews(state, {payload}: PayloadAction<NewsModel>) {
+      state.currentNews = payload;
+    },
+    resetCurrentNews(state) {
+      state.currentNews = undefined;
+    },
   },
 });
 
-export const {setNews} = newsSlice.actions;
+export const {setNews, setCurrentNews, resetCurrentNews} = newsSlice.actions;
 
 export default newsSlice.reducer;

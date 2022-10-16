@@ -19,11 +19,13 @@ const DEFAULT_TAG_STYLES = {
     fontSize: 16,
     fontFamily: TextStyles.DOSIS_REGULAR.fontFamily,
     fontWeight: 'normal',
+    paddingHorizontal: 15,
   },
   h1: {
     fontSize: 18,
     fontFamily: TextStyles.DOSIS_EXTRA_BOLD.fontFamily,
     fontWeight: '800',
+    paddingHorizontal: 15,
   },
 };
 
