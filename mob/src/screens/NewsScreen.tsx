@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   ActivityIndicator,
+  RefreshControl,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -15,17 +16,19 @@ import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import {Colors} from '../constants/Colors';
 import {TextStyles} from '../constants/TextStyles';
 import {NewsScreenProps} from '../navigation/NewsNavigator';
+import {getNewsById} from '../store/actions/NewsAction';
 import {resetCurrentNews} from '../store/reducers/NewsReducer';
 import {RootState} from '../store/reducers/RootReducer';
 
 const NewsScreen: React.FC<NewsScreenProps> = ({navigation}) => {
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
   const {t} = useTranslation();
   const {currentNews} = useSelector((state: RootState) => state.news);
+  const [refreshing, setRefreshing] = useState<boolean>(false);
 
   if (!currentNews) {
     return (
-      <View>
+      <View style={styles.indicator}>
         <ActivityIndicator size={'large'} />
       </View>
     );
@@ -36,6 +39,12 @@ const NewsScreen: React.FC<NewsScreenProps> = ({navigation}) => {
     navigation.goBack();
   };
 
+  const handleRefresh = () => {
+    setRefreshing(true);
+    currentNews && dispatch(getNewsById(currentNews.id));
+    setRefreshing(false);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <OPSubheader
@@ -44,7 +53,10 @@ const NewsScreen: React.FC<NewsScreenProps> = ({navigation}) => {
         onBackPressed={handleGoBack}
         showDropdown={false}
       />
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+        }>
         {currentNews?.imageURL && (
           <OPImage
             source={{uri: currentNews?.imageURL}}
@@ -66,9 +78,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  indicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   htmlContainer: {
     marginTop: 20,
-    paddingBottom: 16,
+    paddingBottom: 100,
+    paddingHorizontal: 15,
   },
   images: {
     width: '100%',

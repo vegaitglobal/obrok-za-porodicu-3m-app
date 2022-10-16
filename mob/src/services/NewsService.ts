@@ -26,7 +26,6 @@ class NewsService implements INewsService {
   async getNewsById(id: number): Promise<ResponseModel> {
     try {
       const response = await axios.get(`${BASE_URL}/api/news/${id}`);
-      console.log(response.data);
 
       return {
         data: response.data,
