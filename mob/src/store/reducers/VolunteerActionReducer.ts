@@ -42,6 +42,7 @@ const initialState: VolunteerActionState = {
       id: -1,
       name: '',
     },
+    description: '',
   },
   isLoading: false,
 };
@@ -108,6 +109,7 @@ const volunteerActionsSlice = createSlice({
           id: -1,
           name: '',
         },
+        description: '',
       };
     },
     setIsLoading(state, {payload}: PayloadAction<boolean>) {

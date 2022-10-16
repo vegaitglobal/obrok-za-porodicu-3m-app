@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
+import OPHtml from '../components/atoms/OPHtml/OPHtml';
 import OPImage from '../components/atoms/OPImage/OPImage';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import OPTagChip from '../components/atoms/OPTagChip/OPTagChip';
@@ -25,19 +26,19 @@ interface IActionProps {
 }
 
 const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
+  const {actionId} = route?.params;
   const dispatch = useDispatch<any>();
 
   const {currentVolunteerAction, isLoading} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
-  console.log(currentVolunteerAction);
 
   useEffect(() => {
-    dispatch(getVolunteerAction(route.actionId));
-  }, [route, dispatch]);
+    dispatch(getVolunteerAction(actionId));
+  }, [actionId, dispatch]);
 
   const handleRefresh = () => {
-    dispatch(getVolunteerAction(route.actionId));
+    dispatch(getVolunteerAction(actionId));
   };
 
   if (currentVolunteerAction.id === -1) {
@@ -79,9 +80,17 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
             </Text>
           </View>
         </View>
-        {/* <View style={styles.htmlContainer}>
-          <OPHtml html={currentVolunteerAction?.html} />
-        </View> */}
+        <View style={styles.htmlContainer}>
+          <OPHtml html={currentVolunteerAction?.description} />
+        </View>
+        <View>
+          <Text style={styles.title}>PRIJAVITE SE DA DONIRATE</Text>
+          <Text style={styles.body}>
+            Želite da se prijavite za donaciju? To možete uraditi tako što ćete
+            popuniti formu ispod i Vaš zahtev za donaciju će biti uredno
+            zabeležen, a na email ćete dobiti dalja uputstva.
+          </Text>
+        </View>
         <OPDonateForm actionType={currentVolunteerAction?.type?.id} />
       </ScrollView>
     </SafeAreaView>
@@ -100,6 +109,7 @@ const styles = StyleSheet.create({
   },
   htmlContainer: {
     paddingBottom: 16,
+    marginHorizontal: 15,
   },
   chipContainer: {
     alignItems: 'flex-start',
@@ -136,6 +146,21 @@ const styles = StyleSheet.create({
   },
   loader: {
     flex: 1,
+  },
+  title: {
+    ...TextStyles.CHEWY_REGULAR,
+    textAlign: 'center',
+    fontSize: 18,
+    color: Colors.BROWN,
+    paddingBottom: 16,
+    marginTop: 20,
+  },
+  body: {
+    ...TextStyles.DOSIS_REGULAR,
+    textAlign: 'center',
+    fontSize: 14,
+    color: Colors.DARK_GRAY,
+    paddingHorizontal: 10,
   },
 });
 

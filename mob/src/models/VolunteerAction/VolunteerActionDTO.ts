@@ -6,6 +6,7 @@ export interface VolunteerActionDTO {
   status: ActionStatus;
   shortDescription: string;
   referenceNumber?: string;
+  description: string;
 }
 
 export interface ActionType {
