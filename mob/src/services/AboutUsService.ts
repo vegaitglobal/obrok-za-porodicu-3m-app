@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
-import {logIfOnline} from '../utils/logging';
 
 interface IAboutUsService {
   getAboutUs(): Promise<ResponseModel | null>;
@@ -15,8 +14,7 @@ class AboutUsService implements IAboutUsService {
         data: response.data,
         code: 200,
       };
-    } catch (error: any) {
-      logIfOnline(error);
+    } catch (error) {
       console.log(error);
       return Promise.reject(error);
     }
@@ -32,7 +30,6 @@ class AboutUsService implements IAboutUsService {
         code: 200,
       };
     } catch (error) {
-      logIfOnline(error);
       console.log(error);
       return Promise.reject(error);
     }
