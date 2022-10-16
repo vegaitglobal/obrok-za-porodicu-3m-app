@@ -21,4 +21,10 @@ export const styles = StyleSheet.create({
   divider: {
     width: 8,
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'space-between',
+    marginBottom: 5,
+  },
 });

@@ -1669,6 +1669,11 @@
   resolved "https://registry.npmjs.org/@react-native-community/masked-view/-/masked-view-0.1.11.tgz#2f4c6e10bee0786abff4604e39a37ded6f3980ce"
   integrity sha512-rQfMIGSR/1r/SyN87+VD8xHHzDYeHaJq6elOSCAD+0iLagXkSI2pfA0LmSXP21uw5i3em7GkkRjfJ8wpqWXZNw==
 
+"@react-native-firebase/analytics@^15.7.0":
+  version "15.7.0"
+  resolved "https://registry.npmjs.org/@react-native-firebase/analytics/-/analytics-15.7.0.tgz#1e7d52fdaa762be48da85bc542bafdd549269f67"
+  integrity sha512-ZAS59mpl9AwRdgLl5n3RbKi1zhmlhPQcmkh4ZF+kCoXifHLkiYm9BghhP7QOh8qqrO/czXq8WNKAzvaBjTwsRg==
+
 "@react-native-firebase/app@^15.7.0":
   version "15.7.0"
   resolved "https://registry.npmjs.org/@react-native-firebase/app/-/app-15.7.0.tgz#0649cf398b7675b67d75f07756b51918ae20f450"

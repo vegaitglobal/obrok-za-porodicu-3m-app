@@ -12,6 +12,7 @@ import {toastConfig} from './src/utils/toastConfig';
 
 import OPMessengerFloater from './src/components/atoms/OPMessengerFloater/OPMessengerFloater';
 import {logScreen} from './src/utils/analytics';
+import {AppRoute} from './src/navigation/Routes';
 
 const App = () => {
   const routeNameRef = useRef<string>();
@@ -39,7 +40,8 @@ const App = () => {
       {isOnboarded ? (
         <>
           <TabNavigator />
-          <OPMessengerFloater />
+          {navigationRef.current?.getCurrentRoute().name !==
+            AppRoute.DONATE_SCREEN && <OPMessengerFloater />}
           <Toast config={toastConfig} position={'bottom'} bottomOffset={0} />
         </>
       ) : (
