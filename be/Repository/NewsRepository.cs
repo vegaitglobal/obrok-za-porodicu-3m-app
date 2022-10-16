@@ -20,8 +20,12 @@ namespace MealForFamily.Repositories
             int totalCount = _context.Set<News>().Where(n => n.IsDeleted == false).Count();
 
             // TODO: Add OrderBy
-            IEnumerable<News> content = await _context.Set<News>().Where(n => n.IsDeleted == false)
-                .Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
+            IEnumerable<News> content = await _context.Set<News>()
+                .Where(n => n.IsDeleted == false)
+                .OrderByDescending(p => p.Id)
+                .Skip(GetNumberOfElements(pageNumber, pageSize))
+                .Take(pageSize)
+                .ToListAsync();
 
             return createPage(pageNumber, pageSize, totalCount, content);
         }
