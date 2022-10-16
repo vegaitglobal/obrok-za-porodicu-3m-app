@@ -78,5 +78,7 @@
 		<string>telprompt</string>
 		<string>mailto</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
