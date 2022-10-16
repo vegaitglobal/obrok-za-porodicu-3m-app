@@ -38,7 +38,8 @@ class VolunteerActionService implements IVolunteerActionService {
         data: response.data,
         code: 200,
       };
-    } catch (error) {
+    } catch (error: any) {
+      crashlytics().log(error.toString());
       console.log(error);
       return Promise.reject(error);
     }
@@ -53,7 +54,8 @@ class VolunteerActionService implements IVolunteerActionService {
         data: response.data,
         code: 200,
       };
-    } catch (error) {
+    } catch (error: any) {
+      crashlytics().log(error.toString());
       console.log(error);
       return Promise.reject(error);
     }
