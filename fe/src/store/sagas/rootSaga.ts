@@ -9,10 +9,13 @@ import {
   LOGIN,
   LOGOUT,
   UPDATE_VOLUNTEER_ACTION_TYPE,
+  ADD_CONTACT,
+  UPDATE_CONTACT,
+  DELETE_DONATION,
 } from "../actions/actionTypes";
 import { handleLogin, handleLogout } from "./authSaga";
-import { handleDeleteContact, handleGetContacts } from "./contactsSaga";
-import { handleGetDonations } from "./donationSaga";
+import { handleGetDonations, handleDeleteDonation } from "./donationSaga";
+import { handleAddContact, handleDeleteContact, handleGetContacts, handleUpdateContact } from "./contactsSaga";
 import {
   handleDeleteActionType,
   handleGetVolunteerActionTypes,
@@ -31,5 +34,8 @@ export default function* rootSaga() {
     takeLatest(ADD_VOLUNTEER_ACTION_TYPE, handleAddVolunteerActionType),
     takeLatest(UPDATE_VOLUNTEER_ACTION_TYPE, handleUpdateVolunteerActionType),
     takeLatest(GET_DONATIONS, handleGetDonations),
+    takeLatest(DELETE_DONATION, handleDeleteDonation),
+    takeLatest(ADD_CONTACT, handleAddContact),
+    takeLatest(UPDATE_CONTACT, handleUpdateContact),
   ]);
 }
