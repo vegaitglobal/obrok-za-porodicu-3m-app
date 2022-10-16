@@ -7,13 +7,16 @@ import {ActionType} from '../../../models/VolunteerAction/VolunteerActionDTO';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../store/reducers/RootReducer';
 import {getVolunteerActionTypes} from '../../../store/actions/VolunteerAction';
+import Icons from '../../../constants/Icons';
 
 interface OPDonateTypeSelectorProps {
   onSelect: (id: number) => void;
+  hasError?: boolean;
 }
 
 const OPDonateTypeSelector: React.FC<OPDonateTypeSelectorProps> = ({
   onSelect,
+  hasError = false,
 }) => {
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch<any>();
@@ -46,7 +49,11 @@ const OPDonateTypeSelector: React.FC<OPDonateTypeSelectorProps> = ({
 
   return (
     <View>
-      <Text style={styles.text}>Odaberite Kategoriju</Text>
+      <View style={styles.row}>
+        <Text style={styles.text}>Odaberite Kategoriju</Text>
+        {hasError && Icons.RED_WARNING}
+      </View>
+
       <View style={styles.container}>{renderItems()}</View>
     </View>
   );

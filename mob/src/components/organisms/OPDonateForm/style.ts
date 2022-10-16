@@ -20,6 +20,15 @@ export const styles = StyleSheet.create({
     alignContent: 'center',
     backgroundColor: Colors.WHITE,
   },
+  errorMessage: {
+    ...TextStyles.DOSIS_REGULAR,
+    fontSize: 10,
+    lineHeight: 10,
+    color: Colors.RED_ERROR,
+    marginVertical: 5,
+    marginTop: 8,
+    marginLeft: 3,
+  },
   locationContainer: {
     flex: 1,
     marginTop: 10,

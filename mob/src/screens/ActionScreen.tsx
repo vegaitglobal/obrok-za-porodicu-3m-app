@@ -44,7 +44,10 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
         onBackPressed={() => navigation.goBack()}
         showDropdown={false}
       />
-      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContainer}
+        bounces={false}
+        showsVerticalScrollIndicator={false}>
         <OPImage source={{uri: data.imageUrl}} style={styles.images} />
         <View style={styles.contentContainer}>
           <View style={styles.chipContainer}>
@@ -66,7 +69,10 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
         <View style={styles.htmlContainer}>
           <OPHtml html={data?.html} />
         </View>
-        <OPDonateForm actionType={data?.type?.id} />
+        <OPDonateForm
+          actionType={data?.type?.id}
+          volunteerActionId={data?.id}
+        />
       </ScrollView>
     </SafeAreaView>
   );
