@@ -17,7 +17,11 @@
     "actionsList": {
       "find_out_more": "Saznaj Više",
       "status": "Status",
-      "trending": "Aktuelno"
+      "trending": "Aktuelno",
+      "empty_list": "Trenutno nemamo aktivnih akcija."
+    },
+    "news": {
+      "empty_list": "Nema novih vesti."
     }
   }
 }

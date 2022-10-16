@@ -1,5 +1,6 @@
 using MealForFamily.Helpers.Exceptions;
 using MealForFamily.Models;
+using MealForFamily.Dtos;
 using MealForFamily.RepositoryInterface;
 using MealForFamily.ServiceInterface;
 
@@ -14,9 +15,9 @@ namespace MealForFamily.Service
             _volunteerActionRepository = volunteerActionRepository;
         }
 
-        public async Task<Page<VolunteerAction>> GetVolunteerActions(int pageNumber, int pageSize)
+        public async Task<Page<VolunteerAction>> GetVolunteerActions(VolunteerActionFilterDTO filters, int pageNumber, int pageSize)
         {
-            return await _volunteerActionRepository.GetAllByPage(pageNumber, pageSize);
+            return await _volunteerActionRepository.GetAllByPage(filters, pageNumber, pageSize);
         }
 
         public async Task<VolunteerAction> GetSingleById(int id)

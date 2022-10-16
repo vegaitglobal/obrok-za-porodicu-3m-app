@@ -2,7 +2,7 @@ import OPCardItem from "../../molecules/cardItem/OPCardItem";
 
 const OPCarditemList = () => {
   return (
-    <div>
+    <div style={{padding: "16px 0"}}>
       <OPCardItem
         id={1}
         type="Novac"

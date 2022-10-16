@@ -30,8 +30,8 @@ namespace MealForFamily.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("")]
-        public async Task<IActionResult> GetVolunteerActions([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
+        [HttpPost("search")]
+        public async Task<IActionResult> GetVolunteerActions(VolunteerActionFilterDTO actionFilters, [RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
             List<VolunteerActionDTO> dtos = new();
             Page<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize);

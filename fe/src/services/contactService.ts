@@ -12,6 +12,12 @@ export class ContactsService extends ApiService {
 
     return data;
   };
+
+  deleteContact = async (id: number) => {
+    const { data } = await this.apiClient.delete(ENDPOINTS.CONTACTS + "/" + id);
+
+    return data;
+  };
 }
 
 const contactsService = new ContactsService();

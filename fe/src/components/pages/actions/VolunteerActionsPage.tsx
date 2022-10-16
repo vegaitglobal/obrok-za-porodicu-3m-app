@@ -8,6 +8,7 @@ import OPFilterItemList from "../../UI/molecules/filterItemList/OPFilterItemList
 import Header from "../../UI/molecules/header/OPHeader";
 import OPCarditemList from "../../UI/organisms/cardItemList/OPCarditemList";
 import classes from "./VolunteerActionsPage.module.scss";
+import globalClasses from "../../../constants/GlobalStyle.module.scss";
 
 const VolunteerActionsPage = () => {
   const dispatch = useDispatch();
@@ -20,17 +21,18 @@ const VolunteerActionsPage = () => {
   }, []);
 
   return (
-    <div className={classes["volunteer-actions-page"]}>
-      <div className={classes["content-wrapper"]}>
-        <Header />
-        <div className={classes["filter-wrapper"]}>
-          <OPSearchBar placeholder="Search" />
-          <div className={classes["filter-items"]}>
+    <div className={globalClasses["page-wrapper"]}>
+      <Header />
+      <div className={globalClasses["content-wrapper"]}>
+        <div className={globalClasses["content"]}>
+          <div className={classes["filter-wrapper"]}>
+            <OPSearchBar placeholder="Search" />
             <OPFilterItemList filterItems={filterItems} />
+            <div className={classes["search-button-wrapper"]}>
+              <OPPrimaryButton text="Pretrazi" onClick={() => {}} />
+            </div>
           </div>
-          <div className={classes["search-button-wrapper"]}>
-            <OPPrimaryButton text="Pretrazi" onClick={() => {}} />
-          </div>
+          <OPCarditemList/>
         </div>
       </div>
     </div>

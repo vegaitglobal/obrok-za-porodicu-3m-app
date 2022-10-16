@@ -9,21 +9,20 @@
   width: 100%;
   background-color: $background;
   z-index: 100;
-
   font-family: "Dosis";
 }
 
 .header-content {
   display: flex;
   align-items: center;
-  max-width: 1408px;
+  max-width: 1444px;
   width: 100%;
   min-height: 72px;
   margin: 16px 16px 0 16px;
   padding: 0 22px;
   background-color: $white;
-  border-radius: 4px 4px 0px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px 6px 0px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .header-logo-wrapper {

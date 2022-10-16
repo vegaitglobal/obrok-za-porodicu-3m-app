@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MealForFamily.Authorization;
 using MealForFamily.DTOs;
 using MealForFamily.Helpers.Exceptions;

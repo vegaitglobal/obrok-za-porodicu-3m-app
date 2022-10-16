@@ -13,10 +13,14 @@
     "contactUs": "Contact Us",
     "callUs": "Call",
     "sendEmail": "Mail"
-  },      
+  },
   "actionsList": {
     "find_out_more": "Find out more",
     "status": "Status",
-    "trending": "Trending"
+    "trending": "Trending",
+    "empty_list": "We don't have any active actions currently."
+  },
+  "news": {
+    "empty_list": "No news."
   }
 }

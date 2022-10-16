@@ -33,6 +33,9 @@ export const openPageOnSocialMedia = (
     case SocialMediaType.FACEBOOK:
       url = `fb://page/${id}`;
       break;
+    case SocialMediaType.MESSENGER:
+      url = `http://m.me/${id}`;
+      break;
     case SocialMediaType.INSTAGRAM:
       url = `instagram://user?username=${id}`;
       break;

@@ -3,6 +3,7 @@ import {AboutUsResponseModel} from '../../models/AboutUsResponseModel';
 import {ResponseModel} from '../../models/ResponseModel';
 import AboutUsService from '../../services/AboutUsService';
 import {setAboutUsText} from '../reducers/AboutUsReducer';
+import Toast from 'react-native-toast-message';
 
 export const getAboutUs = createAsyncThunk(
   'aboutUs/getAboutUs',
@@ -16,3 +17,18 @@ export const getAboutUs = createAsyncThunk(
     dispatch(setAboutUsText(html));
   },
 );
+
+export const subscribeToNewsLetters = (email: string) => () => {
+  AboutUsService.subscribeToNewsLetters(email)
+    .then(() => {
+      Toast.show({
+        type: 'success',
+        props: {
+          title: 'Uspešno ste prijavljeni na newsletter!',
+        },
+      });
+    })
+    .catch((err: any) => {
+      console.error(err);
+    });
+};

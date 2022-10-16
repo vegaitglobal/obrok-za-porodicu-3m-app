@@ -88,5 +88,6 @@ app.UseCors(x => x
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseMiddleware<JwtMiddleware>();
+
 app.MapControllers();
 app.Run();

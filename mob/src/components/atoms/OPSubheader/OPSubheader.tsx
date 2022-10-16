@@ -7,21 +7,27 @@ import {RootState} from '../../../store/reducers/RootReducer';
 import {useSelector} from 'react-redux';
 import {useAppThunkDispatch} from '../../../store/Store';
 import {getVolunteerActionStatuses} from '../../../store/actions/VolunteerAction';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import Icons from '../../../constants/Icons';
 
 interface OPSubheaderProps {
   heading: string;
-  showDropdown: boolean;
+  showDropdown?: boolean;
+  showBackButton?: boolean;
   onSelectionChanged?: (item: any) => void;
+  onBackPressed?: () => void;
 }
 
 const OPSubheader: React.FC<OPSubheaderProps> = ({
   heading,
   showDropdown = true,
+  showBackButton = false,
   onSelectionChanged,
+  onBackPressed,
 }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [allItems, setItems] = useState([{label: 'Najnovije', value: 0}]);
+  const [allItems, setItems] = useState([{label: '', value: 0}]);
   const {volunteerActionStatuses} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
@@ -31,18 +37,29 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   }, [dispatch]);
 
   useEffect(() => {
-    setItems([
-      {label: 'Najnovije', value: 0},
-      ...volunteerActionStatuses.map(e => {
+    setItems(
+      volunteerActionStatuses.map(e => {
         return {label: e.name, value: e.id};
       }),
-    ]);
+    );
   }, [volunteerActionStatuses]);
 
   return (
     <Shadow offset={[0, 2]} distance={2} stretch>
       <View style={[styles.container]}>
-        <Text style={[styles.heading]}>{heading.toUpperCase()}</Text>
+        <View style={styles.row}>
+          {showBackButton ? (
+            <TouchableOpacity style={styles.row} onPress={onBackPressed}>
+              {Icons.ARROW_LEFT}
+              <Text style={[styles.heading]}>{heading.toUpperCase()}</Text>
+            </TouchableOpacity>
+          ) : (
+            <Text style={[styles.heading, styles.headingMargin]}>
+              {heading.toUpperCase()}
+            </Text>
+          )}
+        </View>
+
         {showDropdown && (
           <DropDownPicker
             zIndexInverse={7000}

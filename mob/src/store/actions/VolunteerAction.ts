@@ -3,12 +3,16 @@ import {
   setAppliedVolunteerActions,
   setVolunteerActions,
   setVolunteerActionStatuses,
+  setVolunteerActionTypes,
+  setSearchTerm,
+  clearFilters,
 } from '../reducers/VolunteerActionReducer';
 import {ActionType} from '../../models/VolunteerAction/VolunteerActionDTO';
 import type {RootState} from '../../store/reducers/RootReducer';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
+import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
 
 export const setAppliedFilters =
   (newFilters: ActionType, color: string) =>
@@ -25,6 +29,12 @@ export const setAppliedFilters =
     dispatch(setAppliedVolunteerActions(filterUpdate));
   };
 
+export const onSetSearchTerm = (searchTerm: string) => (dispatch: Dispatch) =>
+  dispatch(setSearchTerm(searchTerm));
+
+export const onClearFilters = () => (dispatch: Dispatch) =>
+  dispatch(clearFilters());
+
 export const getVolunteerActions = (page: number) => (dispatch: Dispatch) => {
   VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
     if (res) {
@@ -40,3 +50,30 @@ export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
     }
   });
 };
+
+export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
+  VolunteerActionsService.getVolunteerActionTypes().then(
+    (res: ResponseModel) => {
+      if (res) {
+        dispatch(setVolunteerActionTypes(res.data as Array<ActionType>));
+      }
+    },
+  );
+};
+
+export const filterVolunteerActionsByTagsAndSearchTerm =
+  () => async (dispatch: Dispatch, getState: () => RootState) => {
+    const {appliedVolunteerActions, searchTerm} = getState().volunteerActions;
+
+    const filtersIds = Object.keys(appliedVolunteerActions);
+
+    if (filtersIds.length > 0 || searchTerm.length > 0) {
+      const query = {ids: filtersIds, searchTerm};
+      const res =
+        await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
+          query,
+        );
+
+      return res;
+    }
+  };

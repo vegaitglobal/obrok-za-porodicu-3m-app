@@ -1,4 +1,4 @@
-﻿using MealForFamily.DTOs;
+using MealForFamily.DTOs;
 
 namespace MealForFamily.ServiceInterfaces
 {

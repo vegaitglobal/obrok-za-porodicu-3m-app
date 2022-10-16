@@ -1,10 +1,11 @@
 import {View, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
-import OPContactsHeader from '../../molecules/OPContactsHeader/OPContactsHeader';
 import OPMappedListWithTitle from '../../molecules/OPListWithTitle/OPMappedListWithTitle';
 import {SocialMedia} from '../../../models/SocialMedia';
 import {ContactModel} from '../../../models/ContactModel';
+import OPImageButton from '../../atoms/OPImageButton/OPImageButton';
+import OPSubheader from '../../atoms/OPSubheader/OPSubheader';
 
 interface OPContactViewProps {
   headerTitle: string;
@@ -17,6 +18,8 @@ interface OPContactViewProps {
   renderContactItem: (item: ContactModel) => React.ReactNode;
 }
 
+const IMAGE_URL = require('../../../../assets/images/opLocation/op_location.png');
+
 const OPContactView: React.FC<OPContactViewProps> = ({
   headerTitle,
   onHeaderImagePress,
@@ -28,8 +31,11 @@ const OPContactView: React.FC<OPContactViewProps> = ({
   renderContactItem,
 }) => (
   <SafeAreaView>
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      <OPContactsHeader title={headerTitle} onImagePress={onHeaderImagePress} />
+    <OPSubheader heading={headerTitle} showDropdown={false} />
+    <ScrollView
+      contentContainerStyle={styles.contentContainer}
+      showsVerticalScrollIndicator={false}>
+      <OPImageButton onPress={onHeaderImagePress} imageSource={IMAGE_URL} />
       <View style={styles.listContainer}>
         <OPMappedListWithTitle
           title={socialMediaTitle}
