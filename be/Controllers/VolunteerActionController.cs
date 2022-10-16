@@ -34,7 +34,7 @@ namespace MealForFamily.Controllers
         public async Task<IActionResult> GetVolunteerActions(VolunteerActionFilterDTO actionFilters, [RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
             List<VolunteerActionDTO> dtos = new();
-            Page<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize);
+            Page<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions(actionFilters, pageNumber, pageSize);
             foreach (VolunteerAction action in actions.Content)
                 dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
 
