@@ -38,7 +38,6 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<NewsletterSubscriptionDTO>(await _newsletterSubscriptionService.GetSingleById(id)));
         }
 
-        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateNewsletterSubscription(RequestNewsletterSubscriptionDTO request)
         {
