@@ -2,6 +2,7 @@ import ApiService from "./apiService";
 
 const ENDPOINTS = {
   VOLUNTEER_ACTION_TYPES: "volunteer-action-types",
+  VOLUNTEER_ACTION_TYPE: "volunteer-action-types/",
 };
 
 export class VolunteerActionTypesService extends ApiService {
@@ -10,8 +11,16 @@ export class VolunteerActionTypesService extends ApiService {
 
     return data;
   };
+
+  deleteActionType = async (id: number) => {
+    const { data } = await this.apiClient.delete(
+      ENDPOINTS.VOLUNTEER_ACTION_TYPE + "/" + id
+    );
+
+    return data;
+  };
 }
 
-const volunteerActionsService = new VolunteerActionTypesService();
+const volunteerActionTypesService = new VolunteerActionTypesService();
 
-export default volunteerActionsService;
+export default volunteerActionTypesService;

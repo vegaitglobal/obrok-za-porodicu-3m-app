@@ -1,4 +1,5 @@
 using AutoMapper;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
 using MealForFamily.ServiceInterface;
@@ -25,17 +26,11 @@ namespace MealForFamily.Controllers
             return Ok(await _aboutUsService.GetAboutUs());
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateAboutUs(RequestAboutUsDTO request)
         {
-            // TODO: Fix AutoMapper
-            // AboutUs model = _mapper.Map<RequestAboutUsDTO>(request);
-
-            AboutUs model = new();
-            model.Id = request.Id;
-            model.RawDescription = request.RawDescription;
-            model.Description = request.Description;
-
+            AboutUs model = _mapper.Map<AboutUs>(request);
             return Ok(await _aboutUsService.UpdateAboutUs(model));
         }
     }

@@ -5,17 +5,20 @@ import Header from "../../UI/molecules/header/OPHeader";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { useEffect } from "react";
-import { getContacts } from "../../../store/actions/contactTypes";
-import ContactModal from '../../UI/molecules/contactModal/ContactModal';
-import {useState} from 'react';
-import Modal from 'react-bootstrap/Modal';
+import {
+  deleteContact,
+  getContacts,
+} from "../../../store/actions/contactTypes";
+import ContactModal from "../../UI/molecules/contactModal/ContactModal";
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 
-const headers: string[] = ["Title", "Email", "Phone number"];
+const headers: string[] = ["Title", "Email", "Phone number", "Actions"];
 
-const columnsToRender: string[] = ["title", "email", "phoneNumber"];
+const columnsToRender: string[] = ["title", "email", "phoneNumber", "actions"];
 
 const ContactPage = () => {
-
   const dispatch = useDispatch();
   const contacts = useSelector((state: RootState) => state.contacts.contacts);
 
@@ -24,16 +27,28 @@ const ContactPage = () => {
   }, []);
 
   const [modalShow, setModalShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [id, setId] = useState<number>();
 
   const addContact = (title: string, email: string, phone: string) => {
     const data: any = {
       title: title,
       email: email,
-      phoneNumber: phone
+      phoneNumber: phone,
     };
     setModalShow(false);
-    console.log(data)
+    console.log(data);
     //dispatch
+  };
+
+  const showDeleteModal = (id: number) => {
+    setDeleteModalShow(true);
+    setId(id);
+  };
+
+  const deleteHandler = () => {
+    console.log(id);
+    dispatch(deleteContact(id!));
   };
 
   return (
@@ -43,12 +58,15 @@ const ContactPage = () => {
         <div className={globalClasses["content"]}>
           <div>
             Add Contact
-            <button onClick={() => setModalShow(true)}>
-              add
-            </button>
+            <button onClick={() => setModalShow(true)}>add</button>
           </div>
           <div className={classes["table-wrapper"]}>
-            <Table headers={headers} data={contacts} columns={columnsToRender} />
+            <Table
+              headers={headers}
+              data={contacts}
+              columns={columnsToRender}
+              deleteHandler={showDeleteModal}
+            />
           </div>
         </div>
         <ContactModal
@@ -56,8 +74,14 @@ const ContactPage = () => {
           onClick={addContact}
           onHide={() => setModalShow(false)}
           label={"Add action type"}
-          />
+        />
       </div>
+      <OPDeleteModal
+        show={deleteModalShow}
+        onDelete={deleteHandler}
+        onHide={() => setDeleteModalShow(false)}
+        type={"contact"}
+      />
     </div>
   );
 };

@@ -114,6 +114,9 @@ namespace MealForFamily.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
 
@@ -130,6 +133,7 @@ namespace MealForFamily.Migrations
                         {
                             Id = 1,
                             Email = "obrokzaporodicu3m@gmail.com",
+                            IsDeleted = false,
                             PhoneNumber = "(00 381) 60 37-65-017",
                             Title = "Obrok za porodicu 3M"
                         });
@@ -200,6 +204,9 @@ namespace MealForFamily.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("RawDescrition")
                         .HasColumnType("text");
 
@@ -227,9 +234,33 @@ namespace MealForFamily.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
 
                     b.ToTable("NewsletterSubscriptions");
+                });
+
+            modelBuilder.Entity("MealForFamily.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MealForFamily.Models.VolunteerAction", b =>
@@ -245,6 +276,9 @@ namespace MealForFamily.Migrations
 
                     b.Property<string>("ImageURL")
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("RawDescription")
                         .HasColumnType("text");
@@ -317,6 +351,9 @@ namespace MealForFamily.Migrations
                     b.Property<bool?>("HasPickup")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -331,6 +368,7 @@ namespace MealForFamily.Migrations
                             Id = 1,
                             HasPayment = false,
                             HasPickup = true,
+                            IsDeleted = false,
                             Name = "Hrana"
                         },
                         new
@@ -338,6 +376,7 @@ namespace MealForFamily.Migrations
                             Id = 2,
                             HasPayment = true,
                             HasPickup = false,
+                            IsDeleted = false,
                             Name = "Novac"
                         },
                         new
@@ -345,6 +384,7 @@ namespace MealForFamily.Migrations
                             Id = 3,
                             HasPayment = false,
                             HasPickup = true,
+                            IsDeleted = false,
                             Name = "Odeća i obuća"
                         },
                         new
@@ -352,6 +392,7 @@ namespace MealForFamily.Migrations
                             Id = 4,
                             HasPayment = false,
                             HasPickup = true,
+                            IsDeleted = false,
                             Name = "Igračke"
                         },
                         new
@@ -359,6 +400,7 @@ namespace MealForFamily.Migrations
                             Id = 5,
                             HasPayment = false,
                             HasPickup = true,
+                            IsDeleted = false,
                             Name = "Ostalo"
                         });
                 });

@@ -1,6 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import { VolunteerActionTypeModel } from "../../models/VolunteerActionTypeModel";
-import volunteerActionsService from "../../services/volunteerActionTypesService";
+import volunteerActionTypesService from "../../services/volunteerActionTypesService";
+import { deleteActionType } from "../actions/volunteerActionTypeTypes";
 import { setVolunteerActionTypes } from "../slices/volunteerActionTypeSlice";
 
 export function* handleGetVolunteerActionTypes(): Generator<
@@ -10,10 +11,25 @@ export function* handleGetVolunteerActionTypes(): Generator<
 > {
   try {
     const volunteerActionTypes: VolunteerActionTypeModel[] = yield call(
-      volunteerActionsService.getVolunteerActionTypes
+      volunteerActionTypesService.getVolunteerActionTypes
     );
 
     yield put(setVolunteerActionTypes(volunteerActionTypes));
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export function* handleDeleteActionType({
+  payload,
+}: ReturnType<typeof deleteActionType>): Generator<any, void, void> {
+  try {
+    console.log(payload.actionTypeId);
+    yield call(
+      volunteerActionTypesService.deleteActionType,
+      payload.actionTypeId
+    );
+    yield call(handleGetVolunteerActionTypes);
   } catch (error: any) {
     console.log(error);
   }

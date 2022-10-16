@@ -11,5 +11,6 @@ namespace MealForFamily.ServiceInterface
         Task<VolunteerActionType> CreateVolunteerActionType(VolunteerActionType vat);
 
         Task<VolunteerActionType> UpdateVolunteerActionType(VolunteerActionType vat);
+        Task DeleteVolunteerActionType(int id);
     }
 }

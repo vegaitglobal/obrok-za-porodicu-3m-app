@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using MealForFamily.Data;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
+using Microsoft.EntityFrameworkCore;
 
 namespace MealForFamily.Repositories
 {
@@ -11,7 +11,19 @@ namespace MealForFamily.Repositories
 
         public async Task<News> GetSingleById(int id)
         {
-            return await _context.News.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.News.Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
+        }
+
+        public new async Task<Page<News>> GetAllByPage(int pageNumber, int pageSize)
+        {
+            // TODO: Optimize count query
+            int totalCount = _context.Set<News>().Where(n => n.IsDeleted == false).Count();
+
+            // TODO: Add OrderBy
+            IEnumerable<News> content = await _context.Set<News>().Where(n => n.IsDeleted == false)
+                .Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
+
+            return createPage(pageNumber, pageSize, totalCount, content);
         }
     }
 }

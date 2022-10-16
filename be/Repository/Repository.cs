@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MealForFamily.Data;
-using MealForFamily.RepositoryInterface;
+﻿using MealForFamily.Data;
 using MealForFamily.Models;
+using MealForFamily.RepositoryInterface;
+using Microsoft.EntityFrameworkCore;
 
 namespace MealForFamily.Repositories
 {
@@ -69,7 +69,7 @@ namespace MealForFamily.Repositories
             return (pageNumber - 1) * pageSize;
         }
 
-        private Page<T> createPage(int currentPage, int pageSize, int totalResults, IEnumerable<T> content)
+        public Page<T> createPage(int currentPage, int pageSize, int totalResults, IEnumerable<T> content)
         {
             int totalPages = (int)Math.Ceiling((double)totalResults / pageSize);
 

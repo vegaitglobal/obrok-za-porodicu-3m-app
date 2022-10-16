@@ -2,8 +2,22 @@ import {Text, View} from 'react-native';
 import React from 'react';
 import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
 import {styles} from './style';
+import {Field, Formik} from 'formik';
+import {SubscriptionModel} from '../../../screens/AboutUsScreen';
+import {subscriptionSchema} from '../../../validation/SubscriptionSchema';
+import FormikTextInput from '../../atoms/Formik/FormikTextInput/FormikTextInput';
 
-const OPNewsletterSubscribe = () => {
+interface OPNewsletterSubscribeProps {
+  onSubmit: (email: string) => void;
+}
+
+const OPNewsletterSubscribe: React.FC<OPNewsletterSubscribeProps> = ({
+  onSubmit,
+}) => {
+  const initialValues: SubscriptionModel = {
+    email: '',
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Prijavite se!</Text>
@@ -12,14 +26,31 @@ const OPNewsletterSubscribe = () => {
         i načinima kako možete pomoći ugroženim porodicama
       </Text>
 
-      {/* <FormikTextInput
-        field={undefined}
-        form={undefined}
-        label={''}
-        editable={false}
-      /> */}
-      <Text style={styles.heading}>FORMIK OVDE</Text>
-      <OPPrimaryButton text={'PRIJAVA'} onPress={(): void => {}} />
+      <Formik
+        validationSchema={subscriptionSchema}
+        initialValues={initialValues}
+        enableReinitialize
+        onSubmit={(values, {resetForm}) => {
+          onSubmit(values.email);
+          resetForm();
+        }}>
+        {({handleSubmit}) => (
+          <>
+            <Field
+              validateOnChange
+              component={FormikTextInput}
+              editable
+              name={'email'}
+              placeholder={'Vasa email adresa'}
+            />
+            <OPPrimaryButton
+              style={styles.button}
+              text={'PRIJAVA'}
+              onPress={handleSubmit}
+            />
+          </>
+        )}
+      </Formik>
     </View>
   );
 };
