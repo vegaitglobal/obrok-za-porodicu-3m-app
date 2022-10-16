@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   inputWrapper: {
-    height: 58,
+    height: 42,
     width: 343,
     backgroundColor: 'transparent',
     borderColor: Colors.BG_LIGHT_GRAY,

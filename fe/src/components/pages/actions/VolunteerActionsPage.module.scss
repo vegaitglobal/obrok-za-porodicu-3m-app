@@ -9,10 +9,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  width: calc(100% + 32px);
   padding: 16px;
+  margin: -16px -16px 0;
   background: rgba(53, 96, 255, 0.02);
-  border-radius: 4px 4px 0px 0px;
 
   & > div:not(:last-of-type) {
     margin-right: 20px;

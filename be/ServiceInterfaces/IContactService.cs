@@ -11,5 +11,6 @@ namespace MealForFamily.ServiceInterface
         Task<Contact> CreateContact(Contact contact);
 
         Task<Contact> UpdateContact(Contact contact);
+        Task DeleteContact(int id);
     }
 }

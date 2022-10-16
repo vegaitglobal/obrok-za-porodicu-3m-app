@@ -11,5 +11,6 @@ namespace MealForFamily.ServiceInterface
         Task<News> CreateNews(News news);
 
         Task<News> UpdateNews(News news);
+        Task DeleteNews(int id);
     }
 }

@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 export const baseDonateSchema = yup.object().shape({
   fullName: yup.string().required('Required'),
-  email: yup.string().email().required('Required'),
+  email: yup.string().email('Email must be a valid email').required('Required'),
   phoneNumber: yup.string().required('Required'),
 });
 
@@ -11,11 +11,8 @@ export const companyDonateSchema = yup.object().shape({
 });
 
 export const individualDonateSchema = yup.object().shape({
-  fullName: yup.string().required('Required'),
-  email: yup.string().required('Required'),
   address: yup.string(),
   description: yup.string(),
-  phoneNumber: yup.string().required('Required'),
 });
 
 export const otherDonationDonateSchema = yup.object().shape({

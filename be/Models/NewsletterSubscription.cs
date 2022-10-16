@@ -10,5 +10,6 @@ namespace MealForFamily.Models
 
         [Required]
         public string Email { get; set; } = string.Empty;
+        public bool IsDeleted { get; set; }
     }
 }

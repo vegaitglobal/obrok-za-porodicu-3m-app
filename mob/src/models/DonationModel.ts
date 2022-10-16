@@ -8,5 +8,5 @@ export interface DonationModel {
   description?: string;
   isPickup: boolean;
   address: string;
-  volunteerActionId?: number;
+  volunteerActionId?: number | null;
 }

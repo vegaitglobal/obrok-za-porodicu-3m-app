@@ -1,9 +1,9 @@
-using Microsoft.EntityFrameworkCore;
+using MealForFamily.Builders;
 using MealForFamily.Data;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
-using MealForFamily.Builders;
+using Microsoft.EntityFrameworkCore;
 
 namespace MealForFamily.Repositories
 {
@@ -25,6 +25,8 @@ namespace MealForFamily.Repositories
             IEnumerable<VolunteerAction> content = await query
                 .OrderByDescending(va => va.Id)
                 .Skip(GetNumberOfElements(pageNumber, pageSize))
+                .Include(v => v.Type)
+                .Include(v => v.Status)
                 .Take(pageSize)
                 .ToListAsync();
 
@@ -34,12 +36,31 @@ namespace MealForFamily.Repositories
         public async Task<List<VolunteerAction>> GetVolunteerActions()
         {
             return await _context.VolunteerActions
+                .Include(v => v.Type)
+                .Include(v => v.Status)
+                .Where(v => v.IsDeleted == false)
                 .ToListAsync();
         }
-        
+
         public async Task<VolunteerAction> GetSingleById(int id)
         {
-            return await _context.VolunteerActions.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.VolunteerActions
+                .Include(v => v.Type)
+                .Include(v => v.Status)
+                .Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
+        }
+
+        public new async Task<Page<VolunteerAction>> GetAllByPage(int pageNumber, int pageSize)
+        {
+            // TODO: Optimize count query
+            int totalCount = _context.VolunteerActions.Where(v => v.IsDeleted == false).Count();
+
+            // TODO: Add OrderBy
+            IEnumerable<VolunteerAction> content = await _context.Set<VolunteerAction>()
+                .Include(v => v.Type).Include(v => v.Status).Where(v => v.IsDeleted == false)
+                .Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
+
+            return createPage(pageNumber, pageSize, totalCount, content);
         }
 
         private Page<VolunteerAction> createPage(int currentPage, int pageSize, int totalResults, IEnumerable<VolunteerAction> content)

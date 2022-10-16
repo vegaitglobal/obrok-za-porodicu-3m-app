@@ -1,8 +1,10 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
@@ -22,38 +24,34 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetVolunteerActionStatuses()
         {
-            return Ok(await _volunteerActionStatusService.GetVolunteerActionStatuses());
+            List<VolunteerActionStatusDTO> dtos = new();
+            List<VolunteerActionStatus> statuses = await _volunteerActionStatusService.GetVolunteerActionStatuses();
+            foreach (VolunteerActionStatus status in statuses)
+                dtos.Add(_mapper.Map<VolunteerActionStatusDTO>(status));
+
+            return Ok(dtos);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleVolunteerActionStatus([FromRoute] int id)
         {
-            return Ok(await _volunteerActionStatusService.GetSingleById(id));
+            return Ok(_mapper.Map<VolunteerActionStatusDTO>(await _volunteerActionStatusService.GetSingleById(id)));
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateVolunteerActionStatus(RequestVolunteerActionStatusDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerActionStatus model = _mapper.Map<RequestVolunteerActionStatusDTO>(request);
-
-            VolunteerActionStatus model = new();
-            model.Name = request.Name;
-
-            return Ok(await _volunteerActionStatusService.CreateVolunteerActionStatus(model));
+            VolunteerActionStatus model = _mapper.Map<VolunteerActionStatus>(request);
+            return Ok(_mapper.Map<VolunteerActionStatusDTO>(await _volunteerActionStatusService.CreateVolunteerActionStatus(model)));
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateVolunteerActionStatus(RequestVolunteerActionStatusDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerActionStatus model = _mapper.Map<RequestVolunteerActionStatusDTO>(request);
-
-            VolunteerActionStatus model = new();
-            model.Id = request.Id;
-            model.Name = request.Name;
-
-            return Ok(await _volunteerActionStatusService.UpdateVolunteerActionStatus(model));
+            VolunteerActionStatus model = _mapper.Map<VolunteerActionStatus>(request);
+            return Ok(_mapper.Map<VolunteerActionStatusDTO>(await _volunteerActionStatusService.UpdateVolunteerActionStatus(model)));
         }
     }
 }
