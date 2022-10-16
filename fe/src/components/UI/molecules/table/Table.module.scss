@@ -1,32 +1,32 @@
 * {
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 td,
 th {
-	padding: 8px;
-	font-size: 14px;
-	line-height: 14px;
-	color: #000000;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 14px;
+  color: #000000;
 }
 
 th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	font-size: 14px;
-	line-height: 14px;
-	color: #aeaeae;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 14px;
+  color: #aeaeae;
 }
 
 tr:nth-child(even) {
-	background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 tr:hover {
-	background-color: #ddd;
+  background-color: #ddd;
 }
 
 table {
-	width: 100%;
+  width: 100%;
 }
