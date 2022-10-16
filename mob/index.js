@@ -9,7 +9,10 @@ import {Provider} from 'react-redux';
 import store, {persistor} from './src/store/Store';
 import {PersistGate} from 'redux-persist/integration/react';
 
-LogBox.ignoreLogs(['RCTBridge required dispatch_sync to load REAModule']);
+LogBox.ignoreLogs([
+  'RCTBridge required dispatch_sync to load REAModule',
+  'You seem to update props of the "TRenderEngineProvider" component',
+]);
 
 const AppComponent = () => (
   <Provider store={store}>

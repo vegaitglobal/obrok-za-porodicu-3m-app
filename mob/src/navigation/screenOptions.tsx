@@ -96,7 +96,7 @@ export const defaultTabBarSreenOptions = {
 };
 
 export const newsStackOptions: StackNavigationOptions = {
-  header: () => <OPHeader />,
+  header: () => <OPHeaderSimple />,
   headerShown: true,
 };
 
