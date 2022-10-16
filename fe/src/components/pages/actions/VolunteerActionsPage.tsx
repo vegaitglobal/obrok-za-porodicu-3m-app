@@ -32,6 +32,7 @@ const VolunteerActionsPage = () => {
               <OPPrimaryButton text="Pretrazi" onClick={() => {}} />
             </div>
           </div>
+          <OPCarditemList/>
         </div>
       </div>
     </div>
