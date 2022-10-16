@@ -3,7 +3,9 @@
     "general": {
       "back": "Nazad",
       "mostRecent": "Najnovije",
-      "byStatus": "Po statusu"
+      "byStatus": "Po statusu",
+      "required":"Obavezno polje",
+      "emailMustBeValid":"Email mora biti važeća adresa"
     },
     "tabNavigator": {
       "home": "Početak",
@@ -17,7 +19,8 @@
       "socialMedia": "Društvene mreže",
       "contactUs": "Kontaktirajte Nas",
       "callUs": "Pozovite",
-      "sendEmail": "Mail"
+      "sendEmail": "Mail",
+      "openMaps":"Otvori mape"
     },
     "aboutUsScreen": {
       "subscribeTitle": "Prijavite se!",
@@ -50,7 +53,8 @@
       "accountNo": "Žiro račun",
       "modelRefNo": "Model | Poziv na broj",
       "submit":"UGOVORI DONACIJU",
-      "chooseCategory":"Odaberite Kategoriju"
+      "chooseCategory":"Odaberite Kategoriju",
+      "required":"Obavezno polje"
     },
     "newsScreen": {},
     "actionsList": {

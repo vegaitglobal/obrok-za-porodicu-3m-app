@@ -1,8 +1,11 @@
 import { Field, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { LoginUserModel } from "../../../../models/LoginUserModel";
+import { login } from "../../../../store/actions/authType";
+import { RootState } from "../../../../store/store";
 import { loginValidationScheme } from "../../../validators/loginValidationScheme";
 import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
@@ -17,6 +20,11 @@ const initialValues: LoginUserModel = {
 const OPLoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLoggedIn = useSelector((store: RootState) => store.auth.loggedIn);
+
+  useEffect(() => {
+    if (isLoggedIn) navigate("/volunteer-action");
+  }, [isLoggedIn]);
 
   return (
     <Formik
@@ -28,8 +36,7 @@ const OPLoginForm = () => {
           password: values.password,
         };
 
-        // dispatch(login(data));
-        navigate("/volunteer-action");
+        dispatch(login(data));
       }}
     >
       {(formik) => (

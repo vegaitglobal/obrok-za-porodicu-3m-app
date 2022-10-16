@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {ScrollView, StyleSheet} from 'react-native';
@@ -9,16 +9,26 @@ import {Colors} from '../constants/Colors';
 
 const DonateScreen = () => {
   const {t} = useTranslation();
+  const scrollRef = useRef<any>(null);
+
+  const handleScrollToTop = () => {
+    scrollRef.current?.scrollTo({
+      y: 0,
+      animated: true,
+    });
+  };
+
   return (
     <>
       <OPHeader hasFilter={false} />
-      <OPSubheader heading={t('tabNavigator.donate')} />
+      <OPSubheader heading={t('tabNavigator.donate')} showDropdown={false} />
       <ScrollView
+        ref={scrollRef}
         bounces={false}
         style={styles.container}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}>
-        <OPDonateForm />
+        <OPDonateForm onScrollToTop={handleScrollToTop} />
       </ScrollView>
     </>
   );

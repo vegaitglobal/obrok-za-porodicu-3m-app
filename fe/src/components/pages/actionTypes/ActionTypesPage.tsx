@@ -8,10 +8,14 @@ import { useEffect } from "react";
 import {
   deleteActionType,
   getVolunteerActionTypes,
+  addVolunteerActionType,
+  updateVolunteerActionType
 } from "../../../store/actions/volunteerActionTypeTypes";
 import ActionTypeModal from "../../UI/molecules/actionTypeModal/ActionTypeModal";
 import { useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
+import { VolunteerActionTypeModel } from "../../../models/VolunteerActionTypeModel";
+import { VolunteerActionTypeRequest } from "../../../models/VolunteerActionTypeRequest";
 
 const headers: string[] = ["Name", "Has pickup", "Has payment", "Actions"];
 
@@ -35,30 +39,47 @@ const ActionTypesPage = () => {
   const [id, setId] = useState<number>();
   const [modalShow, setModalShow] = useState(false);
   const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [modalItem, setModalItem] = useState(undefined);
 
-  const addActionType = (
-    name: string,
-    hasPickup: boolean,
-    hasPayment: boolean
-  ) => {
-    const data: any = {
+  const addActionType = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
+    const data: VolunteerActionTypeRequest = {
       name: name,
       hasPickup: hasPickup,
       hasPayment: hasPayment,
     };
     setModalShow(false);
     console.log(data);
-    //dispatch
+    dispatch(addVolunteerActionType(data));
   };
 
   const showDeleteHandler = (id: number) => {
     setId(id);
     setDeleteModalShow(true);
+  }
+
+  const updateActionType = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
+    const data: VolunteerActionTypeModel = {
+      id: id ? id : 0,
+      name: name,
+      hasPickup: hasPickup,
+      hasPayment: hasPayment
+    };
+    setModalShow(false);
+    setModalItem(undefined);
+    console.log("UPDATE");
+    console.log(data);
+    dispatch(updateVolunteerActionType(data));
+  };
+
+  const handleClickEdit = (item: any) => {
+    setModalItem(item);
+    setModalShow(true);
+    console.log("CLICK");
+    console.log(item)
   };
 
   const deleteHandler = () => {
     setDeleteModalShow(false);
-    console.log(id);
     dispatch(deleteActionType(id!));
   };
 
@@ -67,9 +88,9 @@ const ActionTypesPage = () => {
       <Header />
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
-          <div>
-            <span>Add Action Type</span>
-            <button onClick={() => setModalShow(true)}>add</button>
+          <div className={globalClasses["add-wrapper"]}>
+            <p className={globalClasses["add-text"]}>Add Action Type</p>
+            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}>Add</button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table
@@ -77,15 +98,17 @@ const ActionTypesPage = () => {
               data={actionTypes}
               columns={columnsToRender}
               deleteHandler={showDeleteHandler}
+              onClickEdit={handleClickEdit}
             />
           </div>
         </div>
       </div>
       <ActionTypeModal
         show={modalShow}
-        onClick={addActionType}
+        onClick={modalItem ? updateActionType : addActionType}
         onHide={() => setModalShow(false)}
-        label={"Add action type"}
+        label={modalItem ? "UPDATE ACTION TYPE" : "ADD ACTION TYPE"}
+        item={modalItem}
       />
       <OPDeleteModal
         show={deleteModalShow}

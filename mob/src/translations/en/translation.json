@@ -3,7 +3,9 @@
     "general": {
       "back": "Back",
       "mostRecent": "Most recent",
-      "byStatus": "By Status"
+      "byStatus": "By Status",
+      "required":"Required",
+      "emailMustBeValid":"Email must be a valid email address"
     },
     "tabNavigator": {
       "home": "Home",
@@ -17,7 +19,8 @@
       "socialMedia": "Social Media",
       "contactUs": "Contact Us",
       "callUs": "Call",
-      "sendEmail": "Mail"
+      "sendEmail": "Mail",
+      "openMaps":"Open Maps"
     },
     "aboutUsScreen": {
       "subscribeTitle": "Sign up!",
@@ -50,7 +53,8 @@
       "accountNo": "Account No.",
       "modelRefNo": "Model | Reference no.",
       "submit":"SUBMIT DONATION",
-      "chooseCategory":"Choose a Category"
+      "chooseCategory":"Choose a Category",
+      "required":"Required"
     },
     "newsScreen": {},
     "actionsList": {

@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import {useScrollToTop} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RadioButtonType} from '../../../constants/RadioButtonType';
 import {DonationModel} from '../../../models/DonationModel';
@@ -29,15 +30,21 @@ import {styles} from './style';
 
 interface OPDonateFormProps {
   actionType?: number | undefined;
+  volunteerActionId?: number | null;
+  onScrollToTop?: () => void;
 }
 
 const OPDonateForm: React.FC<OPDonateFormProps> = ({
   actionType = undefined,
+  volunteerActionId = null,
+  onScrollToTop,
 }) => {
   const {t} = useTranslation();
   const [loseFocus, setLoseFocus] = useState(false);
   const [isCompanySelected, setIsCompanySelected] = useState(false);
   const [isPickupSelected, setIsPickupSelected] = useState(false);
+  const [actionTypeValidationError, setActionTypeValidationError] =
+    useState(false);
 
   const dispatch = useDispatch<any>();
 
@@ -102,6 +109,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
 
   const handleOnActionTypeSelect = (id: number) => {
     setSelectedActionType(id);
+    setActionTypeValidationError(false);
   };
 
   return (
@@ -118,13 +126,19 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
             phoneNumber: values.phoneNumber,
             address: values.address,
             volunteerActionTypeId: selectedActionType,
+            volunteerActionId: volunteerActionId,
             isCompany: isCompanySelected,
             isPickup: isPickupSelected,
             companyName: values.companyName,
           };
-          handleOnDonatePress(donation);
-          resetForm();
-          setSelectedActionType(-1);
+          if (selectedActionType === -1) {
+            setActionTypeValidationError(true);
+            onScrollToTop && onScrollToTop();
+          } else {
+            handleOnDonatePress(donation);
+            resetForm();
+            setSelectedActionType(-1);
+          }
         }}>
         {({handleSubmit, isValid}) => (
           <TouchableWithoutFeedback
@@ -134,7 +148,17 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
             }}>
             <View style={styles.mainView}>
               {!actionType && (
-                <OPDonateTypeSelector onSelect={handleOnActionTypeSelect} />
+                <>
+                  <OPDonateTypeSelector
+                    onSelect={handleOnActionTypeSelect}
+                    hasError={actionTypeValidationError}
+                  />
+                  {actionTypeValidationError && (
+                    <Text style={styles.errorMessage}>
+                      {t('donateScreen.required')}
+                    </Text>
+                  )}
+                </>
               )}
 
               <OPRadioButtonsRow

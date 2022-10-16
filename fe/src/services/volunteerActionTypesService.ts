@@ -1,3 +1,5 @@
+import { VolunteerActionTypeModel } from "../models/VolunteerActionTypeModel";
+import { VolunteerActionTypeRequest } from "../models/VolunteerActionTypeRequest";
 import ApiService from "./apiService";
 
 const ENDPOINTS = {
@@ -14,11 +16,24 @@ export class VolunteerActionTypesService extends ApiService {
 
   deleteActionType = async (id: number) => {
     const { data } = await this.apiClient.delete(
-      ENDPOINTS.VOLUNTEER_ACTION_TYPE + "/" + id
+      ENDPOINTS.VOLUNTEER_ACTION_TYPE + id
     );
 
     return data;
   };
+
+  addVolunteerActionType = async (payload: VolunteerActionTypeRequest) => {
+    const { data } = await this.apiClient.post(ENDPOINTS.VOLUNTEER_ACTION_TYPES, payload);
+
+    return data;
+  };
+
+  updateVolunteerActionType = async (payload: VolunteerActionTypeModel) => {
+    const { data } = await this.apiClient.put(ENDPOINTS.VOLUNTEER_ACTION_TYPES, payload);
+
+    return data;
+  };
+
 }
 
 const volunteerActionTypesService = new VolunteerActionTypesService();

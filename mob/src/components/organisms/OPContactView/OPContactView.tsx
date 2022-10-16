@@ -6,6 +6,7 @@ import {SocialMedia} from '../../../models/SocialMedia';
 import {ContactModel} from '../../../models/ContactModel';
 import OPImageButton from '../../atoms/OPImageButton/OPImageButton';
 import OPSubheader from '../../atoms/OPSubheader/OPSubheader';
+import {useTranslation} from 'react-i18next';
 
 interface OPContactViewProps {
   headerTitle: string;
@@ -29,28 +30,36 @@ const OPContactView: React.FC<OPContactViewProps> = ({
   contactsTitle,
   contacts,
   renderContactItem,
-}) => (
-  <SafeAreaView>
-    <OPSubheader heading={headerTitle} showDropdown={false} />
-    <ScrollView
-      contentContainerStyle={styles.contentContainer}
-      showsVerticalScrollIndicator={false}>
-      <OPImageButton onPress={onHeaderImagePress} imageSource={IMAGE_URL} />
-      <View style={styles.listContainer}>
-        <OPMappedListWithTitle
-          title={socialMediaTitle}
-          data={socialMedias}
-          renderItem={renderSociaMediaItem}
+}) => {
+  const {t} = useTranslation();
+  return (
+    <SafeAreaView>
+      <OPSubheader heading={headerTitle} showDropdown={false} />
+      <ScrollView
+        contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}>
+        <OPImageButton
+          onPress={onHeaderImagePress}
+          imageSource={IMAGE_URL}
+          hasButton
+          buttonText={t('contactScreen.openMaps')}
         />
-        <View style={styles.separator} />
-        <OPMappedListWithTitle
-          title={contactsTitle}
-          data={contacts}
-          renderItem={renderContactItem}
-        />
-      </View>
-    </ScrollView>
-  </SafeAreaView>
-);
+        <View style={styles.listContainer}>
+          <OPMappedListWithTitle
+            title={socialMediaTitle}
+            data={socialMedias}
+            renderItem={renderSociaMediaItem}
+          />
+          <View style={styles.separator} />
+          <OPMappedListWithTitle
+            title={contactsTitle}
+            data={contacts}
+            renderItem={renderContactItem}
+          />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
 export default OPContactView;

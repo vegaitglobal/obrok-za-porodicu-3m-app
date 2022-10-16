@@ -1,4 +1,5 @@
 @import "./Colors.scss";
+@import "./Styles.scss";
 
 .page-wrapper {
   background-color: $background;
@@ -23,4 +24,36 @@
   border-left: 1px solid rgba(0, 0, 0, 0.05);
   border-right: 1px solid rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.add-wrapper {
+  margin: -16px -16px 0;
+  padding: 16px 16px 20px;
+  width: calc(100% + 32px);
+  background: rgba(53, 96, 255, 0.02);;
+}
+
+.add-text {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px;
+  font-size: 18px;
+  line-height: 19px;
+  font-weight: 600;
+  text-decoration: none;
+  color: $white;
+  background-color: $green;
+  border: 0;
+  border-radius: $borderRadius;
+  transition: background-color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: $greenHover;
+  }
 }
