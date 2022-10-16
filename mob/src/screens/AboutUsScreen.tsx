@@ -12,12 +12,14 @@ import {useAppThunkDispatch} from '../store/Store';
 import OPHtml from '../components/atoms/OPHtml/OPHtml';
 import OPNewsletterSubscribe from '../components/molecules/OPNewsletterSubscribe/OPNewsletterSubscribe';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
+import {useTranslation} from 'react-i18next';
 
 export interface SubscriptionModel {
   email: string;
 }
 
 const AboutUsScreen = () => {
+  const {t} = useTranslation();
   const {html} = useSelector((state: RootState) => state.aboutUs);
   const dispatch = useAppThunkDispatch();
 
@@ -31,7 +33,7 @@ const AboutUsScreen = () => {
 
   return (
     <SafeAreaView>
-      <OPSubheader heading="About Us" showDropdown={false} />
+      <OPSubheader heading={t('tabNavigator.about_us')} showDropdown={false} />
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.htmlContainer}>
           <OPHtml html={html} />

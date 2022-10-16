@@ -76,9 +76,11 @@ const ActionScreen: React.FC<ActionScreenProps> = ({navigation, route}) => {
             />
           </View>
           <Text style={styles.headerText}>{currentVolunteerAction?.title}</Text>
-          <Text style={styles.dontationTypeText}>Anonimna donacija</Text>
+          <Text style={styles.dontationTypeText}>
+            {t('actionScreen.anonymousDonation')}
+          </Text>
           <View style={styles.statusContainer}>
-            <Text style={styles.statusText}>Status</Text>
+            <Text style={styles.statusText}>{t('actionScreen.status')}</Text>
             <Text style={[styles.statusText, styles.statusValueText]}>
               {currentVolunteerAction?.status?.name}
             </Text>
@@ -88,12 +90,8 @@ const ActionScreen: React.FC<ActionScreenProps> = ({navigation, route}) => {
           <OPHtml html={currentVolunteerAction?.description} />
         </View>
         <View>
-          <Text style={styles.title}>PRIJAVITE SE DA DONIRATE</Text>
-          <Text style={styles.body}>
-            Želite da se prijavite za donaciju? To možete uraditi tako što ćete
-            popuniti formu ispod i Vaš zahtev za donaciju će biti uredno
-            zabeležen, a na email ćete dobiti dalja uputstva.
-          </Text>
+          <Text style={styles.title}>{t('actionScreen.applyToDonate')}</Text>
+          <Text style={styles.body}>{t('actionScreen.applyToDonateText')}</Text>
         </View>
         <OPDonateForm actionType={currentVolunteerAction?.type?.id} />
       </ScrollView>
