@@ -7,7 +7,6 @@ import OPPrimaryInput from '../../atoms/primaryInput/OPPrimaryInput';
 import {VolunteerActionTypeRequest} from '../../../../models/VolunteerActionTypeRequest';
 import OPPrimaryButton from '../../atoms/primaryButton/OPPrimaryButton';
 import {VolunteerActionTypeModel} from '../../../../models/VolunteerActionTypeModel';
-import classes from "./ActionTypeModal.module.scss";
 import OPCheckbox from '../../atoms/checkbox/OPCheckbox';
 
 interface ActionTypeModalProps {

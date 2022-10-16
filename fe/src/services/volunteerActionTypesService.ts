@@ -16,7 +16,7 @@ export class VolunteerActionTypesService extends ApiService {
 
   deleteActionType = async (id: number) => {
     const { data } = await this.apiClient.delete(
-      ENDPOINTS.VOLUNTEER_ACTION_TYPE + "/" + id
+      ENDPOINTS.VOLUNTEER_ACTION_TYPE + id
     );
 
     return data;

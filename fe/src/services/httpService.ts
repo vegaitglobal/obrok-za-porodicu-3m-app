@@ -6,7 +6,7 @@ export class HttpService {
   constructor(options = {}) {
     this.client = axios.create(options);
     this.client.interceptors.request.use((config: any) => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("accessToken");
       if (token) {
         config.headers["Authorization"] = "Bearer " + token;
       }
