@@ -90,7 +90,7 @@ const ActionTypesPage = () => {
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
             <p className={globalClasses["add-text"]}>Add Action Type</p>
-            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}>Add</button>
+            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}><span>+</span>Add</button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table

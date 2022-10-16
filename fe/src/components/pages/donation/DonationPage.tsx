@@ -72,7 +72,7 @@ const DonationPage = () => {
                 className={globalClasses["add-button"]}
                 onClick={() => {}}
               >
-                Add
+                <span>+</span>Add
               </button>
             </div>
             <div className={classes["table-wrapper"]}>

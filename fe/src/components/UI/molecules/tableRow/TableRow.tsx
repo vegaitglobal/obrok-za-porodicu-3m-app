@@ -24,14 +24,15 @@ const TableRow: React.FC<Props> = ({ item, columns, deleteHandler, onClickEdit }
             "Yes"
           ) : item[column] === undefined ? (
             <>
-              <button className={classes["icon-button"]}
+              <button className={classes["edit-icon-button"]}
                 onClick={() => onClickEdit(item)}
               >
                 <EditIcon width={16} height={16} />
               </button>
               <button
-                className={classes["icon-button"]}
+                className={classes["delete-icon-button"]}
                 onClick={onClickHandler}
+                title="Edit"
               >
                 <DeleteIcon width={16} height={16} />
               </button>

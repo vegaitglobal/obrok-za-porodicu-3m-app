@@ -87,7 +87,7 @@ const ContactPage = () => {
               className={globalClasses["add-button"]}
               onClick={() => setModalShow(true)}
             >
-              Add
+              <span>+</span>Add
             </button>
           </div>
           <div className={classes["table-wrapper"]}>
