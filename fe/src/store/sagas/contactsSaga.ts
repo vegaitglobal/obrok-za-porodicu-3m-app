@@ -19,6 +19,7 @@ export function* handleDeleteContact({
 }: ReturnType<typeof deleteContact>): Generator<any, void, void> {
   try {
     yield call(contactsService.deleteContact, payload.contactId);
+    yield call(handleGetContacts);
   } catch (error: any) {
     console.log(error);
   }
