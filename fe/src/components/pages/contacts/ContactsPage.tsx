@@ -10,9 +10,9 @@ import ContactModal from '../../UI/molecules/contactModal/ContactModal';
 import {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 
-const headers: string[] = ["Title", "Email", "Phone number"];
+const headers: string[] = ["Title", "Email", "Phone number", "Actions"];
 
-const columnsToRender: string[] = ["title", "email", "phoneNumber"];
+const columnsToRender: string[] = ["title", "email", "phoneNumber", "actions"];
 
 const ContactPage = () => {
 
