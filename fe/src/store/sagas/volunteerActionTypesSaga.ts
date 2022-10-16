@@ -15,22 +15,17 @@ export function* handleGetVolunteerActionTypes(): Generator<
     );
 
     yield put(setVolunteerActionTypes(volunteerActionTypes));
-  } catch (error: any) {
-    console.log(error);
-  }
+  } catch (error: any) {}
 }
 
 export function* handleDeleteActionType({
   payload,
 }: ReturnType<typeof deleteActionType>): Generator<any, void, void> {
   try {
-    console.log(payload.actionTypeId);
     yield call(
       volunteerActionTypesService.deleteActionType,
       payload.actionTypeId
     );
     yield call(handleGetVolunteerActionTypes);
-  } catch (error: any) {
-    console.log(error);
-  }
+  } catch (error: any) {}
 }
