@@ -20,7 +20,7 @@ const OPDonateTypeSelector: React.FC<OPDonateTypeSelectorProps> = ({
   hasError = false,
 }) => {
   const {t} = useTranslation();
-  const [selected, setSelected] = useState(-1);
+  const [selected, setSelected] = useState(5);
   const dispatch = useDispatch<any>();
 
   useEffect(() => {

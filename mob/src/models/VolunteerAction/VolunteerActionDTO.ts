@@ -12,6 +12,8 @@ export interface VolunteerActionDTO {
 export interface ActionType {
   id: number;
   name: string;
+  hasPickup?: boolean;
+  hasPayment?: boolean;
 }
 
 interface ActionStatus {

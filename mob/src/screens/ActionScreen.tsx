@@ -20,6 +20,7 @@ import {getVolunteerAction} from '../store/actions/VolunteerAction';
 import {RootState} from '../store/reducers/RootReducer';
 import {getRandomColor} from '../utils/getRandomColor';
 import {useTranslation} from 'react-i18next';
+import {clearCurrentVolunteerAction} from '../store/reducers/VolunteerActionReducer';
 
 interface IActionProps {
   route: any;
@@ -43,6 +44,11 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
     dispatch(getVolunteerAction(actionId));
   };
 
+  const handleOnGoBack = () => {
+    dispatch(clearCurrentVolunteerAction());
+    navigation.goBack();
+  };
+
   if (currentVolunteerAction.id === -1) {
     return <ActivityIndicator size={'large'} style={styles.loader} />;
   }
@@ -52,7 +58,7 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
       <OPSubheader
         heading={t('general.back')}
         showBackButton
-        onBackPressed={() => navigation.goBack()}
+        onBackPressed={handleOnGoBack}
         showDropdown={false}
       />
       <ScrollView
