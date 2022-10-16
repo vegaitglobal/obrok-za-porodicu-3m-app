@@ -12,6 +12,7 @@ export class DonationService extends ApiService {
   };
 
   deleteDonation = async (id: number) => {
+    console.log(id)
     const { data } = await this.apiClient.delete(
       ENDPOINTS.DONATIONS + "/" + id
     );
