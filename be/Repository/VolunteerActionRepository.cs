@@ -36,6 +36,7 @@ namespace MealForFamily.Repositories
             return await _context.VolunteerActions
                 .Include(v => v.Type)
                 .Include(v => v.Status)
+                .Where(v => v.IsDeleted == false)
                 .ToListAsync();
         }
 
@@ -44,16 +45,18 @@ namespace MealForFamily.Repositories
             return await _context.VolunteerActions
                 .Include(v => v.Type)
                 .Include(v => v.Status)
-                .Where(x => x.Id == id).FirstOrDefaultAsync();
+                .Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
         }
 
         public new async Task<Page<VolunteerAction>> GetAllByPage(int pageNumber, int pageSize)
         {
             // TODO: Optimize count query
-            int totalCount = _context.VolunteerActions.Count();
+            int totalCount = _context.VolunteerActions.Where(v => v.IsDeleted == false).Count();
 
             // TODO: Add OrderBy
-            IEnumerable<VolunteerAction> content = await _context.Set<VolunteerAction>().Include(v => v.Type).Include(v => v.Status).Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
+            IEnumerable<VolunteerAction> content = await _context.Set<VolunteerAction>()
+                .Include(v => v.Type).Include(v => v.Status).Where(v => v.IsDeleted == false)
+                .Skip(GetNumberOfElements(pageNumber, pageSize)).Take(pageSize).ToListAsync();
 
             return createPage(pageNumber, pageSize, totalCount, content);
         }

@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using MealForFamily.Data;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
+using Microsoft.EntityFrameworkCore;
 
 namespace MealForFamily.Repositories
 {
@@ -11,13 +11,13 @@ namespace MealForFamily.Repositories
 
         public async Task<List<Contact>> GetContacts()
         {
-            return await _context.Contacts
+            return await _context.Contacts.Where(c => c.IsDeleted == false)
                 .ToListAsync();
         }
 
         public async Task<Contact> GetSingleById(int id)
         {
-            return await _context.Contacts.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Contacts.Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
         }
     }
 }

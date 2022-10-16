@@ -38,5 +38,15 @@ namespace MealForFamily.Service
         {
             return await _volunteerActionRepository.Update(va);
         }
+
+        public async Task DeleteVolunteerAction(int id)
+        {
+            VolunteerAction action = await _volunteerActionRepository.GetSingleById(id);
+            if (action == null)
+                throw new CustomException("Volunteer Action not found", 404);
+
+            action.IsDeleted = true;
+            await _volunteerActionRepository.Update(action);
+        }
     }
 }

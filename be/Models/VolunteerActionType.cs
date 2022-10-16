@@ -19,5 +19,6 @@ namespace MealForFamily.Models
 
         [JsonIgnore]
         public ICollection<VolunteerAction>? VolunteerActions { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace MealForFamily.Service
 
         public async Task<NewsletterSubscription> GetSingleById(int id)
         {
-            NewsletterSubscription subscription = await _newsletterSubscriptionRepository.GetById(id);
+            NewsletterSubscription subscription = await _newsletterSubscriptionRepository.GetSingleById(id);
             if (subscription == null)
                 throw new CustomException("Newsletter subscription not found", 404);
 
@@ -36,6 +36,16 @@ namespace MealForFamily.Service
         public async Task<NewsletterSubscription> UpdateNewsletterSubscription(NewsletterSubscription ns)
         {
             return await _newsletterSubscriptionRepository.Update(ns);
+        }
+
+        public async Task DeleteNewsletterSubscription(int id)
+        {
+            NewsletterSubscription subscription = await _newsletterSubscriptionRepository.GetSingleById(id);
+            if (subscription == null)
+                throw new CustomException("Newsletter Subscription not found", 404);
+
+            subscription.IsDeleted = true;
+            await _newsletterSubscriptionRepository.Update(subscription);
         }
     }
 }

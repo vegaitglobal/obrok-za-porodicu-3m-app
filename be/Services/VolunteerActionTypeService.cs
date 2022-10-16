@@ -21,7 +21,7 @@ namespace MealForFamily.Service
 
         public async Task<VolunteerActionType> GetSingleById(int id)
         {
-            VolunteerActionType type = await _volunteerActionTypeRepository.GetById(id);
+            VolunteerActionType type = await _volunteerActionTypeRepository.GetSingleById(id);
             if (type == null)
                 throw new CustomException("Volunteer Action Type not found", 404);
 
@@ -36,6 +36,16 @@ namespace MealForFamily.Service
         public async Task<VolunteerActionType> UpdateVolunteerActionType(VolunteerActionType vat)
         {
             return await _volunteerActionTypeRepository.Update(vat);
+        }
+
+        public async Task DeleteVolunteerActionType(int id)
+        {
+            VolunteerActionType type = await _volunteerActionTypeRepository.GetSingleById(id);
+            if (type == null)
+                throw new CustomException("Volunteer Action Type not found", 404);
+
+            type.IsDeleted = true;
+            await _volunteerActionTypeRepository.Update(type);
         }
     }
 }

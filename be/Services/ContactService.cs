@@ -21,7 +21,7 @@ namespace MealForFamily.Service
 
         public async Task<Contact> GetSingleById(int id)
         {
-            Contact contact = await _contactRepository.GetById(id);
+            Contact contact = await _contactRepository.GetSingleById(id);
             if (contact == null)
                 throw new CustomException("Contact not found", 404);
 
@@ -36,6 +36,16 @@ namespace MealForFamily.Service
         public async Task<Contact> UpdateContact(Contact contact)
         {
             return await _contactRepository.Update(contact);
+        }
+
+        public async Task DeleteContact(int id)
+        {
+            Contact contact = await _contactRepository.GetSingleById(id);
+            if (contact == null)
+                throw new CustomException("Contact not found", 404);
+
+            contact.IsDeleted = true;
+            await _contactRepository.Update(contact);
         }
     }
 }
