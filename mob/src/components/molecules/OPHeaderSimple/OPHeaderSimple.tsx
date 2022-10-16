@@ -2,13 +2,13 @@ import {View, Image, SafeAreaView} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 
-const image = require('../../../../assets/images/LogoHoriz1.png');
+const LOGO_IMAGE = require('../../../../assets/images/LogoHoriz1.png');
 
 const OPHeaderSimple: React.FC = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <View style={styles.topHeader}>
-        <Image source={image} resizeMode="contain" />
+        <Image source={LOGO_IMAGE} resizeMode="contain" />
       </View>
     </SafeAreaView>
   );
