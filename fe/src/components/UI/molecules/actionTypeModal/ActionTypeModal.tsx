@@ -6,12 +6,16 @@ import styles from './ActionTypeModal.module.scss';
 import OPPrimaryInput from '../../atoms/primaryInput/OPPrimaryInput';
 import {VolunteerActionTypeRequest} from '../../../../models/VolunteerActionTypeRequest';
 import OPPrimaryButton from '../../atoms/primaryButton/OPPrimaryButton';
+import {VolunteerActionTypeModel} from '../../../../models/VolunteerActionTypeModel';
+import classes from "./ActionTypeModal.module.scss";
+import OPCheckbox from '../../atoms/checkbox/OPCheckbox';
 
 interface ActionTypeModalProps {
-  onClick: (name: string, hasPickup: boolean, hasPayment: boolean) => void;
+  onClick: (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => void;
   onHide: () => void;
   show: boolean;
-  label?: string;
+  label: string;
+  item?: VolunteerActionTypeModel;
 }
 
 const initialValues: VolunteerActionTypeRequest = {
@@ -24,15 +28,18 @@ export const ActionTypeModal: React.FC<ActionTypeModalProps> = ({
   onClick,
   onHide,
   show = false,
+  item,
+  label
 }) => {
   return (
     <CustomModal show={show} onHide={onHide}>
       <div>
         <Formik
-          initialValues={initialValues}
+          initialValues={item ? item : initialValues}
           validationSchema={actionTypeValidationScheme}
           onSubmit={(values: VolunteerActionTypeRequest) => {
-            onClick(values.name, values.hasPickup, values.hasPayment);
+            item ? onClick(values.name, values.hasPickup, values.hasPayment, item.id) 
+                : onClick(values.name, values.hasPickup, values.hasPayment);
           }}>
           {formik => (
             <>
@@ -43,23 +50,15 @@ export const ActionTypeModal: React.FC<ActionTypeModalProps> = ({
                   placeholder="Enter Name"
                   name="name"
                   type="text"
-                  value=""
+                  value={item ? item.name : initialValues.name}
                 />
-                <Field 
-                  type="checkbox" 
-                  name="hasPickup" 
-                  label="Has Pickup"
-                />
-                <Field 
-                  type="checkbox" 
-                  name="hasPayment" 
-                  label="Has Payment"
-                />
+                <OPCheckbox name="hasPickup" label="Has pickup" />
+                <OPCheckbox name="hasPayment" label="Has payment" />
               </div>
               <div>
                 <OPPrimaryButton
                   onClick={() => formik.handleSubmit()}
-                  text={'ADD ACTION TYPE'}
+                  text={label}
                   type="submit"
                   style={styles.btn}></OPPrimaryButton>
               </div>
