@@ -1,10 +1,10 @@
-using System.Net.Mime;
-using System.ComponentModel.DataAnnotations;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MealForFamily.Controllers
 {
@@ -24,46 +24,32 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetNews([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            return Ok(await _newsService.GetNews(pageNumber, pageSize));
+            List<NewsDTO> dtos = new();
+            Page<News> news = await _newsService.GetNews(pageNumber, pageSize);
+            foreach (News news1 in news.Content)
+                dtos.Add(_mapper.Map<NewsDTO>(news1));
+
+            return Ok(new Page<NewsDTO>(pageNumber, pageSize, news.Pagination.TotalPages, news.Pagination.TotalResults, dtos));
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleNews([FromRoute] int id)
         {
-            return Ok(await _newsService.GetSingleById(id));
+            return Ok(_mapper.Map<NewsDTO>(await _newsService.GetSingleById(id)));
         }
 
         [HttpPost("")]
         public async Task<IActionResult> CreateNews(RequestNewsDTO request)
         {
-            // TODO: Fix AutoMapper
-            // News model = _mapper.Map<RequestNewsDTO>(request);
-
-            News model = new();
-            model.ImageURL = request.ImageURL;
-            model.Title = request.Title;
-            model.ShortDescription = request.ShortDescription;
-            model.RawDescrition = request.RawDescrition;
-            model.Descrition = request.Descrition;
-
-            return Ok(await _newsService.CreateNews(model));
+            News model = _mapper.Map<News>(request);
+            return Ok(_mapper.Map<NewsDTO>(await _newsService.CreateNews(model)));
         }
 
         [HttpPut("")]
         public async Task<IActionResult> UpdateNews(RequestNewsDTO request)
         {
-            // TODO: Fix AutoMapper
-            // News model = _mapper.Map<RequestNewsDTO>(request);
-
-            News model = new();
-            model.Id = request.Id;
-            model.ImageURL = request.ImageURL;
-            model.Title = request.Title;
-            model.ShortDescription = request.ShortDescription;
-            model.RawDescrition = request.RawDescrition;
-            model.Descrition = request.Descrition;
-
-            return Ok(await _newsService.UpdateNews(model));
+            News model = _mapper.Map<News>(request);
+            return Ok(_mapper.Map<NewsDTO>(await _newsService.UpdateNews(model)));
         }
     }
 }

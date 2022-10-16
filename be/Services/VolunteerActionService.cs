@@ -1,4 +1,4 @@
-using AutoMapper;
+using MealForFamily.Helpers.Exceptions;
 using MealForFamily.Models;
 using MealForFamily.Dtos;
 using MealForFamily.RepositoryInterface;
@@ -22,14 +22,20 @@ namespace MealForFamily.Service
 
         public async Task<VolunteerAction> GetSingleById(int id)
         {
-            return await _volunteerActionRepository.GetById(id);
+            VolunteerAction action = await _volunteerActionRepository.GetSingleById(id);
+            if (action == null)
+                throw new CustomException("Volunteer Action not found", 404);
+
+            return action;
         }
 
-        public async Task<VolunteerAction> CreateVolunteerAction(VolunteerAction va) {
+        public async Task<VolunteerAction> CreateVolunteerAction(VolunteerAction va)
+        {
             return await _volunteerActionRepository.Create(va);
         }
 
-        public async Task<VolunteerAction> UpdateVolunteerAction(VolunteerAction va) {
+        public async Task<VolunteerAction> UpdateVolunteerAction(VolunteerAction va)
+        {
             return await _volunteerActionRepository.Update(va);
         }
     }

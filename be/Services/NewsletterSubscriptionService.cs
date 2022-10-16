@@ -1,4 +1,4 @@
-using AutoMapper;
+using MealForFamily.Helpers.Exceptions;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
 using MealForFamily.ServiceInterface;
@@ -21,14 +21,20 @@ namespace MealForFamily.Service
 
         public async Task<NewsletterSubscription> GetSingleById(int id)
         {
-            return await _newsletterSubscriptionRepository.GetById(id);
+            NewsletterSubscription subscription = await _newsletterSubscriptionRepository.GetById(id);
+            if (subscription == null)
+                throw new CustomException("Newsletter subscription not found", 404);
+
+            return subscription;
         }
 
-        public async Task<NewsletterSubscription> CreateNewsletterSubscription(NewsletterSubscription ns) {
+        public async Task<NewsletterSubscription> CreateNewsletterSubscription(NewsletterSubscription ns)
+        {
             return await _newsletterSubscriptionRepository.Create(ns);
         }
 
-        public async Task<NewsletterSubscription> UpdateNewsletterSubscription(NewsletterSubscription ns) {
+        public async Task<NewsletterSubscription> UpdateNewsletterSubscription(NewsletterSubscription ns)
+        {
             return await _newsletterSubscriptionRepository.Update(ns);
         }
     }
