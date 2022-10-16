@@ -11,7 +11,6 @@ import {
 } from "../../../store/actions/contactTypes";
 import ContactModal from "../../UI/molecules/contactModal/ContactModal";
 import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 
 const headers: string[] = ["Title", "Email", "Phone number", "Actions"];
@@ -79,7 +78,12 @@ const ContactPage = () => {
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
             <p className={globalClasses["add-text"]}>Add Contact</p>
-            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}>Add</button>
+            <button
+              className={globalClasses["add-button"]}
+              onClick={() => setModalShow(true)}
+            >
+              Add
+            </button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table
