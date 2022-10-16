@@ -1,14 +1,31 @@
 import React from 'react';
 
 import {AppRoute} from './Routes';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackNavigationProp,
+} from '@react-navigation/stack';
 
 import NewsScreen from '../screens/NewsScreen';
 import NewsListScreen from '../screens/NewsListScreen';
 
 import {newsScreenOptions, newsStackOptions} from './screenOptions';
+import {RouteProp} from '@react-navigation/native';
 
 const Stack = createStackNavigator();
+
+export type NewsNavigatorParams = {
+  [AppRoute.NEWS_LIST_SCREEN]: undefined;
+  [AppRoute.NEWS_SCREEN]: undefined;
+};
+
+export interface NewsNavigatorProps<Screen extends keyof NewsNavigatorParams> {
+  navigation: StackNavigationProp<NewsNavigatorParams, Screen>;
+  route: RouteProp<NewsNavigatorParams, Screen>;
+}
+
+export type NewsListScreenProps = NewsNavigatorProps<AppRoute.NEWS_LIST_SCREEN>;
+export type NewsScreenProps = NewsNavigatorProps<AppRoute.NEWS_SCREEN>;
 
 const NewsNavigator = () => {
   return (

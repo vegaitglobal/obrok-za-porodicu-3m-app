@@ -14,7 +14,7 @@ import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
 import {useSelector} from 'react-redux';
 import type {RootState, AppDispatch} from '../../../store/reducers/RootReducer';
 import {
-  filterVolunteerActionsByTagsAndSearchTerm,
+  getVolunteerActions,
   onSetSearchTerm,
   onClearFilters,
   getVolunteerActionTypes,
@@ -97,12 +97,10 @@ const OPHeader: FC<OPHeaderProps> = ({
     }
   };
 
-  const onButtonPress = async () => {
+  const onButtonPress = () => {
     dispatch(onSetSearchTerm(searchValue));
-    const res = await dispatch(filterVolunteerActionsByTagsAndSearchTerm());
-    if (res.data) {
-      onPressFilterIcon();
-    }
+    dispatch(getVolunteerActions(1));
+    onPressFilterIcon();
   };
 
   useEffect(() => dispatch(getVolunteerActionTypes()), [dispatch]);

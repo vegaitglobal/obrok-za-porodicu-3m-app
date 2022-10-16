@@ -3,13 +3,14 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import OPNewsList from '../components/organisms/OPNewsList/OPNewsList';
-import {getNews} from '../store/actions/NewsAction';
+import {getNews, getNewsById} from '../store/actions/NewsAction';
 import {RootState} from '../store/reducers/RootReducer';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import {AppRoute} from '../navigation/Routes';
 import {useTranslation} from 'react-i18next';
+import {NewsListScreenProps} from '../navigation/NewsNavigator';
 
-const NewsListScreen = ({navigation}) => {
+const NewsListScreen: React.FC<NewsListScreenProps> = ({navigation}) => {
   const {t} = useTranslation();
   const dispatch: any = useDispatch();
   const {news} = useSelector((state: RootState) => state.news);
@@ -37,12 +38,22 @@ const NewsListScreen = ({navigation}) => {
     setPage(1);
   };
 
+  const handleGoToNews = (id: number) => {
+    dispatch(getNewsById(id));
+    navigation.navigate(AppRoute.NEWS_SCREEN);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <OPSubheader heading={t("tabNavigator.news")} showBackButton={false} />
+      <OPSubheader
+        heading="Vesti"
+        showBackButton={false}
+        showDropdown={false}
+      />
+      <OPSubheader heading={t('tabNavigator.news')} showBackButton={false} />
       <OPNewsList
         news={news}
-        onPress={newsId => navigation.navigate(AppRoute.NEWS_SCREEN, {newsId})}
+        onPress={handleGoToNews}
         onLoadMore={handleLoadNextPage}
         onRefresh={handleRefresh}
       />
