@@ -23,6 +23,7 @@ namespace MealForFamily.Repositories
             int totalCount = query.Count();
 
             IEnumerable<VolunteerAction> content = await query
+                .OrderByDescending(va => va.Id)
                 .Skip(GetNumberOfElements(pageNumber, pageSize))
                 .Take(pageSize)
                 .ToListAsync();
