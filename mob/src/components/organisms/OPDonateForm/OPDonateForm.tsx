@@ -9,12 +9,13 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {useScrollToTop} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RadioButtonType} from '../../../constants/RadioButtonType';
 import {DonationModel} from '../../../models/DonationModel';
+import {ActionType} from '../../../models/VolunteerAction/VolunteerActionDTO';
 import {getBankAccount} from '../../../store/actions/BankAccountActions';
 import {donate} from '../../../store/actions/DonateActions';
+import {getVolunteerActionTypes} from '../../../store/actions/VolunteerAction';
 import {RootState} from '../../../store/reducers/RootReducer';
 import {
   baseDonateSchema,
@@ -50,12 +51,20 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
 
   useEffect(() => {
     dispatch(getBankAccount());
+    dispatch(getVolunteerActionTypes());
   }, [dispatch]);
 
+  const {volunteerActionTypes} = useSelector(
+    (state: RootState) => state.volunteerActions,
+  );
+
+  const getActionTypeById = (id: number) => {
+    return volunteerActionTypes?.find(a => a.id === id);
+  };
   const {bankAccount} = useSelector((state: RootState) => state.bankAccount);
 
   const [selectedActionType, setSelectedActionType] = useState(
-    actionType ? actionType : -1,
+    actionType ? actionType : 5,
   );
 
   const initialValues: DonationModel = {
@@ -101,7 +110,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
     if (selectedActionType === 5) {
       schema = schema.concat(otherDonationDonateSchema);
     }
-    if (isPickupSelected && isCompanySelected) {
+    if (getActionTypeById(selectedActionType)?.hasPickup) {
       schema = schema.concat(companyPickupDonateSchema);
     }
     return schema;
@@ -137,7 +146,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
           } else {
             handleOnDonatePress(donation);
             resetForm();
-            setSelectedActionType(-1);
+            setSelectedActionType(5);
           }
         }}>
         {({handleSubmit, isValid}) => (
@@ -212,7 +221,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                   label={t('donateScreen.description')}
                 />
               )}
-              {isCompanySelected ? (
+              {getActionTypeById(selectedActionType)?.hasPickup ? (
                 <>
                   <OPRadioButtonsRow
                     leftText={t('donateScreen.pickup')}
@@ -221,6 +230,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                     rightSelected={!isPickupSelected}
                     onSelect={handleOnPickupSelect}
                   />
+
                   {isPickupSelected ? (
                     <Field
                       validateOnChange
