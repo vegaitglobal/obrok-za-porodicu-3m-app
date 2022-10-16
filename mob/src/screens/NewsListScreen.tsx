@@ -39,6 +39,11 @@ const NewsListScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <OPSubheader
+        heading="Vesti"
+        showBackButton={false}
+        showDropdown={false}
+      />
       <OPSubheader heading={t("tabNavigator.news")} showBackButton={false} />
       <OPNewsList
         news={news}
