@@ -50,7 +50,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   }, [volunteerActionStatuses]);
 
   return (
-    <Shadow offset={[0, 2]} distance={2} stretch>
+    <Shadow offset={[0, 2]} distance={2} stretch style={styles.shadowStyle}>
       <View style={styles.container}>
         <View style={styles.row}>
           {showBackButton ? (
