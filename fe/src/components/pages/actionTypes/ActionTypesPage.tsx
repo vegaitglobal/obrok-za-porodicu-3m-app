@@ -47,8 +47,6 @@ const ActionTypesPage = () => {
       hasPayment: hasPayment,
     };
     setModalShow(false);
-    console.log(data);
-    //dispatch
   };
 
   const showDeleteHandler = (id: number) => {
@@ -58,7 +56,6 @@ const ActionTypesPage = () => {
 
   const deleteHandler = () => {
     setDeleteModalShow(false);
-    console.log(id);
     dispatch(deleteActionType(id!));
   };
 
