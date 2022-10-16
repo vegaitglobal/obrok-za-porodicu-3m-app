@@ -33,7 +33,11 @@
       "searchButton": "PRETRAŽI",
       "searchPlaceholder": "Pretraži po ključnim rečima",
       "filter": "Filter",
-      "clearAll": "Ukloni Sve"
+      "clearAll": "Ukloni Sve",
+      "anonymousDonation":"Anonimna donacija",
+      "status":"Status",
+      "applyToDonate":"PRIJAVITE SE DA DONIRATE",
+      "applyToDonateText":"Želite da se prijavite za donaciju? To možete uraditi tako što ćete popuniti formu ispod i Vaš zahtev za donaciju će biti uredno zabeležen, a na email ćete dobiti dalja uputstva."
     },
     "donateScreen": {
       "company": "Kompanija",

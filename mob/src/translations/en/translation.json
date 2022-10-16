@@ -33,7 +33,11 @@
       "searchButton": "SEARCH",
       "searchPlaceholder": "Search by Keyword",
       "filter": "Filter",
-      "clearAll": "Clear All"
+      "clearAll": "Clear All",
+      "anonymousDonation": "Anonymous Donation",
+      "status": "Status",
+      "applyToDonate": "APPLY TO DONATE",
+      "applyToDonateText": "Would you like to apply to make a donation? You may do so by filling out the form below and your donation request will be recorded, and further instructions will be emailed to you."
     },
     "donateScreen": {
       "company": "Company",

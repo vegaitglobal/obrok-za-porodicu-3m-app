@@ -11,12 +11,15 @@ import {RootState} from '../store/reducers/RootReducer';
 import {useAppThunkDispatch} from '../store/Store';
 import OPHtml from '../components/atoms/OPHtml/OPHtml';
 import OPNewsletterSubscribe from '../components/molecules/OPNewsletterSubscribe/OPNewsletterSubscribe';
+import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
+import {useTranslation} from 'react-i18next';
 
 export interface SubscriptionModel {
   email: string;
 }
 
 const AboutUsScreen = () => {
+  const {t} = useTranslation();
   const {html} = useSelector((state: RootState) => state.aboutUs);
   const dispatch = useAppThunkDispatch();
 
@@ -29,7 +32,8 @@ const AboutUsScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
+      <OPSubheader heading={t('tabNavigator.about_us')} showDropdown={false} />
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.htmlContainer}>
           <OPHtml html={html} />
@@ -41,9 +45,14 @@ const AboutUsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {} as ViewStyle,
-  scroll: {paddingBottom: 60} as ViewStyle,
-  htmlContainer: {paddingLeft: 16, paddingRight: 16} as ViewStyle,
+  scroll: {
+    paddingBottom: 200,
+    paddingTop: 20,
+  } as ViewStyle,
+  htmlContainer: {
+    paddingLeft: 16,
+    paddingRight: 16,
+  } as ViewStyle,
 });
 
 export default AboutUsScreen;

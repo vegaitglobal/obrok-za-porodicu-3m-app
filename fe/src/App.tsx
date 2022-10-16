@@ -8,6 +8,7 @@ import ContactsPage from "./components/pages/contacts/ContactsPage";
 import DonationPage from "./components/pages/donation/DonationPage";
 import NewsPage from "./components/pages/news/NewsPage";
 import AboutUsPage from "./components/pages/aboutUs/AboutUsPage";
+import BankAccountPage from "./components/pages/bankAccount/BankAccountPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/donation" element={<DonationPage />} />
       <Route path="/news" element={<NewsPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
+      <Route path="/bank-account" element={<BankAccountPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

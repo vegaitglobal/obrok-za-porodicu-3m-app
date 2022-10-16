@@ -15,6 +15,8 @@ import {
   GET_VOLUNTEER_ACTIONS,
   GET_VOLUNTEER_ACTIONS_STATUSES,
   ADD_ACTION_STATUS,
+  GET_BANK_ACCOUNT,
+  UPDATE_BANK_ACCOUNT,
 } from "../actions/actionTypes";
 import { handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation } from "./donationSaga";
@@ -35,6 +37,10 @@ import {
   handleGetVolunteerActions,
   handleGetVolunteerActionStatuses,
 } from "./volunteerActionSaga";
+import {
+  handleGetBankAccount,
+  handleUpdateBankAccount,
+} from "./bankAccountSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -56,5 +62,7 @@ export default function* rootSaga() {
     takeLatest(DELETE_DONATION, handleDeleteDonation),
     takeLatest(ADD_CONTACT, handleAddContact),
     takeLatest(UPDATE_CONTACT, handleUpdateContact),
+    takeLatest(GET_BANK_ACCOUNT, handleGetBankAccount),
+    takeLatest(UPDATE_BANK_ACCOUNT, handleUpdateBankAccount),
   ]);
 }

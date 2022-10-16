@@ -3,6 +3,9 @@ import {Colors} from '../../../constants/Colors';
 import {TextStyles} from '../../../constants/TextStyles';
 
 export const styles = StyleSheet.create({
+  shadowStyle: {
+    zIndex: 1000,
+  },
   container: {
     height: 50,
     flexDirection: 'row',
