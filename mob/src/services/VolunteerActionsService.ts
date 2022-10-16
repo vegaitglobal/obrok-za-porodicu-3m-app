@@ -64,9 +64,7 @@ class VolunteerActionService implements IVolunteerActionService {
     try {
       const response = await axios.post(
         `${BASE_URL}/api/volunteer-actions/search?pageSize=10&pageNumber=${page}`,
-        {
-          query,
-        },
+        query,
       );
       return {
         data: response.data,
