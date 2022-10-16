@@ -85,7 +85,7 @@ const LOGO_PATH = require('../../../../assets/images/LogoHoriz1.png');
 const OPHeader: FC<OPHeaderProps> = ({
   filterTitle = 'Kategorije',
   buttonTitle = 'PRETRAZI',
-  searchPlaceholder = 'Pretrazi po ključnim rečima',
+  searchPlaceholder = 'Pretraži po ključnim rečima',
 }) => {
   const dispatch = useDispatch<AppDispatch>();
 

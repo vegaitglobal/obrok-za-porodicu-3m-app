@@ -40,7 +40,7 @@ const ContactScreen = () => {
   useFocusEffect(
     useCallback(() => {
       dispatch(getContacts());
-    }, []),
+    }, [dispatch]),
   );
 
   return (

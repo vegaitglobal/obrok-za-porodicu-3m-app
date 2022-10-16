@@ -5,34 +5,39 @@ import {contactValidationScheme} from '../../../validators/contactValidationSche
 import styles from './ContactModal.module.scss';
 import OPPrimaryInput from '../../atoms/primaryInput/OPPrimaryInput';
 import {ContactRequest} from '../../../../models/ContactRequest';
+import {ContactModel} from '../../../../models/ContactModel';
 import OPPrimaryButton from '../../atoms/primaryButton/OPPrimaryButton';
 
 interface ContactModalProps {
-  onClick: (title: string, email: string, phone: string) => void;
+  onClick: (title: string, email: string, phoneNumber: string, id?: number) => void;
   onHide: () => void;
   show: boolean;
-  label?: string;
+  label: string;
+  item?: ContactModel;
 }
 
 const initialValues: ContactRequest = {
     title: '',
     email: '',
-    phone: ''
+    phoneNumber: ''
   };
 
 export const ContactModal: React.FC<ContactModalProps> = ({
   onClick,
   onHide,
   show = false,
+  item,
+  label
 }) => {
   return (
     <CustomModal show={show} onHide={onHide}>
       <div>
         <Formik
-          initialValues={initialValues}
+          initialValues={item ? item : initialValues}
           validationSchema={contactValidationScheme}
           onSubmit={(values: ContactRequest) => {
-            onClick(values.title, values.email, values.phone);
+            item ? onClick(values.title, values.email, values.phoneNumber, item.id) 
+                : onClick(values.title, values.email, values.phoneNumber);
           }}>
           {formik => (
             <>
@@ -41,9 +46,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   label="Title"
                   component={OPPrimaryInput}
                   placeholder="Enter title"
-                  name="name"
+                  name="title"
                   type="text"
-                  value=""
+                  value={item ? item.title : initialValues.title}
                 />
                 <Field
                   label="Email Address"
@@ -51,21 +56,21 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   placeholder="Enter your email"
                   name="email"
                   type="text"
-                  value=""
+                  value={item ? item.email : initialValues.email}
                 />
                 <Field
                   label="Phone Number"
                   component={OPPrimaryInput}
                   placeholder="Enter your phone number"
-                  name="phone"
+                  name="phoneNumber"
                   type="text"
-                  value=""
+                  value={item ? item.phoneNumber : initialValues.phoneNumber}
                 />
               </div>
               <div>
                 <OPPrimaryButton
                   onClick={() => formik.handleSubmit()}
-                  text={'ADD ACTION TYPE'}
+                  text={label}
                   type="submit"
                   style={styles.btn}></OPPrimaryButton>
               </div>

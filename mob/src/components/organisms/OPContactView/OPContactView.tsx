@@ -35,7 +35,12 @@ const OPContactView: React.FC<OPContactViewProps> = ({
     <ScrollView
       contentContainerStyle={styles.contentContainer}
       showsVerticalScrollIndicator={false}>
-      <OPImageButton onPress={onHeaderImagePress} imageSource={IMAGE_URL} />
+      <OPImageButton
+        onPress={onHeaderImagePress}
+        imageSource={IMAGE_URL}
+        hasButton
+        buttonText={'Otvori Mape'}
+      />
       <View style={styles.listContainer}>
         <OPMappedListWithTitle
           title={socialMediaTitle}

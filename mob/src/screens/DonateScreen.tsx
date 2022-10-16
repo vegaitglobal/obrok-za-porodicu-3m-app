@@ -3,7 +3,6 @@ import React, {useRef} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
-import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {Colors} from '../constants/Colors';
 
 const DonateScreen = () => {
@@ -18,7 +17,6 @@ const DonateScreen = () => {
 
   return (
     <>
-      <OPHeader hasFilter={false} />
       <OPSubheader heading={'DONIRAJ'} showDropdown={false} />
       <ScrollView
         ref={scrollRef}
