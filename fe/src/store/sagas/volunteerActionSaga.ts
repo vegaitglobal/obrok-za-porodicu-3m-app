@@ -1,17 +1,18 @@
 import { call, put } from "redux-saga/effects";
 import { VolunteerActionModel } from "../../models/VolunteerActionModel";
+import { VolunteerActionPageModel } from "../../models/VolunteerActionPageModel";
 import volunteerActionsService from "../../services/volunteerActionsService";
 import { setVolunteerActions } from "../slices/volunteerActionSlice";
 
-export function* handleGetActions(): Generator<
+export function* handleGetVolunteerActions(): Generator<
   any,
   void,
-  VolunteerActionModel[]
+  VolunteerActionPageModel
 > {
   try {
-    const volunteerActions: VolunteerActionModel[] = yield call(
+    const volunteerActionsPage: VolunteerActionPageModel = yield call(
       volunteerActionsService.getVolunteerActionsPagination
     );
-    yield put(setVolunteerActions(volunteerActions));
+    yield put(setVolunteerActions(volunteerActionsPage.content));
   } catch (error: any) {}
 }
