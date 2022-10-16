@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.WHITE,
     padding: 16,
+    marginTop: 30,
   } as ViewStyle,
   heading: {
     ...TextStyles.CHEWY_REGULAR,
