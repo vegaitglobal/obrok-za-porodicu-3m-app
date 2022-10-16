@@ -12,8 +12,9 @@ interface IVolunteerActionService {
 class VolunteerActionService implements IVolunteerActionService {
   async getActions(page: number): Promise<ResponseModel> {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/api/volunteer-actions?pageNumber=${page}&pageSize=10`,
+      const response = await axios.post(
+        `${BASE_URL}/api/volunteer-actions/search?pageNumber=${page}&pageSize=10`,
+        {},
       );
 
       return {
