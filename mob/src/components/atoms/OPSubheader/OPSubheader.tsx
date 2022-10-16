@@ -27,7 +27,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [allItems, setItems] = useState([{label: 'Najnovije', value: 0}]);
+  const [allItems, setItems] = useState([{label: '', value: 0}]);
   const {volunteerActionStatuses} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
@@ -37,12 +37,11 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   }, [dispatch]);
 
   useEffect(() => {
-    setItems([
-      {label: 'Najnovije', value: 0},
-      ...volunteerActionStatuses.map(e => {
+    setItems(
+      volunteerActionStatuses.map(e => {
         return {label: e.name, value: e.id};
       }),
-    ]);
+    );
   }, [volunteerActionStatuses]);
 
   return (

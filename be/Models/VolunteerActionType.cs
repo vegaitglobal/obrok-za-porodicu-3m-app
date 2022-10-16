@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MealForFamily.Models
 {
@@ -17,6 +17,8 @@ namespace MealForFamily.Models
 
         public ICollection<Donation>? Donations { get; set; }
 
+        [JsonIgnore]
         public ICollection<VolunteerAction>? VolunteerActions { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -1,11 +1,14 @@
 using AutoMapper;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
 using MealForFamily.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MealForFamily.Controllers
 {
+
     [Route("api/contacts")]
     [ApiController]
     public class ContactController : BaseController
@@ -22,35 +25,42 @@ namespace MealForFamily.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetContacts()
         {
-            return Ok(await _contactService.GetContacts());
+            List<ContactDTO> dtos = new();
+            List<Contact> contacts = await _contactService.GetContacts();
+            foreach (Contact contact in contacts)
+                dtos.Add(_mapper.Map<ContactDTO>(contact));
+
+            return Ok(dtos);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleContact([FromRoute] int id)
         {
-            return Ok(await _contactService.GetSingleById(id));
+            return Ok(_mapper.Map<ContactDTO>(await _contactService.GetSingleById(id)));
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateContact(RequestContactDTO request)
         {
             Contact model = _mapper.Map<Contact>(request);
-            return Ok(await _contactService.CreateContact(model));
+            return Ok(_mapper.Map<ContactDTO>(await _contactService.CreateContact(model)));
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateContact(RequestContactDTO request)
         {
-            // TODO: Fix AutoMapper
-            // Contact model = _mapper.Map<RequestContactDTO>(request);
+            Contact model = _mapper.Map<Contact>(request);
+            return Ok(_mapper.Map<ContactDTO>(await _contactService.UpdateContact(model)));
+        }
 
-            Contact model = new();
-            model.Id = request.Id;
-            model.Title = request.Title;
-            model.Email = request.Email;
-            model.PhoneNumber = request.PhoneNumber;
-
-            return Ok(await _contactService.UpdateContact(model));
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteContact(int id)
+        {
+            await _contactService.DeleteContact(id);
+            return Ok("Contact deleted successfully");
         }
     }
 }

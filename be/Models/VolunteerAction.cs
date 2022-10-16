@@ -11,6 +11,8 @@ namespace MealForFamily.Models
         [Required]
         public VolunteerActionType? Type { get; set; }
 
+        public int TypeId { get; set; }
+
         public string? ImageURL { get; set; } = string.Empty;
 
         [Required]
@@ -28,5 +30,7 @@ namespace MealForFamily.Models
         public string? ReferenceNumber { get; set; } = string.Empty;
 
         public ICollection<Donation>? Donations { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

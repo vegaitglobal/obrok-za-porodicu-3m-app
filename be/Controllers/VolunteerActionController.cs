@@ -1,9 +1,11 @@
-using System.ComponentModel.DataAnnotations;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using MealForFamily.ServiceInterface;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
+using MealForFamily.DTOs;
 using MealForFamily.Models;
+using MealForFamily.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MealForFamily.Controllers
 {
@@ -17,9 +19,9 @@ namespace MealForFamily.Controllers
         private readonly IMapper _mapper;
 
         public VolunteerActionController(
-            IVolunteerActionService volunteerActionService, 
-            IVolunteerActionStatusService volunteerActionStatusService, 
-            IVolunteerActionTypeService volunteerActionTypeService, 
+            IVolunteerActionService volunteerActionService,
+            IVolunteerActionStatusService volunteerActionStatusService,
+            IVolunteerActionTypeService volunteerActionTypeService,
             IMapper mapper)
         {
             _volunteerActionService = volunteerActionService;
@@ -28,47 +30,49 @@ namespace MealForFamily.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("")]
-        public async Task<IActionResult> GetVolunteerActions([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
+        [HttpPost("search")]
+        public async Task<IActionResult> GetVolunteerActions(VolunteerActionFilterDTO actionFilters, [RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            return Ok(await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize));
+            List<VolunteerActionDTO> dtos = new();
+            Page<VolunteerAction> actions = await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize);
+            foreach (VolunteerAction action in actions.Content)
+                dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
+
+            return Ok(new Page<VolunteerActionDTO>(pageNumber, pageSize, actions.Pagination.TotalPages, actions.Pagination.TotalResults, dtos));
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSingleVolunteerAction([FromRoute] int id)
         {
-            return Ok(await _volunteerActionService.GetSingleById(id));
+            return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.GetSingleById(id)));
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateVolunteerAction(RequestVolunteerActionDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerAction model = _mapper.Map<RequestVolunteerActionDTO>(request);
-
-            VolunteerAction model = new();
-
-            return Ok(await _volunteerActionService.CreateVolunteerAction(model));
+            VolunteerAction model = _mapper.Map<VolunteerAction>(request);
+            model.Type = await _volunteerActionTypeService.GetSingleById(request.TypeId);
+            model.Status = await _volunteerActionStatusService.GetSingleById(request.StatusId);
+            return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.CreateVolunteerAction(model)));
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateVolunteerAction(RequestVolunteerActionDTO request)
         {
-            // TODO: Fix AutoMapper
-            // VolunteerAction model = _mapper.Map<RequestVolunteerActionDTO>(request);
-
-            VolunteerAction model = new();
-            model.Id = request.Id;
+            VolunteerAction model = _mapper.Map<VolunteerAction>(request);
             model.Type = await _volunteerActionTypeService.GetSingleById(request.TypeId);
-            model.ImageURL = request.ImageURL;
-            model.Title = request.Title;
             model.Status = await _volunteerActionStatusService.GetSingleById(request.StatusId);
-            model.ShortDescription = request.ShortDescription;
-            model.RawDescription = request.RawDescription;
-            model.Description = request.Description;
-            model.ReferenceNumber = request.ReferenceNumber;
+            return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.UpdateVolunteerAction(model)));
+        }
 
-            return Ok(await _volunteerActionService.UpdateVolunteerAction(model));
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteVolunteerAction(int id)
+        {
+            await _volunteerActionService.DeleteVolunteerAction(id);
+            return Ok("Volunteer Action deleted successfully");
         }
     }
 }

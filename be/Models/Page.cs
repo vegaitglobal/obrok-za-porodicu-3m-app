@@ -4,7 +4,7 @@ namespace MealForFamily.Models
     {
         public class PaginationInfo
         {
-            public PaginationInfo(int currentPage,  int pageSize,  int totalPages,  int totalResults)
+            public PaginationInfo(int currentPage, int pageSize, int totalPages, int totalResults)
             {
                 CurrentPage = currentPage;
                 PageSize = pageSize;
@@ -16,7 +16,7 @@ namespace MealForFamily.Models
             public int TotalPages { get; set; }
             public int TotalResults { get; set; }
         }
-        public Page(int currentPage,  int pageSize,  int totalPages,  int totalResults, IEnumerable<T> content)
+        public Page(int currentPage, int pageSize, int totalPages, int totalResults, IEnumerable<T> content)
         {
             Pagination = new PaginationInfo(currentPage, pageSize, totalPages, totalResults);
             Content = content;

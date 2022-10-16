@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {FlatList, ListRenderItemInfo, RefreshControl} from 'react-native';
 import {VolunteerActionDTO} from '../../../models/VolunteerAction/VolunteerActionDTO';
 import OPActionListItem from '../../molecules/OPActionListItem/OPActionListItem';
+import OPEmptyListState from '../../molecules/OPEmptyListState/OPEmptyListState';
 import {styles} from './style';
 
 interface OPActionsListProps {
@@ -17,6 +19,8 @@ const OPActionsList: React.FC<OPActionsListProps> = ({
   onRefresh,
   onLoadMore,
 }) => {
+  const {t} = useTranslation();
+
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
   const handleRenderAction = ({
@@ -44,6 +48,9 @@ const OPActionsList: React.FC<OPActionsListProps> = ({
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
       }
+      ListEmptyComponent={() => (
+        <OPEmptyListState text={t('actionsList.empty_list')} />
+      )}
     />
   );
 };

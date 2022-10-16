@@ -19,5 +19,9 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
     color: Colors.DARK_GRAY,
+    paddingHorizontal: 10,
   } as TextStyle,
+  button: {
+    marginTop: 10,
+  },
 });

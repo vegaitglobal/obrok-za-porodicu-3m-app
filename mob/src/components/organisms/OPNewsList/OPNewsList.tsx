@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {FlatList, ListRenderItemInfo, RefreshControl} from 'react-native';
 import {NewsDTO} from '../../../models/News/NewsDTO';
+import OPEmptyListState from '../../molecules/OPEmptyListState/OPEmptyListState';
 import OPNewsListItem from '../../molecules/OPNewsListItem/OPNewsListItem';
 import {styles} from './style';
 
@@ -17,6 +19,8 @@ const OPNewsList: React.FC<OPNewsListProps> = ({
   onRefresh,
   onLoadMore,
 }) => {
+  const {t} = useTranslation();
+
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
   const handleRenderAction = ({item, index}: ListRenderItemInfo<NewsDTO>) => {
@@ -41,6 +45,9 @@ const OPNewsList: React.FC<OPNewsListProps> = ({
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
       }
+      ListEmptyComponent={() => (
+        <OPEmptyListState text={t('news.empty_list')} />
+      )}
     />
   );
 };
