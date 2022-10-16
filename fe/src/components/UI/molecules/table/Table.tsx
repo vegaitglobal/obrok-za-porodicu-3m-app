@@ -10,7 +10,13 @@ interface Props {
   onClickEdit: (val: any) => void;
 }
 
-const Table: React.FC<Props> = ({ headers, data, columns, deleteHandler, onClickEdit }) => {
+const Table: React.FC<Props> = ({
+  headers,
+  data,
+  columns,
+  deleteHandler,
+  onClickEdit,
+}) => {
   return (
     <table className={classes}>
       <thead>

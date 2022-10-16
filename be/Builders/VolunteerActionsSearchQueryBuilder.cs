@@ -1,6 +1,7 @@
 using MealForFamily.Data;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
+using System.Text;
 
 namespace MealForFamily.Builders
 {
@@ -48,8 +49,8 @@ namespace MealForFamily.Builders
                 return this;
 
             string searchTerm = filters.SearchTerm;
-            if (searchTerm is not null)
-                query = query.Where(s => s.Title.Contains(searchTerm));
+            if(searchTerm is not null)
+                query = query.Where(s => Encoding.GetEncoding("Latin2").GetBytes(s.Title).ToLower().Contains(searchTerm.ToLower()));
 
             return this;
         }

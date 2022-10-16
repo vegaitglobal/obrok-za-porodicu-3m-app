@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {Colors} from '../../../constants/Colors';
 import {TextStyles} from '../../../constants/TextStyles';
 
@@ -15,5 +15,6 @@ export const styles = StyleSheet.create({
     ...TextStyles.DOSIS_BOLD,
     color: Colors.WHITE,
     left: -0.5,
+    marginBottom: Platform.OS === 'android' ? 2 : 0,
   },
 });

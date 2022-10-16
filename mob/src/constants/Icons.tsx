@@ -1,4 +1,7 @@
 import React from 'react';
+import {Platform, StyleSheet} from 'react-native';
+
+import {Colors} from './Colors';
 
 import ArrowDown from '../../assets/icons/arrow_down.svg';
 import ArrowLeft from '../../assets/icons/arrow_left.svg';
@@ -24,7 +27,10 @@ import Star from '../../assets/icons/star.svg';
 import UserFull from '../../assets/icons/user_full.svg';
 import User from '../../assets/icons/user.svg';
 import Warning from '../../assets/icons/warning.svg';
-import {Colors} from './Colors';
+
+const styles = StyleSheet.create({
+  search: {marginTop: Platform.OS === 'android' ? 8 : 0},
+});
 
 export default {
   ARROW_DOWN: <ArrowDown />,
@@ -45,7 +51,9 @@ export default {
   NOTIFICATION: <Notification />,
   PLAY: <Play />,
   SEARCH: <Search color={Colors.DARK_GRAY} />,
-  LIGHTER_GRAY_SEARCH: <Search color={Colors.LIGHTER_GRAY} />,
+  LIGHTER_GRAY_SEARCH: (
+    <Search color={Colors.LIGHTER_GRAY} style={styles.search} />
+  ),
   SHARE: <Share />,
   STAR: <Star />,
   USER_FULL: <UserFull />,

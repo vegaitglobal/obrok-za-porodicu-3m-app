@@ -13,9 +13,12 @@ interface VolunteerActionState {
   totalData: number;
   totalPages: number;
   searchTerm: string;
+  currentActionStatus: number | null;
   appliedVolunteerActions: AppliedVolunteerAction;
   volunteerActionStatuses: Array<VolunteerActionStatus>;
   volunteerActionTypes: Array<ActionType>;
+  currentVolunteerAction: VolunteerActionDTO;
+  isLoading: boolean;
 }
 
 const initialState: VolunteerActionState = {
@@ -25,8 +28,25 @@ const initialState: VolunteerActionState = {
   currentPage: 0,
   totalData: 0,
   totalPages: 0,
+  currentActionStatus: null,
   volunteerActionStatuses: [],
   volunteerActionTypes: [],
+  currentVolunteerAction: {
+    id: -1,
+    imageURL: '',
+    shortDescription: '',
+    status: {
+      id: -1,
+      name: '',
+    },
+    title: '',
+    type: {
+      id: -1,
+      name: '',
+    },
+    description: '',
+  },
+  isLoading: false,
 };
 
 const volunteerActionsSlice = createSlice({
@@ -36,6 +56,9 @@ const volunteerActionsSlice = createSlice({
     clearFilters(state) {
       state.appliedVolunteerActions = {};
       state.searchTerm = '';
+    },
+    setCurrentActionStatus(state, {payload}: PayloadAction<number | null>) {
+      state.currentActionStatus = payload;
     },
     setAppliedVolunteerActions(
       state,
@@ -71,6 +94,32 @@ const volunteerActionsSlice = createSlice({
     ) {
       state.volunteerActionStatuses = payload;
     },
+    setCurrentVolunteerAction(
+      state,
+      {payload}: PayloadAction<VolunteerActionDTO>,
+    ) {
+      state.currentVolunteerAction = payload;
+    },
+    clearCurrentVolunteerAction(state) {
+      state.currentVolunteerAction = {
+        id: -1,
+        imageURL: '',
+        shortDescription: '',
+        status: {
+          id: -1,
+          name: '',
+        },
+        title: '',
+        type: {
+          id: -1,
+          name: '',
+        },
+        description: '',
+      };
+    },
+    setIsLoading(state, {payload}: PayloadAction<boolean>) {
+      state.isLoading = payload;
+    },
   },
 });
 
@@ -79,8 +128,12 @@ export const {
   setVolunteerActions,
   setVolunteerActionTypes,
   setVolunteerActionStatuses,
+  setCurrentActionStatus,
   setSearchTerm,
   clearFilters,
+  setCurrentVolunteerAction,
+  clearCurrentVolunteerAction,
+  setIsLoading,
 } = volunteerActionsSlice.actions;
 
 export default volunteerActionsSlice.reducer;

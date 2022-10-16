@@ -2,11 +2,13 @@ import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
 import {FilterVolunteerActionsType} from '../models/VolunteerAction/AppliedVolunteerAction';
+import {logIfOnline} from '../utils/logging';
 
 interface IVolunteerActionService {
   getActions(page: number): Promise<ResponseModel>;
   getActionStatuses(): Promise<ResponseModel>;
   getVolunteerActionTypes(): Promise<ResponseModel>;
+  getVolunteerAction(id: number): Promise<ResponseModel>;
 }
 
 class VolunteerActionService implements IVolunteerActionService {
@@ -23,6 +25,7 @@ class VolunteerActionService implements IVolunteerActionService {
       };
     } catch (error) {
       console.log(error);
+      logIfOnline(error);
       return Promise.reject(error);
     }
   }
@@ -39,6 +42,7 @@ class VolunteerActionService implements IVolunteerActionService {
       };
     } catch (error) {
       console.log(error);
+      logIfOnline(error);
       return Promise.reject(error);
     }
   }
@@ -57,16 +61,32 @@ class VolunteerActionService implements IVolunteerActionService {
       return Promise.reject(error);
     }
   }
+
   async getVolunteerActionsByTagsAndSearchTerm(
     query: FilterVolunteerActionsType,
+    page: number,
   ): Promise<ResponseModel> {
-    console.log(query);
     try {
-      const response = await axios.get(`${BASE_URL}/`, {
-        params: {
-          query,
-        },
-      });
+      const response = await axios.post(
+        `${BASE_URL}/api/volunteer-actions/search?pageSize=10&pageNumber=${page}`,
+        query,
+      );
+      return {
+        data: response.data,
+        code: 200,
+      };
+    } catch (error) {
+      console.log(error);
+      return Promise.reject(error);
+    }
+  }
+
+  async getVolunteerAction(id: number): Promise<ResponseModel> {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/api/volunteer-actions/${id}`,
+      );
+
       return {
         data: response.data,
         code: 200,

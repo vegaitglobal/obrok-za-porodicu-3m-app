@@ -6,11 +6,14 @@ export interface VolunteerActionDTO {
   status: ActionStatus;
   shortDescription: string;
   referenceNumber?: string;
+  description: string;
 }
 
 export interface ActionType {
   id: number;
   name: string;
+  hasPickup?: boolean;
+  hasPayment?: boolean;
 }
 
 interface ActionStatus {

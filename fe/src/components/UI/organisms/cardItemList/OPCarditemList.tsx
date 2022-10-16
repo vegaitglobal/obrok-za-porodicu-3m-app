@@ -1,16 +1,26 @@
+import classes from "./OPCarditemList.module.scss";
 import OPCardItem from "../../molecules/cardItem/OPCardItem";
+import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 
-const OPCarditemList = () => {
+interface IOPCardItemListProps {
+  items: VolunteerActionModel[];
+}
+
+const OPCarditemList: React.FC<IOPCardItemListProps> = ({ items }) => {
   return (
-    <div style={{padding: "16px 0"}}>
-      <OPCardItem
-        id={1}
-        type="Novac"
-        title="Akcija prikupljanja sredstava za porodicu Popovic"
-        status="Trenutno u toku"
-        shortDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
-        imageUrl="https://blog.feedingwestchester.org/hubfs/blog-39-5-facts-about-hungry-children-in-america.jpg"
-      />
+    <div className={classes["card-list"]}>
+      {items.map((item) => {
+        return (
+          <OPCardItem
+            id={item.id}
+            type={item.type.name}
+            title={item.title}
+            status={item.status.name}
+            shortDescription={item.shortDescription}
+            imageUrl={item.imageURL}
+          />
+        );
+      })}
     </div>
   );
 };

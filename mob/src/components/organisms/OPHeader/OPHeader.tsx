@@ -14,7 +14,7 @@ import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
 import {useSelector} from 'react-redux';
 import type {RootState, AppDispatch} from '../../../store/reducers/RootReducer';
 import {
-  filterVolunteerActionsByTagsAndSearchTerm,
+  getVolunteerActions,
   onSetSearchTerm,
   onClearFilters,
   getVolunteerActionTypes,
@@ -24,56 +24,6 @@ import {styles} from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useTranslation} from 'react-i18next';
 
-const volunteerActions: string | any[] = [
-  {
-    id: 1,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 2,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 3,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 4,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 5,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 6,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-  {
-    id: 7,
-    name: 'Novac',
-    hasPickup: false,
-    hasPayment: true,
-  },
-  {
-    id: 8,
-    name: 'Odeća i obuća',
-    hasPickup: true,
-    hasPayment: false,
-  },
-];
 interface OPHeaderProps {
   filterTitle?: string;
   buttonTitle?: string;
@@ -147,12 +97,10 @@ const OPHeader: FC<OPHeaderProps> = ({
     }
   };
 
-  const onButtonPress = async () => {
+  const onButtonPress = () => {
     dispatch(onSetSearchTerm(searchValue));
-    const res = await dispatch(filterVolunteerActionsByTagsAndSearchTerm());
-    if (res.data) {
-      onPressFilterIcon();
-    }
+    dispatch(getVolunteerActions(1));
+    onPressFilterIcon();
   };
 
   useEffect(() => dispatch(getVolunteerActionTypes()), [dispatch]);

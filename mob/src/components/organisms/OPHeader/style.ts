@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {Colors} from '../../../constants/Colors';
 import {TextStyles} from '../../../constants/TextStyles';
 
@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.BACKGROUND,
   },
   bottomHeader: {
-    padding: 16,
+    padding: Platform.OS === 'ios' ? 16 : 0,
+    marginHorizontal: Platform.OS === 'android' ? 16 : 0,
   },
   filterContainer: {
     flexDirection: 'row',
@@ -38,6 +39,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf: 'flex-end',
     alignContent: 'flex-end',
+    marginTop: Platform.OS === 'android' ? 5 : 0,
     top: 82,
     right: 20,
     zIndex: 10,

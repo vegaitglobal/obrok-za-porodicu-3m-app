@@ -20,7 +20,7 @@ const OPDonateTypeSelector: React.FC<OPDonateTypeSelectorProps> = ({
   hasError = false,
 }) => {
   const {t} = useTranslation();
-  const [selected, setSelected] = useState(-1);
+  const [selected, setSelected] = useState(5);
   const dispatch = useDispatch<any>();
 
   useEffect(() => {
@@ -36,11 +36,11 @@ const OPDonateTypeSelector: React.FC<OPDonateTypeSelectorProps> = ({
   };
   const renderItems = () =>
     volunteerActionTypes &&
-    volunteerActionTypes.map((item: ActionType, index: number) => (
+    volunteerActionTypes.map((item: ActionType) => (
       <View key={item.id.toString()} style={styles.tagContainer}>
         <OPTagChip
           volunteerAction={item}
-          color={getRandomColor(index)}
+          color={getRandomColor(item.id)}
           size="large"
           onPress={onPress}
           fill={selected === item.id}

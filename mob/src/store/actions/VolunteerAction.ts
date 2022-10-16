@@ -5,9 +5,15 @@ import {
   setVolunteerActionStatuses,
   setVolunteerActionTypes,
   setSearchTerm,
+  setCurrentActionStatus,
   clearFilters,
+  setCurrentVolunteerAction,
+  setIsLoading,
 } from '../reducers/VolunteerActionReducer';
-import {ActionType} from '../../models/VolunteerAction/VolunteerActionDTO';
+import {
+  ActionType,
+  VolunteerActionDTO,
+} from '../../models/VolunteerAction/VolunteerActionDTO';
 import type {RootState} from '../../store/reducers/RootReducer';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
@@ -35,13 +41,38 @@ export const onSetSearchTerm = (searchTerm: string) => (dispatch: Dispatch) =>
 export const onClearFilters = () => (dispatch: Dispatch) =>
   dispatch(clearFilters());
 
-export const getVolunteerActions = (page: number) => (dispatch: Dispatch) => {
-  VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
-    if (res) {
-      dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+export const onSetCurrentActionStatus =
+  (status: number | null) => (dispatch: Dispatch) =>
+    dispatch(setCurrentActionStatus(status));
+
+export const getVolunteerActions =
+  (page: number) => (dispatch: Dispatch, getState: () => RootState) => {
+    const {appliedVolunteerActions, searchTerm, currentActionStatus} =
+      getState().volunteerActions;
+
+    const filtersIds = Object.keys(appliedVolunteerActions).map(Number);
+
+    if (
+      filtersIds.length > 0 ||
+      searchTerm.length > 0 ||
+      currentActionStatus !== null
+    ) {
+      dispatch(
+        filterVolunteerActionsByTagsAndSearchTerm(
+          filtersIds,
+          searchTerm,
+          currentActionStatus,
+          page,
+        ),
+      );
+    } else {
+      VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
+        if (res) {
+          dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+        }
+      });
     }
-  });
-};
+  };
 
 export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
   VolunteerActionsService.getActionStatuses().then((res: ResponseModel) => {
@@ -62,18 +93,39 @@ export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
 };
 
 export const filterVolunteerActionsByTagsAndSearchTerm =
-  () => async (dispatch: Dispatch, getState: () => RootState) => {
-    const {appliedVolunteerActions, searchTerm} = getState().volunteerActions;
+  (
+    filtersIds: number[],
+    searchTerm: string,
+    currentActionStatus: number | null,
+    page: number,
+  ): any =>
+  async (dispatch: Dispatch) => {
+    const query = {
+      actionTypeIds: filtersIds,
+      actionStatusesIds:
+        currentActionStatus !== null ? [currentActionStatus] : [],
+      searchTerm,
+    };
 
-    const filtersIds = Object.keys(appliedVolunteerActions);
+    const res =
+      await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
+        query,
+        page,
+      );
 
-    if (filtersIds.length > 0 || searchTerm.length > 0) {
-      const query = {ids: filtersIds, searchTerm};
-      const res =
-        await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
-          query,
-        );
-
-      return res;
+    if (res) {
+      dispatch(setVolunteerActions(res.data as VolunteerPageModel));
     }
   };
+
+export const getVolunteerAction = (id: number) => (dispatch: Dispatch) => {
+  dispatch(setIsLoading(true));
+  VolunteerActionsService.getVolunteerAction(id)
+    .then((res: ResponseModel) => {
+      dispatch(setCurrentVolunteerAction(res.data as VolunteerActionDTO));
+      dispatch(setIsLoading(false));
+    })
+    .catch(() => {
+      dispatch(setIsLoading(false));
+    });
+};

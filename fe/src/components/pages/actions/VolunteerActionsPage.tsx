@@ -9,15 +9,20 @@ import Header from "../../UI/molecules/header/OPHeader";
 import OPCarditemList from "../../UI/organisms/cardItemList/OPCarditemList";
 import classes from "./VolunteerActionsPage.module.scss";
 import globalClasses from "../../../constants/GlobalStyle.module.scss";
+import { getVolunteerActions } from "../../../store/actions/volunteerActionsType";
 
 const VolunteerActionsPage = () => {
   const dispatch = useDispatch();
   const filterItems = useSelector(
     (state: RootState) => state.volunteerActionTypes.volunteerActionTypes
   );
+  const volunteerActions = useSelector(
+    (state: RootState) => state.volunterActions.volunteerActions
+  );
 
   useEffect(() => {
     dispatch(getVolunteerActionTypes());
+    dispatch(getVolunteerActions());
   }, []);
 
   return (
@@ -32,7 +37,7 @@ const VolunteerActionsPage = () => {
               <OPPrimaryButton text="Pretrazi" onClick={() => {}} />
             </div>
           </div>
-          <OPCarditemList/>
+          <OPCarditemList items={volunteerActions} />
         </div>
       </div>
     </div>

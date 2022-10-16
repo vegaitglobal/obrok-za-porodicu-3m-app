@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.WHITE,
     padding: 16,
+    marginTop: 30,
   } as ViewStyle,
   heading: {
     ...TextStyles.CHEWY_REGULAR,
@@ -23,5 +24,9 @@ export const styles = StyleSheet.create({
   } as TextStyle,
   button: {
     marginTop: 10,
+    width: '90%',
+  },
+  formik: {
+    alignItems: 'center',
   },
 });
