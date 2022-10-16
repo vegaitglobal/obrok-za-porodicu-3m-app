@@ -1,3 +1,4 @@
+import { LoginUserModel } from "../models/LoginUserModel";
 import ApiService from "./apiService";
 
 const ENDPOINTS = {
@@ -5,7 +6,7 @@ const ENDPOINTS = {
 };
 
 export class AuthService extends ApiService {
-  logIn = async () => {
+  logIn = async (loginFormValues: LoginUserModel) => {
     const { data } = await this.apiClient.get(ENDPOINTS.AUTHENTICATE);
 
     return data;
