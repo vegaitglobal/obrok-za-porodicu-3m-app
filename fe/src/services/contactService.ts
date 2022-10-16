@@ -8,8 +8,6 @@ export class ContactsService extends ApiService {
   getContacts = async () => {
     const { data } = await this.apiClient.get(ENDPOINTS.CONTACTS);
 
-    console.log(data);
-
     return data;
   };
 

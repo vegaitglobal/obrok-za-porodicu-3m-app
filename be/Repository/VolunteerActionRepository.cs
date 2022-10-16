@@ -1,9 +1,9 @@
+using MealForFamily.Builders;
 using MealForFamily.Data;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
 using Microsoft.EntityFrameworkCore;
-using MealForFamily.Builders;
 
 namespace MealForFamily.Repositories
 {
@@ -25,6 +25,8 @@ namespace MealForFamily.Repositories
             IEnumerable<VolunteerAction> content = await query
                 .OrderByDescending(va => va.Id)
                 .Skip(GetNumberOfElements(pageNumber, pageSize))
+                .Include(v => v.Type)
+                .Include(v => v.Status)
                 .Take(pageSize)
                 .ToListAsync();
 

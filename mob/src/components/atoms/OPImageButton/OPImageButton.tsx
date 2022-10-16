@@ -5,11 +5,15 @@ import {
   StyleProp,
   ViewStyle,
   ImageStyle,
+  Text,
 } from 'react-native';
 import React from 'react';
+import {styles} from './style';
 
 interface OPImageButtonProps {
   onPress: () => void;
+  hasButton?: boolean;
+  buttonText?: string;
   imageSource: ImageSourcePropType;
   imageStyle?: StyleProp<ImageStyle>;
   containerStyle?: StyleProp<ViewStyle>;
@@ -17,6 +21,8 @@ interface OPImageButtonProps {
 
 const OPImageButton: React.FC<OPImageButtonProps> = ({
   onPress,
+  hasButton = false,
+  buttonText = '',
   imageSource,
   imageStyle,
   containerStyle,
@@ -26,7 +32,12 @@ const OPImageButton: React.FC<OPImageButtonProps> = ({
       onPress={onPress}
       activeOpacity={1}
       style={[containerStyle]}>
-      <Image source={imageSource} style={[{width: '100%'}, imageStyle]} />
+      <Image source={imageSource} style={[styles.image, imageStyle]} />
+      {hasButton && (
+        <TouchableOpacity style={styles.button} onPress={onPress}>
+          <Text style={styles.text}>{buttonText}</Text>
+        </TouchableOpacity>
+      )}
     </TouchableOpacity>
   );
 };

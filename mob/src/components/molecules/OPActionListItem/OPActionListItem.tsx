@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {Colors} from '../../../constants/Colors';
 import {VolunteerActionDTO} from '../../../models/VolunteerAction/VolunteerActionDTO';
 import {getRandomColor} from '../../../utils/getRandomColor';
@@ -29,7 +29,10 @@ const OPActionListItem: React.FC<OPActionListItemProps> = ({
   const statusColor: string =
     action.status?.id === 1 ? Colors.GREEN : Colors.ORANGE;
   return (
-    <View style={[styles.container, {backgroundColor: backgroundColor}]}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={handleGoToAction}
+      style={[styles.container, {backgroundColor: backgroundColor}]}>
       <OPTagChip
         fill
         disabled
@@ -57,7 +60,7 @@ const OPActionListItem: React.FC<OPActionListItemProps> = ({
           hasArrow
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

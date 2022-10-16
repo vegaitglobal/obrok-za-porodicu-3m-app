@@ -3,6 +3,7 @@ export const Colors = {
   BACKGROUND: '#F5F5F5',
 
   BLACK: '#373737',
+  BLACK_40: 'rgba(0,0,0,0.6)',
 
   BG_LIGHT_GRAY: '#D7D7D7',
   LIGHTER_GRAY: '#B3B3B3',
