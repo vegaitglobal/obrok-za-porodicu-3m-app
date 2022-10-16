@@ -1,13 +1,34 @@
 using Microsoft.EntityFrameworkCore;
 using MealForFamily.Data;
+using MealForFamily.Dtos;
 using MealForFamily.Models;
 using MealForFamily.RepositoryInterface;
+using MealForFamily.Builders;
 
 namespace MealForFamily.Repositories
 {
     public class VolunteerActionRepository : Repository<VolunteerAction>, IVolunteerActionRepository
     {
         public VolunteerActionRepository(DataContext context) : base(context) { }
+
+        public async Task<Page<VolunteerAction>> GetAllByPage(VolunteerActionFilterDTO filters, int pageNumber, int pageSize)
+        {
+            VolunteerActionsSearchQueryBuilder quryBuilder = new VolunteerActionsSearchQueryBuilder(_context);
+            IQueryable<VolunteerAction> query = quryBuilder
+                .withTypes(filters)
+                .withStatuses(filters)
+                .withSearchTerm(filters)
+                .build(pageNumber, pageSize);
+
+            int totalCount = query.Count();
+
+            IEnumerable<VolunteerAction> content = await query
+                .Skip(GetNumberOfElements(pageNumber, pageSize))
+                .Take(pageSize)
+                .ToListAsync();
+
+            return createPage(pageNumber, pageSize, totalCount, content);
+        }
 
         public async Task<List<VolunteerAction>> GetVolunteerActions()
         {
@@ -18,6 +39,13 @@ namespace MealForFamily.Repositories
         public async Task<VolunteerAction> GetSingleById(int id)
         {
             return await _context.VolunteerActions.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
+
+        private Page<VolunteerAction> createPage(int currentPage, int pageSize, int totalResults, IEnumerable<VolunteerAction> content)
+        {
+            int totalPages = (int)Math.Ceiling((double)totalResults / pageSize);
+
+            return new Page<VolunteerAction>(currentPage, pageSize, totalPages, totalResults, content);
         }
     }
 }

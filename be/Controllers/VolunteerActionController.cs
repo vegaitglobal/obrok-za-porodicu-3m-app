@@ -28,10 +28,10 @@ namespace MealForFamily.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("")]
-        public async Task<IActionResult> GetVolunteerActions([RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
+        [HttpPost("search")]
+        public async Task<IActionResult> GetVolunteerActions(VolunteerActionFilterDTO actionFilters, [RequiredAttribute] int pageNumber, [RequiredAttribute] int pageSize)
         {
-            return Ok(await _volunteerActionService.GetVolunteerActions(pageNumber, pageSize));
+            return Ok(await _volunteerActionService.GetVolunteerActions(actionFilters, pageNumber, pageSize));
         }
 
         [HttpGet("{id:int}")]

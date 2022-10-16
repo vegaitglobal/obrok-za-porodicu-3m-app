@@ -11,6 +11,8 @@ namespace MealForFamily.Models
         [Required]
         public VolunteerActionType? Type { get; set; }
 
+        public int TypeId { get; set; }
+
         public string? ImageURL { get; set; } = string.Empty;
 
         [Required]
