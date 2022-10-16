@@ -1,8 +1,9 @@
+import classes from "./OPCarditemList.module.scss";
 import OPCardItem from "../../molecules/cardItem/OPCardItem";
 
 const OPCarditemList = () => {
   return (
-    <div style={{padding: "16px 0"}}>
+    <div className={classes["card-list"]}>
       <OPCardItem
         id={1}
         type="Novac"

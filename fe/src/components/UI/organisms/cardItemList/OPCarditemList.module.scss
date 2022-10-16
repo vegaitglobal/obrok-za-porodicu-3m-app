@@ -1,0 +1,9 @@
+.card-list {
+  padding-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+
+  &> div:not(:last-of-type) {
+	margin-right: 20px;
+  }
+}
