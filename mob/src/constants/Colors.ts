@@ -11,6 +11,7 @@ export const Colors = {
   DARK_GRAY: '#333333',
 
   RED: '#EF6852',
+  RED_ERROR_TOAST: '#F8AA9D',
   RED_ERROR: '#FF003D',
   LIGHT_PINK: '#FF9EB5',
 

@@ -7,9 +7,21 @@
       "about_us": "O nama",
       "contact": "Kontakt"
     },
+    "contactScreen": {
+      "contact": "KONTAKT",
+      "socialMedia": "Društvene mreže",
+      "contactUs": "Kontaktirajte Nas",
+      "callUs": "Pozovite",
+      "sendEmail": "Mail"
+    },
     "actionsList": {
       "find_out_more": "Saznaj Više",
-      "status": "Status"
+      "status": "Status",
+      "trending": "Aktuelno",
+      "empty_list": "Trenutno nemamo aktivnih akcija."
+    },
+    "news": {
+      "empty_list": "Nema novih vesti."
     }
   }
 }

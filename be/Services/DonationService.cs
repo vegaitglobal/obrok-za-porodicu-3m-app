@@ -15,7 +15,6 @@ namespace MealForFamily.Service
         {
             _donationRepository = donationRepository;
             _mapper = mapper;
-        }
 
         public async Task<List<Donation>> GetDonations()
         {

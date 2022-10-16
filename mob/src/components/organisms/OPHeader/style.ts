@@ -27,18 +27,25 @@ export const styles = StyleSheet.create({
     marginRight: 4,
     fontSize: 18,
   },
-  categoryText: {
-    ...TextStyles.DOSIS_SEMI_BOLD,
-    color: Colors.BLACK,
-    marginTop: 16,
-    marginBottom: 13,
-    fontSize: 18,
-  },
   animationWrapper: {
     overflow: 'hidden',
     justifyContent: 'flex-end',
   },
   buttonContainer: {
     paddingHorizontal: 16,
+  },
+  clearButton: {
+    position: 'absolute',
+    alignSelf: 'flex-end',
+    alignContent: 'flex-end',
+    top: 82,
+    right: 20,
+    zIndex: 10,
+  },
+  clearText: {
+    ...TextStyles.DOSIS_BOLD,
+    color: Colors.LIGHT_GRAY,
+    fontSize: 14,
+    textDecorationLine: 'underline',
   },
 });

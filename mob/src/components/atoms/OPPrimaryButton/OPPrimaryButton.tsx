@@ -1,12 +1,18 @@
 import React from 'react';
-import {Text, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
+import {
+  StyleProp,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 import {styles} from './style';
 
 interface OPPrimaryButtonProps {
   text: string;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
   disabled?: boolean;
-  textStyle?: TextStyle;
+  textStyle?: StyleProp<TextStyle>;
   onPress: () => void;
 }
 

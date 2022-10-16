@@ -6,24 +6,23 @@ import {AppRoute} from './Routes';
 import ActionScreen from '../screens/ActionScreen';
 import ActionsListScreen from '../screens/ActionsListScreen';
 
+import {actionScreenOptions, actionsStackOptions} from './screenOptions';
+
 const Stack = createStackNavigator();
 
 const ActionsNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName={AppRoute.ACTIONS_LIST_SCREEN}>
+    <Stack.Navigator
+      initialRouteName={AppRoute.ACTIONS_LIST_SCREEN}
+      screenOptions={actionsStackOptions}>
       <Stack.Screen
         name={AppRoute.ACTIONS_LIST_SCREEN}
         component={ActionsListScreen}
-        options={{
-          headerShown: false,
-        }}
       />
       <Stack.Screen
         name={AppRoute.ACTION_SCREEN}
         component={ActionScreen}
-        options={{
-          headerShown: false,
-        }}
+        options={actionScreenOptions}
       />
     </Stack.Navigator>
   );

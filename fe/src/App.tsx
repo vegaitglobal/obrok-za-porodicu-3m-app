@@ -5,6 +5,9 @@ import NotFoundPage from "./components/pages/notFound/NotFoundPage";
 import VolunteerActionsPage from "./components/pages/actions/VolunteerActionsPage";
 import ActionTypesPage from "./components/pages/actionTypes/ActionTypesPage";
 import ContactsPage from "./components/pages/contacts/ContactsPage";
+import DonationPage from "./components/pages/donation/DonationPage";
+import NewsPage from "./components/pages/news/NewsPage";
+import AboutUsPage from "./components/pages/aboutUs/AboutUsPage";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
       <Route path="/volunteer-action" element={<VolunteerActionsPage />} />
       <Route path="/volunteer-action-type" element={<ActionTypesPage />} />
       <Route path="/contact" element={<ContactsPage />} />
+      <Route path="/donation" element={<DonationPage />} />
+      <Route path="/news" element={<NewsPage />} />
+      <Route path="/about-us" element={<AboutUsPage />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

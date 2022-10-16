@@ -1,33 +1,89 @@
 import classes from "./ContactsPage.module.scss";
+import globalClasses from "../../../constants/GlobalStyle.module.scss";
 import Table from "../../UI/molecules/table/Table";
 import Header from "../../UI/molecules/header/OPHeader";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
+import { useEffect } from "react";
+import {
+  deleteContact,
+  getContacts,
+} from "../../../store/actions/contactTypes";
+import ContactModal from "../../UI/molecules/contactModal/ContactModal";
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 
-const data: any = [
-  {id: 1, title: "Obrok za porodicu", email: "obrokzaporodicu@gmail.com", phone: "+381 69 123 45 67"},
-  {id: 2, title: "Obrok za porodicu", email: "obrokzaporodicu@gmail.com", phone: "+381 69 123 45 67"},
-  {id: 3, title: "Obrok za porodicu", email: "obrokzaporodicu@gmail.com", phone: "+381 69 123 45 67"},
-  {id: 4, title: "Obrok za porodicu", email: "obrokzaporodicu@gmail.com", phone: "+381 69 123 45 67"},
-]
+const headers: string[] = ["Title", "Email", "Phone number", "Actions"];
 
-const headers: string[] = [
-  "Title", "Email", "Phone"
-]
+const columnsToRender: string[] = ["title", "email", "phoneNumber", "actions"];
 
-const columnsToRender: string[] = [
-  "title", "email", "phone"
-]
+const ContactPage = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector((state: RootState) => state.contacts.contacts);
 
-const ActionTypesPage = () => {
+  useEffect(() => {
+    dispatch(getContacts());
+  }, []);
+
+  const [modalShow, setModalShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [id, setId] = useState<number>();
+
+  const addContact = (title: string, email: string, phone: string) => {
+    const data: any = {
+      title: title,
+      email: email,
+      phoneNumber: phone,
+    };
+    setModalShow(false);
+    console.log(data);
+    //dispatch
+  };
+
+  const showDeleteModal = (id: number) => {
+    setDeleteModalShow(true);
+    setId(id);
+  };
+
+  const deleteHandler = () => {
+    console.log(id);
+    dispatch(deleteContact(id!));
+  };
+
   return (
-    <div className={classes["contacts-page"]}>
-      <div className={classes["content-wrapper"]}>
-        <div className={classes["header-wrapper"]}>
-          <Header />
+    <div className={globalClasses["page-wrapper"]}>
+      <Header />
+      <div className={globalClasses["content-wrapper"]}>
+        <div className={globalClasses["content"]}>
+          <div>
+            Add Contact
+            <button onClick={() => setModalShow(true)}>add</button>
+          </div>
+          <div className={classes["table-wrapper"]}>
+            <Table
+              headers={headers}
+              data={contacts}
+              columns={columnsToRender}
+              deleteHandler={showDeleteModal}
+            />
+          </div>
         </div>
-        <Table headers={headers} data={data} columns={columnsToRender} />
+        <ContactModal
+          show={modalShow}
+          onClick={addContact}
+          onHide={() => setModalShow(false)}
+          label={"Add action type"}
+        />
       </div>
+      <OPDeleteModal
+        show={deleteModalShow}
+        onDelete={deleteHandler}
+        onHide={() => setDeleteModalShow(false)}
+        type={"contact"}
+      />
     </div>
   );
 };
 
-export default ActionTypesPage;
+export default ContactPage;

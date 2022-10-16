@@ -7,8 +7,20 @@
     "about_us": "O nama",
     "contact": "Kontakt"
   },
+  "contactScreen": {
+    "contact": "CONTACT",
+    "socialMedia": "Social Media",
+    "contactUs": "Contact Us",
+    "callUs": "Call",
+    "sendEmail": "Mail"
+  },
   "actionsList": {
     "find_out_more": "Find out more",
-    "status": "Status"
+    "status": "Status",
+    "trending": "Trending",
+    "empty_list": "We don't have any active actions currently."
+  },
+  "news": {
+    "empty_list": "No news."
   }
 }
