@@ -1,9 +1,11 @@
 import { call, put } from "redux-saga/effects";
 import { VolunteerActionTypeModel } from "../../models/VolunteerActionTypeModel";
 import volunteerActionTypesService from "../../services/volunteerActionTypesService";
-import { deleteActionType, updateVolunteerActionType } from "../actions/volunteerActionTypeTypes";
-import volunteerActionsService from "../../services/volunteerActionTypesService";
-import { addVolunteerActionType } from "../actions/volunteerActionTypeTypes";
+import {
+  addVolunteerActionType,
+  deleteActionType,
+  updateVolunteerActionType,
+} from "../actions/volunteerActionTypeTypes";
 import { setVolunteerActionTypes } from "../slices/volunteerActionTypeSlice";
 
 export function* handleGetVolunteerActionTypes(): Generator<
@@ -33,33 +35,35 @@ export function* handleDeleteActionType({
 }
 
 export function* handleAddVolunteerActionType({
-    payload,
-  }: ReturnType<typeof addVolunteerActionType>): Generator<any, void, VolunteerActionTypeModel> {
-    try {
-      console.log("SAGA")
-      console.log(payload);
-      yield call(
-        volunteerActionTypesService.addVolunteerActionType,
-        payload
-      );
-      yield call(handleGetVolunteerActionTypes);
-    } catch (error: any) {
-      console.log(error);
-    }
+  payload,
+}: ReturnType<typeof addVolunteerActionType>): Generator<
+  any,
+  void,
+  VolunteerActionTypeModel
+> {
+  try {
+    console.log("SAGA");
+    console.log(payload);
+    yield call(volunteerActionTypesService.addVolunteerActionType, payload);
+    yield call(handleGetVolunteerActionTypes);
+  } catch (error: any) {
+    console.log(error);
   }
+}
 
 export function* handleUpdateVolunteerActionType({
-    payload,
-  }: ReturnType<typeof updateVolunteerActionType>): Generator<any, void, VolunteerActionTypeModel> {
-    try {
-      console.log("SAGA")
-      console.log(payload);
-      yield call(
-        volunteerActionTypesService.updateVolunteerActionType,
-        payload
-      );
-      yield call(handleGetVolunteerActionTypes);
-    } catch (error: any) {
-      console.log(error);
-    }
+  payload,
+}: ReturnType<typeof updateVolunteerActionType>): Generator<
+  any,
+  void,
+  VolunteerActionTypeModel
+> {
+  try {
+    console.log("SAGA");
+    console.log(payload);
+    yield call(volunteerActionTypesService.updateVolunteerActionType, payload);
+    yield call(handleGetVolunteerActionTypes);
+  } catch (error: any) {
+    console.log(error);
   }
+}
