@@ -92,6 +92,7 @@ export const defaultTabBarSreenOptions = {
   header: () => <OPHeader />,
   title: '',
   tabBarStyle: styles.container,
+  tabBarHideOnKeyboard: true,
 };
 
 export const newsStackOptions: StackNavigationOptions = {

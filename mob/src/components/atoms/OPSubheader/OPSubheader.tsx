@@ -13,6 +13,7 @@ import {
 } from '../../../store/actions/VolunteerAction';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icons from '../../../constants/Icons';
+import {useTranslation} from 'react-i18next';
 
 interface OPSubheaderProps {
   heading: string;
@@ -29,6 +30,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   onSelectionChanged,
   onBackPressed,
 }) => {
+  const {t} = useTranslation();
   const [open, setOpen] = useState(false);
   const [allItems, setItems] = useState([{label: '', value: 0}]);
   const {volunteerActionStatuses, currentActionStatus} = useSelector(
@@ -67,6 +69,8 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
           <DropDownPicker
             zIndexInverse={7000}
             zIndex={1000}
+            placeholder={t('general.byStatus')}
+            placeholderStyle={styles.placeholder}
             open={open}
             value={currentActionStatus === null ? 0 : currentActionStatus}
             items={allItems}

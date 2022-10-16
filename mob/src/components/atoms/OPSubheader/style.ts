@@ -28,6 +28,13 @@ export const styles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.DARK_GRAY,
   } as TextStyle,
+  placeholder: {
+    textAlign: 'right',
+    ...TextStyles.DOSIS_REGULAR,
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.LIGHT_GRAY,
+  } as TextStyle,
   dropdownMainLabel: {textAlign: 'right'} as TextStyle,
   picker: {
     borderWidth: 0,

@@ -24,7 +24,7 @@ namespace MealForFamily.Builders
                 return this;
 
             List<int> actionTypeIds = filters.ActionTypeIds;
-            if(actionTypeIds is not null)
+            if(actionTypeIds is not null && actionTypeIds.Count > 0)
                 query = query.Where(s => actionTypeIds.Contains(s.TypeId));
 
             return this;
@@ -36,7 +36,7 @@ namespace MealForFamily.Builders
                 return this;
 
             List<int> actionStatusesIds = filters.ActionStatusesIds;
-            if(actionStatusesIds is not null)
+            if(actionStatusesIds is not null && actionStatusesIds.Count > 0)
                 query = query.Where(s => actionStatusesIds.Contains(s.TypeId));
 
             return this;

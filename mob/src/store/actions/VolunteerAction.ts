@@ -7,8 +7,13 @@ import {
   setSearchTerm,
   setCurrentActionStatus,
   clearFilters,
+  setCurrentVolunteerAction,
+  setIsLoading,
 } from '../reducers/VolunteerActionReducer';
-import {ActionType} from '../../models/VolunteerAction/VolunteerActionDTO';
+import {
+  ActionType,
+  VolunteerActionDTO,
+} from '../../models/VolunteerAction/VolunteerActionDTO';
 import type {RootState} from '../../store/reducers/RootReducer';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
@@ -112,3 +117,15 @@ export const filterVolunteerActionsByTagsAndSearchTerm =
       dispatch(setVolunteerActions(res.data as VolunteerPageModel));
     }
   };
+
+export const getVolunteerAction = (id: number) => (dispatch: Dispatch) => {
+  dispatch(setIsLoading(true));
+  VolunteerActionsService.getVolunteerAction(id)
+    .then((res: ResponseModel) => {
+      dispatch(setCurrentVolunteerAction(res.data as VolunteerActionDTO));
+      dispatch(setIsLoading(false));
+    })
+    .catch(() => {
+      dispatch(setIsLoading(false));
+    });
+};
