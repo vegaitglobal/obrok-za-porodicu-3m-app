@@ -3,12 +3,16 @@ import {Colors} from '../../../constants/Colors';
 import {TextStyles} from '../../../constants/TextStyles';
 
 export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.BACKGROUND,
+  },
   topHeader: {
     paddingHorizontal: 16,
     paddingVertical: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: Colors.BACKGROUND,
   },
   filterContainer: {
     flexDirection: 'row',
