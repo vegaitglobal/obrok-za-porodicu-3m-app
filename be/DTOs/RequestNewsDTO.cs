@@ -6,7 +6,7 @@ namespace MealForFamily.Dtos
         public string? ImageURL { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public string? ShortDescription { get; set; } = string.Empty;
-        public string? RawDescrition { get; set; } = string.Empty;
-        public string? Descrition { get; set; } = string.Empty;
+        public string? RawDescription { get; set; } = string.Empty;
+        public string? Description { get; set; } = string.Empty;
     }
 }

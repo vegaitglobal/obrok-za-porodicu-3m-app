@@ -12,6 +12,7 @@ namespace MealForFamily.Repositories
         public async Task<List<Donation>> GetDonations()
         {
             return await _context.Donations.Include(d => d.VolunteerActionType)
+                .Where(d => d.IsDeleted == false)
                 .ToListAsync();
         }
 
@@ -19,7 +20,7 @@ namespace MealForFamily.Repositories
         {
             return await _context.Donations
                 .Include(d => d.VolunteerActionType)
-                .Where(x => x.Id == id).FirstOrDefaultAsync();
+                .Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
         }
     }
 }

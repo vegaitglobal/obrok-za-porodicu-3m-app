@@ -1,6 +1,6 @@
-using MealForFamily.Models;
 using MealForFamily.Data;
 using MealForFamily.Dtos;
+using MealForFamily.Models;
 
 namespace MealForFamily.Builders
 {
@@ -20,11 +20,11 @@ namespace MealForFamily.Builders
 
         public VolunteerActionsSearchQueryBuilder withTypes(VolunteerActionFilterDTO filters)
         {
-            if(filters is null)
+            if (filters is null)
                 return this;
 
             List<int> actionTypeIds = filters.ActionTypeIds;
-            if(actionTypeIds is not null && actionTypeIds.Count > 0)
+            if (actionTypeIds is not null && actionTypeIds.Count > 0)
                 query = query.Where(s => actionTypeIds.Contains(s.TypeId));
 
             return this;
@@ -32,23 +32,23 @@ namespace MealForFamily.Builders
 
         public VolunteerActionsSearchQueryBuilder withStatuses(VolunteerActionFilterDTO filters)
         {
-            if(filters is null)
+            if (filters is null)
                 return this;
 
             List<int> actionStatusesIds = filters.ActionStatusesIds;
-            if(actionStatusesIds is not null && actionStatusesIds.Count > 0)
-                query = query.Where(s => actionStatusesIds.Contains(s.TypeId));
+            if (actionStatusesIds is not null && actionStatusesIds.Count > 0)
+                query = query.Where(s => actionStatusesIds.Contains(s.Status.Id));
 
             return this;
         }
 
         public VolunteerActionsSearchQueryBuilder withSearchTerm(VolunteerActionFilterDTO filters)
         {
-            if(filters is null)
+            if (filters is null)
                 return this;
 
             string searchTerm = filters.SearchTerm;
-            if(searchTerm is not null)
+            if (searchTerm is not null)
                 query = query.Where(s => s.Title.Contains(searchTerm));
 
             return this;

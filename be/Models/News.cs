@@ -15,9 +15,9 @@ namespace MealForFamily.Models
 
         public string? ShortDescription { get; set; } = string.Empty;
 
-        public string? RawDescrition { get; set; } = string.Empty;
+        public string? RawDescription { get; set; } = string.Empty;
 
-        public string? Descrition { get; set; } = string.Empty;
+        public string? Description { get; set; } = string.Empty;
 
         public bool IsDeleted { get; set; }
     }
