@@ -13,8 +13,18 @@ import Animated, {
 } from 'react-native-reanimated';
 import {useTranslation} from 'react-i18next';
 
-const titles = ['title1', 'title2', 'title3', 'title4'];
-const paragraphs = ['paragraph1', 'paragraph2', 'paragraph3', 'paragraph4'];
+const titles = [
+  'onboardingScreen.title1',
+  'onboardingScreen.title2',
+  'onboardingScreen.title3',
+  'onboardingScreen.title4',
+];
+const paragraphs = [
+  'onboardingScreen.paragraph1',
+  'onboardingScreen.paragraph2',
+  'onboardingScreen.paragraph3',
+  'onboardingScreen.paragraph4',
+];
 const images = [
   require('../../assets/images/onboarding1.png'),
   require('../../assets/images/onboarding2.png'),
