@@ -9,7 +9,7 @@ const ENDPOINTS = {
 export class VolunteerActionsService extends ApiService {
   getVolunteerActionsPagination = async (
     page: number = 0,
-    pageSize: number = 0
+    pageSize: number = 10
   ) => {
     const { data } = await this.apiClient.get(
       ENDPOINTS.VOLUNTEER_ACTIONS +
