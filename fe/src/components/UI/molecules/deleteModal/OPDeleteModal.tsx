@@ -1,3 +1,4 @@
+import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 import CustomModal from "../customModal/CustomModal";
 
@@ -16,9 +17,11 @@ const OPDeleteModal: React.FC<IOPDeleteModalProps> = ({
 }) => {
   return (
     <CustomModal show={show} onHide={onHide}>
-      <div>Are you sure you want to delete {type} ?</div>
-      <OPPrimaryButton text={"Yes"} onClick={onDelete} />
-      <OPPrimaryButton text={"Cancel"} onClick={onHide} />
+      <p className={globalClasses["modal-content-paragraph"]}>Are you sure you want to delete {type} ?</p>
+      <div className={globalClasses["modal-footer-ctas"]}>
+        <OPPrimaryButton text={"Yes"} onClick={onDelete} />
+        <OPPrimaryButton text={"Cancel"} onClick={onHide} />
+      </div>
     </CustomModal>
   );
 };

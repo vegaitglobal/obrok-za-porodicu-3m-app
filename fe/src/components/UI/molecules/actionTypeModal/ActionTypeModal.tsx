@@ -3,6 +3,7 @@ import React from 'react';
 import CustomModal from '../../molecules/customModal/CustomModal';
 import {actionTypeValidationScheme} from '../../../validators/actionTypeValidationScheme';
 import styles from './ActionTypeModal.module.scss';
+import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPPrimaryInput from '../../atoms/primaryInput/OPPrimaryInput';
 import {VolunteerActionTypeRequest} from '../../../../models/VolunteerActionTypeRequest';
 import OPPrimaryButton from '../../atoms/primaryButton/OPPrimaryButton';
@@ -37,7 +38,7 @@ export const ActionTypeModal: React.FC<ActionTypeModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={actionTypeValidationScheme}
           onSubmit={(values: VolunteerActionTypeRequest) => {
-            item ? onClick(values.name, values.hasPickup, values.hasPayment, item.id) 
+            item ? onClick(values.name, values.hasPickup, values.hasPayment, item.id)
                 : onClick(values.name, values.hasPickup, values.hasPayment);
           }}>
           {formik => (
@@ -51,10 +52,12 @@ export const ActionTypeModal: React.FC<ActionTypeModalProps> = ({
                   type="text"
                   value={item ? item.name : initialValues.name}
                 />
-                <OPCheckbox name="hasPickup" label="Has pickup" />
-                <OPCheckbox name="hasPayment" label="Has payment" />
+                <div style={{display: "flex", justifyContent:"space-between", width: "50%", margin: "0 auto"}}>
+                  <OPCheckbox name="hasPickup" label="Has pickup" />
+                  <OPCheckbox name="hasPayment" label="Has payment" />
+                </div>
               </div>
-              <div>
+              <div className={globalClasses["modal-footer-ctas"]}>
                 <OPPrimaryButton
                   onClick={() => formik.handleSubmit()}
                   text={label}

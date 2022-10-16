@@ -3,6 +3,7 @@ import React from 'react';
 import CustomModal from '../../molecules/customModal/CustomModal';
 import {contactValidationScheme} from '../../../validators/contactValidationScheme';
 import styles from './ContactModal.module.scss';
+import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPPrimaryInput from '../../atoms/primaryInput/OPPrimaryInput';
 import {ContactRequest} from '../../../../models/ContactRequest';
 import {ContactModel} from '../../../../models/ContactModel';
@@ -36,7 +37,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={contactValidationScheme}
           onSubmit={(values: ContactRequest) => {
-            item ? onClick(values.title, values.email, values.phoneNumber, item.id) 
+            item ? onClick(values.title, values.email, values.phoneNumber, item.id)
                 : onClick(values.title, values.email, values.phoneNumber);
           }}>
           {formik => (
@@ -67,7 +68,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   value={item ? item.phoneNumber : initialValues.phoneNumber}
                 />
               </div>
-              <div>
+              <div className={globalClasses["modal-footer-ctas"]}>
                 <OPPrimaryButton
                   onClick={() => formik.handleSubmit()}
                   text={label}
