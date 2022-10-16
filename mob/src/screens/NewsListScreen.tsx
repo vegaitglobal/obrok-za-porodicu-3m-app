@@ -46,11 +46,10 @@ const NewsListScreen: React.FC<NewsListScreenProps> = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <OPSubheader
-        heading="Vesti"
+        heading={t('tabNavigator.news')}
         showBackButton={false}
         showDropdown={false}
       />
-      <OPSubheader heading={t('tabNavigator.news')} showBackButton={false} />
       <OPNewsList
         news={news}
         onPress={handleGoToNews}

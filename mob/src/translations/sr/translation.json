@@ -3,9 +3,9 @@
     "general": {
       "back": "Nazad",
       "mostRecent": "Najnovije",
-      "byStatus": "Po statusu",
-      "required":"Obavezno polje",
-      "emailMustBeValid":"Email mora biti važeća adresa"
+      "byStatus": "Sortiraj",
+      "required": "Obavezno polje",
+      "emailMustBeValid": "Email mora biti važeća adresa"
     },
     "tabNavigator": {
       "home": "Početak",
@@ -20,7 +20,7 @@
       "contactUs": "Kontaktirajte Nas",
       "callUs": "Pozovite",
       "sendEmail": "Mail",
-      "openMaps":"Otvori mape"
+      "openMaps": "Otvori mape"
     },
     "aboutUsScreen": {
       "subscribeTitle": "Prijavite se!",
@@ -29,11 +29,11 @@
       "subscribeButton": "PRIJAVA"
     },
     "actionScreen": {
-      "categories":"Kategorije",
-      "searchButton":"PRETRAŽI",
-      "searchPlaceholder":"Pretraži po ključnim rečima",
-      "filter":"Filter",
-      "clearAll":"Ukloni Sve"
+      "categories": "Kategorije",
+      "searchButton": "PRETRAŽI",
+      "searchPlaceholder": "Pretraži po ključnim rečima",
+      "filter": "Filter",
+      "clearAll": "Ukloni Sve"
     },
     "donateScreen": {
       "company": "Kompanija",
@@ -48,13 +48,13 @@
       "address": "Lokacija Preuzimanja",
       "location": "Adresa",
       "phoneNo": "Br. telefona",
-      "paymentDetails":"Podaci za uplatu",
-      "receiver":"Primalac",
+      "paymentDetails": "Podaci za uplatu",
+      "receiver": "Primalac",
       "accountNo": "Žiro račun",
       "modelRefNo": "Model | Poziv na broj",
-      "submit":"UGOVORI DONACIJU",
-      "chooseCategory":"Odaberite Kategoriju",
-      "required":"Obavezno polje"
+      "submit": "UGOVORI DONACIJU",
+      "chooseCategory": "Odaberite Kategoriju",
+      "required": "Obavezno polje"
     },
     "newsScreen": {},
     "actionsList": {
