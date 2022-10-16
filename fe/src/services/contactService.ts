@@ -1,3 +1,5 @@
+import { ContactModel } from "../models/ContactModel";
+import { ContactRequest } from "../models/ContactRequest";
 import ApiService from "./apiService";
 
 const ENDPOINTS = {
@@ -13,6 +15,18 @@ export class ContactsService extends ApiService {
 
   deleteContact = async (id: number) => {
     const { data } = await this.apiClient.delete(ENDPOINTS.CONTACTS + "/" + id);
+
+    return data;
+  };
+
+  addContact = async (payload: ContactRequest) => {
+    const { data } = await this.apiClient.post(ENDPOINTS.CONTACTS, payload);
+
+    return data;
+  };
+
+  updateContact = async (payload: ContactModel) => {
+    const { data } = await this.apiClient.put(ENDPOINTS.CONTACTS, payload);
 
     return data;
   };

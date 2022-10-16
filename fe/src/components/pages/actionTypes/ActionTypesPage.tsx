@@ -41,7 +41,7 @@ const ActionTypesPage = () => {
   const [deleteModalShow, setDeleteModalShow] = useState(false);
   const [modalItem, setModalItem] = useState(undefined);
 
-  const addActionType = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
+  const addActionTypeHandler = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
     const data: VolunteerActionTypeRequest = {
       name: name,
       hasPickup: hasPickup,
@@ -57,7 +57,7 @@ const ActionTypesPage = () => {
     setDeleteModalShow(true);
   }
 
-  const updateActionType = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
+  const updateActionTypeHandler = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
     const data: VolunteerActionTypeModel = {
       id: id ? id : 0,
       name: name,
@@ -105,7 +105,7 @@ const ActionTypesPage = () => {
       </div>
       <ActionTypeModal
         show={modalShow}
-        onClick={modalItem ? updateActionType : addActionType}
+        onClick={modalItem ? updateActionTypeHandler : addActionTypeHandler}
         onHide={() => setModalShow(false)}
         label={modalItem ? "UPDATE ACTION TYPE" : "ADD ACTION TYPE"}
         item={modalItem}

@@ -8,10 +8,14 @@ import { useEffect } from "react";
 import {
   deleteContact,
   getContacts,
+  addContact,
+  updateContact
 } from "../../../store/actions/contactTypes";
 import ContactModal from "../../UI/molecules/contactModal/ContactModal";
 import { useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
+import { ContactRequest } from "../../../models/ContactRequest";
+import { ContactModel } from "../../../models/ContactModel";
 
 const headers: string[] = ["Title", "Email", "Phone number", "Actions"];
 
@@ -30,19 +34,19 @@ const ContactPage = () => {
   const [modalItem, setModalItem] = useState(undefined);
   const [id, setId] = useState<number>();
 
-  const addContact = (title: string, email: string, phone: string) => {
-    const data: any = {
+  const addContactHandler = (title: string, email: string, phone: string, id?: number) => {
+    const data: ContactRequest = {
       title: title,
       email: email,
       phoneNumber: phone,
     };
     setModalShow(false);
-    //dispatch
+    dispatch(addContact(data));
   };
 
-  const updateContact = (title: string, email: string, phone: string, id?: number) => {
-    const data: any = {
-      id: id,
+  const updateContactHandler = (title: string, email: string, phone: string, id?: number) => {
+    const data: ContactModel = {
+      id: id ? id : 0,
       title: title,
       email: email,
       phoneNumber: phone
@@ -51,7 +55,7 @@ const ContactPage = () => {
     setModalItem(undefined);
     console.log("UPDATE");
     console.log(data)
-    //dispatch
+    dispatch(updateContact(data));
   };
 
   const handleClickEdit = (item: any) => {
@@ -68,6 +72,7 @@ const ContactPage = () => {
 
   const deleteHandler = () => {
     console.log(id);
+    setDeleteModalShow(false);
     dispatch(deleteContact(id!));
   };
 
@@ -97,7 +102,7 @@ const ContactPage = () => {
         </div>
         <ContactModal
           show={modalShow}
-          onClick={modalItem ? updateContact : addContact}
+          onClick={modalItem ? updateContactHandler : addContactHandler}
           onHide={() => setModalShow(false)}
           label={modalItem ? "UPDATE CONTACT" : "ADD CONTACT"}
           item={modalItem}
