@@ -45,16 +45,16 @@ export const ActionTypeModal: React.FC<ActionTypeModalProps> = ({
             <>
               <div className={styles.divFlex}>
                 <Field
-                  label="Name"
+                  label="Tip akcije"
                   component={OPPrimaryInput}
-                  placeholder="Enter Name"
+                  placeholder="Unesi tip akcije"
                   name="name"
                   type="text"
                   value={item ? item.name : initialValues.name}
                 />
                 <div style={{display: "flex", justifyContent:"space-between", width: "50%", margin: "0 auto"}}>
-                  <OPCheckbox name="hasPickup" label="Has pickup" />
-                  <OPCheckbox name="hasPayment" label="Has payment" />
+                  <OPCheckbox name="hasPickup" label="Preuzimanje" />
+                  <OPCheckbox name="hasPayment" label="Plaćanje" />
                 </div>
               </div>
               <div className={globalClasses["modal-footer-ctas"]}>

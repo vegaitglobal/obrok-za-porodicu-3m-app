@@ -46,7 +46,7 @@ const OPHeader = () => {
           <OPHeaderItem key={index} text={value.text} link={value.link} />
         ))}
         <div className={classes["header-logout-wrapper"]}>
-          <button>LOG OUT</button>
+          <button>ODJAVA</button>
         </div>
       </div>
     </header>

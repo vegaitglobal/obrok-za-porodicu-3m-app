@@ -17,10 +17,10 @@ const OPDeleteModal: React.FC<IOPDeleteModalProps> = ({
 }) => {
   return (
     <CustomModal show={show} onHide={onHide}>
-      <p className={globalClasses["modal-content-paragraph"]}>Are you sure you want to delete {type} ?</p>
+      <p className={globalClasses["modal-content-paragraph"]}>Da li ste sigurni da želite da obrišete {type} ?</p>
       <div className={globalClasses["modal-footer-ctas"]}>
-        <OPPrimaryButton text={"Yes"} onClick={onDelete} />
-        <OPPrimaryButton text={"Cancel"} onClick={onHide} />
+        <OPPrimaryButton text={"Potvrdi"} onClick={onDelete} />
+        <OPPrimaryButton text={"Otkaži"} onClick={onHide} />
       </div>
     </CustomModal>
   );

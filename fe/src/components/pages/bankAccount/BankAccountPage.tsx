@@ -37,12 +37,12 @@ const BankAccountPage = () => {
   }, []);
 
   const updateBankAccountHandler = (
-      receiverName: string, 
-      receiverCity: string, 
-      receiverAddress: string, 
-      accountNumber: string, 
-      transactionModel: number | null | undefined, 
-      referenceNumber: string | null | undefined, 
+      receiverName: string,
+      receiverCity: string,
+      receiverAddress: string,
+      accountNumber: string,
+      transactionModel: number | null | undefined,
+      referenceNumber: string | null | undefined,
       phoneNumber: string | null | undefined
     ) => {
     const data: BankAccountModel = {
@@ -64,15 +64,15 @@ const BankAccountPage = () => {
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
-            <p className={globalClasses["add-text"]}>Bank account</p>
+            <p className={globalClasses["add-text"]}>Bankovni račun</p>
           </div>
           <div className={globalClasses["table-wrapper"]}>
             <Formik
               initialValues={bankAccount ? bankAccount : initialValues}
               validationSchema={bankAccountValidationScheme}
               onSubmit={(values: BankAccountModel) => updateBankAccountHandler(
-                values.receiverName, 
-                values.receiverCity, 
+                values.receiverName,
+                values.receiverCity,
                 values.receiverAddress,
                 values.accountNumber,
                 values.transactionModel,

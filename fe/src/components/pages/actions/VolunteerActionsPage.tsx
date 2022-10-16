@@ -31,10 +31,10 @@ const VolunteerActionsPage = () => {
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
           <div className={classes["filter-wrapper"]}>
-            <OPSearchBar placeholder="Search" />
+            <OPSearchBar placeholder="Pretraži" />
             <OPFilterItemList filterItems={filterItems} />
             <div className={classes["search-button-wrapper"]}>
-              <OPPrimaryButton text="Pretrazi" onClick={() => {}} />
+              <OPPrimaryButton text="Pretraži" onClick={() => {}} />
             </div>
           </div>
           <OPCarditemList items={volunteerActions} />

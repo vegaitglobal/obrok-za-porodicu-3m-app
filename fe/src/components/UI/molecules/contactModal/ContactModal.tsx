@@ -44,25 +44,25 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <>
               <div className={styles.divFlex}>
                 <Field
-                  label="Title"
+                  label="Kontakt"
                   component={OPPrimaryInput}
-                  placeholder="Enter title"
+                  placeholder="Unesi kontakt"
                   name="title"
                   type="text"
                   value={item ? item.title : initialValues.title}
                 />
                 <Field
-                  label="Email Address"
+                  label="Email"
                   component={OPPrimaryInput}
-                  placeholder="Enter your email"
+                  placeholder="Unesi email adresu"
                   name="email"
                   type="text"
                   value={item ? item.email : initialValues.email}
                 />
                 <Field
-                  label="Phone Number"
+                  label="Broj telefona"
                   component={OPPrimaryInput}
-                  placeholder="Enter your phone number"
+                  placeholder="Unesi broj telefona"
                   name="phoneNumber"
                   type="text"
                   value={item ? item.phoneNumber : initialValues.phoneNumber}

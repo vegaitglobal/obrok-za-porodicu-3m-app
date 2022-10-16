@@ -21,7 +21,7 @@ const TableRow: React.FC<Props> = ({ item, columns, deleteHandler, onClickEdit }
           {typeof item[column] === "string" && item[column] !== undefined ? (
             item[column]
           ) : item[column] ? (
-            "Yes"
+            "Da"
           ) : item[column] === undefined ? (
             <>
               <button className={classes["edit-icon-button"]}
@@ -38,7 +38,7 @@ const TableRow: React.FC<Props> = ({ item, columns, deleteHandler, onClickEdit }
               </button>
             </>
           ) : (
-            "No"
+            "Ne"
           )}
         </td>
       ))}
