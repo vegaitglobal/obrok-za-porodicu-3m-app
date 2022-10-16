@@ -1,4 +1,5 @@
 using AutoMapper;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
 using MealForFamily.DTOs;
 using MealForFamily.Models;
@@ -37,6 +38,7 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<VolunteerActionTypeDTO>(await _volunteerActionTypeService.GetSingleById(id)));
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateVolunteerActionType(RequestVolunteerActionTypeDTO request)
         {
@@ -44,6 +46,7 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<VolunteerActionTypeDTO>(await _volunteerActionTypeService.CreateVolunteerActionType(model)));
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateVolunteerActionType(RequestVolunteerActionTypeDTO request)
         {

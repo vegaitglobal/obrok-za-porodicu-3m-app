@@ -1,4 +1,5 @@
 using AutoMapper;
+using MealForFamily.Authorization;
 using MealForFamily.Dtos;
 using MealForFamily.Models;
 using MealForFamily.ServiceInterface;
@@ -25,6 +26,7 @@ namespace MealForFamily.Controllers
             return Ok(await _aboutUsService.GetAboutUs());
         }
 
+        [Authorize]
         [HttpPut("")]
         public async Task<IActionResult> UpdateAboutUs(RequestAboutUsDTO request)
         {
