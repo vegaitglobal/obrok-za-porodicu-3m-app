@@ -1,8 +1,8 @@
 {
   "translation": {
-    "general":{
-      "back":"Back",
-      "mostRecent":"Most recent"
+    "general": {
+      "back": "Back",
+      "mostRecent": "Most recent"
     },
     "tabNavigator": {
       "home": "Home",
@@ -18,42 +18,59 @@
       "callUs": "Call",
       "sendEmail": "Mail"
     },
-    "aboutUsScreen":{
-      "subscribeTitle":"Sign up!",
-      "subscribeText":"By subscribing to our newsletter you will receive updates to help you stay informed on the latest charity drives and ways to help families in need.",
-      "subscribeTextboxHint":"Your Email Address",
-      "subscribeButton":"SUBSCRIBE"
+    "aboutUsScreen": {
+      "subscribeTitle": "Sign up!",
+      "subscribeText": "By subscribing to our newsletter you will receive updates to help you stay informed on the latest charity drives and ways to help families in need.",
+      "subscribeTextboxHint": "Your Email Address",
+      "subscribeButton": "SUBSCRIBE"
     },
-    "actionScreen":{},
-    "donateScreen":{
-      "company":"Company",
-      "individual":"Individual",
-      "companyName":"Name of Company/Organization",
-      "fullName":"First and Last Name",
-      "email":"Email",
-      "phoneNo":"Phone Number (e.g. 06573451664)",
-      "description":"Item Description (please note pickup deadline)",
-      "pickup":"Pickup",
-      "delivery":"Personal Delivery",
-      "address":"Pickup Address",
-      "location":"Location"
+    "actionScreen": {
+      "categories":"Categories",
+      "searchButton":"SEARCH",
+      "searchPlaceholder":"Search by Keyword",
+      "filter":"Filter",
+      "clearAll":"Clear All"
     },
-    "newsScreen":{},
+    "donateScreen": {
+      "company": "Company",
+      "individual": "Individual",
+      "companyName": "Name of Company/Organization",
+      "fullName": "First and Last Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number (e.g. 06573451664)",
+      "description": "Item Description (please specify pickup deadline)",
+      "pickup": "Pickup",
+      "delivery": "Personal Delivery",
+      "address": "Pickup Address",
+      "location": "Location",
+      "phoneNo": "Phone No.",
+      "paymentDetails":"Payment Details",
+      "receiver":"Receiver",
+      "accountNo": "Account No.",
+      "modelRefNo": "Model | Reference no.",
+      "submit":"SUBMIT DONATION",
+      "chooseCategory":"Choose a Category"
+    },
+    "newsScreen": {},
     "actionsList": {
       "find_out_more": "Find out more",
       "status": "Status",
-      "trending": "Trending"
+      "trending": "Trending",
+      "empty_list": "We don't have any active actions currently."
     },
-    "onboardingScreen":{
-      "continue":"CONTINUE",
-      "title1":  "WELCOME!",
-      "paragraph1":"Every Saturday, we organize charity drives to help those in need!",
-      "title2":  "DONATE MEALS",
-      "paragraph2":"The Obrok za porodicu 3M (\"Meal for the Family 3M\") mission statement is its very name: every family's right to a meal.",
-      "title3":  "DONATE CLOTHING",
-      "paragraph3":"You may also contribute by donating clothing you no longer wear!",
-      "title4":  "FIND DRIVES",
-      "paragraph4":"This app provides an overview of charity drives led by our organization, which you can participate in yourself!"
+    "news": {
+      "empty_list": "No news."
+    },
+    "onboardingScreen": {
+      "continue": "CONTINUE",
+      "title1": "WELCOME!",
+      "paragraph1": "Every Saturday, we organize charity drives to help those in need!",
+      "title2": "DONATE MEALS",
+      "paragraph2": "The Obrok za porodicu 3M (\"Meal for the Family 3M\") mission statement is its very name: every family's right to a meal.",
+      "title3": "DONATE CLOTHING",
+      "paragraph3": "You may also contribute by donating clothing you no longer wear!",
+      "title4": "FIND DRIVES",
+      "paragraph4": "This app provides an overview of charity drives led by our organization, which you can participate in yourself!"
     }
   }
 }

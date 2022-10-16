@@ -22,6 +22,7 @@ import {
 import {useDispatch} from 'react-redux';
 import {styles} from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useTranslation} from 'react-i18next';
 
 const volunteerActions: string | any[] = [
   {
@@ -83,10 +84,11 @@ interface OPHeaderProps {
 const LOGO_PATH = require('../../../../assets/images/LogoHoriz1.png');
 
 const OPHeader: FC<OPHeaderProps> = ({
-  filterTitle = 'Kategorije',
-  buttonTitle = 'PRETRAZI',
-  searchPlaceholder = 'Pretrazi po ključnim rečima',
+  filterTitle,
+  buttonTitle,
+  searchPlaceholder,
 }) => {
+  const {t} = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
   const {volunteerActionTypes} = useSelector(
@@ -105,6 +107,12 @@ const OPHeader: FC<OPHeaderProps> = ({
   const height = useSharedValue(0);
   const opacity = useSharedValue(0);
   const translateY = useSharedValue(0);
+
+  const filterTitleLocal: string = filterTitle ?? t('actionScreen.filter');
+  const buttonTitleLocal: string =
+    buttonTitle ?? t('actionScreen.searchButton');
+  const searchPlaceholderLocal: string =
+    searchPlaceholder ?? t('actionScreen.searchPlaceholder');
 
   const animatedStyles = useAnimatedStyle(() => ({
     height: height.value,
@@ -162,29 +170,34 @@ const OPHeader: FC<OPHeaderProps> = ({
           style={styles.filterContainer}
           onPress={onPressFilterIcon}>
           <View>{Icons.FILTER}</View>
-          <Text style={styles.filterText}>Filter</Text>
+          <Text style={styles.filterText}>{t('actionScreen.filter')}</Text>
           {badgeValue ? <OPBadge value={badgeValue} /> : null}
         </TouchableOpacity>
       </View>
       <Animated.View style={[styles.animationWrapper, animatedStyles]}>
         <View style={styles.bottomHeader}>
           <OPSearch
-            placeholder={searchPlaceholder}
+            placeholder={searchPlaceholderLocal}
             value={searchValue}
             onChangeText={setSearchValue}
           />
           {badgeValue ? (
             <View style={styles.clearButton}>
               <TouchableOpacity onPress={onClearAll}>
-                <Text style={styles.clearText}>Clear all</Text>
+                <Text style={styles.clearText}>
+                  {t('actionScreen.clearAll')}
+                </Text>
               </TouchableOpacity>
             </View>
           ) : null}
-          <OPTagChips statuses={volunteerActionTypes} heading={filterTitle} />
+          <OPTagChips
+            statuses={volunteerActionTypes}
+            heading={filterTitleLocal}
+          />
         </View>
         <View style={styles.buttonContainer}>
           <OPPrimaryButton
-            text={buttonTitle.toUpperCase()}
+            text={buttonTitleLocal.toUpperCase()}
             onPress={onButtonPress}
           />
         </View>

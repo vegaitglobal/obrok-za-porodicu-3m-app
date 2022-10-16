@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {Field, Formik} from 'formik';
 import React, {useEffect, useState} from 'react';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import {
   Keyboard,
   Linking,
@@ -138,8 +138,8 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
               )}
 
               <OPRadioButtonsRow
-                leftText={'Kompanija'}
-                rightText={'Fizičko Lice'}
+                leftText={t('donateScreen.company')}
+                rightText={t('donateScreen.individual')}
                 leftSelected={isCompanySelected}
                 rightSelected={!isCompanySelected}
                 onSelect={handleOnCompanySelect}
@@ -151,7 +151,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                   loseFocus={loseFocus}
                   editable
                   name={'companyName'}
-                  label={'Naziv Kompanije/Organizacije'}
+                  label={t('donateScreen.companyName')}
                 />
               )}
               <Field
@@ -160,7 +160,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                 loseFocus={loseFocus}
                 editable
                 name={'fullName'}
-                label={'Ime i Prezime'}
+                label={t('donateScreen.fullName')}
               />
               <Field
                 validateOnChange
@@ -168,7 +168,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                 loseFocus={loseFocus}
                 editable
                 name={'email'}
-                label={'Email'}
+                label={t('donateScreen.email')}
               />
               <Field
                 validateOnChange
@@ -176,7 +176,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                 loseFocus={loseFocus}
                 editable
                 name={'phoneNumber'}
-                label={'Broj telefona (Ex. 06573451664)'}
+                label={t('donateScreen.phoneNumber')}
               />
               {selectedActionType === 5 && (
                 <Field
@@ -185,14 +185,14 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                   loseFocus={loseFocus}
                   editable
                   name={'description'}
-                  label={'Opis Proizvoda (Napomenuti rok za preuzimanje)'}
+                  label={t('donateScreen.description')}
                 />
               )}
               {isCompanySelected ? (
                 <>
                   <OPRadioButtonsRow
-                    leftText={'Preuzimanje'}
-                    rightText={'Lično Dostavljanje'}
+                    leftText={t('donateScreen.pickup')}
+                    rightText={t('donateScreen.delivery')}
                     leftSelected={isPickupSelected}
                     rightSelected={!isPickupSelected}
                     onSelect={handleOnPickupSelect}
@@ -204,11 +204,13 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                       loseFocus={loseFocus}
                       editable
                       name={'address'}
-                      label={'Lokacija Preuzimanja'}
+                      label={t('donateScreen.address')}
                     />
                   ) : (
                     <View style={styles.locationContainer}>
-                      <Text style={styles.locationTitle}>Lokacija</Text>
+                      <Text style={styles.locationTitle}>
+                        {t('donateScreen.location')}
+                      </Text>
                       <Text style={styles.locationBody}>
                         {bankAccount.receiverCity}
                       </Text>
@@ -216,7 +218,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                         {bankAccount.receiverAddress}
                       </Text>
                       <Text style={styles.locationBody}>
-                        Br.Telefona:{' '}
+                        {t('donateScreen.phoneNo')}:{' '}
                         <Text
                           onPress={handleOnPhoneNumberPress}
                           style={styles.phoneNumber}>
@@ -228,8 +230,12 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                 </>
               ) : (
                 <View style={styles.paymentDataContainer}>
-                  <Text style={styles.locationTitle}>Podaci za uplatu</Text>
-                  <Text style={styles.subtitle}>Primalac</Text>
+                  <Text style={styles.locationTitle}>
+                    {t('donateScreen.paymentDetails')}
+                  </Text>
+                  <Text style={styles.subtitle}>
+                    {t('donateScreen.receiver')}
+                  </Text>
                   <Text style={styles.paymentDataBody}>
                     {bankAccount.receiverName}
                   </Text>
@@ -239,19 +245,23 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                   <Text style={styles.paymentDataBody}>
                     {bankAccount.receiverAddress}
                   </Text>
-                  <Text style={styles.subtitle}>Žiro račun</Text>
+                  <Text style={styles.subtitle}>
+                    {t('donateScreen.accountNo')}
+                  </Text>
                   <Text style={styles.paymentDataBody}>
                     {bankAccount.accountNumber}
                   </Text>
 
-                  <Text style={styles.subtitle}>Model | Poziv na broj</Text>
+                  <Text style={styles.subtitle}>
+                    {t('donateScreen.modelRefNo')}
+                  </Text>
                   <Text style={styles.paymentDataBody}>
                     {`${bankAccount.transactionModel} | ${bankAccount.referenceNumber}`}
                   </Text>
                 </View>
               )}
               <OPPrimaryButton
-                text={'UGOVORI DONACIJU'}
+                text={t('donateScreen.submit')}
                 onPress={handleSubmit}
                 disabled={!isValid}
                 style={styles.button}
