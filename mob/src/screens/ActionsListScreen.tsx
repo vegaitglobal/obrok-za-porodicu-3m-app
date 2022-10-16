@@ -11,7 +11,6 @@ import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {TextStyles} from '../constants/TextStyles';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';
 
-
 const ActionsListScreen = ({navigation}) => {
   const {t} = useTranslation();
   const dispatch: any = useDispatch();
@@ -44,7 +43,7 @@ const ActionsListScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <OPHeader />
-      <OPSubheader heading={t('actionsList.trending')} items={[]} />
+      <OPSubheader heading={t('actionsList.trending')} />
       <OPActionsList
         actions={volunteerActions}
         onPress={actionId =>
