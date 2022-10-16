@@ -39,4 +39,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     borderRadius: 4,
   } as ViewStyle,
+  placeholderStyle: {
+    textAlign: 'right',
+  } as ViewStyle,
 });

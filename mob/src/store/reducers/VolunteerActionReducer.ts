@@ -13,6 +13,7 @@ interface VolunteerActionState {
   totalData: number;
   totalPages: number;
   searchTerm: string;
+  currentActionStatus: number | null;
   appliedVolunteerActions: AppliedVolunteerAction;
   volunteerActionStatuses: Array<VolunteerActionStatus>;
   volunteerActionTypes: Array<ActionType>;
@@ -25,6 +26,7 @@ const initialState: VolunteerActionState = {
   currentPage: 0,
   totalData: 0,
   totalPages: 0,
+  currentActionStatus: null,
   volunteerActionStatuses: [],
   volunteerActionTypes: [],
 };
@@ -36,6 +38,9 @@ const volunteerActionsSlice = createSlice({
     clearFilters(state) {
       state.appliedVolunteerActions = {};
       state.searchTerm = '';
+    },
+    setCurrentActionStatus(state, {payload}: PayloadAction<number | null>) {
+      state.currentActionStatus = payload;
     },
     setAppliedVolunteerActions(
       state,
@@ -79,6 +84,7 @@ export const {
   setVolunteerActions,
   setVolunteerActionTypes,
   setVolunteerActionStatuses,
+  setCurrentActionStatus,
   setSearchTerm,
   clearFilters,
 } = volunteerActionsSlice.actions;

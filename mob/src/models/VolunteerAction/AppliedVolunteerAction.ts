@@ -3,7 +3,7 @@ export interface AppliedVolunteerAction {
 }
 
 export interface FilterVolunteerActionsType {
-  actionTypeIds: number[];
-  actionStatusesIds: number[];
-  searchTerm: string;
+  actionTypeIds?: number[];
+  actionStatusesIds?: number[];
+  searchTerm?: string;
 }

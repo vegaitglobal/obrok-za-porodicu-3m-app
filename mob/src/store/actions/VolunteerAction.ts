@@ -5,6 +5,7 @@ import {
   setVolunteerActionStatuses,
   setVolunteerActionTypes,
   setSearchTerm,
+  setCurrentActionStatus,
   clearFilters,
 } from '../reducers/VolunteerActionReducer';
 import {ActionType} from '../../models/VolunteerAction/VolunteerActionDTO';
@@ -35,15 +36,29 @@ export const onSetSearchTerm = (searchTerm: string) => (dispatch: Dispatch) =>
 export const onClearFilters = () => (dispatch: Dispatch) =>
   dispatch(clearFilters());
 
+export const onSetCurrentActionStatus =
+  (status: number | null) => (dispatch: Dispatch) =>
+    dispatch(setCurrentActionStatus(status));
+
 export const getVolunteerActions =
   (page: number) => (dispatch: Dispatch, getState: () => RootState) => {
-    const {appliedVolunteerActions, searchTerm} = getState().volunteerActions;
+    const {appliedVolunteerActions, searchTerm, currentActionStatus} =
+      getState().volunteerActions;
 
-    const filtersIds = Object.keys(appliedVolunteerActions);
+    const filtersIds = Object.keys(appliedVolunteerActions).map(Number);
 
-    if (filtersIds.length > 0 || searchTerm.length > 0) {
+    if (
+      filtersIds.length > 0 ||
+      searchTerm.length > 0 ||
+      currentActionStatus !== null
+    ) {
       dispatch(
-        filterVolunteerActionsByTagsAndSearchTerm(filtersIds, searchTerm, page),
+        filterVolunteerActionsByTagsAndSearchTerm(
+          filtersIds,
+          searchTerm,
+          currentActionStatus,
+          page,
+        ),
       );
     } else {
       VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
@@ -73,11 +88,17 @@ export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
 };
 
 export const filterVolunteerActionsByTagsAndSearchTerm =
-  (filtersIds: number[], searchTerm: string, page: number) =>
+  (
+    filtersIds: number[],
+    searchTerm: string,
+    currentActionStatus: number | null,
+    page: number,
+  ): any =>
   async (dispatch: Dispatch) => {
     const query = {
       actionTypeIds: filtersIds,
-      actionStatusesIds: [],
+      actionStatusesIds:
+        currentActionStatus !== null ? [currentActionStatus] : [],
       searchTerm,
     };
 

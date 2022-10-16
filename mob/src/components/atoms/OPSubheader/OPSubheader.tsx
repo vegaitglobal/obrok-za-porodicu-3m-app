@@ -6,7 +6,11 @@ import {Shadow} from 'react-native-shadow-2';
 import {RootState} from '../../../store/reducers/RootReducer';
 import {useSelector} from 'react-redux';
 import {useAppThunkDispatch} from '../../../store/Store';
-import {getVolunteerActionStatuses} from '../../../store/actions/VolunteerAction';
+import {
+  getVolunteerActionStatuses,
+  onSetCurrentActionStatus,
+  getVolunteerActions,
+} from '../../../store/actions/VolunteerAction';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icons from '../../../constants/Icons';
 
@@ -26,9 +30,8 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   onBackPressed,
 }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(0);
   const [allItems, setItems] = useState([{label: '', value: 0}]);
-  const {volunteerActionStatuses} = useSelector(
+  const {volunteerActionStatuses, currentActionStatus} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
   const dispatch = useAppThunkDispatch();
@@ -46,7 +49,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
 
   return (
     <Shadow offset={[0, 2]} distance={2} stretch>
-      <View style={[styles.container]}>
+      <View style={styles.container}>
         <View style={styles.row}>
           {showBackButton ? (
             <TouchableOpacity style={styles.row} onPress={onBackPressed}>
@@ -65,16 +68,25 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
             zIndexInverse={7000}
             zIndex={1000}
             open={open}
-            value={value}
+            value={currentActionStatus === null ? 0 : currentActionStatus}
             items={allItems}
             setOpen={setOpen}
             setValue={selection => {
-              setValue(selection);
+              const newValue = selection(currentActionStatus);
+              if (newValue === currentActionStatus) {
+                dispatch(onSetCurrentActionStatus(null));
+              } else {
+                dispatch(onSetCurrentActionStatus(newValue));
+              }
+              dispatch(getVolunteerActions(1));
+
               onSelectionChanged && onSelectionChanged(selection);
             }}
             setItems={setItems}
             style={styles.picker}
             containerStyle={styles.picker}
+            placeholder="Select an item"
+            placeholderStyle={styles.placeholderStyle}
             dropDownContainerStyle={[styles.picker, styles.pickerDropdown]}
             textStyle={styles.dropdownLabels}
             labelStyle={[styles.dropdownLabels, styles.dropdownMainLabel]}

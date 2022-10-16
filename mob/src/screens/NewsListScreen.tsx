@@ -37,7 +37,11 @@ const NewsListScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <OPSubheader heading="Vesti" showBackButton={false} />
+      <OPSubheader
+        heading="Vesti"
+        showBackButton={false}
+        showDropdown={false}
+      />
       <OPNewsList
         news={news}
         onPress={newsId => navigation.navigate(AppRoute.NEWS_SCREEN, {newsId})}
