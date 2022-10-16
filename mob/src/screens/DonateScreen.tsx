@@ -1,4 +1,5 @@
 import React, {useRef} from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {ScrollView, StyleSheet} from 'react-native';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
@@ -6,6 +7,7 @@ import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
 import {Colors} from '../constants/Colors';
 
 const DonateScreen = () => {
+  const {t} = useTranslation();
   const scrollRef = useRef<any>(null);
 
   const handleScrollToTop = () => {
@@ -17,7 +19,7 @@ const DonateScreen = () => {
 
   return (
     <>
-      <OPSubheader heading={'DONIRAJ'} showDropdown={false} />
+      <OPSubheader heading={t('tabNavigator.donate')} showDropdown={false} />
       <ScrollView
         ref={scrollRef}
         bounces={false}

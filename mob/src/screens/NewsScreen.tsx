@@ -7,6 +7,7 @@ import {TextStyles} from '../constants/TextStyles';
 import {Colors} from '../constants/Colors';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icons from '../constants/Icons';
+import {useTranslation} from 'react-i18next';
 
 interface INewsProps {
   route: any;
@@ -14,6 +15,7 @@ interface INewsProps {
 }
 
 const NewsScreen: FC<INewsProps> = ({navigation, route}) => {
+  const {t} = useTranslation();
   const [data, setData] = useState({
     id: 1,
     type: {
@@ -37,7 +39,7 @@ const NewsScreen: FC<INewsProps> = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <OPSubheader
-        heading="Nazad"
+        heading={t('general.back')}
         showBackButton
         onBackPressed={() => navigation.goBack()}
         showDropdown={false}
