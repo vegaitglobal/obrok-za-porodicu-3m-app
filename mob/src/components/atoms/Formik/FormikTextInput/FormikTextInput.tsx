@@ -57,7 +57,9 @@ const FormikTextInput: React.FC<FormikTextInputProps> = props => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{`${label}${mandatory ? '*' : ''}`}</Text>
+      {label && (
+        <Text style={styles.label}>{`${label}${mandatory ? '*' : ''}`}</Text>
+      )}
       <View
         style={[
           styles.inputWrapper,

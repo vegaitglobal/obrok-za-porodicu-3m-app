@@ -2,7 +2,8 @@
   "translation": {
     "general": {
       "back": "Nazad",
-      "mostRecent": "Najnovije"
+      "mostRecent": "Najnovije",
+      "byStatus": "Po statusu"
     },
     "tabNavigator": {
       "home": "Početak",

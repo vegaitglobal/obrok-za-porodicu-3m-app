@@ -29,9 +29,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   const {t} = useTranslation();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [allItems, setItems] = useState([
-    {label: t('general.mostRecent'), value: 0},
-  ]);
+  const [allItems, setItems] = useState([{label: '', value: 0}]);
   const {volunteerActionStatuses} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
@@ -41,13 +39,12 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   }, [dispatch]);
 
   useEffect(() => {
-    setItems([
-      {label: t('general.mostRecent'), value: 0},
-      ...volunteerActionStatuses.map(e => {
+    setItems(
+      volunteerActionStatuses.map(e => {
         return {label: e.name, value: e.id};
       }),
-    ]);
-  }, [t, volunteerActionStatuses]);
+    );
+  }, [volunteerActionStatuses]);
 
   return (
     <Shadow offset={[0, 2]} distance={2} stretch>
@@ -69,6 +66,8 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
           <DropDownPicker
             zIndexInverse={7000}
             zIndex={1000}
+            placeholder={t('general.byStatus')}
+            placeholderStyle={styles.placeholder}
             open={open}
             value={value}
             items={allItems}

@@ -2,7 +2,8 @@
   "translation": {
     "general": {
       "back": "Back",
-      "mostRecent": "Most recent"
+      "mostRecent": "Most recent",
+      "byStatus": "By Status"
     },
     "tabNavigator": {
       "home": "Home",
