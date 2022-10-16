@@ -9,6 +9,7 @@ namespace MealForFamily.Models
         public int Id { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; } = string.Empty;
         public bool IsDeleted { get; set; }
     }

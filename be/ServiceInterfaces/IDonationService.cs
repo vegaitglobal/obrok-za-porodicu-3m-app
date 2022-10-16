@@ -11,5 +11,6 @@ namespace MealForFamily.ServiceInterface
         Task<Donation> CreateDonation(Donation contact);
 
         Task<Donation> UpdateDonation(Donation contact);
+        Task DeleteDonation(int id);
     }
 }

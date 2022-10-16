@@ -68,5 +68,13 @@ namespace MealForFamily.Controllers
             Donation model = _mapper.Map<Donation>(request);
             return Ok(_mapper.Map<DonationDTO>(await _donationService.UpdateDonation(model)));
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteDonation(int id)
+        {
+            await _donationService.DeleteDonation(id);
+            return Ok("Donation successfully deleted");
+        }
     }
 }

@@ -30,6 +30,10 @@ namespace MealForFamily.Service
 
         public async Task<NewsletterSubscription> CreateNewsletterSubscription(NewsletterSubscription ns)
         {
+            NewsletterSubscription? subscription = await _newsletterSubscriptionRepository.GetByEmail(ns.Email);
+            if (subscription != null)
+                throw new CustomException("Email already subscribed to newsletter", 400);
+
             return await _newsletterSubscriptionRepository.Create(ns);
         }
 
