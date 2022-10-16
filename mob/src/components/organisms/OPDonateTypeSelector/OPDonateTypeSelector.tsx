@@ -7,6 +7,7 @@ import {ActionType} from '../../../models/VolunteerAction/VolunteerActionDTO';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../store/reducers/RootReducer';
 import {getVolunteerActionTypes} from '../../../store/actions/VolunteerAction';
+import {useTranslation} from 'react-i18next';
 import Icons from '../../../constants/Icons';
 
 interface OPDonateTypeSelectorProps {
@@ -18,6 +19,7 @@ const OPDonateTypeSelector: React.FC<OPDonateTypeSelectorProps> = ({
   onSelect,
   hasError = false,
 }) => {
+  const {t} = useTranslation();
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch<any>();
 
@@ -50,7 +52,7 @@ const OPDonateTypeSelector: React.FC<OPDonateTypeSelectorProps> = ({
   return (
     <View>
       <View style={styles.row}>
-        <Text style={styles.text}>Odaberite Kategoriju</Text>
+        <Text style={styles.text}>{t('donateScreen.chooseCategory')}</Text>
         {hasError && Icons.RED_WARNING}
       </View>
 

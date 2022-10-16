@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {NewsDTO} from '../../../models/News/NewsDTO';
 import {styles} from './style';
@@ -18,7 +18,10 @@ const OPNewsListItem: React.FC<OPNewsListItemProps> = ({news, onPress}) => {
     onPress(news.id);
   };
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={handleGoToNews}
+      style={styles.container}>
       {news.imageURL && news.imageURL.length > 0 && (
         <OPImage source={{uri: news.imageURL}} style={styles.image} />
       )}
@@ -32,7 +35,7 @@ const OPNewsListItem: React.FC<OPNewsListItemProps> = ({news, onPress}) => {
           hasArrow
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

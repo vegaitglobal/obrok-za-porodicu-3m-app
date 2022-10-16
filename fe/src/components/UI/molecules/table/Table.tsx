@@ -7,9 +7,10 @@ interface Props {
   data: Array<any>;
   columns: Array<string>;
   deleteHandler: (id: number) => void;
+  onClickEdit: (val: any) => void;
 }
 
-const Table: React.FC<Props> = ({ headers, data, columns, deleteHandler }) => {
+const Table: React.FC<Props> = ({ headers, data, columns, deleteHandler, onClickEdit }) => {
   return (
     <table className={classes}>
       <thead>
@@ -23,6 +24,7 @@ const Table: React.FC<Props> = ({ headers, data, columns, deleteHandler }) => {
               item={item}
               columns={columns}
               deleteHandler={deleteHandler}
+              onClickEdit={onClickEdit}
             />
           );
         })}

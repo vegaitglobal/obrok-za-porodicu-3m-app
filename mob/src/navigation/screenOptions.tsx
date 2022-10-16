@@ -46,8 +46,9 @@ export const aboutUseScreenOptions: BottomTabNavigationOptions = {
 };
 
 export const donateScreenOptions: BottomTabNavigationOptions = {
-  headerShown: false,
+  headerShown: true,
   tabBarShowLabel: false,
+  header: () => <OPHeaderSimple />,
   tabBarIcon: ({focused}) => {
     return (
       <OPTabIcon

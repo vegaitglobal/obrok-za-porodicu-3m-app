@@ -19,6 +19,7 @@ import {TextStyles} from '../constants/TextStyles';
 import {getVolunteerAction} from '../store/actions/VolunteerAction';
 import {RootState} from '../store/reducers/RootReducer';
 import {getRandomColor} from '../utils/getRandomColor';
+import {useTranslation} from 'react-i18next';
 
 interface IActionProps {
   route: any;
@@ -28,6 +29,7 @@ interface IActionProps {
 const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
   const {actionId} = route?.params;
   const dispatch = useDispatch<any>();
+  const {t} = useTranslation();
 
   const {currentVolunteerAction, isLoading} = useSelector(
     (state: RootState) => state.volunteerActions,
@@ -48,7 +50,7 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <OPSubheader
-        heading="Nazad"
+        heading={t('general.back')}
         showBackButton
         onBackPressed={() => navigation.goBack()}
         showDropdown={false}

@@ -7,8 +7,10 @@ import {getNews} from '../store/actions/NewsAction';
 import {RootState} from '../store/reducers/RootReducer';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import {AppRoute} from '../navigation/Routes';
+import {useTranslation} from 'react-i18next';
 
 const NewsListScreen = ({navigation}) => {
+  const {t} = useTranslation();
   const dispatch: any = useDispatch();
   const {news} = useSelector((state: RootState) => state.news);
 
@@ -37,7 +39,7 @@ const NewsListScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <OPSubheader heading="Vesti" showBackButton={false} />
+      <OPSubheader heading={t("tabNavigator.news")} showBackButton={false} />
       <OPNewsList
         news={news}
         onPress={newsId => navigation.navigate(AppRoute.NEWS_SCREEN, {newsId})}

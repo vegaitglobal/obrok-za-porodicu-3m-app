@@ -11,7 +11,6 @@ import {
 } from "../../../store/actions/contactTypes";
 import ContactModal from "../../UI/molecules/contactModal/ContactModal";
 import { useState } from "react";
-import Modal from "react-bootstrap/Modal";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 
 const headers: string[] = ["Title", "Email", "Phone number", "Actions"];
@@ -28,6 +27,7 @@ const ContactPage = () => {
 
   const [modalShow, setModalShow] = useState(false);
   const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [modalItem, setModalItem] = useState(undefined);
   const [id, setId] = useState<number>();
 
   const addContact = (title: string, email: string, phone: string) => {
@@ -38,6 +38,27 @@ const ContactPage = () => {
     };
     setModalShow(false);
     //dispatch
+  };
+
+  const updateContact = (title: string, email: string, phone: string, id?: number) => {
+    const data: any = {
+      id: id,
+      title: title,
+      email: email,
+      phoneNumber: phone
+    };
+    setModalShow(false);
+    setModalItem(undefined);
+    console.log("UPDATE");
+    console.log(data)
+    //dispatch
+  };
+
+  const handleClickEdit = (item: any) => {
+    setModalItem(item);
+    setModalShow(true);
+    console.log("CLICK");
+    console.log(item)
   };
 
   const showDeleteModal = (id: number) => {
@@ -57,7 +78,12 @@ const ContactPage = () => {
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
             <p className={globalClasses["add-text"]}>Add Contact</p>
-            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}>Add</button>
+            <button
+              className={globalClasses["add-button"]}
+              onClick={() => setModalShow(true)}
+            >
+              Add
+            </button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table
@@ -65,15 +91,17 @@ const ContactPage = () => {
               data={contacts}
               columns={columnsToRender}
               deleteHandler={showDeleteModal}
+              onClickEdit={handleClickEdit}
             />
           </div>
         </div>
         <ContactModal
           show={modalShow}
-          onClick={addContact}
+          onClick={modalItem ? updateContact : addContact}
           onHide={() => setModalShow(false)}
-          label={"Add action type"}
-        />
+          label={modalItem ? "UPDATE CONTACT" : "ADD CONTACT"}
+          item={modalItem}
+          />
       </div>
       <OPDeleteModal
         show={deleteModalShow}
