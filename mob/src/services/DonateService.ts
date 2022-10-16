@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {DonationModel} from '../models/DonationModel';
+import {logIfOnline} from '../utils/logging';
 
 interface IDonateService {
   donate(donation: DonationModel): Promise<any>;
@@ -13,6 +14,7 @@ class DonateService implements IDonateService {
       return response.data;
     } catch (error) {
       console.log(error);
+      logIfOnline(error);
       return Promise.reject(error);
     }
   }

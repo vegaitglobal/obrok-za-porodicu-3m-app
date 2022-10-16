@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
+import {logIfOnline} from '../utils/logging';
 
 interface INewsService {
   getNews(page: number): Promise<ResponseModel>;
@@ -19,6 +20,7 @@ class NewsService implements INewsService {
       };
     } catch (error) {
       console.log(error);
+      logIfOnline(error);
       return Promise.reject(error);
     }
   }

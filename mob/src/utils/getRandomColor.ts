@@ -5,11 +5,11 @@ interface IStatusColor {
 }
 
 const StatusColors: IStatusColor = {
-  0: Colors.ORANGE,
-  1: Colors.GREEN,
-  2: Colors.PURPLE,
-  3: Colors.BROWN,
-  4: Colors.LIGHT_PINK,
+  0: Colors.LIGHT_PINK,
+  1: Colors.ORANGE,
+  2: Colors.GREEN,
+  3: Colors.PURPLE,
+  4: Colors.BROWN,
 };
-export const getRandomColor = (index: number = 0) =>
+export const getRandomColor = (index: number = 1) =>
   StatusColors[index % Object.keys(StatusColors).length];

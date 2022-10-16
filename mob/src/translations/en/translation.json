@@ -3,9 +3,9 @@
     "general": {
       "back": "Back",
       "mostRecent": "Most recent",
-      "byStatus": "By Status",
-      "required":"Required",
-      "emailMustBeValid":"Email must be a valid email address"
+      "byStatus": "Sort",
+      "required": "Required",
+      "emailMustBeValid": "Email must be a valid email address"
     },
     "tabNavigator": {
       "home": "Home",
@@ -20,7 +20,7 @@
       "contactUs": "Contact Us",
       "callUs": "Call",
       "sendEmail": "Mail",
-      "openMaps":"Open Maps"
+      "openMaps": "Open Maps"
     },
     "aboutUsScreen": {
       "subscribeTitle": "Sign up!",
@@ -29,11 +29,11 @@
       "subscribeButton": "SUBSCRIBE"
     },
     "actionScreen": {
-      "categories":"Categories",
-      "searchButton":"SEARCH",
-      "searchPlaceholder":"Search by Keyword",
-      "filter":"Filter",
-      "clearAll":"Clear All"
+      "categories": "Categories",
+      "searchButton": "SEARCH",
+      "searchPlaceholder": "Search by Keyword",
+      "filter": "Filter",
+      "clearAll": "Clear All"
     },
     "donateScreen": {
       "company": "Company",
@@ -48,13 +48,13 @@
       "address": "Pickup Address",
       "location": "Location",
       "phoneNo": "Phone No.",
-      "paymentDetails":"Payment Details",
-      "receiver":"Receiver",
+      "paymentDetails": "Payment Details",
+      "receiver": "Receiver",
       "accountNo": "Account No.",
       "modelRefNo": "Model | Reference no.",
-      "submit":"SUBMIT DONATION",
-      "chooseCategory":"Choose a Category",
-      "required":"Required"
+      "submit": "SUBMIT DONATION",
+      "chooseCategory": "Choose a Category",
+      "required": "Required"
     },
     "newsScreen": {},
     "actionsList": {

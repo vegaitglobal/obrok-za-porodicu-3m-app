@@ -27,10 +27,10 @@ const OPTagChips: React.FC<OPTagChipsProps> = ({statuses, heading}) => {
   const renderItems = () =>
     statuses &&
     statuses.map((item, index) => (
-      <View key={item.id.toString()} style={styles.tagContainer}>
+      <View key={index} style={styles.tagContainer}>
         <OPTagChip
           volunteerAction={item}
-          color={getRandomColor(index)}
+          color={getRandomColor(item.id)}
           size="large"
           onPress={onPress}
           fill={Boolean(filters[item.id])}

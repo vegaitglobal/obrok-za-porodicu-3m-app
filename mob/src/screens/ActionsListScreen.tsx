@@ -10,8 +10,9 @@ import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
 import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {TextStyles} from '../constants/TextStyles';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';
+import {ActionScreenProps} from '../navigation/ActionsNavigator';
 
-const ActionsListScreen = ({navigation}) => {
+const ActionsListScreen: React.FC<ActionScreenProps> = ({navigation}) => {
   const {t} = useTranslation();
   const dispatch: any = useDispatch();
   const {volunteerActions} = useSelector(
