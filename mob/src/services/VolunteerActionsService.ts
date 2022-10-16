@@ -58,14 +58,15 @@ class VolunteerActionService implements IVolunteerActionService {
   }
   async getVolunteerActionsByTagsAndSearchTerm(
     query: FilterVolunteerActionsType,
+    page: number,
   ): Promise<ResponseModel> {
-    console.log(query);
     try {
-      const response = await axios.get(`${BASE_URL}/`, {
-        params: {
+      const response = await axios.post(
+        `${BASE_URL}/api/volunteer-actions/search?pageSize=10&pageNumber=${page}`,
+        {
           query,
         },
-      });
+      );
       return {
         data: response.data,
         code: 200,

@@ -35,13 +35,24 @@ export const onSetSearchTerm = (searchTerm: string) => (dispatch: Dispatch) =>
 export const onClearFilters = () => (dispatch: Dispatch) =>
   dispatch(clearFilters());
 
-export const getVolunteerActions = (page: number) => (dispatch: Dispatch) => {
-  VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
-    if (res) {
-      dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+export const getVolunteerActions =
+  (page: number) => (dispatch: Dispatch, getState: () => RootState) => {
+    const {appliedVolunteerActions, searchTerm} = getState().volunteerActions;
+
+    const filtersIds = Object.keys(appliedVolunteerActions);
+
+    if (filtersIds.length > 0 || searchTerm.length > 0) {
+      dispatch(
+        filterVolunteerActionsByTagsAndSearchTerm(filtersIds, searchTerm, page),
+      );
+    } else {
+      VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
+        if (res) {
+          dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+        }
+      });
     }
-  });
-};
+  };
 
 export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
   VolunteerActionsService.getActionStatuses().then((res: ResponseModel) => {
@@ -62,18 +73,21 @@ export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
 };
 
 export const filterVolunteerActionsByTagsAndSearchTerm =
-  () => async (dispatch: Dispatch, getState: () => RootState) => {
-    const {appliedVolunteerActions, searchTerm} = getState().volunteerActions;
+  (filtersIds: number[], searchTerm: string, page: number) =>
+  async (dispatch: Dispatch) => {
+    const query = {
+      actionTypeIds: filtersIds,
+      actionStatusesIds: [],
+      searchTerm,
+    };
 
-    const filtersIds = Object.keys(appliedVolunteerActions);
+    const res =
+      await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
+        query,
+        page,
+      );
 
-    if (filtersIds.length > 0 || searchTerm.length > 0) {
-      const query = {ids: filtersIds, searchTerm};
-      const res =
-        await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
-          query,
-        );
-
-      return res;
+    if (res) {
+      dispatch(setVolunteerActions(res.data as VolunteerPageModel));
     }
   };
