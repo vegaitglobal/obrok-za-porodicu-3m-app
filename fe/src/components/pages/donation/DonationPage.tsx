@@ -48,6 +48,7 @@ const DonationPage = () => {
   const deleteHandler = () => {
     console.log(id);
     dispatch(deleteDonation(id!));
+    setDeleteModalShow(false);
   };
 
   useEffect(() => {
