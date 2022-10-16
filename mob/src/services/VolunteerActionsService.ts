@@ -2,7 +2,6 @@ import axios from 'axios';
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
 import {FilterVolunteerActionsType} from '../models/VolunteerAction/AppliedVolunteerAction';
-import {logIfOnline} from '../utils/logging';
 
 interface IVolunteerActionService {
   getActions(page: number): Promise<ResponseModel>;
@@ -22,8 +21,7 @@ class VolunteerActionService implements IVolunteerActionService {
         data: response.data,
         code: 200,
       };
-    } catch (error: any) {
-      logIfOnline(error);
+    } catch (error) {
       console.log(error);
       return Promise.reject(error);
     }
@@ -39,8 +37,7 @@ class VolunteerActionService implements IVolunteerActionService {
         data: response.data,
         code: 200,
       };
-    } catch (error: any) {
-      logIfOnline(error);
+    } catch (error) {
       console.log(error);
       return Promise.reject(error);
     }
@@ -55,8 +52,7 @@ class VolunteerActionService implements IVolunteerActionService {
         data: response.data,
         code: 200,
       };
-    } catch (error: any) {
-      logIfOnline(error);
+    } catch (error) {
       console.log(error);
       return Promise.reject(error);
     }
@@ -75,8 +71,7 @@ class VolunteerActionService implements IVolunteerActionService {
         data: response.data,
         code: 200,
       };
-    } catch (error: any) {
-      logIfOnline(error);
+    } catch (error) {
       console.log(error);
       return Promise.reject(error);
     }
