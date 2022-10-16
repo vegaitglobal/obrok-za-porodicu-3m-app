@@ -1,14 +1,24 @@
-import React, {FC, useEffect, useState} from 'react';
-import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
-import OPImage from '../components/atoms/OPImage/OPImage';
-import OPHtml from '../components/atoms/OPHtml/OPHtml';
-import OPTagChip from '../components/atoms/OPTagChip/OPTagChip';
-import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
-import {TextStyles} from '../constants/TextStyles';
-import {getRandomColor} from '../utils/getRandomColor';
-import {Colors} from '../constants/Colors';
+import React, {FC, useEffect} from 'react';
+import {
+  ActivityIndicator,
+  RefreshControl,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useDispatch, useSelector} from 'react-redux';
+import OPHtml from '../components/atoms/OPHtml/OPHtml';
+import OPImage from '../components/atoms/OPImage/OPImage';
+import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
+import OPTagChip from '../components/atoms/OPTagChip/OPTagChip';
 import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
+import {Colors} from '../constants/Colors';
+import {TextStyles} from '../constants/TextStyles';
+import {getVolunteerAction} from '../store/actions/VolunteerAction';
+import {RootState} from '../store/reducers/RootReducer';
+import {getRandomColor} from '../utils/getRandomColor';
 import {useTranslation} from 'react-i18next';
 
 interface IActionProps {
@@ -17,26 +27,25 @@ interface IActionProps {
 }
 
 const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
+  const {actionId} = route?.params;
+  const dispatch = useDispatch<any>();
   const {t} = useTranslation();
-  const [data, setData] = useState({
-    id: 1,
-    type: {
-      id: 1,
-      name: 'NOVAC',
-    },
-    title: 'Akcija prikupljanja sredstava za porodicu Popovic',
-    shortDescription:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...',
-    status: {
-      id: 2,
-      name: 'Trenutno u toku',
-    },
-    html: '',
-    imageUrl:
-      'https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVuc3xlbnwwfHwwfHw%3D&w=1000&q=80',
-  });
 
-  useEffect(() => {}, [route]);
+  const {currentVolunteerAction, isLoading} = useSelector(
+    (state: RootState) => state.volunteerActions,
+  );
+
+  useEffect(() => {
+    dispatch(getVolunteerAction(actionId));
+  }, [actionId, dispatch]);
+
+  const handleRefresh = () => {
+    dispatch(getVolunteerAction(actionId));
+  };
+
+  if (currentVolunteerAction.id === -1) {
+    return <ActivityIndicator size={'large'} style={styles.loader} />;
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,33 +57,43 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
       />
       <ScrollView
         contentContainerStyle={styles.scrollViewContainer}
-        bounces={false}
-        showsVerticalScrollIndicator={false}>
-        <OPImage source={{uri: data.imageUrl}} style={styles.images} />
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={isLoading} onRefresh={handleRefresh} />
+        }>
+        <OPImage
+          source={{uri: currentVolunteerAction?.imageURL}}
+          style={styles.images}
+        />
         <View style={styles.contentContainer}>
           <View style={styles.chipContainer}>
             <OPTagChip
-              volunteerAction={data?.type?.name}
+              volunteerAction={currentVolunteerAction?.type?.name}
               fill
-              color={getRandomColor(data?.type?.id)}
+              color={getRandomColor(currentVolunteerAction?.type?.id)}
             />
           </View>
-          <Text style={styles.headerText}>{data.title}</Text>
+          <Text style={styles.headerText}>{currentVolunteerAction?.title}</Text>
           <Text style={styles.dontationTypeText}>Anonimna donacija</Text>
           <View style={styles.statusContainer}>
             <Text style={styles.statusText}>Status</Text>
             <Text style={[styles.statusText, styles.statusValueText]}>
-              {data?.status?.name}
+              {currentVolunteerAction?.status?.name}
             </Text>
           </View>
         </View>
         <View style={styles.htmlContainer}>
-          <OPHtml html={data?.html} />
+          <OPHtml html={currentVolunteerAction?.description} />
         </View>
-        <OPDonateForm
-          actionType={data?.type?.id}
-          volunteerActionId={data?.id}
-        />
+        <View>
+          <Text style={styles.title}>PRIJAVITE SE DA DONIRATE</Text>
+          <Text style={styles.body}>
+            Želite da se prijavite za donaciju? To možete uraditi tako što ćete
+            popuniti formu ispod i Vaš zahtev za donaciju će biti uredno
+            zabeležen, a na email ćete dobiti dalja uputstva.
+          </Text>
+        </View>
+        <OPDonateForm actionType={currentVolunteerAction?.type?.id} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -92,6 +111,7 @@ const styles = StyleSheet.create({
   },
   htmlContainer: {
     paddingBottom: 16,
+    marginHorizontal: 15,
   },
   chipContainer: {
     alignItems: 'flex-start',
@@ -125,6 +145,24 @@ const styles = StyleSheet.create({
   },
   statusValueText: {
     color: Colors.ORANGE,
+  },
+  loader: {
+    flex: 1,
+  },
+  title: {
+    ...TextStyles.CHEWY_REGULAR,
+    textAlign: 'center',
+    fontSize: 18,
+    color: Colors.BROWN,
+    paddingBottom: 16,
+    marginTop: 20,
+  },
+  body: {
+    ...TextStyles.DOSIS_REGULAR,
+    textAlign: 'center',
+    fontSize: 14,
+    color: Colors.DARK_GRAY,
+    paddingHorizontal: 10,
   },
 });
 

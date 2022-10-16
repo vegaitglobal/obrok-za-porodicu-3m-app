@@ -23,5 +23,9 @@ export const styles = StyleSheet.create({
   } as TextStyle,
   button: {
     marginTop: 10,
+    width: '90%',
+  },
+  formik: {
+    alignItems: 'center',
   },
 });
