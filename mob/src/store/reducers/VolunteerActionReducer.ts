@@ -16,6 +16,8 @@ interface VolunteerActionState {
   appliedVolunteerActions: AppliedVolunteerAction;
   volunteerActionStatuses: Array<VolunteerActionStatus>;
   volunteerActionTypes: Array<ActionType>;
+  currentVolunteerAction: VolunteerActionDTO;
+  isLoading: boolean;
 }
 
 const initialState: VolunteerActionState = {
@@ -27,6 +29,21 @@ const initialState: VolunteerActionState = {
   totalPages: 0,
   volunteerActionStatuses: [],
   volunteerActionTypes: [],
+  currentVolunteerAction: {
+    id: -1,
+    imageURL: '',
+    shortDescription: '',
+    status: {
+      id: -1,
+      name: '',
+    },
+    title: '',
+    type: {
+      id: -1,
+      name: '',
+    },
+  },
+  isLoading: false,
 };
 
 const volunteerActionsSlice = createSlice({
@@ -71,6 +88,31 @@ const volunteerActionsSlice = createSlice({
     ) {
       state.volunteerActionStatuses = payload;
     },
+    setCurrentVolunteerAction(
+      state,
+      {payload}: PayloadAction<VolunteerActionDTO>,
+    ) {
+      state.currentVolunteerAction = payload;
+    },
+    clearCurrentVolunteerAction(state) {
+      state.currentVolunteerAction = {
+        id: -1,
+        imageURL: '',
+        shortDescription: '',
+        status: {
+          id: -1,
+          name: '',
+        },
+        title: '',
+        type: {
+          id: -1,
+          name: '',
+        },
+      };
+    },
+    setIsLoading(state, {payload}: PayloadAction<boolean>) {
+      state.isLoading = payload;
+    },
   },
 });
 
@@ -81,6 +123,9 @@ export const {
   setVolunteerActionStatuses,
   setSearchTerm,
   clearFilters,
+  setCurrentVolunteerAction,
+  clearCurrentVolunteerAction,
+  setIsLoading,
 } = volunteerActionsSlice.actions;
 
 export default volunteerActionsSlice.reducer;
