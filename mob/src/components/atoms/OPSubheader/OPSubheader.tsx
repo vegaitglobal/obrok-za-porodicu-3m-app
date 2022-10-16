@@ -9,6 +9,7 @@ import {useAppThunkDispatch} from '../../../store/Store';
 import {getVolunteerActionStatuses} from '../../../store/actions/VolunteerAction';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icons from '../../../constants/Icons';
+import {useTranslation} from 'react-i18next';
 
 interface OPSubheaderProps {
   heading: string;
@@ -25,6 +26,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   onSelectionChanged,
   onBackPressed,
 }) => {
+  const {t} = useTranslation();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
   const [allItems, setItems] = useState([{label: '', value: 0}]);
@@ -64,6 +66,8 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
           <DropDownPicker
             zIndexInverse={7000}
             zIndex={1000}
+            placeholder={t('general.byStatus')}
+            placeholderStyle={styles.placeholder}
             open={open}
             value={value}
             items={allItems}
