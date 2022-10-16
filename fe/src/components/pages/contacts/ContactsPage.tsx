@@ -6,16 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { useEffect } from "react";
 import { getContacts } from "../../../store/actions/contactTypes";
-import ContactModal from '../../UI/molecules/contactModal/ContactModal';
-import {useState} from 'react';
-import Modal from 'react-bootstrap/Modal';
+import ContactModal from "../../UI/molecules/contactModal/ContactModal";
+import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
 
 const headers: string[] = ["Title", "Email", "Phone number"];
 
 const columnsToRender: string[] = ["title", "email", "phoneNumber"];
 
 const ContactPage = () => {
-
   const dispatch = useDispatch();
   const contacts = useSelector((state: RootState) => state.contacts.contacts);
 
@@ -29,10 +28,10 @@ const ContactPage = () => {
     const data: any = {
       title: title,
       email: email,
-      phoneNumber: phone
+      phoneNumber: phone,
     };
     setModalShow(false);
-    console.log(data)
+    console.log(data);
     //dispatch
   };
 
@@ -43,12 +42,10 @@ const ContactPage = () => {
         <div className={globalClasses["content"]}>
           <div>
             Add Contact
-            <button onClick={() => setModalShow(true)}>
-              add
-            </button>
+            <button onClick={() => setModalShow(true)}>add</button>
           </div>
           <div className={classes["table-wrapper"]}>
-            <Table headers={headers} data={contacts} columns={columnsToRender} />
+            {/* <Table headers={headers} data={contacts} columns={columnsToRender} /> */}
           </div>
         </div>
         <ContactModal
@@ -56,7 +53,7 @@ const ContactPage = () => {
           onClick={addContact}
           onHide={() => setModalShow(false)}
           label={"Add action type"}
-          />
+        />
       </div>
     </div>
   );
