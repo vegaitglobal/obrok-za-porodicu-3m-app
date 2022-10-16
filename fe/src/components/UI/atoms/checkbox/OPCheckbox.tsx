@@ -6,22 +6,22 @@ interface IOPCheckboxProps {
     name: string,
     label: string
 }
-  
+
 const OPCheckbox: React.FC<IOPCheckboxProps> = (props) => {
     const {
       name,
       label
     } = props;
-  
+
     return (
-      <div>
-        <label className={`${classes["input-label"]}`}>{label}</label><br/>
-        <Field 
-            type="checkbox" 
+      <div style={{display: "flex", alignItems: "center"}}>
+        <Field
+            type="checkbox"
             name={name}
         />
+        <label className={`${classes["input-label"]}`} style={{marginRight: "10px"}}>{label}</label>
       </div>
     );
   };
-  
+
   export default OPCheckbox;

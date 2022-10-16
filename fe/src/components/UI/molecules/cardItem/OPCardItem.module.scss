@@ -3,6 +3,7 @@
 .card-item-wrapper {
   position: relative;
   max-width: 375px;
+  width: 100%;
   min-height: 422px;
   margin-bottom: 20px;
   padding-top: 203px;
@@ -33,9 +34,6 @@
   min-height: 221px;
   padding: 12px;
   border-radius: 0 0 4px 4px;
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .card-content-tag {

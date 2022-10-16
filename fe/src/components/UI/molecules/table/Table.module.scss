@@ -1,3 +1,5 @@
+@import "../../../../constants/Colors.scss";
+
 * {
   border-collapse: collapse;
 }
@@ -5,26 +7,26 @@
 td,
 th {
   padding: 8px;
-  font-size: 14px;
-  line-height: 14px;
+  font-size: 15px;
+  line-height: 16px;
   color: #000000;
 }
 
 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: left;
-  font-size: 14px;
-  line-height: 14px;
-  color: #aeaeae;
+  color: $grey;
+  background-color: rgba($lightOrange, 0.7);
 }
 
-tr:nth-child(even) {
-  background-color: #fafafa;
+tr {
+  border-bottom: 1px solid rgba($lightOrange, 0.4) !important;
 }
 
-tr:hover {
-  background-color: #ddd;
+tbody tr:hover {
+  transition: background-color 0.25s ease-in-out;
+  background-color: rgba($lightOrange, 0.4);
 }
 
 table {

@@ -77,16 +77,16 @@ const VolunteerActionsPage = () => {
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
           <div className={classes["filter-wrapper"]}>
-            <OPSearchBar placeholder="Search" />
+            <OPSearchBar placeholder="Pretraži" />
             <OPFilterItemList filterItems={volunteerActionTypes} />
             <div className={classes["search-and-add-button-wrapper"]}>
               <OPPrimaryButton
-                text="Search"
+                text="Pretraži"
                 onClick={() => {}}
                 style={searchButtonStyle}
               />
               <OPPrimaryButton
-                text="Add"
+                text="Dodaj"
                 onClick={() => setModalShow(true)}
                 style={addButtonStyle}
               />

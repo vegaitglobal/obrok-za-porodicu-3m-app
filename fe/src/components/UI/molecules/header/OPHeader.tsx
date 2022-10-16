@@ -45,6 +45,9 @@ const OPHeader = () => {
         {HEADER_VALUES.map((value, index) => (
           <OPHeaderItem key={index} text={value.text} link={value.link} />
         ))}
+        <div className={classes["header-logout-wrapper"]}>
+          <button>ODJAVA</button>
+        </div>
       </div>
     </header>
   );

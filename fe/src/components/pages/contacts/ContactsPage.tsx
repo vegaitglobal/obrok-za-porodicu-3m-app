@@ -17,7 +17,7 @@ import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 import { ContactRequest } from "../../../models/ContactRequest";
 import { ContactModel } from "../../../models/ContactModel";
 
-const headers: string[] = ["Title", "Email", "Phone number", "Actions"];
+const headers: string[] = ["Kontakt", "Email", "Broj telefona", "Uredi"];
 
 const columnsToRender: string[] = ["title", "email", "phoneNumber", "actions"];
 
@@ -92,12 +92,12 @@ const ContactPage = () => {
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
-            <p className={globalClasses["add-text"]}>Add Contact</p>
+            <p className={globalClasses["add-text"]}>Dodaj Kontakt</p>
             <button
               className={globalClasses["add-button"]}
               onClick={() => setModalShow(true)}
             >
-              Add
+              <span>+</span>Dodaj
             </button>
           </div>
           <div className={classes["table-wrapper"]}>

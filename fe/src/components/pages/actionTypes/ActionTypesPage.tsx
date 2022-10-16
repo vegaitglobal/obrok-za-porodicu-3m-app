@@ -17,7 +17,7 @@ import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 import { VolunteerActionTypeModel } from "../../../models/VolunteerActionTypeModel";
 import { VolunteerActionTypeRequest } from "../../../models/VolunteerActionTypeRequest";
 
-const headers: string[] = ["Name", "Has pickup", "Has payment", "Actions"];
+const headers: string[] = ["Tip akcija", "Preuzimanje", "Uplata", "Uredi"];
 
 const columnsToRender: string[] = [
   "name",
@@ -99,13 +99,8 @@ const ActionTypesPage = () => {
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
-            <p className={globalClasses["add-text"]}>Add Action Type</p>
-            <button
-              className={globalClasses["add-button"]}
-              onClick={() => setModalShow(true)}
-            >
-              Add
-            </button>
+            <p className={globalClasses["add-text"]}>Dodaj tip akcije</p>
+            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}><span>+</span>Dodaj</button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table
@@ -122,10 +117,10 @@ const ActionTypesPage = () => {
         show={modalShow}
         onClick={modalItem ? updateActionTypeHandler : addActionTypeHandler}
         onHide={() => {
-          setModalShow(false);
-          setModalItem(undefined);
+         setModalShow(false);
+         setModalItem(undefined);
         }}
-        label={modalItem ? "UPDATE ACTION TYPE" : "ADD ACTION TYPE"}
+        label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ TIP AKCIJE"}
         item={modalItem}
       />
       <OPDeleteModal

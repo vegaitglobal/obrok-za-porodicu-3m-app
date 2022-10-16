@@ -12,14 +12,14 @@ import { useEffect, useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 
 const headers: string[] = [
-  "Type",
-  "Company",
-  "Full name",
+  "Tip",
+  "Preduzeće",
+  "Ime i prezime",
   "Email",
-  "Phone number",
-  "Pickup",
-  "Address",
-  "Actions",
+  "Broj telefona",
+  "Preuzimanje",
+  "Adresa",
+  "Uredi",
 ];
 
 const columnsToRender: string[] = [
@@ -66,12 +66,12 @@ const DonationPage = () => {
         <div className={globalClasses["content"]}>
           <p className={classes["paragraph"]}>
             <div className={globalClasses["add-wrapper"]}>
-              <p className={globalClasses["add-text"]}>Add Donation</p>
+              <p className={globalClasses["add-text"]}>Dodaj donaciju</p>
               <button
                 className={globalClasses["add-button"]}
                 onClick={() => {}}
               >
-                Add
+                <span>+</span>Dodaj
               </button>
             </div>
             <div className={classes["table-wrapper"]}>

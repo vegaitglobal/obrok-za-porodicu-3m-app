@@ -120,17 +120,17 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
             <>
               <div className={styles.divFlex}>
                 <Field
-                  label="Title"
+                  label="Akcija"
                   component={OPPrimaryInput}
-                  placeholder="Enter Title"
+                  placeholder="Unesi akciju"
                   name="title"
                   type="text"
                   value={item ? item.title : initialValues.title}
                 />
                 <Field
-                  label="Short description"
+                  label="Kratak opis"
                   component={OPPrimaryInput}
-                  placeholder="Enter short description"
+                  placeholder="Unesi kratak opis"
                   name="shortDescription"
                   type="text"
                   value={
@@ -139,23 +139,23 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
                       : initialValues.shortDescription
                   }
                 />
-                <div className={styles["input-label"]}>Status</div>
+                <div className={styles["input-label"]}>Stanje</div>
                 <Select
                   styles={customStyles}
                   placeholder={
-                    <div className={styles.placeholder}>Select status...</div>
+                    <div className={styles.placeholder}>Izaberi stanje...</div>
                   }
                   className={styles.select}
                   options={StatusOptions}
                   value={selectedStatus}
                   onChange={handleOnStatusChange}
                 />
-                <div className={styles["input-label"]}>Action Type</div>
+                <div className={styles["input-label"]}>Tip akcije</div>
                 <Select
                   styles={customStyles}
                   placeholder={
                     <div className={styles.placeholder}>
-                      Select action type...
+                      Izaberi tip akcije...
                     </div>
                   }
                   className={styles.select}
@@ -165,9 +165,9 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
                 />
 
                 <Field
-                  label="Reference number"
+                  label="Poziv na broj"
                   component={OPPrimaryInput}
-                  placeholder="Enter reference number"
+                  placeholder="Unesi poziv na broj..."
                   name="referenceNumber"
                   type="text"
                   value={
@@ -175,9 +175,9 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
                   }
                 />
                 <Field
-                  label="Image URL"
+                  label="URL adresa slike"
                   component={OPPrimaryInput}
-                  placeholder="Enter image URL"
+                  placeholder="Unesi URL adresu slike"
                   name="imageURL"
                   type="text"
                   value={item ? item.imageURL : initialValues.imageURL}
@@ -186,7 +186,7 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
               <div>
                 <OPPrimaryButton
                   onClick={() => formik.handleSubmit()}
-                  text={label}
+                  text="DODAJ AKCIJU"
                   type="submit"
                   style={styles.btn}
                 ></OPPrimaryButton>
