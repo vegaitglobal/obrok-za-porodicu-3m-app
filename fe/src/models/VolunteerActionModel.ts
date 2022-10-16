@@ -10,3 +10,13 @@ export interface VolunteerActionModel {
   shortDescription: string;
   referenceNumber: string;
 }
+export interface VolunteerActionDTOModel {
+  typeId: number;
+  imageURL: string;
+  title: string;
+  statusId: number;
+  shortDescription: string;
+  rawDescription: string;
+  description: string;
+  referenceNumber: string;
+}

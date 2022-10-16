@@ -1,8 +1,12 @@
 import { call, put } from "redux-saga/effects";
-import { VolunteerActionModel } from "../../models/VolunteerActionModel";
 import { VolunteerActionPageModel } from "../../models/VolunteerActionPageModel";
+import { VolunteerActionStatusModel } from "../../models/VolunteerActionStatusModel";
 import volunteerActionsService from "../../services/volunteerActionsService";
-import { setVolunteerActions } from "../slices/volunteerActionSlice";
+import { addVolunteerActionStatus } from "../actions/volunteerActionsType";
+import {
+  setVolunteerActions,
+  setVolunteerActionStatuses,
+} from "../slices/volunteerActionSlice";
 
 export function* handleGetVolunteerActions(): Generator<
   any,
@@ -15,4 +19,30 @@ export function* handleGetVolunteerActions(): Generator<
     );
     yield put(setVolunteerActions(volunteerActionsPage.content));
   } catch (error: any) {}
+}
+
+export function* handleGetVolunteerActionStatuses(): Generator<
+  any,
+  void,
+  Array<VolunteerActionStatusModel>
+> {
+  try {
+    const volunteerActionStatuses: VolunteerActionStatusModel[] = yield call(
+      volunteerActionsService.getActionStatuses
+    );
+    yield put(setVolunteerActionStatuses(volunteerActionStatuses));
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export function* handleAddActionStatus({
+  payload,
+}: ReturnType<typeof addVolunteerActionStatus>): Generator<any, void, void> {
+  try {
+    yield call(volunteerActionsService.addActionStatus, payload);
+    yield call(handleGetVolunteerActions);
+  } catch (error: any) {
+    console.log(error);
+  }
 }

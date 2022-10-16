@@ -19,5 +19,10 @@ namespace MealForFamily.Repositories
         {
             return await _context.NewsletterSubscriptions.Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
         }
+
+        public async Task<NewsletterSubscription?> GetByEmail(string email)
+        {
+            return await _context.NewsletterSubscriptions.Where(n => n.Email.ToLower() == email.ToLower()).FirstOrDefaultAsync();
+        }
     }
 }

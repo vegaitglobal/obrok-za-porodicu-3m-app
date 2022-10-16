@@ -9,7 +9,7 @@ import {
   deleteActionType,
   getVolunteerActionTypes,
   addVolunteerActionType,
-  updateVolunteerActionType
+  updateVolunteerActionType,
 } from "../../../store/actions/volunteerActionTypeTypes";
 import ActionTypeModal from "../../UI/molecules/actionTypeModal/ActionTypeModal";
 import { useState } from "react";
@@ -41,7 +41,12 @@ const ActionTypesPage = () => {
   const [deleteModalShow, setDeleteModalShow] = useState(false);
   const [modalItem, setModalItem] = useState(undefined);
 
-  const addActionTypeHandler = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
+  const addActionTypeHandler = (
+    name: string,
+    hasPickup: boolean,
+    hasPayment: boolean,
+    id?: number
+  ) => {
     const data: VolunteerActionTypeRequest = {
       name: name,
       hasPickup: hasPickup,
@@ -55,14 +60,19 @@ const ActionTypesPage = () => {
   const showDeleteHandler = (id: number) => {
     setId(id);
     setDeleteModalShow(true);
-  }
+  };
 
-  const updateActionTypeHandler = (name: string, hasPickup: boolean, hasPayment: boolean, id?: number) => {
+  const updateActionTypeHandler = (
+    name: string,
+    hasPickup: boolean,
+    hasPayment: boolean,
+    id?: number
+  ) => {
     const data: VolunteerActionTypeModel = {
       id: id ? id : 0,
       name: name,
       hasPickup: hasPickup,
-      hasPayment: hasPayment
+      hasPayment: hasPayment,
     };
     setModalShow(false);
     setModalItem(undefined);
@@ -75,7 +85,7 @@ const ActionTypesPage = () => {
     setModalItem(item);
     setModalShow(true);
     console.log("CLICK");
-    console.log(item)
+    console.log(item);
   };
 
   const deleteHandler = () => {
@@ -106,7 +116,10 @@ const ActionTypesPage = () => {
       <ActionTypeModal
         show={modalShow}
         onClick={modalItem ? updateActionTypeHandler : addActionTypeHandler}
-        onHide={() => setModalShow(false)}
+        onHide={() => {
+         setModalShow(false);
+         setModalItem(undefined);
+        }}
         label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ TIP AKCIJE"}
         item={modalItem}
       />

@@ -28,6 +28,7 @@ namespace MealForFamily.Repositories
                 .Include(v => v.Type)
                 .Include(v => v.Status)
                 .Take(pageSize)
+                .Where(v => v.IsDeleted == false)
                 .ToListAsync();
 
             return createPage(pageNumber, pageSize, totalCount, content);

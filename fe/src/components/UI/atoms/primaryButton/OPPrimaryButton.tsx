@@ -22,6 +22,7 @@ const OPPrimaryButton: React.FC<IOPPrimaryButtonProps> = ({
     <button
       disabled={disabled}
       className={`${classes["login-btn"]}`}
+      style={style}
       onClick={onClick}
       type={type}
     >

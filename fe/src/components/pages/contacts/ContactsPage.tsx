@@ -9,7 +9,7 @@ import {
   deleteContact,
   getContacts,
   addContact,
-  updateContact
+  updateContact,
 } from "../../../store/actions/contactTypes";
 import ContactModal from "../../UI/molecules/contactModal/ContactModal";
 import { useState } from "react";
@@ -34,7 +34,12 @@ const ContactPage = () => {
   const [modalItem, setModalItem] = useState(undefined);
   const [id, setId] = useState<number>();
 
-  const addContactHandler = (title: string, email: string, phone: string, id?: number) => {
+  const addContactHandler = (
+    title: string,
+    email: string,
+    phone: string,
+    id?: number
+  ) => {
     const data: ContactRequest = {
       title: title,
       email: email,
@@ -44,17 +49,22 @@ const ContactPage = () => {
     dispatch(addContact(data));
   };
 
-  const updateContactHandler = (title: string, email: string, phone: string, id?: number) => {
+  const updateContactHandler = (
+    title: string,
+    email: string,
+    phone: string,
+    id?: number
+  ) => {
     const data: ContactModel = {
       id: id ? id : 0,
       title: title,
       email: email,
-      phoneNumber: phone
+      phoneNumber: phone,
     };
     setModalShow(false);
     setModalItem(undefined);
     console.log("UPDATE");
-    console.log(data)
+    console.log(data);
     dispatch(updateContact(data));
   };
 
@@ -62,7 +72,7 @@ const ContactPage = () => {
     setModalItem(item);
     setModalShow(true);
     console.log("CLICK");
-    console.log(item)
+    console.log(item);
   };
 
   const showDeleteModal = (id: number) => {
@@ -103,10 +113,13 @@ const ContactPage = () => {
         <ContactModal
           show={modalShow}
           onClick={modalItem ? updateContactHandler : addContactHandler}
-          onHide={() => setModalShow(false)}
+          onHide={() => {
+            setModalShow(false);
+            setModalItem(undefined);
+          }}
           label={modalItem ? "UPDATE CONTACT" : "ADD CONTACT"}
           item={modalItem}
-          />
+        />
       </div>
       <OPDeleteModal
         show={deleteModalShow}

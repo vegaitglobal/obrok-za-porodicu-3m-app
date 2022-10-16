@@ -28,5 +28,7 @@ namespace MealForFamily.Models
         public string? Address { get; set; }
 
         public VolunteerAction? VolunteerAction { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
