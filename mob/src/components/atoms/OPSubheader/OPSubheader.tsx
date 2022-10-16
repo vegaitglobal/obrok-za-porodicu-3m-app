@@ -9,6 +9,7 @@ import {useAppThunkDispatch} from '../../../store/Store';
 import {getVolunteerActionStatuses} from '../../../store/actions/VolunteerAction';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icons from '../../../constants/Icons';
+import {useTranslation} from 'react-i18next';
 
 interface OPSubheaderProps {
   heading: string;
@@ -25,9 +26,12 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   onSelectionChanged,
   onBackPressed,
 }) => {
+  const {t} = useTranslation();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [allItems, setItems] = useState([{label: 'Najnovije', value: 0}]);
+  const [allItems, setItems] = useState([
+    {label: t('general.mostRecent'), value: 0},
+  ]);
   const {volunteerActionStatuses} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
@@ -38,12 +42,12 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
 
   useEffect(() => {
     setItems([
-      {label: 'Najnovije', value: 0},
+      {label: t('general.mostRecent'), value: 0},
       ...volunteerActionStatuses.map(e => {
         return {label: e.name, value: e.id};
       }),
     ]);
-  }, [volunteerActionStatuses]);
+  }, [t, volunteerActionStatuses]);
 
   return (
     <Shadow offset={[0, 2]} distance={2} stretch>

@@ -1,5 +1,9 @@
 {
   "translation": {
+    "general":{
+      "back":"Nazad",
+      "mostRecent":"Najnovije"
+    },
     "tabNavigator": {
       "home": "Početak",
       "news": "Novosti",
@@ -14,10 +18,30 @@
       "callUs": "Pozovite",
       "sendEmail": "Mail"
     },
+    "aboutUsScreen":{
+      "subscribeTitle":"Prijavite se!",
+      "subscribeText":"Prijavom na naš newsletter dobijaćete obaveštenje o aktuelnim donacijama i načinima kako možete pomoći ugroženim porodicama",
+      "subscribeTextboxHint":"Vaša Email Adresa",
+      "subscribeButton":"PRIJAVA"
+    },
+    "actionScreen":{},
+    "donateScreen":{},
+    "newsScreen":{},
     "actionsList": {
       "find_out_more": "Saznaj Više",
       "status": "Status",
       "trending": "Aktuelno"
+    },
+    "onboardingScreen":{
+      "continue":"NASTAVITE",
+      "title1":  "DOBRODOŠLI!",
+      "paragraph1":"Svake subote organizujemo humanitarne akcije i pomažemo onima kojima je to zaista potrebno!",
+      "title2":  "DONIRAJTE OBROK",
+      "paragraph2":"Misija udruženja Obrok za porodicu 3M je sadržana u samom nazivu udruženja, a to je pravo na obrok svakoj porodici.",
+      "title3":  "DONIRAJTE ODEĆU",
+      "paragraph3":"Takođe možete donirati i odeću koju ne nosite više i tako date svoj doprinos!",
+      "title4":  "PRETRAZITE AKCIJE",
+      "paragraph4":"Aplikacija nudi pregled akcija koje sprovodi naša organizacija i u kojima možete da učestvujete i Vi!"
     }
   }
 }

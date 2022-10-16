@@ -9,6 +9,7 @@ import {getRandomColor} from '../utils/getRandomColor';
 import {Colors} from '../constants/Colors';
 import {ScrollView} from 'react-native-gesture-handler';
 import OPDonateForm from '../components/organisms/OPDonateForm/OPDonateForm';
+import {useTranslation} from 'react-i18next';
 
 interface IActionProps {
   route: any;
@@ -16,6 +17,7 @@ interface IActionProps {
 }
 
 const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
+  const {t} = useTranslation();
   const [data, setData] = useState({
     id: 1,
     type: {
@@ -39,7 +41,7 @@ const ActionScreen: FC<IActionProps> = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <OPSubheader
-        heading="Nazad"
+        heading={t('general.back')}
         showBackButton
         onBackPressed={() => navigation.goBack()}
         showDropdown={false}

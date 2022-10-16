@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {Field, Formik} from 'formik';
 import React, {useEffect, useState} from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Keyboard,
   Linking,
@@ -33,6 +34,7 @@ interface OPDonateFormProps {
 const OPDonateForm: React.FC<OPDonateFormProps> = ({
   actionType = undefined,
 }) => {
+  const {t} = useTranslation();
   const [loseFocus, setLoseFocus] = useState(false);
   const [isCompanySelected, setIsCompanySelected] = useState(false);
   const [isPickupSelected, setIsPickupSelected] = useState(false);

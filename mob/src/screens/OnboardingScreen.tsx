@@ -11,19 +11,10 @@ import Animated, {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
+import {useTranslation} from 'react-i18next';
 
-const titles = [
-  'DOBRODOSLI!',
-  'DONIRAJTE OBROK',
-  'DONIRAJTE ODECU',
-  'PRETRAZITE AKCIJE',
-];
-const paragraphs = [
-  'Svake subote organizujemo humanitarne akcije i pomažemo onima kojima je to zaista potrebno!',
-  'Misija udruženja Obrok za porodicu 3M je sadržana u samom nazivu udruženja, a to je pravo na obrok svakoj porodici.',
-  'Takođe možete donirati i odeću koju ne nosite više i tako date svoj doprinos!',
-  'Aplikacija nudi pregled akcija koje sprovodi naša organizacija i u kojima možete da učestvujete i Vi!',
-];
+const titles = ['title1', 'title2', 'title3', 'title4'];
+const paragraphs = ['paragraph1', 'paragraph2', 'paragraph3', 'paragraph4'];
 const images = [
   require('../../assets/images/onboarding1.png'),
   require('../../assets/images/onboarding2.png'),
@@ -32,6 +23,7 @@ const images = [
 ];
 
 const OnboardingScreen = () => {
+  const {t} = useTranslation();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const dispatch = useDispatch<any>();
   const opacity = useSharedValue(0);
@@ -73,11 +65,11 @@ const OnboardingScreen = () => {
     <SafeAreaView style={styles.container}>
       <Animated.View style={[animatedStyle, styles.content]}>
         <Image source={images[selectedIndex]} style={getImageStyle()} />
-        <Text style={styles.title}>{titles[selectedIndex]}</Text>
-        <Text style={styles.paragraph}>{paragraphs[selectedIndex]}</Text>
+        <Text style={styles.title}>{t(titles[selectedIndex])}</Text>
+        <Text style={styles.paragraph}>{t(paragraphs[selectedIndex])}</Text>
       </Animated.View>
       <OPPrimaryButton
-        text={'NASTAVITE'}
+        text={t('onboardingScreen.continue')}
         onPress={handleOnContinuePress}
         style={styles.button}
         textStyle={styles.buttonText}

@@ -1,22 +1,59 @@
 {
-  "tabNavigator__home": "Home",
-  "tabNavigator": {
-    "home": "Početak",
-    "news": "Novosti",
-    "donate": "Doniraj",
-    "about_us": "O nama",
-    "contact": "Kontakt"
-  },
-  "contactScreen": {
-    "contact": "CONTACT",
-    "socialMedia": "Social Media",
-    "contactUs": "Contact Us",
-    "callUs": "Call",
-    "sendEmail": "Mail"
-  },      
-  "actionsList": {
-    "find_out_more": "Find out more",
-    "status": "Status",
-    "trending": "Trending"
+  "translation": {
+    "general":{
+      "back":"Back",
+      "mostRecent":"Most recent"
+    },
+    "tabNavigator": {
+      "home": "Home",
+      "news": "News",
+      "donate": "Donate",
+      "about_us": "About Us",
+      "contact": "Contact"
+    },
+    "contactScreen": {
+      "contact": "CONTACT",
+      "socialMedia": "Social Media",
+      "contactUs": "Contact Us",
+      "callUs": "Call",
+      "sendEmail": "Mail"
+    },
+    "aboutUsScreen":{
+      "subscribeTitle":"Sign up!",
+      "subscribeText":"By subscribing to our newsletter you will receive updates to help you stay informed on the latest charity drives and ways to help families in need.",
+      "subscribeTextboxHint":"Your Email Address",
+      "subscribeButton":"SUBSCRIBE"
+    },
+    "actionScreen":{},
+    "donateScreen":{
+      "company":"Company",
+      "individual":"Individual",
+      "companyName":"Name of Company/Organization",
+      "fullName":"First and Last Name",
+      "email":"Email",
+      "phoneNo":"Phone Number (e.g. 06573451664)",
+      "description":"Item Description (please note pickup deadline)",
+      "pickup":"Pickup",
+      "delivery":"Personal Delivery",
+      "address":"Pickup Address",
+      "location":"Location"
+    },
+    "newsScreen":{},
+    "actionsList": {
+      "find_out_more": "Find out more",
+      "status": "Status",
+      "trending": "Trending"
+    },
+    "onboardingScreen":{
+      "continue":"CONTINUE",
+      "title1":  "WELCOME!",
+      "paragraph1":"Every Saturday, we organize charity drives to help those in need!",
+      "title2":  "DONATE MEALS",
+      "paragraph2":"The Obrok za porodicu 3M (\"Meal for the Family 3M\") mission statement is its very name: every family's right to a meal.",
+      "title3":  "DONATE CLOTHING",
+      "paragraph3":"You may also contribute by donating clothing you no longer wear!",
+      "title4":  "FIND DRIVES",
+      "paragraph4":"This app provides an overview of charity drives led by our organization, which you can participate in yourself!"
+    }
   }
 }

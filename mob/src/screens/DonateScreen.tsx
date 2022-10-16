@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {ScrollView, StyleSheet} from 'react-native';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
@@ -7,10 +8,11 @@ import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {Colors} from '../constants/Colors';
 
 const DonateScreen = () => {
+  const {t} = useTranslation();
   return (
     <>
       <OPHeader hasFilter={false} />
-      <OPSubheader heading={'DONIRAJ'} items={[]} />
+      <OPSubheader heading={t('tabNavigator.donate')} />
       <ScrollView
         bounces={false}
         style={styles.container}
