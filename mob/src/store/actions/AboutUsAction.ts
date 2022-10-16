@@ -28,7 +28,12 @@ export const subscribeToNewsLetters = (email: string) => () => {
         },
       });
     })
-    .catch((err: any) => {
-      console.error(err);
+    .catch(() => {
+      Toast.show({
+        type: 'error',
+        props: {
+          title: 'Mejl adresa je vec regiregistrovana u sistemu!',
+        },
+      });
     });
 };

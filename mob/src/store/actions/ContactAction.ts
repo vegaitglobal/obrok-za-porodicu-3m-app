@@ -1,7 +1,6 @@
 import {Dispatch} from '@reduxjs/toolkit';
 import {ResponseModel} from '../../models/ResponseModel';
 import {setContacts} from '../reducers/ContactReducer';
-
 import ContactService from '../../services/ContactService';
 
 export const getContacts = () => (dispatch: Dispatch) => {
@@ -9,7 +8,7 @@ export const getContacts = () => (dispatch: Dispatch) => {
     .then((res: ResponseModel) => {
       dispatch(setContacts(res.data));
     })
-    .catch((err: any) => {
-      console.error(err);
+    .catch((error: any) => {
+      console.error(error);
     });
 };
