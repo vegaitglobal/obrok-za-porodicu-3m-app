@@ -6,28 +6,32 @@ import classes from "./OPHeader.module.scss";
 
 const HEADER_VALUES: IHeaderValues[] = [
   {
-    text: "Volunteer action types",
+    text: "Tipovi volonterskih akcija",
     link: "/volunteer-action-type",
   },
   {
-    text: "Volunteer actions",
+    text: "Volonterske akcije",
     link: "/volunteer-action",
   },
   {
-    text: "Donation",
+    text: "Donacije",
     link: "/donation",
   },
   {
-    text: "News",
+    text: "Novosti",
     link: "/news",
   },
   {
-    text: "Contact",
+    text: "Kontakti",
     link: "/contact",
   },
   {
-    text: "About us",
+    text: "O nama",
     link: "/about-us",
+  },
+  {
+    text: "Bankovni račun",
+    link: "/bank-account",
   },
 ];
 

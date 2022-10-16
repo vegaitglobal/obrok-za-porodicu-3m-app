@@ -7,6 +7,7 @@ import donationReducer from "./slices/donationSlice";
 import volunteerActionsReducer from "./slices/volunteerActionSlice";
 import volunteerActionTypesReducer from "./slices/volunteerActionTypeSlice";
 import contactsReducer from "./slices/contactSlice";
+import bankAccountReducer from "./slices/bankAccountSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,6 +18,7 @@ const store = configureStore({
     volunterActions: volunteerActionsReducer,
     volunteerActionTypes: volunteerActionTypesReducer,
     contacts: contactsReducer,
+    bankAccount: bankAccountReducer,
   },
   middleware: [sagaMiddleware],
 });
