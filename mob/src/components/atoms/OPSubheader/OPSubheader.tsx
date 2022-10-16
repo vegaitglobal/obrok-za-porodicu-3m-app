@@ -70,7 +70,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
             zIndexInverse={7000}
             zIndex={1000}
             placeholder={t('general.byStatus')}
-            placeholderStyle={styles.placeholder}
+            placeholderStyle={styles.placeholderStyle}
             open={open}
             value={currentActionStatus === null ? 0 : currentActionStatus}
             items={allItems}
@@ -89,8 +89,6 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
             setItems={setItems}
             style={styles.picker}
             containerStyle={styles.picker}
-            placeholder="Select an item"
-            placeholderStyle={styles.placeholderStyle}
             dropDownContainerStyle={[styles.picker, styles.pickerDropdown]}
             textStyle={styles.dropdownLabels}
             labelStyle={[styles.dropdownLabels, styles.dropdownMainLabel]}
