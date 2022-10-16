@@ -1,4 +1,5 @@
 import classes from "./ActionTypesPage.module.scss";
+import globalClasses from "../../../constants/GlobalStyle.module.scss";
 import Table from "../../UI/molecules/table/Table";
 import Header from "../../UI/molecules/header/OPHeader";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,42 +26,42 @@ const ActionTypesPage = () => {
   const [modalShow, setModalShow] = useState(false);
 
   const addActionType = (name: string, hasPickup: boolean, hasPayment: boolean) => {
-		const data: any = {
-			name: name,
-			hasPickup: hasPickup,
+    const data: any = {
+      name: name,
+      hasPickup: hasPickup,
       hasPayment: hasPayment
-		};
-		setModalShow(false);
+    };
+    setModalShow(false);
     console.log(data)
-		//dispatch
-	};
+    //dispatch
+  };
 
   return (
-    <div className={classes["action-types-page"]}>
-      <div className={classes["content-wrapper"]}>
-        <div className={classes["header-wrapper"]}>
-          <Header />
-        </div>
-        <div className={classes["table-wrapper"]}>
-          <Table
-            headers={headers}
-            data={actionTypes}
-            columns={columnsToRender}
-          />
-        </div>
-        <div>
-          Add Action Type
-          <button onClick={() => setModalShow(true)}>
-            add
-          </button>
+    <div className={globalClasses["page-wrapper"]}>
+      <Header />
+      <div className={globalClasses["content-wrapper"]}>
+        <div className={globalClasses["content"]}>
+          <div>
+            <span>Add Action Type</span>
+            <button onClick={() => setModalShow(true)}>
+              add
+            </button>
+          </div>
+          <div className={classes["table-wrapper"]}>
+            <Table
+              headers={headers}
+              data={actionTypes}
+              columns={columnsToRender}
+              />
+          </div>
         </div>
       </div>
       <ActionTypeModal
-				show={modalShow}
-				onClick={addActionType}
-				onHide={() => setModalShow(false)}
-				label={"Add action type"}
-			/>
+        show={modalShow}
+        onClick={addActionType}
+        onHide={() => setModalShow(false)}
+        label={"Add action type"}
+      />
     </div>
   );
 };

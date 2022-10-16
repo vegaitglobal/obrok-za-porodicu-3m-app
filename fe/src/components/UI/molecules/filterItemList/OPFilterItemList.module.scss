@@ -1,5 +1,13 @@
 .filter-item-list-wrapper {
   display: flex;
-  flex-direction: row;
-  gap: 10px;
+  flex-wrap: wrap;
+  padding: 2px 0;
+
+  & > div {
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+  & > :not(:last-child) {
+    margin-right: 10px;
+  }
 }

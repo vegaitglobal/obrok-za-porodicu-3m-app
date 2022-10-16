@@ -3,6 +3,7 @@ import {SocialMedia, SocialMediaType} from '../models/SocialMedia';
 const facebook = require('../../assets/images/facebook/facebook.png');
 const youtube = require('../../assets/images/youtube/youtube.png');
 const instagram = require('../../assets/images/instagram/instagram.png');
+export const messenger = require('../../assets/images/messenger/messenger.png');
 
 export const socialMedia: SocialMedia[] = [
   {

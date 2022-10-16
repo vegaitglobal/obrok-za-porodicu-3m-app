@@ -23,7 +23,6 @@ export const styles = StyleSheet.create({
     borderColor: Colors.BG_LIGHT_GRAY,
     borderBottomWidth: 1,
     paddingHorizontal: 10,
-    paddingVertical: 10,
     flexDirection: 'row',
   },
   inputField: {
