@@ -37,7 +37,6 @@ const ContactPage = () => {
       phoneNumber: phone,
     };
     setModalShow(false);
-    console.log(data);
     //dispatch
   };
 
