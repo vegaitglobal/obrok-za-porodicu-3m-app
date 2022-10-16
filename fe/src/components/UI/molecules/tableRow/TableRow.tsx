@@ -6,9 +6,10 @@ interface Props {
   item: any;
   columns: Array<string>;
   deleteHandler: (id: number) => void;
+  onClickEdit: (val: any) => void;
 }
 
-const TableRow: React.FC<Props> = ({ item, columns, deleteHandler }) => {
+const TableRow: React.FC<Props> = ({ item, columns, deleteHandler, onClickEdit }) => {
   const onClickHandler = () => {
     deleteHandler(item.id);
   };
@@ -23,7 +24,9 @@ const TableRow: React.FC<Props> = ({ item, columns, deleteHandler }) => {
             "Yes"
           ) : item[column] === undefined ? (
             <>
-              <button className={classes["icon-button"]}>
+              <button className={classes["icon-button"]}
+                onClick={() => onClickEdit(item)}
+              >
                 <EditIcon width={16} height={16} />
               </button>
               <button

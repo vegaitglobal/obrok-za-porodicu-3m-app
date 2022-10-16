@@ -1,4 +1,5 @@
 import { call, put } from "redux-saga/effects";
+import { AccessTokenModel } from "../../models/AccessTokenModel";
 import { ContactModel } from "../../models/ContactModel";
 import authService from "../../services/authService";
 import contactsService from "../../services/contactService";
@@ -9,10 +10,10 @@ import { setContacts } from "../slices/contactSlice";
 
 export function* handleLogin({
   payload,
-}: ReturnType<typeof login>): Generator<any, void, string> {
+}: ReturnType<typeof login>): Generator<any, void, AccessTokenModel> {
   try {
-    const token: string = yield call(authService.logIn, payload);
-    localStorage.setItem("accessToken", token);
+    const token: AccessTokenModel = yield call(authService.logIn, payload);
+    localStorage.setItem("accessToken", token.jwtToken);
 
     yield put(setLoggedIn(true));
   } catch (error: any) {
