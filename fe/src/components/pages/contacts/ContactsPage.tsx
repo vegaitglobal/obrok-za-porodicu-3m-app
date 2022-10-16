@@ -28,6 +28,7 @@ const ContactPage = () => {
 
   const [modalShow, setModalShow] = useState(false);
   const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [modalItem, setModalItem] = useState(undefined);
   const [id, setId] = useState<number>();
 
   const addContact = (title: string, email: string, phone: string) => {
@@ -38,6 +39,27 @@ const ContactPage = () => {
     };
     setModalShow(false);
     //dispatch
+  };
+
+  const updateContact = (title: string, email: string, phone: string, id?: number) => {
+    const data: any = {
+      id: id,
+      title: title,
+      email: email,
+      phoneNumber: phone
+    };
+    setModalShow(false);
+    setModalItem(undefined);
+    console.log("UPDATE");
+    console.log(data)
+    //dispatch
+  };
+
+  const handleClickEdit = (item: any) => {
+    setModalItem(item);
+    setModalShow(true);
+    console.log("CLICK");
+    console.log(item)
   };
 
   const showDeleteModal = (id: number) => {
@@ -65,15 +87,17 @@ const ContactPage = () => {
               data={contacts}
               columns={columnsToRender}
               deleteHandler={showDeleteModal}
+              onClickEdit={handleClickEdit}
             />
           </div>
         </div>
         <ContactModal
           show={modalShow}
-          onClick={addContact}
+          onClick={modalItem ? updateContact : addContact}
           onHide={() => setModalShow(false)}
-          label={"Add action type"}
-        />
+          label={modalItem ? "UPDATE CONTACT" : "ADD CONTACT"}
+          item={modalItem}
+          />
       </div>
       <OPDeleteModal
         show={deleteModalShow}
