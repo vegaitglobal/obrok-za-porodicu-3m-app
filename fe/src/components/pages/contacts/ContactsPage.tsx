@@ -55,9 +55,9 @@ const ContactPage = () => {
       <Header />
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
-          <div>
-            Add Contact
-            <button onClick={() => setModalShow(true)}>add</button>
+          <div className={globalClasses["add-wrapper"]}>
+            <p className={globalClasses["add-text"]}>Add Contact</p>
+            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}>Add</button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table

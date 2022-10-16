@@ -64,9 +64,9 @@ const ActionTypesPage = () => {
       <Header />
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
-          <div>
-            <span>Add Action Type</span>
-            <button onClick={() => setModalShow(true)}>add</button>
+          <div className={globalClasses["add-wrapper"]}>
+            <p className={globalClasses["add-text"]}>Add Action Type</p>
+            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}>Add</button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table
