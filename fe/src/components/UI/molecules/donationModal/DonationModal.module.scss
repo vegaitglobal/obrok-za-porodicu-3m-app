@@ -1,0 +1,18 @@
+.placeholder {
+  font-size: 14px;
+  font-family: "Dosis";
+  color: darkgrey;
+}
+
+.input-label {
+  float: left;
+  clear: left;
+  padding-left: 6px;
+  font-family: "Dosis";
+  font-size: 18px;
+  font-weight: 600;
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  margin-bottom: 10pt;
+}

@@ -1,3 +1,4 @@
+import { DonationDTOModel } from "../models/DonationModel";
 import ApiService from "./apiService";
 
 const ENDPOINTS = {
@@ -12,10 +13,21 @@ export class DonationService extends ApiService {
   };
 
   deleteDonation = async (id: number) => {
-    console.log(id)
     const { data } = await this.apiClient.delete(
       ENDPOINTS.DONATIONS + "/" + id
     );
+
+    return data;
+  };
+
+  addDonation = async (payload: DonationDTOModel) => {
+    const { data } = await this.apiClient.post(ENDPOINTS.DONATIONS, payload);
+
+    return data;
+  };
+
+  updateDonation = async (payload: DonationDTOModel) => {
+    const { data } = await this.apiClient.put(ENDPOINTS.DONATIONS, payload);
 
     return data;
   };

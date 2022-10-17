@@ -5,11 +5,16 @@ import Table from "../../UI/molecules/table/Table";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import {
+  addDonation,
   deleteDonation,
   getDonations,
+  updateDonation,
 } from "../../../store/actions/donationType";
 import { useEffect, useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
+import DonationModal from "../../UI/molecules/donationModal/DonationModal";
+import { DonationDTOModel } from "../../../models/DonationModel";
+import { getVolunteerActionTypes } from "../../../store/actions/volunteerActionTypeTypes";
 
 const headers: string[] = [
   "Tip",
@@ -37,7 +42,13 @@ const DonationPage = () => {
   const dispatch = useDispatch();
   const donations = useSelector((state: RootState) => state.donation.donations);
 
+  const volunteerActionTypes = useSelector(
+    (state: RootState) => state.volunteerActionTypes.volunteerActionTypes
+  );
+
   const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [modalItem, setModalItem] = useState(undefined);
   const [id, setId] = useState<number>();
 
   const showDeleteModal = (id: number) => {
@@ -53,10 +64,89 @@ const DonationPage = () => {
 
   useEffect(() => {
     dispatch(getDonations());
+    dispatch(getVolunteerActionTypes());
   }, []);
 
-  const handleClickEdit = () => {
+  const updateDonationHandler = (
+    volunteerActionTypeId: string,
+    isCompany: boolean,
+    companyName: string,
+    fullName: string,
+    email: string,
+    phoneNumber: string,
+    description: string,
+    isPickup: boolean,
+    address: string,
+    id?: number | null
+  ) => {
+    const donationDto: DonationDTOModel = {
+      id,
+      volunteerActionTypeId: +volunteerActionTypeId,
+      isCompany,
+      companyName,
+      fullName,
+      email,
+      phoneNumber,
+      description,
+      isPickup,
+      address,
+    };
+    console.log("UPDATE");
+    console.log(donationDto);
+    dispatch(
+      updateDonation({
+        ...donationDto,
+        volunteerActionId: 1,
+      })
+    );
+    setModalShow(false);
+  };
+
+  const addDonationHandler = (
+    volunteerActionTypeId: string,
+    isCompany: boolean,
+    companyName: string,
+    fullName: string,
+    email: string,
+    phoneNumber: string,
+    description: string,
+    isPickup: boolean,
+    address: string,
+    id?: number | null
+  ) => {
+    const donationDto: DonationDTOModel = {
+      volunteerActionTypeId: +volunteerActionTypeId,
+      isCompany,
+      companyName,
+      fullName,
+      email,
+      phoneNumber,
+      description,
+      isPickup,
+      address,
+    };
+    console.log("ADD");
+    console.log(donationDto);
+    dispatch(
+      addDonation({
+        ...donationDto,
+        volunteerActionId: 1,
+      })
+    );
+    setModalShow(false);
+  };
+
+  const handleClickEdit = (item: any) => {
+    setModalItem({
+      ...item,
+      volunteerActionTypeId: item.volunteerActionType.id,
+    });
+    setModalShow(true);
     console.log("CLICK");
+    console.log({
+      ...item,
+      volunteerActionTypeId: item.volunteerActionType.id,
+    });
   };
 
   return (
@@ -69,7 +159,7 @@ const DonationPage = () => {
               <p className={globalClasses["add-text"]}>Dodaj donaciju</p>
               <button
                 className={globalClasses["add-button"]}
-                onClick={() => {}}
+                onClick={() => setModalShow(true)}
               >
                 <span>+</span>Dodaj
               </button>
@@ -98,6 +188,17 @@ const DonationPage = () => {
         onDelete={deleteHandler}
         onHide={() => setDeleteModalShow(false)}
         type={"donation"}
+      />
+      <DonationModal
+        show={modalShow}
+        onClick={modalItem ? updateDonationHandler : addDonationHandler}
+        onHide={() => {
+          setModalShow(false);
+          setModalItem(undefined);
+        }}
+        label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ DONACIJU"}
+        item={modalItem}
+        actionTypes={volunteerActionTypes}
       />
     </div>
   );
