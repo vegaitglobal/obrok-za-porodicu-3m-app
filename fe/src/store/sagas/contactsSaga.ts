@@ -1,6 +1,5 @@
 import { call, put } from "redux-saga/effects";
 import { ContactModel } from "../../models/ContactModel";
-import { ContactRequest } from "../../models/ContactRequest";
 import contactsService from "../../services/contactService";
 import { addContact, deleteContact, updateContact } from "../actions/contactTypes";
 import { setContacts } from "../slices/contactSlice";
@@ -28,7 +27,7 @@ export function* handleDeleteContact({
 
 export function* handleAddContact({
   payload,
-}: ReturnType<typeof addContact>): Generator<any, void, ContactRequest> {
+}: ReturnType<typeof addContact>): Generator<any, void, ContactModel> {
   try {
     console.log("SAGA")
     console.log(payload);

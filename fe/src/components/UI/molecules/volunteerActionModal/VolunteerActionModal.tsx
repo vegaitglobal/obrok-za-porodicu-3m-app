@@ -53,7 +53,7 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
   );
   const TypesOptions: OptionType[] = actionTypes.map(
     (b: VolunteerActionTypeModel) => {
-      return { value: b.id.toString()!, label: b.name! };
+      return { value: (b.id ?? 0).toString()!, label: b.name! };
     }
   );
   const [selectedStatus, setSelectedStatus] = useState(StatusOptions[0]);

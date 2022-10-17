@@ -15,7 +15,6 @@ import ActionTypeModal from "../../UI/molecules/actionTypeModal/ActionTypeModal"
 import { useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 import { VolunteerActionTypeModel } from "../../../models/VolunteerActionTypeModel";
-import { VolunteerActionTypeRequest } from "../../../models/VolunteerActionTypeRequest";
 
 const headers: string[] = ["Tip akcija", "Preuzimanje", "Uplata", "Uredi"];
 
@@ -45,9 +44,9 @@ const ActionTypesPage = () => {
     name: string,
     hasPickup: boolean,
     hasPayment: boolean,
-    id?: number
+    id?: number | null
   ) => {
-    const data: VolunteerActionTypeRequest = {
+    const data: VolunteerActionTypeModel = {
       name: name,
       hasPickup: hasPickup,
       hasPayment: hasPayment,
@@ -66,13 +65,13 @@ const ActionTypesPage = () => {
     name: string,
     hasPickup: boolean,
     hasPayment: boolean,
-    id?: number
+    id?: number | null
   ) => {
     const data: VolunteerActionTypeModel = {
-      id: id ? id : 0,
-      name: name,
-      hasPickup: hasPickup,
-      hasPayment: hasPayment,
+      id,
+      name,
+      hasPickup,
+      hasPayment,
     };
     setModalShow(false);
     setModalItem(undefined);
@@ -84,8 +83,6 @@ const ActionTypesPage = () => {
   const handleClickEdit = (item: any) => {
     setModalItem(item);
     setModalShow(true);
-    console.log("CLICK");
-    console.log(item);
   };
 
   const deleteHandler = () => {
@@ -100,7 +97,12 @@ const ActionTypesPage = () => {
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
             <p className={globalClasses["add-text"]}>Dodaj tip akcije</p>
-            <button className={globalClasses["add-button"]} onClick={() => setModalShow(true)}><span>+</span>Dodaj</button>
+            <button
+              className={globalClasses["add-button"]}
+              onClick={() => setModalShow(true)}
+            >
+              <span>+</span>Dodaj
+            </button>
           </div>
           <div className={classes["table-wrapper"]}>
             <Table
@@ -117,8 +119,8 @@ const ActionTypesPage = () => {
         show={modalShow}
         onClick={modalItem ? updateActionTypeHandler : addActionTypeHandler}
         onHide={() => {
-         setModalShow(false);
-         setModalItem(undefined);
+          setModalShow(false);
+          setModalItem(undefined);
         }}
         label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ TIP AKCIJE"}
         item={modalItem}

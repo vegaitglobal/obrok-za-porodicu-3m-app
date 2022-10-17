@@ -1,34 +1,38 @@
-import {Field, Formik} from 'formik';
-import React from 'react';
-import CustomModal from '../../molecules/customModal/CustomModal';
-import {contactValidationScheme} from '../../../validators/contactValidationScheme';
-import styles from './ContactModal.module.scss';
+import { Field, Formik } from "formik";
+import React from "react";
+import CustomModal from "../../molecules/customModal/CustomModal";
+import { contactValidationScheme } from "../../../validators/contactValidationScheme";
+import styles from "./ContactModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
-import OPPrimaryInput from '../../atoms/primaryInput/OPPrimaryInput';
-import {ContactRequest} from '../../../../models/ContactRequest';
-import {ContactModel} from '../../../../models/ContactModel';
-import OPPrimaryButton from '../../atoms/primaryButton/OPPrimaryButton';
+import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
+import { ContactModel } from "../../../../models/ContactModel";
+import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 
 interface ContactModalProps {
-  onClick: (title: string, email: string, phoneNumber: string, id?: number) => void;
+  onClick: (
+    title: string,
+    email: string,
+    phoneNumber: string,
+    id?: number | null
+  ) => void;
   onHide: () => void;
   show: boolean;
   label: string;
   item?: ContactModel;
 }
 
-const initialValues: ContactRequest = {
-    title: '',
-    email: '',
-    phoneNumber: ''
-  };
+const initialValues: any = {
+  title: "",
+  email: "",
+  phoneNumber: "",
+};
 
 export const ContactModal: React.FC<ContactModalProps> = ({
   onClick,
   onHide,
   show = false,
   item,
-  label
+  label,
 }) => {
   return (
     <CustomModal show={show} onHide={onHide}>
@@ -36,11 +40,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         <Formik
           initialValues={item ? item : initialValues}
           validationSchema={contactValidationScheme}
-          onSubmit={(values: ContactRequest) => {
-            item ? onClick(values.title, values.email, values.phoneNumber, item.id)
-                : onClick(values.title, values.email, values.phoneNumber);
-          }}>
-          {formik => (
+          onSubmit={(values: ContactModel) => {
+            item
+              ? onClick(values.title, values.email, values.phoneNumber, item.id)
+              : onClick(values.title, values.email, values.phoneNumber);
+          }}
+        >
+          {(formik) => (
             <>
               <div className={styles.divFlex}>
                 <Field
@@ -73,7 +79,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   onClick={() => formik.handleSubmit()}
                   text={label}
                   type="submit"
-                  style={styles.btn}></OPPrimaryButton>
+                  style={styles.btn}
+                ></OPPrimaryButton>
               </div>
             </>
           )}

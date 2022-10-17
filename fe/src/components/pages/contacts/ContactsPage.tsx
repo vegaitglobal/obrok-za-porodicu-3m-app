@@ -14,7 +14,6 @@ import {
 import ContactModal from "../../UI/molecules/contactModal/ContactModal";
 import { useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
-import { ContactRequest } from "../../../models/ContactRequest";
 import { ContactModel } from "../../../models/ContactModel";
 
 const headers: string[] = ["Kontakt", "Email", "Broj telefona", "Uredi"];
@@ -38,9 +37,9 @@ const ContactPage = () => {
     title: string,
     email: string,
     phone: string,
-    id?: number
+    id?: number | null
   ) => {
-    const data: ContactRequest = {
+    const data: ContactModel = {
       title: title,
       email: email,
       phoneNumber: phone,
@@ -52,14 +51,14 @@ const ContactPage = () => {
   const updateContactHandler = (
     title: string,
     email: string,
-    phone: string,
-    id?: number
+    phoneNumber: string,
+    id?: number | null
   ) => {
     const data: ContactModel = {
-      id: id ? id : 0,
-      title: title,
-      email: email,
-      phoneNumber: phone,
+      id,
+      title,
+      email,
+      phoneNumber,
     };
     setModalShow(false);
     setModalItem(undefined);
@@ -71,8 +70,6 @@ const ContactPage = () => {
   const handleClickEdit = (item: any) => {
     setModalItem(item);
     setModalShow(true);
-    console.log("CLICK");
-    console.log(item);
   };
 
   const showDeleteModal = (id: number) => {
@@ -117,7 +114,7 @@ const ContactPage = () => {
             setModalShow(false);
             setModalItem(undefined);
           }}
-          label={modalItem ? "UPDATE CONTACT" : "ADD CONTACT"}
+          label={modalItem ? "SA:UVAJ IZMENE" : "DODAJ KONTAKT"}
           item={modalItem}
         />
       </div>

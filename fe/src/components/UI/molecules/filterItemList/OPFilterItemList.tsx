@@ -13,7 +13,7 @@ const OPFilterItemList: React.FC<IOPFilterItemListProps> = ({
   return (
     <div className={classes["filter-item-list-wrapper"]}>
       {filterItems.map((type) => (
-        <OPFilterItem key={type.id} index={type.id} text={type.name} />
+        <OPFilterItem key={type.id} index={type.id ?? 0} text={type.name} />
       ))}
     </div>
   );

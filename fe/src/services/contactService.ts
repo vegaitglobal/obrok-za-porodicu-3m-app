@@ -1,5 +1,4 @@
 import { ContactModel } from "../models/ContactModel";
-import { ContactRequest } from "../models/ContactRequest";
 import ApiService from "./apiService";
 
 const ENDPOINTS = {
@@ -19,7 +18,7 @@ export class ContactsService extends ApiService {
     return data;
   };
 
-  addContact = async (payload: ContactRequest) => {
+  addContact = async (payload: ContactModel) => {
     const { data } = await this.apiClient.post(ENDPOINTS.CONTACTS, payload);
 
     return data;
