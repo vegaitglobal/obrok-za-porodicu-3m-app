@@ -9,6 +9,7 @@ import CustomModal from "../../molecules/customModal/CustomModal";
 import styles from "./DonationModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPCheckbox from "../../atoms/checkbox/OPCheckbox";
+import { donationValidationScheme } from "../../../validators/DonationValidationScheme";
 
 interface DonationModalProps {
   onClick: (
@@ -99,7 +100,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
       <div>
         <Formik
           initialValues={item ? item : initialValues}
-          //validationSchema={volunteerActionValidationScheme}
+          validationSchema={donationValidationScheme}
           onSubmit={(values: DonationDTOModel) => {
             item
               ? onClick(
