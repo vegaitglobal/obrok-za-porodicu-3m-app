@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {BASE_URL} from '../constants/BaseUrl';
 import {ResponseModel} from '../models/ResponseModel';
 import {FilterVolunteerActionsType} from '../models/VolunteerAction/AppliedVolunteerAction';
@@ -8,6 +9,10 @@ interface IVolunteerActionService {
   getActions(page: number): Promise<ResponseModel>;
   getActionStatuses(): Promise<ResponseModel>;
   getVolunteerActionTypes(): Promise<ResponseModel>;
+  getVolunteerActionsByTagsAndSearchTerm(
+    query: FilterVolunteerActionsType,
+    page: number,
+  ): Promise<ResponseModel>;
   getVolunteerAction(id: number): Promise<ResponseModel>;
 }
 

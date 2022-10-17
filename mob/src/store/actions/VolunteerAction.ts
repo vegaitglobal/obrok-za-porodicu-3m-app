@@ -1,4 +1,6 @@
 import {Dispatch} from '@reduxjs/toolkit';
+
+import type {RootState} from '../../store/reducers/RootReducer';
 import {
   setAppliedVolunteerActions,
   setVolunteerActions,
@@ -14,11 +16,10 @@ import {
   ActionType,
   VolunteerActionDTO,
 } from '../../models/VolunteerAction/VolunteerActionDTO';
-import type {RootState} from '../../store/reducers/RootReducer';
-import VolunteerActionsService from '../../services/VolunteerActionsService';
 import {ResponseModel} from '../../models/ResponseModel';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
 import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
+import VolunteerActionsService from '../../services/VolunteerActionsService';
 
 export const setAppliedFilters =
   (newFilters: ActionType, color: string) =>

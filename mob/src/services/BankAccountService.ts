@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {BASE_URL} from '../constants/BaseUrl';
 import {BankAccountModel} from '../models/BankAccountModel';
 import {logIfOnline} from '../utils/logging';

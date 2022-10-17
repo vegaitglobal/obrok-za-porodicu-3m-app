@@ -6,12 +6,10 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
-import Icons from '../../../constants/Icons';
-import OPBadge from '../../atoms/OPBadge/OPBadge';
-import OPSearch from '../../atoms/OPSearch/OPSearch';
-import OPTagChips from '../../molecules/OPTagChips/OPTagChips';
-import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
-import {useSelector} from 'react-redux';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useTranslation} from 'react-i18next';
+import {useSelector, useDispatch} from 'react-redux';
+
 import type {RootState, AppDispatch} from '../../../store/reducers/RootReducer';
 import {
   getVolunteerActions,
@@ -19,16 +17,17 @@ import {
   onClearFilters,
   getVolunteerActionTypes,
 } from '../../../store/actions/VolunteerAction';
-import {useDispatch} from 'react-redux';
+import Icons from '../../../constants/Icons';
 import {styles} from './style';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useTranslation} from 'react-i18next';
+import OPBadge from '../../atoms/OPBadge/OPBadge';
+import OPSearch from '../../atoms/OPSearch/OPSearch';
+import OPPrimaryButton from '../../atoms/OPPrimaryButton/OPPrimaryButton';
+import OPTagChips from '../../molecules/OPTagChips/OPTagChips';
 
 interface OPHeaderProps {
   filterTitle?: string;
   buttonTitle?: string;
   searchPlaceholder?: string;
-  hasFilter?: boolean;
 }
 
 const LOGO_PATH = require('../../../../assets/images/LogoHoriz1.png');
@@ -41,12 +40,9 @@ const OPHeader: FC<OPHeaderProps> = ({
   const {t} = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
 
-  const {volunteerActionTypes} = useSelector(
-    (state: RootState) => state.volunteerActions,
-  );
-  const {appliedVolunteerActions, searchTerm} = useSelector(
-    (state: RootState) => state.volunteerActions,
-  );
+  const {volunteerActionTypes, appliedVolunteerActions, searchTerm} =
+    useSelector((state: RootState) => state.volunteerActions);
+
   const [searchValue, setSearchValue] = useState<string>(searchTerm);
   const badgeValue: number =
     Object.keys(appliedVolunteerActions).length +
@@ -103,12 +99,12 @@ const OPHeader: FC<OPHeaderProps> = ({
     onPressFilterIcon();
   };
 
-  useEffect(() => dispatch(getVolunteerActionTypes()), [dispatch]);
-
   const onClearAll = () => {
     setSearchValue('');
     dispatch(onClearFilters());
   };
+
+  useEffect(() => dispatch(getVolunteerActionTypes()), [dispatch]);
 
   return (
     <SafeAreaView edges={['top']} style={styles.container}>
