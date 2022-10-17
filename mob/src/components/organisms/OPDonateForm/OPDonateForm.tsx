@@ -54,7 +54,7 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
     dispatch(getVolunteerActionTypes());
   }, [dispatch]);
 
-  const {volunteerActionTypes} = useSelector(
+  const {volunteerActionTypes, currentVolunteerAction} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
 
@@ -290,7 +290,10 @@ const OPDonateForm: React.FC<OPDonateFormProps> = ({
                     {t('donateScreen.modelRefNo')}
                   </Text>
                   <Text style={styles.paymentDataBody}>
-                    {`${bankAccount.transactionModel} | ${bankAccount.referenceNumber}`}
+                    {`${bankAccount.transactionModel} | ${
+                      currentVolunteerAction.referenceNumber ||
+                      bankAccount.referenceNumber
+                    }`}
                   </Text>
                 </View>
               )}

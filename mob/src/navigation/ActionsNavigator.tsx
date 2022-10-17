@@ -12,7 +12,7 @@ import ActionsListScreen from '../screens/ActionsListScreen';
 import {actionScreenOptions, actionsStackOptions} from './screenOptions';
 import {RouteProp} from '@react-navigation/native';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<ActionsNavigatorParams>();
 
 export interface ActionRouteProps {
   actionId: number;

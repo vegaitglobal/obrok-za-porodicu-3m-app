@@ -12,11 +12,15 @@ import NewsListScreen from '../screens/NewsListScreen';
 import {newsScreenOptions, newsStackOptions} from './screenOptions';
 import {RouteProp} from '@react-navigation/native';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<NewsNavigatorParams>();
+
+export interface NewsProps {
+  newsId: number;
+}
 
 export type NewsNavigatorParams = {
   [AppRoute.NEWS_LIST_SCREEN]: undefined;
-  [AppRoute.NEWS_SCREEN]: undefined;
+  [AppRoute.NEWS_SCREEN]: NewsProps;
 };
 
 export interface NewsNavigatorProps<Screen extends keyof NewsNavigatorParams> {

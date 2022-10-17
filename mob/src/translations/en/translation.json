@@ -65,10 +65,12 @@
       "find_out_more": "Find out more",
       "status": "Status",
       "trending": "Trending",
-      "empty_list": "We don't have any active actions currently."
+      "empty_list": "We don't have any active actions currently.",
+      "join_the_action": "3M Obrok Za Porodicu: You can join the volunteer action too!"
     },
     "news": {
-      "empty_list": "No news."
+      "empty_list": "No news.",
+      "check_out": "3M Obrok Za Porodicu: Hey, check out the news!"
     },
     "onboardingScreen": {
       "continue": "CONTINUE",

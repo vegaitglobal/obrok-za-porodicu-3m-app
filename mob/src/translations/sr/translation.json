@@ -34,10 +34,10 @@
       "searchPlaceholder": "Pretraži po ključnim rečima",
       "filter": "Filter",
       "clearAll": "Ukloni Sve",
-      "anonymousDonation":"Anonimna donacija",
-      "status":"Status",
-      "applyToDonate":"PRIJAVITE SE DA DONIRATE",
-      "applyToDonateText":"Želite da se prijavite za donaciju? To možete uraditi tako što ćete popuniti formu ispod i Vaš zahtev za donaciju će biti uredno zabeležen, a na email ćete dobiti dalja uputstva."
+      "anonymousDonation": "Anonimna donacija",
+      "status": "Status",
+      "applyToDonate": "PRIJAVITE SE DA DONIRATE",
+      "applyToDonateText": "Želite da se prijavite za donaciju? To možete uraditi tako što ćete popuniti formu ispod i Vaš zahtev za donaciju će biti uredno zabeležen, a na email ćete dobiti dalja uputstva."
     },
     "donateScreen": {
       "company": "Kompanija",
@@ -65,10 +65,12 @@
       "find_out_more": "Saznaj Više",
       "status": "Status",
       "trending": "Aktuelno",
-      "empty_list": "Trenutno nemamo aktivnih akcija."
+      "empty_list": "Trenutno nemamo aktivnih akcija.",
+      "join_the_action": "3M Obrok Za Porodicu: Pridruži se akciji i ti!"
     },
     "news": {
-      "empty_list": "Nema novih vesti."
+      "empty_list": "Nema novih vesti.",
+      "check_out": "3M Obrok Za Porodicu: Pogledaj vest!"
     },
     "onboardingScreen": {
       "continue": "NASTAVITE",

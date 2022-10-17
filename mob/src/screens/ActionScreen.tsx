@@ -3,8 +3,10 @@ import {
   ActivityIndicator,
   RefreshControl,
   SafeAreaView,
+  Share,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -22,6 +24,9 @@ import {getRandomColor} from '../utils/getRandomColor';
 import {useTranslation} from 'react-i18next';
 import {clearCurrentVolunteerAction} from '../store/reducers/VolunteerActionReducer';
 import {ActionScreenProps} from '../navigation/ActionsNavigator';
+import Icons from '../constants/Icons';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+import {ACTION_DEEP_LINK_PREFIX, DOMAIN_LINK_URI} from '../constants/Links';
 
 const ActionScreen: React.FC<ActionScreenProps> = ({navigation, route}) => {
   const {actionId} = route?.params;
@@ -49,6 +54,23 @@ const ActionScreen: React.FC<ActionScreenProps> = ({navigation, route}) => {
     return <ActivityIndicator size={'large'} style={styles.loader} />;
   }
 
+  const handleShare = async (deepLink: string) => {
+    await Share.share({
+      message: `${t('actionsList.join_the_action')} \n\n${deepLink}`,
+    });
+  };
+
+  const handleShareAction = () => {
+    dynamicLinks()
+      .buildLink({
+        link: `${ACTION_DEEP_LINK_PREFIX}${actionId}`,
+        domainUriPrefix: DOMAIN_LINK_URI,
+      })
+      .then((deepLink: string) => {
+        handleShare(deepLink);
+      });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <OPSubheader
@@ -74,6 +96,9 @@ const ActionScreen: React.FC<ActionScreenProps> = ({navigation, route}) => {
               fill
               color={getRandomColor(currentVolunteerAction?.type?.id)}
             />
+            <TouchableOpacity onPress={handleShareAction}>
+              {Icons.SHARE}
+            </TouchableOpacity>
           </View>
           <Text style={styles.headerText}>{currentVolunteerAction?.title}</Text>
           <Text style={styles.dontationTypeText}>
@@ -116,6 +141,8 @@ const styles = StyleSheet.create({
   chipContainer: {
     alignItems: 'flex-start',
     marginBottom: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   images: {
     width: '100%',
