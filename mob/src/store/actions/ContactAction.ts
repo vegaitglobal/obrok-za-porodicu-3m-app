@@ -1,7 +1,7 @@
 import {Dispatch} from '@reduxjs/toolkit';
+
 import {ResponseModel} from '../../models/ResponseModel';
 import {setContacts} from '../reducers/ContactReducer';
-
 import ContactService from '../../services/ContactService';
 
 export const getContacts = () => (dispatch: Dispatch) => {

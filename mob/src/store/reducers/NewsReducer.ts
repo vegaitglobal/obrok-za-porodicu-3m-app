@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+
 import {NewsDTO} from '../../models/News/NewsDTO';
 import {NewsModel} from '../../models/News/NewsModel';
 import {NewsPageModel} from '../../models/News/NewsPageModel';

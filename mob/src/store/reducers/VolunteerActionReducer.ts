@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+
 import {AppliedVolunteerAction} from '../../models/VolunteerAction/AppliedVolunteerAction';
 import {
   ActionType,
