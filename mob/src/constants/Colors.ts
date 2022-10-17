@@ -1,5 +1,6 @@
 export const Colors = {
   WHITE: '#FFFFFF',
+  WHITE_80: 'rgba(255,255,255,0.8)',
   BACKGROUND: '#F5F5F5',
 
   BLACK: '#373737',

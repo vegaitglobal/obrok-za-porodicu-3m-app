@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>978230351336-9c0p62phei5eptmttl4q9jpcq995afge.apps.googleusercontent.com</string>
+	<string>978230351336-0f2cdhrleg14c1hn3re8ucog2kajr6jh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.978230351336-9c0p62phei5eptmttl4q9jpcq995afge</string>
+	<string>com.googleusercontent.apps.978230351336-0f2cdhrleg14c1hn3re8ucog2kajr6jh</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>978230351336-lfauqidocr9svlp2vo49baoucs8bgo20.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCB68a54aMmlFV8R2_27xx7AsLafhIvrOk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.vegait.ObrokZaPorodicu</string>
+	<string>com.vegait.ObrokZaPorodicu</string>
 	<key>PROJECT_ID</key>
 	<string>obrok-za-porodicu</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:978230351336:ios:c25c13e04153856bc3805d</string>
+	<string>1:978230351336:ios:c90039620e72ca5cc3805d</string>
 </dict>
 </plist>

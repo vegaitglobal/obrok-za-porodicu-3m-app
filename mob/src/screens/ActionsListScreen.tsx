@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import messaging from '@react-native-firebase/messaging';
 
 import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -11,6 +12,7 @@ import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {TextStyles} from '../constants/TextStyles';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';
 import {ActionScreenProps} from '../navigation/ActionsNavigator';
+import {NotificationToast} from '../components/organisms/OPNotificationToast/Notification';
 
 const ActionsListScreen: React.FC<ActionScreenProps> = ({navigation}) => {
   const {t} = useTranslation();
@@ -18,6 +20,33 @@ const ActionsListScreen: React.FC<ActionScreenProps> = ({navigation}) => {
   const {volunteerActions} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
+
+  useEffect(() => {
+    // App was in QUIT mode
+    messaging()
+      .getInitialNotification()
+      .then(m => {
+        console.log(m);
+      });
+
+    // App was in BACKGROUND mode
+    messaging().onNotificationOpenedApp(message => {
+      console.log(message);
+    });
+
+    // App is in ACTIVE mode
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      console.log(remoteMessage);
+
+      NotificationToast.show({
+        title: remoteMessage.notification?.title,
+        text: remoteMessage.notification?.body,
+      });
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   const [page, setPage] = useState<number>(1);
 
   const getData = useCallback(
