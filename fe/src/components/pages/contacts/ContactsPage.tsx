@@ -14,7 +14,6 @@ import {
 import ContactModal from "../../UI/molecules/contactModal/ContactModal";
 import { useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
-import { ContactRequest } from "../../../models/ContactRequest";
 import { ContactModel } from "../../../models/ContactModel";
 
 const headers: string[] = ["Kontakt", "Email", "Broj telefona", "Uredi"];
@@ -37,42 +36,40 @@ const ContactPage = () => {
   const addContactHandler = (
     title: string,
     email: string,
-    phone: string,
-    id?: number
+    phoneNumber: string
   ) => {
-    const data: ContactRequest = {
-      title: title,
-      email: email,
-      phoneNumber: phone,
+    const contactDto: ContactModel = {
+      title,
+      email,
+      phoneNumber,
     };
     setModalShow(false);
-    dispatch(addContact(data));
+    dispatch(addContact(contactDto));
   };
 
   const updateContactHandler = (
     title: string,
     email: string,
-    phone: string,
-    id?: number
+    phoneNumber: string
   ) => {
-    const data: ContactModel = {
-      id: id ? id : 0,
-      title: title,
-      email: email,
-      phoneNumber: phone,
+    const contactDto: ContactModel = {
+      title,
+      email,
+      phoneNumber,
     };
+    dispatch(
+      updateContact({
+        ...contactDto,
+        id: modalItem ? modalItem["id"] : 0,
+      })
+    );
     setModalShow(false);
     setModalItem(undefined);
-    console.log("UPDATE");
-    console.log(data);
-    dispatch(updateContact(data));
   };
 
   const handleClickEdit = (item: any) => {
     setModalItem(item);
     setModalShow(true);
-    console.log("CLICK");
-    console.log(item);
   };
 
   const showDeleteModal = (id: number) => {
@@ -117,7 +114,7 @@ const ContactPage = () => {
             setModalShow(false);
             setModalItem(undefined);
           }}
-          label={modalItem ? "UPDATE CONTACT" : "ADD CONTACT"}
+          label={modalItem ? "SA:UVAJ IZMENE" : "DODAJ KONTAKT"}
           item={modalItem}
         />
       </div>

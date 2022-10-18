@@ -1,5 +1,5 @@
 export interface VolunteerActionTypeModel {
-  id: number;
+  id?: number | null;
   name: string;
   hasPickup: boolean;
   hasPayment: boolean;

@@ -42,8 +42,6 @@ export function* handleAddVolunteerActionType({
   VolunteerActionTypeModel
 > {
   try {
-    console.log("SAGA");
-    console.log(payload);
     yield call(volunteerActionTypesService.addVolunteerActionType, payload);
     yield call(handleGetVolunteerActionTypes);
   } catch (error: any) {
@@ -59,8 +57,6 @@ export function* handleUpdateVolunteerActionType({
   VolunteerActionTypeModel
 > {
   try {
-    console.log("SAGA");
-    console.log(payload);
     yield call(volunteerActionTypesService.updateVolunteerActionType, payload);
     yield call(handleGetVolunteerActionTypes);
   } catch (error: any) {

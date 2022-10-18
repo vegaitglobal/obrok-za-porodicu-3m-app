@@ -1,5 +1,4 @@
 import { VolunteerActionTypeModel } from "../models/VolunteerActionTypeModel";
-import { VolunteerActionTypeRequest } from "../models/VolunteerActionTypeRequest";
 import ApiService from "./apiService";
 
 const ENDPOINTS = {
@@ -22,7 +21,7 @@ export class VolunteerActionTypesService extends ApiService {
     return data;
   };
 
-  addVolunteerActionType = async (payload: VolunteerActionTypeRequest) => {
+  addVolunteerActionType = async (payload: VolunteerActionTypeModel) => {
     const { data } = await this.apiClient.post(ENDPOINTS.VOLUNTEER_ACTION_TYPES, payload);
 
     return data;

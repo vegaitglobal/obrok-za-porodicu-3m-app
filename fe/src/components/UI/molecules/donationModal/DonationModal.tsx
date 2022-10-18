@@ -22,7 +22,6 @@ interface DonationModalProps {
     description: string,
     isPickup: boolean,
     address: string,
-    id?: number | null
   ) => void;
   onHide: () => void;
   show: boolean;

@@ -5,13 +5,12 @@ import {
   UPDATE_VOLUNTEER_ACTION_TYPE
 } from "./actionTypes";
 import { VolunteerActionTypeModel } from "../../models/VolunteerActionTypeModel";
-import { VolunteerActionTypeRequest } from "../../models/VolunteerActionTypeRequest";
 
 export const getVolunteerActionTypes = () => {
   return { type: GET_VOLUNTEER_ACTION_TYPES };
 };
 
-export const addVolunteerActionType = (payload: VolunteerActionTypeRequest) => {
+export const addVolunteerActionType = (payload: VolunteerActionTypeModel) => {
   return { type: ADD_VOLUNTEER_ACTION_TYPE,  payload: payload };
 };
 

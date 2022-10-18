@@ -1,5 +1,5 @@
 export interface ContactModel {
-  id: number;
+  id?: number | null;
   title: string;
   email: string;
   phoneNumber: string;
