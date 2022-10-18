@@ -18,9 +18,14 @@ export const styles = StyleSheet.create({
 
     elevation: 5,
   },
+  topContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
   chip: {
     alignSelf: 'flex-start',
-    marginBottom: 15,
   },
   image: {
     width: '100%',

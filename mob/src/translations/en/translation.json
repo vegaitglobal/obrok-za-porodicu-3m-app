@@ -66,7 +66,8 @@
       "status": "Status",
       "trending": "Trending",
       "empty_list": "We don't have any active actions currently.",
-      "join_the_action": "3M Obrok Za Porodicu: You can join the volunteer action too!"
+      "join_the_action": "3M Obrok Za Porodicu: You can join the volunteer action too!",
+      "favourites": "Favourites"
     },
     "news": {
       "empty_list": "No news.",

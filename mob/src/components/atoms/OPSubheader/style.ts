@@ -46,10 +46,16 @@ export const styles = StyleSheet.create({
     width: 200,
   } as ViewStyle,
   pickerDropdown: {
-    backgroundColor: Colors.WHITE,
-    borderRadius: 4,
+    backgroundColor: Colors.BACKGROUND,
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: Colors.LIGHTER_GRAY,
   } as ViewStyle,
   placeholderStyle: {
     textAlign: 'right',
   } as ViewStyle,
+  separator: {
+    height: 0.5,
+    backgroundColor: Colors.LIGHTER_GRAY,
+  },
 });

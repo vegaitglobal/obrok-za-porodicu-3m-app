@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {useWindowDimensions} from 'react-native';
+import {Dimensions, useWindowDimensions} from 'react-native';
 import RenderHtml from 'react-native-render-html';
 import {TextStyles} from '../../../constants/TextStyles';
 
@@ -25,6 +25,15 @@ const DEFAULT_TAG_STYLES = {
     fontFamily: TextStyles.DOSIS_EXTRA_BOLD.fontFamily,
     fontWeight: '800',
   },
+  span: {
+    fontFamily: TextStyles.DOSIS_REGULAR.fontFamily,
+    fontWeight: 'normal',
+    fontSize: 16,
+  },
+  img: {
+    width: Dimensions.get('screen').width,
+    height: 200,
+  },
 };
 
 const OPHtml: FC<OPHtmlProps> = ({
@@ -33,6 +42,7 @@ const OPHtml: FC<OPHtmlProps> = ({
   tagsStyles = DEFAULT_TAG_STYLES,
 }) => {
   const {width} = useWindowDimensions();
+
   return (
     <RenderHtml
       enableExperimentalGhostLinesPrevention

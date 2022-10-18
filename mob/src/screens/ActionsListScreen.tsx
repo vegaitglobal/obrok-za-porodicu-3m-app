@@ -12,9 +12,14 @@ import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
 import OPHeader from '../components/organisms/OPHeader/OPHeader';
 import {NotificationToast} from '../components/organisms/OPNotificationToast/Notification';
 import {TextStyles} from '../constants/TextStyles';
+import {VolunteerActionDTO} from '../models/VolunteerAction/VolunteerActionDTO';
 import {ActionListScreenProps} from '../navigation/ActionsNavigator';
 import {AppRoute} from '../navigation/Routes';
 import {getVolunteerActions} from '../store/actions/VolunteerAction';
+import {
+  addToFavourites,
+  removeFromFavourites,
+} from '../store/reducers/FavouritesReducer';
 import {RootState} from '../store/reducers/RootReducer';
 
 const ActionsListScreen: React.FC<ActionListScreenProps> = ({navigation}) => {
@@ -24,6 +29,7 @@ const ActionsListScreen: React.FC<ActionListScreenProps> = ({navigation}) => {
     (state: RootState) => state.volunteerActions,
   );
   const [page, setPage] = useState<number>(1);
+  const [sortValue, setSortValue] = useState<number>(-1);
 
   useEffect(() => {
     // App was in QUIT mode
@@ -115,15 +121,34 @@ const ActionsListScreen: React.FC<ActionListScreenProps> = ({navigation}) => {
     setPage(1);
   };
 
+  const handleAddToFavourites = (action: VolunteerActionDTO) => {
+    dispatch(addToFavourites(action));
+  };
+
+  const handleRemoveFromFavourites = (id: number) => {
+    dispatch(removeFromFavourites(id));
+  };
+
+  const handleSelectionChanged = (value: number) => {
+    setPage(1);
+    setSortValue(value);
+  };
+
   return (
     <View style={styles.container}>
       <OPHeader />
-      <OPSubheader heading={t('actionsList.trending')} />
+      <OPSubheader
+        heading={t('actionsList.trending')}
+        onSelectionChanged={handleSelectionChanged}
+      />
       <OPActionsList
         actions={volunteerActions}
+        activeSort={sortValue}
         onPress={actionId => handleNavigateToAction(actionId)}
         onLoadMore={handleLoadNextPage}
         onRefresh={handleRefresh}
+        onAddToFavourites={handleAddToFavourites}
+        onRemoveFromFavourites={handleRemoveFromFavourites}
       />
     </View>
   );

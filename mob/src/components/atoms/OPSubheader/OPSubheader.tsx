@@ -14,13 +14,19 @@ import {
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icons from '../../../constants/Icons';
 import {useTranslation} from 'react-i18next';
+import {Colors} from '../../../constants/Colors';
 
 interface OPSubheaderProps {
   heading: string;
   showDropdown?: boolean;
   showBackButton?: boolean;
-  onSelectionChanged?: (item: any) => void;
+  onSelectionChanged?: (id: number) => void;
   onBackPressed?: () => void;
+}
+
+interface OptionModel {
+  label: string;
+  value: number;
 }
 
 const OPSubheader: React.FC<OPSubheaderProps> = ({
@@ -32,7 +38,7 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
 }) => {
   const {t} = useTranslation();
   const [open, setOpen] = useState(false);
-  const [allItems, setItems] = useState([{label: '', value: 0}]);
+  const [allItems, setItems] = useState<Array<OptionModel>>([]);
   const {volunteerActionStatuses, currentActionStatus} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
@@ -42,12 +48,11 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   }, [dispatch]);
 
   useEffect(() => {
-    setItems(
-      volunteerActionStatuses.map(e => {
-        return {label: e.name, value: e.id};
-      }),
-    );
-  }, [volunteerActionStatuses]);
+    const beItems: Array<OptionModel> = volunteerActionStatuses.map(e => {
+      return {label: e.name, value: e.id};
+    });
+    setItems([{label: t('actionsList.favourites'), value: 0}, ...beItems]);
+  }, [t, volunteerActionStatuses]);
 
   return (
     <Shadow offset={[0, 2]} distance={2} stretch style={styles.shadowStyle}>
@@ -72,24 +77,31 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
             placeholder={t('general.byStatus')}
             placeholderStyle={styles.placeholderStyle}
             open={open}
-            value={currentActionStatus === null ? 0 : currentActionStatus}
+            value={currentActionStatus === null ? -1 : currentActionStatus}
             items={allItems}
             setOpen={setOpen}
             setValue={selection => {
               const newValue = selection(currentActionStatus);
+
               if (newValue === currentActionStatus) {
                 dispatch(onSetCurrentActionStatus(null));
+                onSelectionChanged && onSelectionChanged(-1);
               } else {
                 dispatch(onSetCurrentActionStatus(newValue));
+                onSelectionChanged && onSelectionChanged(newValue);
               }
               dispatch(getVolunteerActions(1));
-
-              onSelectionChanged && onSelectionChanged(selection);
             }}
             setItems={setItems}
             style={styles.picker}
             containerStyle={styles.picker}
-            dropDownContainerStyle={[styles.picker, styles.pickerDropdown]}
+            itemSeparator
+            itemSeparatorStyle={styles.separator}
+            dropDownContainerStyle={[
+              styles.picker,
+              styles.pickerDropdown,
+              {transform: [{translateX: -10}, {translateY: 10}]},
+            ]}
             textStyle={styles.dropdownLabels}
             labelStyle={[styles.dropdownLabels, styles.dropdownMainLabel]}
           />
