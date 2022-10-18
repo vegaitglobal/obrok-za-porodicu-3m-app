@@ -43,17 +43,15 @@ const ActionTypesPage = () => {
   const addActionTypeHandler = (
     name: string,
     hasPickup: boolean,
-    hasPayment: boolean,
-    id?: number | null
+    hasPayment: boolean
   ) => {
-    const data: VolunteerActionTypeModel = {
-      name: name,
-      hasPickup: hasPickup,
-      hasPayment: hasPayment,
+    const volunterActionTypeDto: VolunteerActionTypeModel = {
+      name,
+      hasPickup,
+      hasPayment,
     };
     setModalShow(false);
-    console.log(data);
-    dispatch(addVolunteerActionType(data));
+    dispatch(addVolunteerActionType(volunterActionTypeDto));
   };
 
   const showDeleteHandler = (id: number) => {
@@ -64,20 +62,21 @@ const ActionTypesPage = () => {
   const updateActionTypeHandler = (
     name: string,
     hasPickup: boolean,
-    hasPayment: boolean,
-    id?: number | null
+    hasPayment: boolean
   ) => {
-    const data: VolunteerActionTypeModel = {
-      id,
+    const volunterActionTypeDto: VolunteerActionTypeModel = {
       name,
       hasPickup,
       hasPayment,
     };
     setModalShow(false);
     setModalItem(undefined);
-    console.log("UPDATE");
-    console.log(data);
-    dispatch(updateVolunteerActionType(data));
+    dispatch(
+      updateVolunteerActionType({
+        ...volunterActionTypeDto,
+        id: modalItem ? modalItem["id"] : 0,
+      })
+    );
   };
 
   const handleClickEdit = (item: any) => {

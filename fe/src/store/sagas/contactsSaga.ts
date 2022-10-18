@@ -29,8 +29,6 @@ export function* handleAddContact({
   payload,
 }: ReturnType<typeof addContact>): Generator<any, void, ContactModel> {
   try {
-    console.log("SAGA")
-    console.log(payload);
     yield call(
       contactsService.addContact,
       payload
@@ -45,8 +43,6 @@ export function* handleUpdateContact({
   payload,
 }: ReturnType<typeof updateContact>): Generator<any, void, ContactModel> {
   try {
-    console.log("SAGA")
-    console.log(payload);
     yield call(
       contactsService.updateContact,
       payload

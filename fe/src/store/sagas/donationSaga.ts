@@ -30,7 +30,6 @@ export function* handleAddDonation({
   payload,
 }: ReturnType<typeof addDonation>): Generator<any, void, DonationDTOModel> {
   try {
-    console.log(payload);
     yield call(
       donationService.addDonation,
       payload
@@ -45,7 +44,6 @@ export function* handleUpdateDonation({
   payload,
 }: ReturnType<typeof updateDonation>): Generator<any, void, DonationDTOModel> {
   try {
-    console.log(payload);
     yield call(
       donationService.updateDonation,
       payload

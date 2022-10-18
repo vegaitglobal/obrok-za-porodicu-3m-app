@@ -36,35 +36,35 @@ const ContactPage = () => {
   const addContactHandler = (
     title: string,
     email: string,
-    phone: string,
-    id?: number | null
+    phoneNumber: string
   ) => {
-    const data: ContactModel = {
-      title: title,
-      email: email,
-      phoneNumber: phone,
+    const contactDto: ContactModel = {
+      title,
+      email,
+      phoneNumber,
     };
     setModalShow(false);
-    dispatch(addContact(data));
+    dispatch(addContact(contactDto));
   };
 
   const updateContactHandler = (
     title: string,
     email: string,
-    phoneNumber: string,
-    id?: number | null
+    phoneNumber: string
   ) => {
-    const data: ContactModel = {
-      id,
+    const contactDto: ContactModel = {
       title,
       email,
       phoneNumber,
     };
     setModalShow(false);
     setModalItem(undefined);
-    console.log("UPDATE");
-    console.log(data);
-    dispatch(updateContact(data));
+    dispatch(
+      updateContact({
+        ...contactDto,
+        id: modalItem ? modalItem["id"] : 0,
+      })
+    );
   };
 
   const handleClickEdit = (item: any) => {

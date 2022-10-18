@@ -41,9 +41,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={contactValidationScheme}
           onSubmit={(values: ContactModel) => {
-            item
-              ? onClick(values.title, values.email, values.phoneNumber, item.id)
-              : onClick(values.title, values.email, values.phoneNumber);
+            onClick(values.title, values.email, values.phoneNumber);
           }}
         >
           {(formik) => (

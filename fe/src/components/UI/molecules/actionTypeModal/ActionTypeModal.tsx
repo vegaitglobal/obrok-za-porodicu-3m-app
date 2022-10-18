@@ -42,14 +42,7 @@ export const ActionTypeModal: React.FC<ActionTypeModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={actionTypeValidationScheme}
           onSubmit={(values: VolunteerActionTypeModel) => {
-            item
-              ? onClick(
-                  values.name,
-                  values.hasPickup,
-                  values.hasPayment,
-                  item.id
-                )
-              : onClick(values.name, values.hasPickup, values.hasPayment);
+            onClick(values.name, values.hasPickup, values.hasPayment);
           }}
         >
           {(formik) => (
