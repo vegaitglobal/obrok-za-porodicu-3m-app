@@ -1,21 +1,21 @@
-import React, {useEffect, useRef} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import RNBootSplash from 'react-native-bootsplash';
 import messaging from '@react-native-firebase/messaging';
+import {NavigationContainer} from '@react-navigation/native';
+import React, {useEffect, useRef} from 'react';
+import RNBootSplash from 'react-native-bootsplash';
 
-import TabNavigator from './src/navigation/TabNavigator';
 import {StatusBar, StyleSheet} from 'react-native';
-import {useSelector} from 'react-redux';
-import {RootState} from './src/store/reducers/RootReducer';
-import {OnboardingNavigator} from './src/navigation/OnboardingNavigator';
 import Toast from 'react-native-toast-message';
+import {useSelector} from 'react-redux';
+import {OnboardingNavigator} from './src/navigation/OnboardingNavigator';
+import TabNavigator from './src/navigation/TabNavigator';
+import {RootState} from './src/store/reducers/RootReducer';
 import {toastConfig} from './src/utils/toastConfig';
 
-import OPMessengerFloater from './src/components/atoms/OPMessengerFloater/OPMessengerFloater';
-import {logScreen} from './src/utils/analytics';
-import {AppRoute} from './src/navigation/Routes';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import OPMessengerFloater from './src/components/atoms/OPMessengerFloater/OPMessengerFloater';
 import {NotificationToast} from './src/components/organisms/OPNotificationToast/Notification';
+import {AppRoute} from './src/navigation/Routes';
+import {logScreen} from './src/utils/analytics';
 
 const App = () => {
   const routeNameRef = useRef<string>();

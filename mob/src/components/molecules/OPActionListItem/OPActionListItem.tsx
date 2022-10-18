@@ -20,14 +20,15 @@ const OPActionListItem: React.FC<OPActionListItemProps> = ({
 }) => {
   const {t} = useTranslation();
 
-  const handleGoToAction = () => {
-    onPress(action.id);
-  };
-
   const backgroundColor: string =
     action.status?.id === 1 ? Colors.BG_GREEN : Colors.WHITE;
   const statusColor: string =
     action.status?.id === 1 ? Colors.GREEN : Colors.ORANGE;
+
+  const handleGoToAction = () => {
+    onPress(action.id);
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}

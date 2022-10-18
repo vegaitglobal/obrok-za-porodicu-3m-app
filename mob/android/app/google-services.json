@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "978230351336-h01vvpsa173vs3vvegm2tkrv8sr5krq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.obrokzaporodicu",
+            "certificate_hash": "3f81e7ff5ba18d56e11be73f86647f52cbc802ae"
+          }
+        },
+        {
           "client_id": "978230351336-lfauqidocr9svlp2vo49baoucs8bgo20.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -39,10 +47,10 @@
               "client_type": 3
             },
             {
-              "client_id": "978230351336-9c0p62phei5eptmttl4q9jpcq995afge.apps.googleusercontent.com",
+              "client_id": "978230351336-0f2cdhrleg14c1hn3re8ucog2kajr6jh.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "org.vegait.ObrokZaPorodicu"
+                "bundle_id": "com.vegait.ObrokZaPorodicu"
               }
             }
           ]

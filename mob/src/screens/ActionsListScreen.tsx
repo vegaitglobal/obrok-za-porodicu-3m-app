@@ -1,32 +1,36 @@
+import dynamicLinks, {
+  FirebaseDynamicLinksTypes,
+} from '@react-native-firebase/dynamic-links';
+import messaging from '@react-native-firebase/messaging';
 import React, {useCallback, useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import messaging from '@react-native-firebase/messaging';
 
 import {StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../store/reducers/RootReducer';
-import {AppRoute} from '../navigation/Routes';
 import OPSubheader from '../components/atoms/OPSubheader/OPSubheader';
 import OPActionsList from '../components/organisms/OPActionsList/OPActionsList';
 import OPHeader from '../components/organisms/OPHeader/OPHeader';
-import {TextStyles} from '../constants/TextStyles';
-import {getVolunteerActions} from '../store/actions/VolunteerAction';
-import {ActionScreenProps} from '../navigation/ActionsNavigator';
 import {NotificationToast} from '../components/organisms/OPNotificationToast/Notification';
+import {TextStyles} from '../constants/TextStyles';
+import {ActionListScreenProps} from '../navigation/ActionsNavigator';
+import {AppRoute} from '../navigation/Routes';
+import {getVolunteerActions} from '../store/actions/VolunteerAction';
+import {RootState} from '../store/reducers/RootReducer';
 
-const ActionsListScreen: React.FC<ActionScreenProps> = ({navigation}) => {
+const ActionsListScreen: React.FC<ActionListScreenProps> = ({navigation}) => {
   const {t} = useTranslation();
   const dispatch: any = useDispatch();
   const {volunteerActions} = useSelector(
     (state: RootState) => state.volunteerActions,
   );
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     // App was in QUIT mode
     messaging()
       .getInitialNotification()
       .then(m => {
-        console.log(m);
+        m && console.log(m);
       });
 
     // App was in BACKGROUND mode
@@ -47,7 +51,48 @@ const ActionsListScreen: React.FC<ActionScreenProps> = ({navigation}) => {
     return unsubscribe;
   }, [navigation]);
 
-  const [page, setPage] = useState<number>(1);
+  const handleNavigateToAction = (id: number) => {
+    navigation.navigate(AppRoute.ACTION_SCREEN, {actionId: id});
+  };
+
+  const handleNavigateFromLink = useCallback(
+    (id: number, type: string) => {
+      if (type === 'actions') {
+        navigation.navigate(AppRoute.ACTION_SCREEN, {actionId: id});
+      } else {
+        navigation.navigate(AppRoute.NEWS_NAVIGATOR as any, {
+          screen: AppRoute.NEWS_SCREEN,
+          params: {newsId: id},
+        });
+      }
+    },
+    [navigation],
+  );
+
+  useEffect(() => {
+    dynamicLinks()
+      .getInitialLink()
+      .then((link: FirebaseDynamicLinksTypes.DynamicLink | null) => {
+        if (link) {
+          const linkParts: Array<string> = link.url.split('?')[0].split('/');
+          const type: string = linkParts[linkParts.length - 1];
+          const entityId: number = Number(link.url.split('?')[1].split('=')[1]);
+
+          handleNavigateFromLink(entityId, type);
+        }
+      });
+
+    const unsubscribe = dynamicLinks().onLink(
+      (link: FirebaseDynamicLinksTypes.DynamicLink) => {
+        const linkParts: Array<string> = link.url.split('?')[0].split('/');
+        const type: string = linkParts[linkParts.length - 1];
+        const entityId: number = Number(link.url.split('?')[1].split('=')[1]);
+
+        handleNavigateFromLink(entityId, type);
+      },
+    );
+    return () => unsubscribe();
+  }, [handleNavigateFromLink, navigation]);
 
   const getData = useCallback(
     (newPage: number) => {
@@ -76,9 +121,7 @@ const ActionsListScreen: React.FC<ActionScreenProps> = ({navigation}) => {
       <OPSubheader heading={t('actionsList.trending')} />
       <OPActionsList
         actions={volunteerActions}
-        onPress={actionId =>
-          navigation.navigate(AppRoute.ACTION_SCREEN, {actionId: actionId})
-        }
+        onPress={actionId => handleNavigateToAction(actionId)}
         onLoadMore={handleLoadNextPage}
         onRefresh={handleRefresh}
       />
