@@ -6,6 +6,7 @@ import userSlice from './UserReducer';
 import volunteerActionsSlice from './VolunteerActionReducer';
 import newsSlice from './NewsReducer';
 import bankAccountSlice from './BankAccountReducer';
+import favouritesSlice from './FavouritesReducer';
 
 const rootReducer = combineReducers({
   contact: contactSlice,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   volunteerActions: volunteerActionsSlice,
   news: newsSlice,
   bankAccount: bankAccountSlice,
+  favourites: favouritesSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

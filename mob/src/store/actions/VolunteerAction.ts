@@ -100,22 +100,56 @@ export const filterVolunteerActionsByTagsAndSearchTerm =
     currentActionStatus: number | null,
     page: number,
   ): any =>
-  async (dispatch: Dispatch) => {
-    const query = {
-      actionTypeIds: filtersIds,
-      actionStatusesIds:
-        currentActionStatus !== null ? [currentActionStatus] : [],
-      searchTerm,
-    };
+  async (dispatch: Dispatch, getState: () => RootState) => {
+    if (currentActionStatus !== 0) {
+      const query = {
+        actionTypeIds: filtersIds,
+        actionStatusesIds:
+          currentActionStatus !== null ? [currentActionStatus] : [],
+        searchTerm,
+      };
 
-    const res =
-      await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
-        query,
-        page,
+      const res =
+        await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
+          query,
+          page,
+        );
+
+      if (res) {
+        dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+      }
+    } else {
+      const {actions} = getState().favourites;
+      const newActions: Array<VolunteerActionDTO> = actions.filter(
+        (action: VolunteerActionDTO) => {
+          let shouldPassFilter: boolean = true;
+          let shouldPassSearchTerm: boolean = true;
+
+          if (filtersIds.length > 0) {
+            shouldPassFilter = filtersIds.includes(action.type.id);
+          }
+
+          if (searchTerm) {
+            shouldPassSearchTerm = action.title.includes(searchTerm);
+          }
+
+          return shouldPassFilter && shouldPassSearchTerm;
+        },
       );
-
-    if (res) {
-      dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+      dispatch(
+        setVolunteerActions({
+          content: newActions,
+          pagination: {
+            currentPage: 1,
+            pageSize: 1,
+            sort: '',
+            totalPages: 1,
+            totalResults: newActions.length,
+          },
+          filters: undefined,
+          search: undefined,
+        }),
+      );
     }
   };
 

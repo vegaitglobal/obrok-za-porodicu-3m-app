@@ -66,7 +66,8 @@
       "status": "Status",
       "trending": "Aktuelno",
       "empty_list": "Trenutno nemamo aktivnih akcija.",
-      "join_the_action": "3M Obrok Za Porodicu: Pridruži se akciji i ti!"
+      "join_the_action": "3M Obrok Za Porodicu: Pridruži se akciji i ti!",
+      "favourites": "Omiljeno"
     },
     "news": {
       "empty_list": "Nema novih vesti.",

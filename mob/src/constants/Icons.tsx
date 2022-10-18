@@ -23,7 +23,8 @@ import Notification from '../../assets/icons/notification.svg';
 import Play from '../../assets/icons/play.svg';
 import Search from '../../assets/icons/search.svg';
 import Share from '../../assets/icons/share.svg';
-import Star from '../../assets/icons/star.svg';
+import StarFull from '../../assets/icons/star_full.svg';
+import StarEmpty from '../../assets/icons/star_empty.svg';
 import UserFull from '../../assets/icons/user_full.svg';
 import User from '../../assets/icons/user.svg';
 import Warning from '../../assets/icons/warning.svg';
@@ -55,7 +56,8 @@ export default {
     <Search color={Colors.LIGHTER_GRAY} style={styles.search} />
   ),
   SHARE: <Share />,
-  STAR: <Star />,
+  STAR_FULL: <StarFull />,
+  STAR_EMPTY: <StarEmpty />,
   USER_FULL: <UserFull />,
   USER: <User />,
   WARNING: <Warning color={Colors.LIGHT_GRAY} />,
