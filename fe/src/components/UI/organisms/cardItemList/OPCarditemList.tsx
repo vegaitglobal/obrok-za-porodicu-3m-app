@@ -4,9 +4,13 @@ import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 
 interface IOPCardItemListProps {
   items: VolunteerActionModel[];
+  onClickEdit: (val: any) => void;
 }
 
-const OPCarditemList: React.FC<IOPCardItemListProps> = ({ items }) => {
+const OPCarditemList: React.FC<IOPCardItemListProps> = ({
+  items,
+  onClickEdit,
+}) => {
   return (
     <div className={classes["card-list"]}>
       {items.map((item) => {
@@ -18,6 +22,8 @@ const OPCarditemList: React.FC<IOPCardItemListProps> = ({ items }) => {
             status={item.status.name}
             shortDescription={item.shortDescription}
             imageUrl={item.imageURL}
+            onClickEdit={onClickEdit}
+            item={item}
           />
         );
       })}

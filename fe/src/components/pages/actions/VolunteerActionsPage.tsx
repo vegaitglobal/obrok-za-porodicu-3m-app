@@ -10,9 +10,10 @@ import OPCarditemList from "../../UI/organisms/cardItemList/OPCarditemList";
 import classes from "./VolunteerActionsPage.module.scss";
 import globalClasses from "../../../constants/GlobalStyle.module.scss";
 import {
-  addVolunteerActionStatus,
+  addVolunteerAction,
   getActionStatuses,
   getVolunteerActions,
+  updateVolunteerAction,
 } from "../../../store/actions/volunteerActionsType";
 import { Colors } from "../../../constants/Colors";
 import VolunteerActionModal from "../../UI/molecules/volunteerActionModal/VolunteerActionModal";
@@ -48,7 +49,43 @@ const VolunteerActionsPage = () => {
     borderColor: Colors.GREEN,
   };
 
-  const updateVolunteerActionHandler = () => {};
+  const updateVolunteerActionHandler = (
+    title: string,
+    shortDescription: string,
+    statusId: string,
+    typeId: string,
+    referenceNumber: string,
+    imageURL: string
+  ) => {
+    const actionDto: VolunteerActionDTOModel = {
+      title,
+      shortDescription,
+      statusId: +statusId,
+      typeId: +typeId,
+      referenceNumber,
+      imageURL,
+      rawDescription: "Opis",
+      description: "Opis",
+    };
+    dispatch(
+      updateVolunteerAction({
+        ...actionDto,
+        id: modalItem ? modalItem["id"] : 0,
+      })
+    );
+    setModalShow(false);
+    setModalItem(undefined);
+  };
+
+  const handleClickEdit = (item: any) => {
+    setModalItem({
+      ...item,
+      typeId: item.type.id,
+      statusId: item.status.id,
+    });
+    setModalShow(true);
+  };
+
   const addVolunteerActionHandler = (
     title: string,
     shortDescription: string,
@@ -68,7 +105,7 @@ const VolunteerActionsPage = () => {
       description: "Opis",
     };
 
-    dispatch(addVolunteerActionStatus(actionDto));
+    dispatch(addVolunteerAction(actionDto));
     setModalShow(false);
   };
   return (
@@ -92,7 +129,10 @@ const VolunteerActionsPage = () => {
               />
             </div>
           </div>
-          <OPCarditemList items={volunteerActions} />
+          <OPCarditemList
+            items={volunteerActions}
+            onClickEdit={handleClickEdit}
+          />
         </div>
       </div>
       <VolunteerActionModal
@@ -100,8 +140,11 @@ const VolunteerActionsPage = () => {
         onClick={
           modalItem ? updateVolunteerActionHandler : addVolunteerActionHandler
         }
-        onHide={() => setModalShow(false)}
-        label={modalItem ? "UPDATE VOLUNTEER ACTION" : "ADD VOLUNTEER ACTION"}
+        onHide={() => {
+          setModalShow(false);
+          setModalItem(undefined);
+        }}
+        label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ AKCIJU"}
         item={modalItem}
         actionStatuses={volunteerActionStatuses}
         actionTypes={volunteerActionTypes}

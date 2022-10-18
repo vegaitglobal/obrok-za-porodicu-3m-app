@@ -14,13 +14,14 @@ import {
   DELETE_DONATION,
   GET_VOLUNTEER_ACTIONS,
   GET_VOLUNTEER_ACTIONS_STATUSES,
-  ADD_ACTION_STATUS,
   GET_BANK_ACCOUNT,
   UPDATE_BANK_ACCOUNT,
   GET_ABOUT_US,
   UPDATE_ABOUT_US,
   ADD_DONATION,
-  UPDATE_DONATION
+  UPDATE_DONATION,
+  ADD_VOLUNTEER_ACTION,
+  UPDATE_VOLUNTEER_ACTION
 } from "../actions/actionTypes";
 import { handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation, handleAddDonation, handleUpdateDonation } from "./donationSaga";
@@ -37,9 +38,10 @@ import {
   handleUpdateVolunteerActionType,
 } from "./volunteerActionTypesSaga";
 import {
-  handleAddActionStatus,
+  handleAddAction,
   handleGetVolunteerActions,
   handleGetVolunteerActionStatuses,
+  handleUpdateAction,
 } from "./volunteerActionSaga";
 import { handleGetBankAccount, handleUpdateBankAccount } from "./bankAccountSaga";
 import { handleGetAboutUs, handleUpdateAboutUs } from "./aboutUsSaga";
@@ -53,7 +55,8 @@ export default function* rootSaga() {
       GET_VOLUNTEER_ACTIONS_STATUSES,
       handleGetVolunteerActionStatuses
     ),
-    takeLatest(ADD_ACTION_STATUS, handleAddActionStatus),
+    takeLatest(ADD_VOLUNTEER_ACTION, handleAddAction),
+    takeLatest(UPDATE_VOLUNTEER_ACTION, handleUpdateAction),
     takeLatest(GET_VOLUNTEER_ACTION_TYPES, handleGetVolunteerActionTypes),
     takeLatest(DELETE_VOLUNTEER_ACTION_TYPE, handleDeleteActionType),
     takeLatest(GET_CONTACTS, handleGetContacts),

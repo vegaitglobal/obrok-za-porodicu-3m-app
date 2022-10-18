@@ -2,7 +2,7 @@ import { call, put } from "redux-saga/effects";
 import { VolunteerActionPageModel } from "../../models/VolunteerActionPageModel";
 import { VolunteerActionStatusModel } from "../../models/VolunteerActionStatusModel";
 import volunteerActionsService from "../../services/volunteerActionsService";
-import { addVolunteerActionStatus } from "../actions/volunteerActionsType";
+import { addVolunteerAction, updateVolunteerAction } from "../actions/volunteerActionsType";
 import {
   setVolunteerActions,
   setVolunteerActionStatuses,
@@ -36,11 +36,22 @@ export function* handleGetVolunteerActionStatuses(): Generator<
   }
 }
 
-export function* handleAddActionStatus({
+export function* handleAddAction({
   payload,
-}: ReturnType<typeof addVolunteerActionStatus>): Generator<any, void, void> {
+}: ReturnType<typeof addVolunteerAction>): Generator<any, void, void> {
   try {
-    yield call(volunteerActionsService.addActionStatus, payload);
+    yield call(volunteerActionsService.addAction, payload);
+    yield call(handleGetVolunteerActions);
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export function* handleUpdateAction({
+  payload,
+}: ReturnType<typeof updateVolunteerAction>): Generator<any, void, void> {
+  try {
+    yield call(volunteerActionsService.updateAction, payload);
     yield call(handleGetVolunteerActions);
   } catch (error: any) {
     console.log(error);

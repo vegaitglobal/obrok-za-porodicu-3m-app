@@ -11,6 +11,7 @@ export interface VolunteerActionModel {
   referenceNumber: string;
 }
 export interface VolunteerActionDTOModel {
+  id?: number | null;
   typeId: number;
   imageURL: string;
   title: string;
