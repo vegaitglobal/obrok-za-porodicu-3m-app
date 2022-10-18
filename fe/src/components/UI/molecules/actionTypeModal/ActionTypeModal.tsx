@@ -14,7 +14,6 @@ interface ActionTypeModalProps {
     name: string,
     hasPickup: boolean,
     hasPayment: boolean,
-    id?: number | null
   ) => void;
   onHide: () => void;
   show: boolean;

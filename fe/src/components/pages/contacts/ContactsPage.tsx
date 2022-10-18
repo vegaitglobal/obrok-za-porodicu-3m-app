@@ -57,14 +57,14 @@ const ContactPage = () => {
       email,
       phoneNumber,
     };
-    setModalShow(false);
-    setModalItem(undefined);
     dispatch(
       updateContact({
         ...contactDto,
         id: modalItem ? modalItem["id"] : 0,
       })
     );
+    setModalShow(false);
+    setModalItem(undefined);
   };
 
   const handleClickEdit = (item: any) => {

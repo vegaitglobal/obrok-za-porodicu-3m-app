@@ -13,7 +13,6 @@ interface ContactModalProps {
     title: string,
     email: string,
     phoneNumber: string,
-    id?: number | null
   ) => void;
   onHide: () => void;
   show: boolean;

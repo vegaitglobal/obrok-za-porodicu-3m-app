@@ -69,14 +69,14 @@ const ActionTypesPage = () => {
       hasPickup,
       hasPayment,
     };
-    setModalShow(false);
-    setModalItem(undefined);
     dispatch(
       updateVolunteerActionType({
         ...volunterActionTypeDto,
         id: modalItem ? modalItem["id"] : 0,
       })
     );
+    setModalShow(false);
+    setModalItem(undefined);
   };
 
   const handleClickEdit = (item: any) => {

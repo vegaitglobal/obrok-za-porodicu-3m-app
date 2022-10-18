@@ -22,7 +22,6 @@ interface DonationModalProps {
     description: string,
     isPickup: boolean,
     address: string,
-    id?: number | null
   ) => void;
   onHide: () => void;
   show: boolean;
@@ -56,6 +55,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
   const ActionsOptions: OptionType[] = actions.map(
     (b: VolunteerActionModel) => {
       return { value: b.id.toString()!, label: b.title! };
+    }
   );
   const [selectedAction, setSelectedAction] = useState(ActionsOptions[0]);
 
