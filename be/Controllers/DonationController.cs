@@ -50,13 +50,11 @@ namespace MealForFamily.Controllers
         public async Task<IActionResult> CreateDonation(RequestDonationDTO request)
         {
             Donation model = _mapper.Map<Donation>(request);
-            if (request.VolunteerActionTypeId != null)
-            {
-                model.VolunteerActionType = await _volunteerActionTypeService.GetSingleById((int)request.VolunteerActionTypeId);
-            }
             if (request.VolunteerActionId != null)
             {
-                model.VolunteerAction = await _volunteerActionService.GetSingleById((int)request.VolunteerActionId);
+                var volunteerAction = await _volunteerActionService.GetSingleById((int)request.VolunteerActionId);
+                model.VolunteerAction = volunteerAction;
+                model.VolunteerActionType = volunteerAction.Type;
             }
             return Ok(_mapper.Map<DonationDTO>(await _donationService.CreateDonation(model)));
         }
@@ -66,6 +64,12 @@ namespace MealForFamily.Controllers
         public async Task<IActionResult> UpdateDonation(RequestDonationDTO request)
         {
             Donation model = _mapper.Map<Donation>(request);
+            if (request.VolunteerActionId != null)
+            {
+                var volunteerAction = await _volunteerActionService.GetSingleById((int)request.VolunteerActionId);
+                model.VolunteerAction = volunteerAction;
+                model.VolunteerActionType = volunteerAction.Type;
+            }
             return Ok(_mapper.Map<DonationDTO>(await _donationService.UpdateDonation(model)));
         }
 

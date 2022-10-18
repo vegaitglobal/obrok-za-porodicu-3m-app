@@ -14,10 +14,10 @@ import { useEffect, useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 import DonationModal from "../../UI/molecules/donationModal/DonationModal";
 import { DonationDTOModel } from "../../../models/DonationModel";
-import { getVolunteerActionTypes } from "../../../store/actions/volunteerActionTypeTypes";
+import { getVolunteerActions } from "../../../store/actions/volunteerActionsType";
 
 const headers: string[] = [
-  "Tip",
+  "Akcija",
   "Preduzeće",
   "Ime i prezime",
   "Email",
@@ -28,7 +28,7 @@ const headers: string[] = [
 ];
 
 const columnsToRender: string[] = [
-  "name",
+  "title",
   "isCompany",
   "fullName",
   "email",
@@ -42,8 +42,8 @@ const DonationPage = () => {
   const dispatch = useDispatch();
   const donations = useSelector((state: RootState) => state.donation.donations);
 
-  const volunteerActionTypes = useSelector(
-    (state: RootState) => state.volunteerActionTypes.volunteerActionTypes
+  const volunteerActions = useSelector(
+    (state: RootState) => state.volunterActions.volunteerActions
   );
 
   const [deleteModalShow, setDeleteModalShow] = useState(false);
@@ -64,11 +64,11 @@ const DonationPage = () => {
 
   useEffect(() => {
     dispatch(getDonations());
-    dispatch(getVolunteerActionTypes());
+    dispatch(getVolunteerActions());
   }, []);
 
   const updateDonationHandler = (
-    volunteerActionTypeId: string,
+    volunteerActionId: string,
     isCompany: boolean,
     companyName: string,
     fullName: string,
@@ -79,7 +79,7 @@ const DonationPage = () => {
     address: string
   ) => {
     const donationDto: DonationDTOModel = {
-      volunteerActionTypeId: +volunteerActionTypeId,
+      volunteerActionId: +volunteerActionId,
       isCompany,
       companyName,
       fullName,
@@ -93,14 +93,14 @@ const DonationPage = () => {
       updateDonation({
         ...donationDto,
         id: modalItem ? modalItem["id"] : 0,
-        volunteerActionId: 1,
       })
     );
     setModalShow(false);
+    setModalItem(undefined);
   };
 
   const addDonationHandler = (
-    volunteerActionTypeId: string,
+    volunteerActionId: string,
     isCompany: boolean,
     companyName: string,
     fullName: string,
@@ -111,7 +111,7 @@ const DonationPage = () => {
     address: string
   ) => {
     const donationDto: DonationDTOModel = {
-      volunteerActionTypeId: +volunteerActionTypeId,
+      volunteerActionId: +volunteerActionId,
       isCompany,
       companyName,
       fullName,
@@ -121,19 +121,14 @@ const DonationPage = () => {
       isPickup,
       address,
     };
-    dispatch(
-      addDonation({
-        ...donationDto,
-        volunteerActionId: 1,
-      })
-    );
+    dispatch(addDonation(donationDto));
     setModalShow(false);
   };
 
   const handleClickEdit = (item: any) => {
     setModalItem({
       ...item,
-      volunteerActionTypeId: item.volunteerActionType.id,
+      volunteerActionId: item.volunteerAction.id,
     });
     setModalShow(true);
   };
@@ -157,10 +152,10 @@ const DonationPage = () => {
               <Table
                 headers={headers}
                 data={donations.map(
-                  (donation: { volunteerActionType: { name: any } }) => ({
+                  (donation: { volunteerAction: { title: any } }) => ({
                     ...donation,
-                    name: donation.volunteerActionType
-                      ? donation.volunteerActionType.name
+                    title: donation.volunteerAction
+                      ? donation.volunteerAction.title
                       : "/",
                   })
                 )}
@@ -187,7 +182,7 @@ const DonationPage = () => {
         }}
         label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ DONACIJU"}
         item={modalItem}
-        actionTypes={volunteerActionTypes}
+        actions={volunteerActions}
       />
     </div>
   );

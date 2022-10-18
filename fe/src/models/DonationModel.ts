@@ -1,8 +1,8 @@
-import { VolunteerActionTypeModel } from "./VolunteerActionTypeModel";
+import { VolunteerActionModel } from "./VolunteerActionModel";
 
 export interface DonationModel {
   id: number;
-  volunteerActionType: VolunteerActionTypeModel;
+  volunteerAction: VolunteerActionModel;
   isCompany: boolean;
   companyName: string;
   fullName: string;
@@ -15,7 +15,7 @@ export interface DonationModel {
 
 export interface DonationDTOModel {
   id?: number | null;
-  volunteerActionTypeId: number;
+  volunteerActionId: number
   isCompany: boolean;
   companyName: string;
   fullName: string;
@@ -24,5 +24,5 @@ export interface DonationDTOModel {
   description: string;
   isPickup: boolean;
   address: string;
-  volunteerActionId?: number | null
+  volunteerActionTypeId?: number | null
 }

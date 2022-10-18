@@ -2,7 +2,6 @@ import { Field, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { DonationDTOModel } from "../../../../models/DonationModel";
-import { VolunteerActionTypeModel } from "../../../../models/VolunteerActionTypeModel";
 import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
 import CustomModal from "../../molecules/customModal/CustomModal";
@@ -10,10 +9,11 @@ import styles from "./DonationModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPCheckbox from "../../atoms/checkbox/OPCheckbox";
 import { donationValidationScheme } from "../../../validators/DonationValidationScheme";
+import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 
 interface DonationModalProps {
   onClick: (
-    volunteerActionTypeId: string,
+    volunteerActionId: string,
     isCompany: boolean,
     companyName: string,
     fullName: string,
@@ -27,7 +27,7 @@ interface DonationModalProps {
   onHide: () => void;
   show: boolean;
   label: string;
-  actionTypes: VolunteerActionTypeModel[];
+  actions: VolunteerActionModel[];
   item?: DonationDTOModel;
 }
 
@@ -50,25 +50,25 @@ export const DonationModal: React.FC<DonationModalProps> = ({
   onHide,
   show = false,
   item,
-  actionTypes,
+  actions,
   label,
 }) => {
-  const TypesOptions: OptionType[] = actionTypes.map(
-    (b: VolunteerActionTypeModel) => {
-      return { value: b.id.toString()!, label: b.name! };
+  const ActionsOptions: OptionType[] = actions.map(
+    (b: VolunteerActionModel) => {
+      return { value: b.id.toString()!, label: b.title! };
     }
   );
-  const [selectedType, setSelectedType] = useState(TypesOptions[0]);
+  const [selectedAction, setSelectedAction] = useState(ActionsOptions[0]);
 
   useEffect(() => {
-    setSelectedType(
+    setSelectedAction(
       item
-        ? TypesOptions.find(
-            (a) => a.value === item.volunteerActionTypeId.toString()
-          ) ?? TypesOptions[0]
-        : TypesOptions[0]
+        ? ActionsOptions.find(
+            (a) => a.value === item.volunteerActionId.toString()
+          ) ?? ActionsOptions[0]
+        : ActionsOptions[0]
     );
-  }, [item]);
+  }, [show, item]);
 
   const customStyles = {
     control: (provided: any) => ({
@@ -89,9 +89,9 @@ export const DonationModal: React.FC<DonationModalProps> = ({
     }),
   };
 
-  const handleOnTypeChange = (e: any) => {
-    setSelectedType(
-      TypesOptions.find((a) => a.value === e.value) ?? TypesOptions[0]
+  const handleOnActionChange = (e: any) => {
+    setSelectedAction(
+      ActionsOptions.find((a) => a.value === e.value) ?? ActionsOptions[0]
     );
   };
 
@@ -103,7 +103,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
           validationSchema={donationValidationScheme}
           onSubmit={(values: DonationDTOModel) => {
             onClick(
-              selectedType.value,
+              selectedAction.value,
               values.isCompany,
               values.companyName,
               values.fullName,
@@ -118,16 +118,17 @@ export const DonationModal: React.FC<DonationModalProps> = ({
           {(formik) => (
             <>
               <div className={styles.divFlex}>
-                <div className={styles["input-label"]}>Tip</div>
+                <div className={styles["input-label"]}>Akcija</div>
                 <Select
                   styles={customStyles}
                   placeholder={
-                    <div className={styles.placeholder}>Izaberi tip...</div>
+                    <div className={styles.placeholder}>Izaberi akciju...</div>
                   }
+                  isSearchable={true}
                   className={styles.select}
-                  options={TypesOptions}
-                  value={selectedType}
-                  onChange={handleOnTypeChange}
+                  options={ActionsOptions}
+                  value={selectedAction}
+                  onChange={handleOnActionChange}
                 />
                 <Field
                   label="Naziv preduzeća"
