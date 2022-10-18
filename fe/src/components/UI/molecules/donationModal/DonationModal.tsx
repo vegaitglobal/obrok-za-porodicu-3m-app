@@ -102,30 +102,17 @@ export const DonationModal: React.FC<DonationModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={donationValidationScheme}
           onSubmit={(values: DonationDTOModel) => {
-            item
-              ? onClick(
-                  selectedType.value,
-                  values.isCompany,
-                  values.companyName,
-                  values.fullName,
-                  values.email,
-                  values.phoneNumber,
-                  values.description,
-                  values.isPickup,
-                  values.address,
-                  item.id
-                )
-              : onClick(
-                  selectedType.value,
-                  values.isCompany,
-                  values.companyName,
-                  values.fullName,
-                  values.email,
-                  values.phoneNumber,
-                  values.description,
-                  values.isPickup,
-                  values.address
-                );
+            onClick(
+              selectedType.value,
+              values.isCompany,
+              values.companyName,
+              values.fullName,
+              values.email,
+              values.phoneNumber,
+              values.description,
+              values.isPickup,
+              values.address
+            );
           }}
         >
           {(formik) => (

@@ -76,11 +76,9 @@ const DonationPage = () => {
     phoneNumber: string,
     description: string,
     isPickup: boolean,
-    address: string,
-    id?: number | null
+    address: string
   ) => {
     const donationDto: DonationDTOModel = {
-      id,
       volunteerActionTypeId: +volunteerActionTypeId,
       isCompany,
       companyName,
@@ -91,11 +89,10 @@ const DonationPage = () => {
       isPickup,
       address,
     };
-    console.log("UPDATE");
-    console.log(donationDto);
     dispatch(
       updateDonation({
         ...donationDto,
+        id: modalItem ? modalItem["id"] : 0,
         volunteerActionId: 1,
       })
     );
@@ -111,8 +108,7 @@ const DonationPage = () => {
     phoneNumber: string,
     description: string,
     isPickup: boolean,
-    address: string,
-    id?: number | null
+    address: string
   ) => {
     const donationDto: DonationDTOModel = {
       volunteerActionTypeId: +volunteerActionTypeId,
@@ -125,8 +121,6 @@ const DonationPage = () => {
       isPickup,
       address,
     };
-    console.log("ADD");
-    console.log(donationDto);
     dispatch(
       addDonation({
         ...donationDto,
@@ -142,11 +136,6 @@ const DonationPage = () => {
       volunteerActionTypeId: item.volunteerActionType.id,
     });
     setModalShow(true);
-    console.log("CLICK");
-    console.log({
-      ...item,
-      volunteerActionTypeId: item.volunteerActionType.id,
-    });
   };
 
   return (
