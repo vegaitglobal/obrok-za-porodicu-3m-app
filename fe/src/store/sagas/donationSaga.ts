@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
-import { DonationModel } from "../../models/DonationModel";
+import { DonationDTOModel, DonationModel } from "../../models/DonationModel";
 import donationService from "../../services/donationService";
-import { deleteDonation } from "../actions/donationType";
+import { addDonation, deleteDonation, updateDonation } from "../actions/donationType";
 import { setDonations } from "../slices/donationSlice";
 
 export function* handleGetDonations(): Generator<any, void, DonationModel[]> {
@@ -20,6 +20,36 @@ export function* handleDeleteDonation({
   try {
     yield call(donationService.deleteDonation, payload.donationId);
 
+    yield call(handleGetDonations);
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export function* handleAddDonation({
+  payload,
+}: ReturnType<typeof addDonation>): Generator<any, void, DonationDTOModel> {
+  try {
+    console.log(payload);
+    yield call(
+      donationService.addDonation,
+      payload
+    );
+    yield call(handleGetDonations);
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export function* handleUpdateDonation({
+  payload,
+}: ReturnType<typeof updateDonation>): Generator<any, void, DonationDTOModel> {
+  try {
+    console.log(payload);
+    yield call(
+      donationService.updateDonation,
+      payload
+    );
     yield call(handleGetDonations);
   } catch (error: any) {
     console.log(error);

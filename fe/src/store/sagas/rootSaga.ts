@@ -18,10 +18,12 @@ import {
   GET_BANK_ACCOUNT,
   UPDATE_BANK_ACCOUNT,
   GET_ABOUT_US,
-  UPDATE_ABOUT_US
+  UPDATE_ABOUT_US,
+  ADD_DONATION,
+  UPDATE_DONATION
 } from "../actions/actionTypes";
 import { handleLogin, handleLogout } from "./authSaga";
-import { handleGetDonations, handleDeleteDonation } from "./donationSaga";
+import { handleGetDonations, handleDeleteDonation, handleAddDonation, handleUpdateDonation } from "./donationSaga";
 import {
   handleAddContact,
   handleDeleteContact,
@@ -60,6 +62,8 @@ export default function* rootSaga() {
     takeLatest(UPDATE_VOLUNTEER_ACTION_TYPE, handleUpdateVolunteerActionType),
     takeLatest(GET_DONATIONS, handleGetDonations),
     takeLatest(DELETE_DONATION, handleDeleteDonation),
+    takeLatest(ADD_DONATION, handleAddDonation),
+    takeLatest(UPDATE_DONATION, handleUpdateDonation),
     takeLatest(ADD_CONTACT, handleAddContact),
     takeLatest(UPDATE_CONTACT, handleUpdateContact),
     takeLatest(GET_BANK_ACCOUNT, handleGetBankAccount),

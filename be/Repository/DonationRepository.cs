@@ -11,7 +11,7 @@ namespace MealForFamily.Repositories
 
         public async Task<List<Donation>> GetDonations()
         {
-            return await _context.Donations.Include(d => d.VolunteerActionType)
+            return await _context.Donations.Include(d => d.VolunteerAction)
                 .Where(d => d.IsDeleted == false)
                 .ToListAsync();
         }
@@ -19,7 +19,7 @@ namespace MealForFamily.Repositories
         public async Task<Donation?> GetSingleById(int id)
         {
             return await _context.Donations
-                .Include(d => d.VolunteerActionType)
+                .Include(d => d.VolunteerAction)
                 .Where(x => x.Id == id && x.IsDeleted == false).FirstOrDefaultAsync();
         }
     }

@@ -5,14 +5,19 @@ import Table from "../../UI/molecules/table/Table";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import {
+  addDonation,
   deleteDonation,
   getDonations,
+  updateDonation,
 } from "../../../store/actions/donationType";
 import { useEffect, useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
+import DonationModal from "../../UI/molecules/donationModal/DonationModal";
+import { DonationDTOModel } from "../../../models/DonationModel";
+import { getVolunteerActions } from "../../../store/actions/volunteerActionsType";
 
 const headers: string[] = [
-  "Tip",
+  "Akcija",
   "Preduzeće",
   "Ime i prezime",
   "Email",
@@ -23,7 +28,7 @@ const headers: string[] = [
 ];
 
 const columnsToRender: string[] = [
-  "name",
+  "title",
   "isCompany",
   "fullName",
   "email",
@@ -37,7 +42,13 @@ const DonationPage = () => {
   const dispatch = useDispatch();
   const donations = useSelector((state: RootState) => state.donation.donations);
 
+  const volunteerActions = useSelector(
+    (state: RootState) => state.volunterActions.volunteerActions
+  );
+
   const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [modalItem, setModalItem] = useState(undefined);
   const [id, setId] = useState<number>();
 
   const showDeleteModal = (id: number) => {
@@ -53,10 +64,73 @@ const DonationPage = () => {
 
   useEffect(() => {
     dispatch(getDonations());
+    dispatch(getVolunteerActions());
   }, []);
 
-  const handleClickEdit = () => {
-    console.log("CLICK");
+  const updateDonationHandler = (
+    volunteerActionId: string,
+    isCompany: boolean,
+    companyName: string,
+    fullName: string,
+    email: string,
+    phoneNumber: string,
+    description: string,
+    isPickup: boolean,
+    address: string
+  ) => {
+    const donationDto: DonationDTOModel = {
+      volunteerActionId: +volunteerActionId,
+      isCompany,
+      companyName,
+      fullName,
+      email,
+      phoneNumber,
+      description,
+      isPickup,
+      address,
+    };
+    dispatch(
+      updateDonation({
+        ...donationDto,
+        id: modalItem ? modalItem["id"] : 0,
+      })
+    );
+    setModalShow(false);
+    setModalItem(undefined);
+  };
+
+  const addDonationHandler = (
+    volunteerActionId: string,
+    isCompany: boolean,
+    companyName: string,
+    fullName: string,
+    email: string,
+    phoneNumber: string,
+    description: string,
+    isPickup: boolean,
+    address: string
+  ) => {
+    const donationDto: DonationDTOModel = {
+      volunteerActionId: +volunteerActionId,
+      isCompany,
+      companyName,
+      fullName,
+      email,
+      phoneNumber,
+      description,
+      isPickup,
+      address,
+    };
+    dispatch(addDonation(donationDto));
+    setModalShow(false);
+  };
+
+  const handleClickEdit = (item: any) => {
+    setModalItem({
+      ...item,
+      volunteerActionId: item.volunteerAction.id,
+    });
+    setModalShow(true);
   };
 
   return (
@@ -69,7 +143,7 @@ const DonationPage = () => {
               <p className={globalClasses["add-text"]}>Dodaj donaciju</p>
               <button
                 className={globalClasses["add-button"]}
-                onClick={() => {}}
+                onClick={() => setModalShow(true)}
               >
                 <span>+</span>Dodaj
               </button>
@@ -78,10 +152,10 @@ const DonationPage = () => {
               <Table
                 headers={headers}
                 data={donations.map(
-                  (donation: { volunteerActionType: { name: any } }) => ({
+                  (donation: { volunteerAction: { title: any } }) => ({
                     ...donation,
-                    name: donation.volunteerActionType
-                      ? donation.volunteerActionType.name
+                    title: donation.volunteerAction
+                      ? donation.volunteerAction.title
                       : "/",
                   })
                 )}
@@ -98,6 +172,17 @@ const DonationPage = () => {
         onDelete={deleteHandler}
         onHide={() => setDeleteModalShow(false)}
         type={"donation"}
+      />
+      <DonationModal
+        show={modalShow}
+        onClick={modalItem ? updateDonationHandler : addDonationHandler}
+        onHide={() => {
+          setModalShow(false);
+          setModalItem(undefined);
+        }}
+        label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ DONACIJU"}
+        item={modalItem}
+        actions={volunteerActions}
       />
     </div>
   );
