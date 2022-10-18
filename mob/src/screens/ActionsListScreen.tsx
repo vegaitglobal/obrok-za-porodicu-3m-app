@@ -84,8 +84,6 @@ const ActionsListScreen: React.FC<ActionListScreenProps> = ({navigation}) => {
 
     const unsubscribe = dynamicLinks().onLink(
       (link: FirebaseDynamicLinksTypes.DynamicLink) => {
-        console.log(link);
-
         const linkParts: Array<string> = link.url.split('?')[0].split('/');
         const type: string = linkParts[linkParts.length - 1];
         const entityId: number = Number(link.url.split('?')[1].split('=')[1]);

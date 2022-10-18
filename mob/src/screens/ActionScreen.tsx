@@ -62,9 +62,10 @@ const ActionScreen: React.FC<ActionScreenProps> = ({navigation, route}) => {
 
   const handleShareAction = () => {
     dynamicLinks()
-      .buildLink({
+      .buildShortLink({
         link: `${ACTION_DEEP_LINK_PREFIX}${actionId}`,
         domainUriPrefix: DOMAIN_LINK_URI,
+        android: {packageName: 'com.obrokzaporodicu'},
       })
       .then((deepLink: string) => {
         handleShare(deepLink);

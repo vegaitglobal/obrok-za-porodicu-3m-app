@@ -63,9 +63,10 @@ const NewsScreen: React.FC<NewsScreenProps> = ({navigation, route}) => {
 
   const handleShareNews = () => {
     dynamicLinks()
-      .buildLink({
+      .buildShortLink({
         link: `${NEWS_DEEP_LINK_PREFIX}${currentNews.id}`,
         domainUriPrefix: DOMAIN_LINK_URI,
+        android: {packageName: 'com.obrokzaporodicu'},
       })
       .then((deepLink: string) => {
         handleShare(deepLink);
