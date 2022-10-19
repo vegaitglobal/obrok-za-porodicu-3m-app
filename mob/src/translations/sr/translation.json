@@ -5,7 +5,9 @@
       "mostRecent": "Najnovije",
       "byStatus": "Sortiraj",
       "required": "Obavezno polje",
-      "emailMustBeValid": "Email mora biti važeća adresa"
+      "emailMustBeValid": "Email mora biti važeća adresa",
+      "error": "Greška",
+      "errorText": "Došlo je do greške. Molimo pokušajte ponovo."
     },
     "tabNavigator": {
       "home": "Početak",
@@ -26,7 +28,11 @@
       "subscribeTitle": "Prijavite se!",
       "subscribeText": "Prijavom na naš newsletter dobijaćete obaveštenje o aktuelnim donacijama i načinima kako možete pomoći ugroženim porodicama",
       "subscribeTextboxHint": "Vaša Email Adresa",
-      "subscribeButton": "PRIJAVA"
+      "subscribeButton": "PRIJAVA",
+      "successTitle": "Čestitamo!",
+      "successDescription": "Uspešno ste prijavljeni na newsletter!",
+      "errorTitle": "Greška",
+      "errorDescription": "E-mejl adresa je već regiregistrovana u sistemu!"
     },
     "actionScreen": {
       "categories": "Kategorije",
@@ -58,7 +64,9 @@
       "modelRefNo": "Model | Poziv na broj",
       "submit": "UGOVORI DONACIJU",
       "chooseCategory": "Odaberite Kategoriju",
-      "required": "Obavezno polje"
+      "required": "Obavezno polje",
+      "success": "Zahtev za ugovaranje donacije uspešno poslat!",
+      "successDescription": "Pogledajte email sanduče."
     },
     "newsScreen": {},
     "actionsList": {

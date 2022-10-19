@@ -1,27 +1,26 @@
-import {Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {styles} from '../OPSubheader/style';
+import {useTranslation} from 'react-i18next';
+import {Text, TextStyle, View} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Shadow} from 'react-native-shadow-2';
-import {RootState} from '../../../store/reducers/RootReducer';
 import {useSelector} from 'react-redux';
-import {useAppThunkDispatch} from '../../../store/Store';
+import Icons from '../../../constants/Icons';
 import {
+  getVolunteerActions,
   getVolunteerActionStatuses,
   onSetCurrentActionStatus,
-  getVolunteerActions,
 } from '../../../store/actions/VolunteerAction';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import Icons from '../../../constants/Icons';
-import {useTranslation} from 'react-i18next';
-import {Colors} from '../../../constants/Colors';
+import {RootState} from '../../../store/reducers/RootReducer';
+import {useAppThunkDispatch} from '../../../store/Store';
+import {styles} from '../OPSubheader/style';
 
 interface OPSubheaderProps {
   heading: string;
   showDropdown?: boolean;
   showBackButton?: boolean;
-  onSelectionChanged?: (id: number) => void;
   onBackPressed?: () => void;
+  onSelectionChanged?: (id: number) => void;
 }
 
 interface OptionModel {
@@ -33,8 +32,8 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   heading,
   showDropdown = true,
   showBackButton = false,
-  onSelectionChanged,
   onBackPressed,
+  onSelectionChanged,
 }) => {
   const {t} = useTranslation();
   const [open, setOpen] = useState(false);
@@ -57,11 +56,11 @@ const OPSubheader: React.FC<OPSubheaderProps> = ({
   return (
     <Shadow offset={[0, 2]} distance={2} stretch style={styles.shadowStyle}>
       <View style={styles.container}>
-        <View style={styles.row}>
+        <View style={styles.rowContainer}>
           {showBackButton ? (
             <TouchableOpacity style={styles.row} onPress={onBackPressed}>
               {Icons.ARROW_LEFT}
-              <Text style={[styles.heading]}>{heading.toUpperCase()}</Text>
+              <Text style={styles.heading}>{heading.toUpperCase()}</Text>
             </TouchableOpacity>
           ) : (
             <Text style={[styles.heading, styles.headingMargin]}>

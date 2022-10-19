@@ -52,7 +52,7 @@ const OnboardingScreen = () => {
 
   useEffect(() => {
     if (opacity.value === 0) {
-      opacity.value = withDelay(200, withTiming(1, {duration: 1800}));
+      opacity.value = withDelay(200, withTiming(1, {duration: 500}));
     }
   }, [selectedIndex, opacity]);
 

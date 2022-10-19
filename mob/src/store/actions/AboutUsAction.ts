@@ -1,9 +1,10 @@
-import Toast from 'react-native-toast-message';
 import {createAsyncThunk, Dispatch} from '@reduxjs/toolkit';
+import Toast from 'react-native-toast-message';
 
 import {AboutUsResponseModel} from '../../models/AboutUsResponseModel';
 import {ResponseModel} from '../../models/ResponseModel';
 import AboutUsService from '../../services/AboutUsService';
+import i18n from '../../translations/i18n';
 import {setAboutUsText} from '../reducers/AboutUsReducer';
 
 export const getAboutUs = createAsyncThunk(
@@ -25,7 +26,8 @@ export const subscribeToNewsLetters = (email: string) => () => {
       Toast.show({
         type: 'success',
         props: {
-          title: 'Uspešno ste prijavljeni na newsletter!',
+          title: i18n.t('aboutUsScreen.successTitle'),
+          description: i18n.t('aboutUsScreen.successDescription'),
         },
       });
     })
@@ -33,7 +35,8 @@ export const subscribeToNewsLetters = (email: string) => () => {
       Toast.show({
         type: 'error',
         props: {
-          title: 'Mejl adresa je vec regiregistrovana u sistemu!',
+          title: i18n.t('aboutUsScreen.errorTitle'),
+          description: i18n.t('aboutUsScreen.errorDescription'),
         },
       });
     });

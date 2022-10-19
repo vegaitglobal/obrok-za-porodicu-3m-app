@@ -13,8 +13,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.BACKGROUND,
   } as ViewStyle,
+  rowContainer: {
+    flexGrow: 1,
+  },
   row: {
     flexDirection: 'row',
+    flexGrow: 1,
   } as ViewStyle,
   heading: {
     ...TextStyles.DOSIS_EXTRA_BOLD,
