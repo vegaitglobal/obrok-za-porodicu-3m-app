@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { getRandomColor } from "../../../../utils/color";
 import classes from "./OPFilterItem.module.scss";
+import { useDispatch } from "react-redux";
+import {
+  addActionTypeIdVolunteerActions,
+  removeActionTypeIdVolunteerActions,
+} from "../../../../store/actions/volunteerActionsType";
 
 interface IOPFilterItemProps {
   index: number;
@@ -13,6 +18,8 @@ const OPFilterItem: React.FC<IOPFilterItemProps> = ({
   text,
   selected = false,
 }) => {
+  const dispatch = useDispatch();
+
   const [isSelected, setIsSelected] = useState(selected);
   const color: string = getRandomColor(index);
   const style = {
@@ -24,7 +31,13 @@ const OPFilterItem: React.FC<IOPFilterItemProps> = ({
   };
 
   const selectClickHandler = () => {
-    setIsSelected(!isSelected);
+    const isSelectedUpdated = !isSelected;
+    setIsSelected(isSelectedUpdated);
+    dispatch(
+      isSelectedUpdated
+        ? addActionTypeIdVolunteerActions(index)
+        : removeActionTypeIdVolunteerActions(index)
+    );
   };
 
   return (

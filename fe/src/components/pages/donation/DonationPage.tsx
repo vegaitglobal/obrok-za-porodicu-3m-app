@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 import DonationModal from "../../UI/molecules/donationModal/DonationModal";
 import { DonationDTOModel } from "../../../models/DonationModel";
-import { getVolunteerActions } from "../../../store/actions/volunteerActionsType";
+import { getAllVolunteerActions } from "../../../store/actions/volunteerActionsType";
 
 const headers: string[] = [
   "Akcija",
@@ -43,7 +43,7 @@ const DonationPage = () => {
   const donations = useSelector((state: RootState) => state.donation.donations);
 
   const volunteerActions = useSelector(
-    (state: RootState) => state.volunterActions.volunteerActions
+    (state: RootState) => state.volunterActions.allVolunteerActions
   );
 
   const [deleteModalShow, setDeleteModalShow] = useState(false);
@@ -64,7 +64,7 @@ const DonationPage = () => {
 
   useEffect(() => {
     dispatch(getDonations());
-    dispatch(getVolunteerActions());
+    dispatch(getAllVolunteerActions());
   }, []);
 
   const updateDonationHandler = (
