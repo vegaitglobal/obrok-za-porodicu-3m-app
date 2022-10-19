@@ -2,7 +2,7 @@ import { VolunteerActionDTOModel } from "../models/VolunteerActionModel";
 import ApiService from "./apiService";
 
 const ENDPOINTS = {
-  ADD_VOLUNTEER_ACTION: "volunteer-actions",
+  VOLUNTEER_ACTION: "volunteer-actions",
   VOLUNTEER_ACTIONS: "volunteer-actions/search",
   PAGE: "?pageNumber=",
   PAGE_SIZE: "&pageSize=",
@@ -30,13 +30,20 @@ export class VolunteerActionsService extends ApiService {
     return data;
   };
 
-  addActionStatus = async (payload: VolunteerActionDTOModel) => {
+  addAction = async (payload: VolunteerActionDTOModel) => {
     const { data } = await this.apiClient.post(
-      ENDPOINTS.ADD_VOLUNTEER_ACTION,
+      ENDPOINTS.VOLUNTEER_ACTION,
       payload
     );
 
-    console.log(data);
+    return data;
+  };
+
+  updateAction = async (payload: VolunteerActionDTOModel) => {
+    const { data } = await this.apiClient.put(
+      ENDPOINTS.VOLUNTEER_ACTION,
+      payload
+    );
 
     return data;
   };

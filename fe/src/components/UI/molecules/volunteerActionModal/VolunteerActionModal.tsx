@@ -1,5 +1,5 @@
 import { Field, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { VolunteerActionDTOModel } from "../../../../models/VolunteerActionModel";
 import { VolunteerActionStatusModel } from "../../../../models/VolunteerActionStatusModel";
@@ -58,6 +58,24 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
   );
   const [selectedStatus, setSelectedStatus] = useState(StatusOptions[0]);
   const [selectedType, setSelectedType] = useState(TypesOptions[0]);
+
+  useEffect(() => {
+    setSelectedStatus(
+      item
+        ? StatusOptions.find(
+            (a) => a.value === item.statusId.toString()
+          ) ?? StatusOptions[0]
+        : StatusOptions[0]
+    );
+    setSelectedType(
+      item
+        ? TypesOptions.find(
+            (a) => a.value === item.typeId.toString()
+          ) ?? TypesOptions[0]
+        : TypesOptions[0]
+    );
+  }, [show, item]);
+
 
   const customStyles = {
     control: (provided: any) => ({
@@ -186,7 +204,7 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
               <div>
                 <OPPrimaryButton
                   onClick={() => formik.handleSubmit()}
-                  text="DODAJ AKCIJU"
+                  text={label}
                   type="submit"
                   style={styles.btn}
                 ></OPPrimaryButton>
