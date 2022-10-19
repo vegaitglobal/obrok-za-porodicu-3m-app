@@ -1,7 +1,7 @@
-import Toast from 'react-native-toast-message';
-
 import {DonationModel} from '../../models/DonationModel';
 import DonateService from '../../services/DonateService';
+import Toast from 'react-native-toast-message';
+import i18n from '../../translations/i18n';
 
 export const donate = (donation: DonationModel) => () => {
   DonateService.donate(donation)
@@ -9,8 +9,8 @@ export const donate = (donation: DonationModel) => () => {
       Toast.show({
         type: 'success',
         props: {
-          title: 'Zahtev za ugovaranje donacije uspešno poslat!',
-          description: 'Pogledajte email sanduče.',
+          title: i18n.t('donateScreen.success'),
+          description: i18n.t('donateScreen.successDescription'),
         },
       });
     })
@@ -18,8 +18,8 @@ export const donate = (donation: DonationModel) => () => {
       Toast.show({
         type: 'error',
         props: {
-          title: 'Došlo je do greške!',
-          description: 'Molimo pokušajte ponovo kasnije.',
+          title: i18n.t('general.error'),
+          description: i18n.t('general.errorText'),
         },
       });
       console.error(err);

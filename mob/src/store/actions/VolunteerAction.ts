@@ -20,6 +20,8 @@ import {ResponseModel} from '../../models/ResponseModel';
 import {VolunteerPageModel} from '../../models/VolunteerAction/VolunteerPageModel';
 import {VolunteerActionStatus} from '../../models/VolunteerAction/VolunteerActionStatus';
 import VolunteerActionsService from '../../services/VolunteerActionsService';
+import Toast from 'react-native-toast-message';
+import i18n from '../../translations/i18n';
 
 export const setAppliedFilters =
   (newFilters: ActionType, color: string) =>
@@ -67,30 +69,63 @@ export const getVolunteerActions =
         ),
       );
     } else {
-      VolunteerActionsService.getActions(page).then((res: ResponseModel) => {
-        if (res) {
-          dispatch(setVolunteerActions(res.data as VolunteerPageModel));
-        }
-      });
+      VolunteerActionsService.getActions(page)
+        .then((res: ResponseModel) => {
+          if (res) {
+            dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+          }
+        })
+        .catch((err: any) => {
+          console.log(err);
+          Toast.show({
+            type: 'error',
+            props: {
+              title: i18n.t('general.error'),
+              description: i18n.t('general.errorText'),
+            },
+          });
+        });
     }
   };
 
 export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
-  VolunteerActionsService.getActionStatuses().then((res: ResponseModel) => {
-    if (res) {
-      dispatch(setVolunteerActionStatuses(res.data as VolunteerActionStatus[]));
-    }
-  });
+  VolunteerActionsService.getActionStatuses()
+    .then((res: ResponseModel) => {
+      if (res) {
+        dispatch(
+          setVolunteerActionStatuses(res.data as VolunteerActionStatus[]),
+        );
+      }
+    })
+    .catch((err: any) => {
+      console.log(err);
+      Toast.show({
+        type: 'error',
+        props: {
+          title: i18n.t('general.error'),
+          description: i18n.t('general.errorText'),
+        },
+      });
+    });
 };
 
 export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
-  VolunteerActionsService.getVolunteerActionTypes().then(
-    (res: ResponseModel) => {
+  VolunteerActionsService.getVolunteerActionTypes()
+    .then((res: ResponseModel) => {
       if (res) {
         dispatch(setVolunteerActionTypes(res.data as Array<ActionType>));
       }
-    },
-  );
+    })
+    .catch((err: any) => {
+      console.log(err);
+      Toast.show({
+        type: 'error',
+        props: {
+          title: i18n.t('general.error'),
+          description: i18n.t('general.errorText'),
+        },
+      });
+    });
 };
 
 export const filterVolunteerActionsByTagsAndSearchTerm =
@@ -109,15 +144,23 @@ export const filterVolunteerActionsByTagsAndSearchTerm =
         searchTerm,
       };
 
-      const res =
-        await VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
-          query,
-          page,
-        );
-
-      if (res) {
-        dispatch(setVolunteerActions(res.data as VolunteerPageModel));
-      }
+      VolunteerActionsService.getVolunteerActionsByTagsAndSearchTerm(
+        query,
+        page,
+      )
+        .then((res: ResponseModel) => {
+          res && dispatch(setVolunteerActions(res.data as VolunteerPageModel));
+        })
+        .catch((err: any) => {
+          console.log(err);
+          Toast.show({
+            type: 'error',
+            props: {
+              title: i18n.t('general.error'),
+              description: i18n.t('general.errorText'),
+            },
+          });
+        });
     } else {
       const {actions} = getState().favourites;
       const newActions: Array<VolunteerActionDTO> = actions.filter(
@@ -160,7 +203,15 @@ export const getVolunteerAction = (id: number) => (dispatch: Dispatch) => {
       dispatch(setCurrentVolunteerAction(res.data as VolunteerActionDTO));
       dispatch(setIsLoading(false));
     })
-    .catch(() => {
+    .catch((err: any) => {
       dispatch(setIsLoading(false));
+      Toast.show({
+        type: 'error',
+        props: {
+          title: i18n.t('general.error'),
+          description: i18n.t('general.errorText'),
+        },
+      });
+      console.log(err);
     });
 };

@@ -4,7 +4,6 @@ import {TextStyles} from '../../../constants/TextStyles';
 export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginTop: 20,
   },
   icon: {
     height: 24,

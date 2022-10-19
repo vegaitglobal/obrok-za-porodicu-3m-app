@@ -45,19 +45,11 @@ export const aboutUseScreenOptions: BottomTabNavigationOptions = {
   header: () => <OPHeaderSimple />,
 };
 
-export const donateScreenOptions: BottomTabNavigationOptions = {
+export const donateScreenOptions: StackNavigationOptions = {
   headerShown: true,
-  tabBarShowLabel: false,
+  presentation: 'modal',
+
   header: () => <OPHeaderSimple />,
-  tabBarIcon: ({focused}) => {
-    return (
-      <OPTabIcon
-        text={i18n.t('tabNavigator.donate')}
-        focused={!focused}
-        type={'donate'}
-      />
-    );
-  },
 };
 
 export const newsStackScreenOptions: BottomTabNavigationOptions = {

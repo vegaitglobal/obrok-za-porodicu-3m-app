@@ -5,7 +5,9 @@
       "mostRecent": "Most recent",
       "byStatus": "Sort",
       "required": "Required",
-      "emailMustBeValid": "Email must be a valid email address"
+      "emailMustBeValid": "Email must be a valid email address",
+      "error": "Error",
+      "errorText": "Something went wrong. Please try again!"
     },
     "tabNavigator": {
       "home": "Home",
@@ -26,7 +28,11 @@
       "subscribeTitle": "Sign up!",
       "subscribeText": "By subscribing to our newsletter you will receive updates to help you stay informed on the latest charity drives and ways to help families in need.",
       "subscribeTextboxHint": "Your Email Address",
-      "subscribeButton": "SUBSCRIBE"
+      "subscribeButton": "SUBSCRIBE",
+      "successTitle": "Congratulations!",
+      "successDescription": "You successfully signed up for newsletter!",
+      "errorTitle": "Error",
+      "errorDescription": "Email address is already registered in our system."
     },
     "actionScreen": {
       "categories": "Categories",
@@ -58,7 +64,9 @@
       "modelRefNo": "Model | Reference no.",
       "submit": "SUBMIT DONATION",
       "chooseCategory": "Choose a Category",
-      "required": "Required"
+      "required": "Required",
+      "success": "Request for donation successfully sent!",
+      "successDescription": "Check your email!"
     },
     "newsScreen": {},
     "actionsList": {
