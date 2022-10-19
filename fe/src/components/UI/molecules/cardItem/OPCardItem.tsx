@@ -1,3 +1,4 @@
+import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 import { getRandomColor } from "../../../../utils/color";
 import classes from "./OPCardItem.module.scss";
 
@@ -9,7 +10,7 @@ interface IOPCardItemProps {
   shortDescription: string;
   imageUrl?: string;
   onClickEdit: (val: any) => void;
-  item: any;
+  item: VolunteerActionModel;
 }
 
 const OPCardItem: React.FC<IOPCardItemProps> = ({
@@ -29,7 +30,7 @@ const OPCardItem: React.FC<IOPCardItemProps> = ({
   };
 
   return (
-    <div onClick={() => {onClickEdit(item)}} className={classes["card-item-wrapper"]} style={imageUrl && imageUrl.length > 0 ? {} : {paddingTop: "42px", minHeight: "261px"}}>
+    <div onClick={() => {onClickEdit(item)}} className={classes["card-item-wrapper"]} style={imageUrl && imageUrl.length > 0 ? {} : classes["card-item-no-image"]}>
       {imageUrl && imageUrl.length > 0 && <div className={classes["card-image"]} style={{backgroundImage: `url(${imageUrl})`}}></div>}
       <div className={classes["card-content-wrapper"]}>
         <p className={classes["card-content-tag"]} style={style}>
