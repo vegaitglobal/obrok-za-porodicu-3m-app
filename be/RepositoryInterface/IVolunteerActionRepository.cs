@@ -7,5 +7,7 @@ namespace MealForFamily.RepositoryInterface
     {
         Task<VolunteerAction> GetSingleById(int id);
         public Task<Page<VolunteerAction>> GetAllByPage(VolunteerActionFilterDTO filters, int pageNumber, int pageSize);
+
+        Task<List<VolunteerAction>> GetVolunteerActions();
     }
 }

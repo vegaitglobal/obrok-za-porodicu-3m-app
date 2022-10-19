@@ -48,5 +48,11 @@ namespace MealForFamily.Service
             action.IsDeleted = true;
             await _volunteerActionRepository.Update(action);
         }
+
+        public async Task<List<VolunteerAction>> GetAllVolunteerActions()
+        {
+            return await _volunteerActionRepository.GetVolunteerActions();
+        }
+
     }
 }

@@ -74,5 +74,16 @@ namespace MealForFamily.Controllers
             await _volunteerActionService.DeleteVolunteerAction(id);
             return Ok("Volunteer Action deleted successfully");
         }
+
+        [HttpGet("")]
+        public async Task<IActionResult> GetAllVolunteerActions()
+        {
+            List<VolunteerActionDTO> dtos = new();
+            List<VolunteerAction> actions = await _volunteerActionService.GetAllVolunteerActions();
+            foreach (VolunteerAction action in actions)
+                dtos.Add(_mapper.Map<VolunteerActionDTO>(action));
+
+            return Ok(dtos);
+        }
     }
 }

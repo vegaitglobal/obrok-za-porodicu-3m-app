@@ -18,6 +18,8 @@ import {
 import { Colors } from "../../../constants/Colors";
 import VolunteerActionModal from "../../UI/molecules/volunteerActionModal/VolunteerActionModal";
 import { VolunteerActionDTOModel } from "../../../models/VolunteerActionModel";
+import { ActionsFilterModel } from "../../../models/ActionsFilterModel";
+import Pagination from "@mui/material/Pagination";
 
 const VolunteerActionsPage = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const VolunteerActionsPage = () => {
   const volunteerActionTypes = useSelector(
     (state: RootState) => state.volunteerActionTypes.volunteerActionTypes
   );
+
   const volunteerActions = useSelector(
     (state: RootState) => state.volunterActions.volunteerActions
   );
@@ -35,9 +38,21 @@ const VolunteerActionsPage = () => {
     (state: RootState) => state.volunterActions.volunteerActionStatuses
   );
 
+  const searchTerm = useSelector(
+    (state: RootState) => state.volunterActions.searchTerm
+  );
+
+  const actionTypeIds = useSelector(
+    (state: RootState) => state.volunterActions.actionTypeIds
+  );
+
+  const pagination = useSelector(
+    (state: RootState) => state.volunterActions.pagination
+  );
+
   useEffect(() => {
     dispatch(getVolunteerActionTypes());
-    dispatch(getVolunteerActions());
+    dispatch(getVolunteerActions({}));
     dispatch(getActionStatuses());
   }, []);
 
@@ -108,6 +123,26 @@ const VolunteerActionsPage = () => {
     dispatch(addVolunteerAction(actionDto));
     setModalShow(false);
   };
+
+  const changePageHandler = (
+    event: React.ChangeEvent<unknown>,
+    pageUpdated: number
+  ) => {
+    const actionsFilter: ActionsFilterModel = {
+      searchTerm: searchTerm,
+      actionTypeIds: actionTypeIds,
+    };
+    dispatch(getVolunteerActions({ page: pageUpdated, actionsFilter }));
+  };
+
+  const searchVolunteerActionsHandler = () => {
+    const actionsFilter: ActionsFilterModel = {
+      searchTerm: searchTerm,
+      actionTypeIds: actionTypeIds,
+    };
+    dispatch(getVolunteerActions({ actionsFilter }));
+  };
+
   return (
     <div className={globalClasses["page-wrapper"]}>
       <Header />
@@ -119,7 +154,9 @@ const VolunteerActionsPage = () => {
             <div className={classes["search-and-add-button-wrapper"]}>
               <OPPrimaryButton
                 text="Pretraži"
-                onClick={() => {}}
+                onClick={() => {
+                  searchVolunteerActionsHandler();
+                }}
                 style={searchButtonStyle}
               />
               <OPPrimaryButton
@@ -132,6 +169,11 @@ const VolunteerActionsPage = () => {
           <OPCarditemList
             items={volunteerActions}
             onClickEdit={handleClickEdit}
+          />
+          <Pagination
+            count={pagination.totalPages}
+            page={pagination.currentPage}
+            onChange={changePageHandler}
           />
         </div>
       </div>

@@ -21,7 +21,12 @@ import {
   ADD_DONATION,
   UPDATE_DONATION,
   ADD_VOLUNTEER_ACTION,
-  UPDATE_VOLUNTEER_ACTION
+  UPDATE_VOLUNTEER_ACTION,
+  SET_SEARCH_TERM_VOLUNTEER_ACTIONS,
+  ADD_ACTION_TYPE_ID_VOLUNTEER_ACTIONS,
+  REMOVE_ACTION_TYPE_ID_VOLUNTEER_ACTIONS,
+  GET_ALL_VOLUNTEER_ACTIONS,
+  SET_PAGINATION_VOLUNTEER_ACTIONS
 } from "../actions/actionTypes";
 import { handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation, handleAddDonation, handleUpdateDonation } from "./donationSaga";
@@ -39,8 +44,13 @@ import {
 } from "./volunteerActionTypesSaga";
 import {
   handleAddAction,
+  handleAddActionTypeIdVolunteerActions,
+  handleGetAllVolunteerActions,
   handleGetVolunteerActions,
   handleGetVolunteerActionStatuses,
+  handleRemoveActionTypeIdVolunteerActions,
+  handleSetPaginationVolunteerActions,
+  handleSetSearchTermVolunteerActions,
   handleUpdateAction,
 } from "./volunteerActionSaga";
 import { handleGetBankAccount, handleUpdateBankAccount } from "./bankAccountSaga";
@@ -51,6 +61,7 @@ export default function* rootSaga() {
     takeLatest(LOGIN, handleLogin),
     takeLatest(LOGOUT, handleLogout),
     takeLatest(GET_VOLUNTEER_ACTIONS, handleGetVolunteerActions),
+    takeLatest(GET_ALL_VOLUNTEER_ACTIONS, handleGetAllVolunteerActions),
     takeLatest(
       GET_VOLUNTEER_ACTIONS_STATUSES,
       handleGetVolunteerActionStatuses
@@ -73,5 +84,9 @@ export default function* rootSaga() {
     takeLatest(UPDATE_BANK_ACCOUNT, handleUpdateBankAccount),
     takeLatest(GET_ABOUT_US, handleGetAboutUs),
     takeLatest(UPDATE_ABOUT_US, handleUpdateAboutUs),
+    takeLatest(SET_SEARCH_TERM_VOLUNTEER_ACTIONS, handleSetSearchTermVolunteerActions),
+    takeLatest(ADD_ACTION_TYPE_ID_VOLUNTEER_ACTIONS, handleAddActionTypeIdVolunteerActions),
+    takeLatest(REMOVE_ACTION_TYPE_ID_VOLUNTEER_ACTIONS, handleRemoveActionTypeIdVolunteerActions),
+    takeLatest(SET_PAGINATION_VOLUNTEER_ACTIONS, handleSetPaginationVolunteerActions),
   ]);
 }

@@ -1,3 +1,4 @@
+import { ActionsFilterModel } from "../models/ActionsFilterModel";
 import { VolunteerActionDTOModel } from "../models/VolunteerActionModel";
 import ApiService from "./apiService";
 
@@ -9,18 +10,27 @@ const ENDPOINTS = {
   STATUSES: "volunteer-action-statuses",
 };
 
+const DEFAULT_PAGE_NUMBER: number = 1;
+const DEFAULT_PAGE_SIZE: number = 9;
+const DEFAULT_FILTER: ActionsFilterModel = {
+  "actionTypeIds": [
+  ],
+  "searchTerm": ""
+};
+
 export class VolunteerActionsService extends ApiService {
   getVolunteerActionsPagination = async (
-    page: number = 1,
-    pageSize: number = 50
+    page: number = DEFAULT_PAGE_NUMBER,
+    filter: ActionsFilterModel = DEFAULT_FILTER,
+    pageSize: number = DEFAULT_PAGE_SIZE,
   ) => {
     const { data } = await this.apiClient.post(
       ENDPOINTS.VOLUNTEER_ACTIONS +
-        ENDPOINTS.PAGE +
-        page +
-        ENDPOINTS.PAGE_SIZE +
-        pageSize,
-      {}
+      ENDPOINTS.PAGE +
+      page +
+      ENDPOINTS.PAGE_SIZE +
+      pageSize,
+      filter
     );
     return data;
   };
@@ -45,6 +55,11 @@ export class VolunteerActionsService extends ApiService {
       payload
     );
 
+    return data;
+  };
+
+  getAllVolunteerActions = async () => {
+    const { data } = await this.apiClient.get(ENDPOINTS.VOLUNTEER_ACTION);
     return data;
   };
 }
