@@ -11,6 +11,7 @@ import classes from "./VolunteerActionsPage.module.scss";
 import globalClasses from "../../../constants/GlobalStyle.module.scss";
 import {
   addVolunteerAction,
+  deleteVolunteerAction,
   getActionStatuses,
   getVolunteerActions,
   updateVolunteerAction,
@@ -20,11 +21,14 @@ import VolunteerActionModal from "../../UI/molecules/volunteerActionModal/Volunt
 import { VolunteerActionDTOModel } from "../../../models/VolunteerActionModel";
 import { ActionsFilterModel } from "../../../models/ActionsFilterModel";
 import Pagination from "@mui/material/Pagination";
+import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
 
 const VolunteerActionsPage = () => {
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
   const [modalItem, setModalItem] = useState(undefined);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
+  const [id, setId] = useState<number>();
 
   const volunteerActionTypes = useSelector(
     (state: RootState) => state.volunteerActionTypes.volunteerActionTypes
@@ -143,6 +147,18 @@ const VolunteerActionsPage = () => {
     dispatch(getVolunteerActions({ actionsFilter }));
   };
 
+  const showDeleteModal = (id: number) => {
+    setDeleteModalShow(true);
+    setId(id);
+  };
+
+  const deleteHandler = () => {
+    dispatch(deleteVolunteerAction(id!));
+    setDeleteModalShow(false);
+    setModalShow(false);
+    setModalItem(undefined);
+  };
+
   return (
     <div className={globalClasses["page-wrapper"]}>
       <Header />
@@ -177,6 +193,12 @@ const VolunteerActionsPage = () => {
           />
         </div>
       </div>
+      <OPDeleteModal
+        show={deleteModalShow}
+        onDelete={deleteHandler}
+        onHide={() => setDeleteModalShow(false)}
+        type={"akciju"}
+      />
       <VolunteerActionModal
         show={modalShow}
         onClick={
@@ -190,6 +212,7 @@ const VolunteerActionsPage = () => {
         item={modalItem}
         actionStatuses={volunteerActionStatuses}
         actionTypes={volunteerActionTypes}
+        showDeleteModal={showDeleteModal}
       />
     </div>
   );

@@ -62,6 +62,14 @@ export class VolunteerActionsService extends ApiService {
     const { data } = await this.apiClient.get(ENDPOINTS.VOLUNTEER_ACTION);
     return data;
   };
+
+  deleteVolunteerAction = async (id: number) => {
+    const { data } = await this.apiClient.delete(
+      ENDPOINTS.VOLUNTEER_ACTION + "/" + id
+    );
+
+    return data;
+  };
 }
 
 const volunteerActionsService = new VolunteerActionsService();

@@ -4,7 +4,7 @@ import { VolunteerActionModel } from "../../models/VolunteerActionModel";
 import { VolunteerActionPageModel } from "../../models/VolunteerActionPageModel";
 import { VolunteerActionStatusModel } from "../../models/VolunteerActionStatusModel";
 import volunteerActionsService from "../../services/volunteerActionsService";
-import { addVolunteerAction, addActionTypeIdVolunteerActions, setSearchTermVolunteerActions, updateVolunteerAction, removeActionTypeIdVolunteerActions, getVolunteerActions, setPaginationVolunteerActions } from "../actions/volunteerActionsType";
+import { addVolunteerAction, addActionTypeIdVolunteerActions, setSearchTermVolunteerActions, updateVolunteerAction, removeActionTypeIdVolunteerActions, getVolunteerActions, setPaginationVolunteerActions, deleteVolunteerAction } from "../actions/volunteerActionsType";
 import {
   setVolunteerActions,
   setVolunteerActionStatuses,
@@ -128,6 +128,18 @@ export function* handleGetAllVolunteerActions(): Generator<any, void, VolunteerA
     const volunteerActions: VolunteerActionModel[] = yield call(volunteerActionsService.getAllVolunteerActions);
 
     yield put(setAllVolunteerActions(volunteerActions));
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export function* handleDeleteVolunteerAction({
+  payload,
+}: ReturnType<typeof deleteVolunteerAction>): Generator<any, void, void> {
+  try {
+    yield call(volunteerActionsService.deleteVolunteerAction, payload.volunteerActionId);
+
+    yield put(getVolunteerActions({}));
   } catch (error: any) {
     console.log(error);
   }

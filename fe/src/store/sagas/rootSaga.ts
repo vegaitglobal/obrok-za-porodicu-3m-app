@@ -26,7 +26,8 @@ import {
   ADD_ACTION_TYPE_ID_VOLUNTEER_ACTIONS,
   REMOVE_ACTION_TYPE_ID_VOLUNTEER_ACTIONS,
   GET_ALL_VOLUNTEER_ACTIONS,
-  SET_PAGINATION_VOLUNTEER_ACTIONS
+  SET_PAGINATION_VOLUNTEER_ACTIONS,
+  DELETE_VOLUNTEER_ACTION
 } from "../actions/actionTypes";
 import { handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation, handleAddDonation, handleUpdateDonation } from "./donationSaga";
@@ -45,6 +46,7 @@ import {
 import {
   handleAddAction,
   handleAddActionTypeIdVolunteerActions,
+  handleDeleteVolunteerAction,
   handleGetAllVolunteerActions,
   handleGetVolunteerActions,
   handleGetVolunteerActionStatuses,
@@ -88,5 +90,6 @@ export default function* rootSaga() {
     takeLatest(ADD_ACTION_TYPE_ID_VOLUNTEER_ACTIONS, handleAddActionTypeIdVolunteerActions),
     takeLatest(REMOVE_ACTION_TYPE_ID_VOLUNTEER_ACTIONS, handleRemoveActionTypeIdVolunteerActions),
     takeLatest(SET_PAGINATION_VOLUNTEER_ACTIONS, handleSetPaginationVolunteerActions),
+    takeLatest(DELETE_VOLUNTEER_ACTION, handleDeleteVolunteerAction),
   ]);
 }

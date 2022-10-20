@@ -20,15 +20,15 @@ namespace MealForFamily.Repositories
                 .withSearchTerm(filters)
                 .build(pageNumber, pageSize);
 
-            int totalCount = query.Count();
+            int totalCount = query.Where(v => v.IsDeleted == false).Count();
 
             IEnumerable<VolunteerAction> content = await query
-                .OrderByDescending(va => va.Id)
-                .Skip(GetNumberOfElements(pageNumber, pageSize))
                 .Include(v => v.Type)
                 .Include(v => v.Status)
-                .Take(pageSize)
                 .Where(v => v.IsDeleted == false)
+                .OrderByDescending(va => va.Id)
+                .Skip(GetNumberOfElements(pageNumber, pageSize))
+                .Take(pageSize)
                 .ToListAsync();
 
             return createPage(pageNumber, pageSize, totalCount, content);
