@@ -11,6 +11,7 @@ import {
   REMOVE_ACTION_TYPE_ID_VOLUNTEER_ACTIONS,
   GET_ALL_VOLUNTEER_ACTIONS,
   SET_PAGINATION_VOLUNTEER_ACTIONS,
+  DELETE_VOLUNTEER_ACTION,
 } from "./actionTypes";
 
 export const getVolunteerActions = (payload: VolunteerActionsPaginationPayloadModel) => {
@@ -48,3 +49,8 @@ export const removeActionTypeIdVolunteerActions = (payload: number) => {
 export const setPaginationVolunteerActions = (payload: PaginationModel) => {
   return { type: SET_PAGINATION_VOLUNTEER_ACTIONS, payload: payload };
 };
+
+export const deleteVolunteerAction = (volunteerActionId: number) => {
+  return { type: DELETE_VOLUNTEER_ACTION, payload: { volunteerActionId } };
+};
+

@@ -9,6 +9,7 @@ import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
 import CustomModal from "../../molecules/customModal/CustomModal";
 import styles from "./VolunteerActionModal.module.scss";
+import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 
 interface VolunteerActionModalProps {
   onClick: (
@@ -25,6 +26,7 @@ interface VolunteerActionModalProps {
   actionStatuses: VolunteerActionStatusModel[];
   actionTypes: VolunteerActionTypeModel[];
   item?: VolunteerActionDTOModel;
+  showDeleteModal: (id: number) => void;
 }
 
 const initialValues: any = {
@@ -45,6 +47,7 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
   actionStatuses,
   actionTypes,
   label,
+  showDeleteModal,
 }) => {
   const StatusOptions: OptionType[] = actionStatuses.map(
     (b: VolunteerActionStatusModel) => {
@@ -62,20 +65,17 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
   useEffect(() => {
     setSelectedStatus(
       item
-        ? StatusOptions.find(
-            (a) => a.value === item.statusId.toString()
-          ) ?? StatusOptions[0]
+        ? StatusOptions.find((a) => a.value === item.statusId.toString()) ??
+            StatusOptions[0]
         : StatusOptions[0]
     );
     setSelectedType(
       item
-        ? TypesOptions.find(
-            (a) => a.value === item.typeId.toString()
-          ) ?? TypesOptions[0]
+        ? TypesOptions.find((a) => a.value === item.typeId.toString()) ??
+            TypesOptions[0]
         : TypesOptions[0]
     );
   }, [show, item]);
-
 
   const customStyles = {
     control: (provided: any) => ({
@@ -201,13 +201,22 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
                   value={item ? item.imageURL : initialValues.imageURL}
                 />
               </div>
-              <div>
+              <div className={item ? globalClasses["modal-footer-ctas"] : {}}>
                 <OPPrimaryButton
                   onClick={() => formik.handleSubmit()}
                   text={label}
                   type="submit"
                   style={styles.btn}
                 ></OPPrimaryButton>
+                {item ? (
+                  <OPPrimaryButton
+                    onClick={() => {
+                      showDeleteModal(item.id ?? 0);
+                    }}
+                    text={"OBRIŠI"}
+                    style={styles.btn}
+                  ></OPPrimaryButton>
+                ) : null}
               </div>
             </>
           )}
