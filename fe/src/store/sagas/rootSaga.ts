@@ -27,9 +27,10 @@ import {
   REMOVE_ACTION_TYPE_ID_VOLUNTEER_ACTIONS,
   GET_ALL_VOLUNTEER_ACTIONS,
   SET_PAGINATION_VOLUNTEER_ACTIONS,
-  DELETE_VOLUNTEER_ACTION
+  DELETE_VOLUNTEER_ACTION,
+  AUTO_LOGIN
 } from "../actions/actionTypes";
-import { handleLogin, handleLogout } from "./authSaga";
+import { handleAutoLogin, handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation, handleAddDonation, handleUpdateDonation } from "./donationSaga";
 import {
   handleAddContact,
@@ -62,6 +63,7 @@ export default function* rootSaga() {
   yield all([
     takeLatest(LOGIN, handleLogin),
     takeLatest(LOGOUT, handleLogout),
+    takeLatest(AUTO_LOGIN, handleAutoLogin),
     takeLatest(GET_VOLUNTEER_ACTIONS, handleGetVolunteerActions),
     takeLatest(GET_ALL_VOLUNTEER_ACTIONS, handleGetAllVolunteerActions),
     takeLatest(
