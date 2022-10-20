@@ -35,7 +35,6 @@ export function* handleGetVolunteerActions({
     );
     yield put(setVolunteerActions(volunteerActionsPage.content));
     yield put(setPaginationVolunteerActions(volunteerActionsPage.pagination));
-    console.log()
   } catch (error: any) { }
 }
 
