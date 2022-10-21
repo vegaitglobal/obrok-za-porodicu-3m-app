@@ -1,3 +1,4 @@
+import { NewsModel } from "../../../../models/NewsModel";
 import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 import { getRandomColor } from "../../../../utils/color";
 import classes from "./OPCardItem.module.scss";
@@ -8,9 +9,9 @@ interface IOPCardItemProps {
   title: string;
   status: string;
   shortDescription: string;
-  imageUrl?: string;
+  imageURL?: string;
   onClickEdit: (val: any) => void;
-  item: VolunteerActionModel;
+  item: VolunteerActionModel | NewsModel;
 }
 
 const OPCardItem: React.FC<IOPCardItemProps> = ({
@@ -19,28 +20,28 @@ const OPCardItem: React.FC<IOPCardItemProps> = ({
   title,
   status,
   shortDescription,
-  imageUrl,
+  imageURL,
   onClickEdit,
-  item
+  item,
 }) => {
-  const color: string = getRandomColor(id);
+  const color: string = getRandomColor(item.id ?? 0);
 
   const style = {
     backgroundColor: color,
   };
 
   return (
-    <div onClick={() => {onClickEdit(item)}} className={classes["card-item-wrapper"]} style={imageUrl && imageUrl.length > 0 ? {} : classes["card-item-no-image"]}>
-      {imageUrl && imageUrl.length > 0 && <div className={classes["card-image"]} style={{backgroundImage: `url(${imageUrl})`}}></div>}
+    <div onClick={() => {onClickEdit(item)}} className={classes["card-item-wrapper"]} style={imageURL && imageURL.length > 0 ? {} : classes["card-item-no-image"]}>
+      {imageURL && item.imageURL.length > 0 && <div className={classes["card-image"]} style={{backgroundImage: `url(${imageURL})`}}></div>}
       <div className={classes["card-content-wrapper"]}>
-        <p className={classes["card-content-tag"]} style={style}>
+        {type ? <p className={classes["card-content-tag"]} style={style}>
           {type}
-        </p>
+        </p> : null}
         <p className={classes["card-content-heading"]}>{title}</p>
-        <div className={classes["card-status-wrapper"]}>
+        {status ? <div className={classes["card-status-wrapper"]}>
           <p className={classes["card-status-text"]}>Status</p>
           <p className={classes["card-status-value"]}>{status}</p>
-        </div>
+        </div> : null}
         <p className={classes["card-content-description"]}>
           {shortDescription}
         </p>

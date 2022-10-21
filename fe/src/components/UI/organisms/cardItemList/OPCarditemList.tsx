@@ -1,9 +1,10 @@
 import classes from "./OPCarditemList.module.scss";
 import OPCardItem from "../../molecules/cardItem/OPCardItem";
 import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
+import { NewsModel } from "../../../../models/NewsModel";
 
 interface IOPCardItemListProps {
-  items: VolunteerActionModel[];
+  items: VolunteerActionModel[] | NewsModel[];
   onClickEdit: (val: any) => void;
 }
 
@@ -16,12 +17,12 @@ const OPCarditemList: React.FC<IOPCardItemListProps> = ({
       {items.map((item) => {
         return (
           <OPCardItem
-            id={item.id}
-            type={item.type.name}
+            id={item.id ?? 0}
+            type={(item as VolunteerActionModel).type ? (item as VolunteerActionModel).type.name : ""}
             title={item.title}
-            status={item.status.name}
+            status={(item as VolunteerActionModel).status ? (item as VolunteerActionModel).status.name : ""}
             shortDescription={item.shortDescription}
-            imageUrl={item.imageURL}
+            imageURL={item.imageURL}
             onClickEdit={onClickEdit}
             item={item}
           />

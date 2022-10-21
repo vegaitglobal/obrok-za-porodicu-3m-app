@@ -34,3 +34,9 @@ export const UPDATE_BANK_ACCOUNT = "UPDATE_BANK_ACCOUNT";
 
 export const GET_ABOUT_US = "GET_ABOUT_US";
 export const UPDATE_ABOUT_US = "UPDATE_ABOUT_US";
+
+export const GET_NEWS = "GET_NEWS";
+export const ADD_NEWS = "ADD_NEWS";
+export const UPDATE_NEWS = "UPDATE_NEWS";
+export const SET_PAGINATION_NEWS = "SET_PAGINATION_NEWS";
+export const DELETE_NEWS = "DELETE_NEWS";
