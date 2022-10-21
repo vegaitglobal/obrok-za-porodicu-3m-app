@@ -9,8 +9,17 @@ import DonationPage from "./components/pages/donation/DonationPage";
 import NewsPage from "./components/pages/news/NewsPage";
 import AboutUsPage from "./components/pages/aboutUs/AboutUsPage";
 import BankAccountPage from "./components/pages/bankAccount/BankAccountPage";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { autoLogin } from "./store/actions/authType";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(autoLogin());
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />

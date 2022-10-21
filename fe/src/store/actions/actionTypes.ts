@@ -1,5 +1,6 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const AUTO_LOGIN = "AUTO_LOGIN";
 
 export const GET_DONATIONS = "GET_DONATIONS";
 export const DELETE_DONATION = "DELETE_DONATION";

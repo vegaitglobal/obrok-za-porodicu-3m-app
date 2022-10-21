@@ -1,12 +1,10 @@
 import { call, put } from "redux-saga/effects";
 import { AccessTokenModel } from "../../models/AccessTokenModel";
-import { ContactModel } from "../../models/ContactModel";
 import authService from "../../services/authService";
-import contactsService from "../../services/contactService";
 import { login } from "../actions/authType";
-import { deleteContact } from "../actions/contactTypes";
 import { setLoggedIn } from "../slices/authSlice";
-import { setContacts } from "../slices/contactSlice";
+import jwt from "jwt-decode";
+import { push } from "redux-first-history";
 
 export function* handleLogin({
   payload,
@@ -28,5 +26,21 @@ export function* handleLogout(): Generator<any, void, string> {
     yield put(setLoggedIn(false));
   } catch (error: any) {
     console.log(error);
+  }
+}
+
+export function* handleAutoLogin(): Generator<any, any, string> {
+  const token: string = localStorage.getItem("accessToken")!;
+  if (token) {
+    const decodedAuthToken: any = jwt(token);
+    const dateNowSeconds = Math.round(new Date().getTime() / 1000);
+    if (decodedAuthToken.exp - dateNowSeconds < 0) {
+      yield call(handleLogout);
+      yield put(push('/login'));
+    } else {
+      yield put(setLoggedIn(true));
+    }
+  } else {
+    yield put(push('/login'));
   }
 }
