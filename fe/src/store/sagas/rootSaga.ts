@@ -28,7 +28,12 @@ import {
   GET_ALL_VOLUNTEER_ACTIONS,
   SET_PAGINATION_VOLUNTEER_ACTIONS,
   DELETE_VOLUNTEER_ACTION,
-  AUTO_LOGIN
+  AUTO_LOGIN,
+  GET_NEWS,
+  SET_PAGINATION_NEWS,
+  ADD_NEWS,
+  UPDATE_NEWS,
+  DELETE_NEWS
 } from "../actions/actionTypes";
 import { handleAutoLogin, handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation, handleAddDonation, handleUpdateDonation } from "./donationSaga";
@@ -58,6 +63,7 @@ import {
 } from "./volunteerActionSaga";
 import { handleGetBankAccount, handleUpdateBankAccount } from "./bankAccountSaga";
 import { handleGetAboutUs, handleUpdateAboutUs } from "./aboutUsSaga";
+import { handleAddNews, handleDeleteNews, handleGetNews, handleSetPaginationNews, handleUpdateNews } from "./newsSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -93,5 +99,10 @@ export default function* rootSaga() {
     takeLatest(REMOVE_ACTION_TYPE_ID_VOLUNTEER_ACTIONS, handleRemoveActionTypeIdVolunteerActions),
     takeLatest(SET_PAGINATION_VOLUNTEER_ACTIONS, handleSetPaginationVolunteerActions),
     takeLatest(DELETE_VOLUNTEER_ACTION, handleDeleteVolunteerAction),
+    takeLatest(GET_NEWS, handleGetNews),
+    takeLatest(SET_PAGINATION_NEWS, handleSetPaginationNews),
+    takeLatest(ADD_NEWS, handleAddNews),
+    takeLatest(UPDATE_NEWS, handleUpdateNews),
+    takeLatest(DELETE_NEWS, handleDeleteNews),
   ]);
 }

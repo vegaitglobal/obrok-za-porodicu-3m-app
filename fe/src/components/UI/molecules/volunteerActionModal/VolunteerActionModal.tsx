@@ -115,23 +115,14 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={volunteerActionValidationScheme}
           onSubmit={(values: VolunteerActionDTOModel) => {
-            item
-              ? onClick(
-                  values.title,
-                  values.shortDescription,
-                  selectedStatus.value,
-                  selectedType.value,
-                  values.referenceNumber,
-                  values.imageURL
-                )
-              : onClick(
-                  values.title,
-                  values.shortDescription,
-                  selectedStatus.value,
-                  selectedType.value,
-                  values.referenceNumber,
-                  values.imageURL
-                );
+            onClick(
+              values.title,
+              values.shortDescription,
+              selectedStatus.value,
+              selectedType.value,
+              values.referenceNumber,
+              values.imageURL
+            );
           }}
         >
           {(formik) => (

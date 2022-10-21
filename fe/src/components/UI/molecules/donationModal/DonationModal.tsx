@@ -8,7 +8,7 @@ import CustomModal from "../../molecules/customModal/CustomModal";
 import styles from "./DonationModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPCheckbox from "../../atoms/checkbox/OPCheckbox";
-import { donationValidationScheme } from "../../../validators/DonationValidationScheme";
+import { donationValidationScheme } from "../../../validators/donationValidationScheme";
 import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 
 interface DonationModalProps {
