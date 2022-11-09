@@ -66,7 +66,7 @@ const BankAccountPage = () => {
           <div className={globalClasses["add-wrapper"]}>
             <p className={globalClasses["add-text"]}>Bankovni račun</p>
           </div>
-          <div className={globalClasses["table-wrapper"]}>
+          <div className={globalClasses["table-wrapper"]} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             <Formik
               initialValues={bankAccount ? bankAccount : initialValues}
               validationSchema={bankAccountValidationScheme}
@@ -82,9 +82,9 @@ const BankAccountPage = () => {
               enableReinitialize>
               {formik => (
                 <>
-                  <div className={styles.divFlex}>
+                  <div className={styles.divFlex} style={{width: "600px"}}>
                     <Field
-                      label="Naziv primaoca"
+                      label="Naziv primaoca *"
                       component={OPPrimaryInput}
                       placeholder="Enter Name"
                       name="receiverName"
@@ -92,7 +92,7 @@ const BankAccountPage = () => {
                       value={bankAccount ? bankAccount.receiverName : initialValues.receiverName}
                     />
                     <Field
-                      label="Grad primaoca"
+                      label="Grad primaoca *"
                       component={OPPrimaryInput}
                       placeholder="Enter Name"
                       name="receiverCity"
@@ -100,7 +100,7 @@ const BankAccountPage = () => {
                       value={bankAccount ? bankAccount.receiverCity : initialValues.receiverCity}
                     />
                     <Field
-                      label="Adresa primaoca"
+                      label="Adresa primaoca *"
                       component={OPPrimaryInput}
                       placeholder="Enter Name"
                       name="receiverAddress"
@@ -108,7 +108,7 @@ const BankAccountPage = () => {
                       value={bankAccount ? bankAccount.receiverAddress : initialValues.receiverAddress}
                     />
                     <Field
-                      label="Žiro račun primaoca"
+                      label="Žiro račun primaoca *"
                       component={OPPrimaryInput}
                       placeholder="Enter Name"
                       name="accountNumber"
@@ -132,7 +132,7 @@ const BankAccountPage = () => {
                       value={bankAccount ? bankAccount.referenceNumber : initialValues.referenceNumber}
                     />
                     <Field
-                      label="Broj telefona"
+                      label="Broj telefona *"
                       component={OPPrimaryInput}
                       placeholder="Enter Name"
                       name="phoneNumber"

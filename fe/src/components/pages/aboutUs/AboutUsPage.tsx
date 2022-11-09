@@ -12,6 +12,7 @@ import { RootState } from "../../../store/store";
 import { AboutUsModel } from "../../../models/AboutUsModel";
 import { Formik } from "formik";
 
+
 const AboutUsPage = () => {
   const dispatch = useDispatch();
 
@@ -31,43 +32,46 @@ const AboutUsPage = () => {
   }
 
   const onSave = (e:any) => {
-    console.log('000 hello', html);
-    const data: AboutUsModel = {
-      id: aboutUs.id,
-      description: html,
-      rawDescription: html
-    };
-    dispatch(updateAboutUs(data));
+    if(html) {
+      const data: AboutUsModel = {
+        id: aboutUs.id,
+        description: html,
+        rawDescription: html
+      };
+      dispatch(updateAboutUs(data));
+    }
   }
 
   return (
     <div className={globalClasses["page-wrapper"]}>
       <Header />
       <div className={globalClasses["content-wrapper"]}>
-        <div className={globalClasses["content"]}>
+        <div className={globalClasses["content"]} >
           <div className={globalClasses["add-wrapper"]}>
-            <p className={globalClasses["add-text"]}>Bank account</p>
+            <p className={globalClasses["add-text"]}>O nama</p>
           </div>
-          <div className={globalClasses["table-wrapper"]}>
-            <Formik
-              initialValues={{}}
-              onSubmit={onSave}
-              enableReinitialize>
-              {formik => (<>
-              <div className={styles.divFlex}>
+          <div className={globalClasses["table-wrapper"]} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <div className="content-wrapper" style={{width: "600px", }}>
+              <Formik
+                initialValues={{}}
+                onSubmit={onSave}
+                enableReinitialize>
+                {formik => (<>
+                <div className={styles.divFlex}>
 
-                <DefaultEditor value={html ? html : aboutUs.description} onChange={onChange} />
+                  <DefaultEditor value={html ? html : aboutUs.description} onChange={onChange} />
 
-              </div>
-              <div>
-                <OPPrimaryButton
-                  onClick={() => formik.handleSubmit()}
-                  text="Sačuvaj"
-                  type="submit"
-                  style={styles.btn}></OPPrimaryButton>
-              </div>
-              </>)}
-            </Formik>
+                </div>
+                <div className={globalClasses["HTML"]}>
+                  <OPPrimaryButton
+                    onClick={() => formik.handleSubmit()}
+                    text="Sačuvaj"
+                    type="submit"
+                    style={styles.btn}></OPPrimaryButton>
+                </div>
+                </>)}
+              </Formik>
+            </div>
           </div>
         </div>
       </div>

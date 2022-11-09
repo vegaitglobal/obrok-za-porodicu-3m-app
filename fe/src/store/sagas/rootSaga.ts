@@ -33,7 +33,11 @@ import {
   SET_PAGINATION_NEWS,
   ADD_NEWS,
   UPDATE_NEWS,
-  DELETE_NEWS
+  DELETE_NEWS,
+  GET_SUBSCRIBERS,
+  DELETE_SUBSCRIBERS,
+  ADD_SUBSCRIBERS,
+  UPDATE_SUBSCRIBERS
 } from "../actions/actionTypes";
 import { handleAutoLogin, handleLogin, handleLogout } from "./authSaga";
 import { handleGetDonations, handleDeleteDonation, handleAddDonation, handleUpdateDonation } from "./donationSaga";
@@ -64,6 +68,7 @@ import {
 import { handleGetBankAccount, handleUpdateBankAccount } from "./bankAccountSaga";
 import { handleGetAboutUs, handleUpdateAboutUs } from "./aboutUsSaga";
 import { handleAddNews, handleDeleteNews, handleGetNews, handleSetPaginationNews, handleUpdateNews } from "./newsSaga";
+import { handleAddSubscribers, handleDeleteSubscribers, handleGetSubscribers, handleUpdateSubscribers } from "./subscribersSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -104,5 +109,9 @@ export default function* rootSaga() {
     takeLatest(ADD_NEWS, handleAddNews),
     takeLatest(UPDATE_NEWS, handleUpdateNews),
     takeLatest(DELETE_NEWS, handleDeleteNews),
+    takeLatest(GET_SUBSCRIBERS, handleGetSubscribers),
+    takeLatest(DELETE_SUBSCRIBERS, handleDeleteSubscribers),
+    takeLatest(ADD_SUBSCRIBERS, handleAddSubscribers),
+    takeLatest(UPDATE_SUBSCRIBERS, handleUpdateSubscribers),
   ]);
 }

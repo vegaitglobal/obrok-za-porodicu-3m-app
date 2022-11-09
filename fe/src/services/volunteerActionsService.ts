@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { ActionsFilterModel } from "../models/ActionsFilterModel";
 import { VolunteerActionDTOModel } from "../models/VolunteerActionModel";
 import ApiService from "./apiService";
@@ -41,21 +42,33 @@ export class VolunteerActionsService extends ApiService {
   };
 
   addAction = async (payload: VolunteerActionDTOModel) => {
-    const { data } = await this.apiClient.post(
-      ENDPOINTS.VOLUNTEER_ACTION,
-      payload
-    );
+    try {
+      const { data } = await this.apiClient.post(
+        ENDPOINTS.VOLUNTEER_ACTION,
+        payload
+      );
 
-    return data;
+      toast.success("Uspešno kreiranje akcije.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom kreiranja akcije.");
+    }
   };
 
   updateAction = async (payload: VolunteerActionDTOModel) => {
-    const { data } = await this.apiClient.put(
-      ENDPOINTS.VOLUNTEER_ACTION,
-      payload
-    );
+    try {
+      const { data } = await this.apiClient.put(
+        ENDPOINTS.VOLUNTEER_ACTION,
+        payload
+      );
 
-    return data;
+      toast.success("Uspešna izmena akcije.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom izmene akcije.");
+    }
   };
 
   getAllVolunteerActions = async () => {
@@ -64,11 +77,17 @@ export class VolunteerActionsService extends ApiService {
   };
 
   deleteVolunteerAction = async (id: number) => {
-    const { data } = await this.apiClient.delete(
-      ENDPOINTS.VOLUNTEER_ACTION + "/" + id
-    );
+    try {
+      const { data } = await this.apiClient.delete(
+        ENDPOINTS.VOLUNTEER_ACTION + "/" + id
+      );
 
-    return data;
+      toast.success("Uspešno brisanje akcije.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom brisanja akcije.");
+    }
   };
 }
 

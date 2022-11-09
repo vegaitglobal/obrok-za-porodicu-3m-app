@@ -19,7 +19,7 @@ const OPCheckbox: React.FC<IOPCheckboxProps> = (props) => {
             type="checkbox"
             name={name}
         />
-        <label className={`${classes["input-label"]}`} style={{marginRight: "10px"}}>{label}</label>
+        <label className={`${classes["input-label"]}`} style={{marginRight: 10}}>{label}</label>
       </div>
     );
   };

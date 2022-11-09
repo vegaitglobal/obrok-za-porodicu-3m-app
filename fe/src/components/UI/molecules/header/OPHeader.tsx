@@ -27,6 +27,10 @@ const HEADER_VALUES: IHeaderValues[] = [
     link: "/news",
   },
   {
+    text: "Pretplatnici",
+    link: "/subscribers",
+  },
+  {
     text: "Kontakti",
     link: "/contact",
   },

@@ -128,7 +128,7 @@ const ActionTypesPage = () => {
         show={deleteModalShow}
         onDelete={deleteHandler}
         onHide={() => setDeleteModalShow(false)}
-        type={"action type"}
+        type={"tip akcije"}
       />
     </div>
   );

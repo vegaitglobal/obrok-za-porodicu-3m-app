@@ -18,7 +18,7 @@ import { getAllVolunteerActions } from "../../../store/actions/volunteerActionsT
 
 const headers: string[] = [
   "Akcija",
-  "Preduzeće",
+  "Kompanija",
   "Ime i prezime",
   "Email",
   "Broj telefona",
@@ -138,9 +138,9 @@ const DonationPage = () => {
       <Header />
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
-          <p className={classes["paragraph"]}>
+          <div className={classes["paragraph"]}>
             <div className={globalClasses["add-wrapper"]}>
-              <p className={globalClasses["add-text"]}>Dodaj donaciju</p>
+              <p className={globalClasses["add-text"]}>Donacije</p>
               <button
                 className={globalClasses["add-button"]}
                 onClick={() => setModalShow(true)}
@@ -164,14 +164,14 @@ const DonationPage = () => {
                 onClickEdit={handleClickEdit}
               />
             </div>
-          </p>
+          </div>
         </div>
       </div>
       <OPDeleteModal
         show={deleteModalShow}
         onDelete={deleteHandler}
         onHide={() => setDeleteModalShow(false)}
-        type={"donation"}
+        type={"donaciju"}
       />
       <DonationModal
         show={modalShow}

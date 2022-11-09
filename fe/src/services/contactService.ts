@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { ContactModel } from "../models/ContactModel";
 import ApiService from "./apiService";
 
@@ -13,21 +14,39 @@ export class ContactsService extends ApiService {
   };
 
   deleteContact = async (id: number) => {
-    const { data } = await this.apiClient.delete(ENDPOINTS.CONTACTS + "/" + id);
+    try {
+      const { data } = await this.apiClient.delete(ENDPOINTS.CONTACTS + "/" + id);
 
-    return data;
+      toast.success("Uspešno brisanje kontakta.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom brisanja kontakta.");
+    }
   };
 
   addContact = async (payload: ContactModel) => {
-    const { data } = await this.apiClient.post(ENDPOINTS.CONTACTS, payload);
+    try {
+      const { data } = await this.apiClient.post(ENDPOINTS.CONTACTS, payload);
 
-    return data;
+      toast.success("Uspešno dodavanje kontakta.");
+      
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom dodavanja kontakta.");
+    }
   };
 
   updateContact = async (payload: ContactModel) => {
-    const { data } = await this.apiClient.put(ENDPOINTS.CONTACTS, payload);
+    try {
+      const { data } = await this.apiClient.put(ENDPOINTS.CONTACTS, payload);
 
-    return data;
+      toast.success("Uspešna izmena kontakta.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom izmene kontakta.");
+    }
   };
 }
 

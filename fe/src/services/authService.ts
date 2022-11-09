@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { LoginUserModel } from "../models/LoginUserModel";
 import ApiService from "./apiService";
 
@@ -7,9 +8,13 @@ const ENDPOINTS = {
 
 export class AuthService extends ApiService {
   logIn = async (loginFormValues: LoginUserModel) => {
-    const { data } = await this.apiClient.post(ENDPOINTS.AUTHENTICATE, loginFormValues);
-
-    return data;
+    try {
+      const { data } = await this.apiClient.post(ENDPOINTS.AUTHENTICATE, loginFormValues);
+      
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom logovanja");
+    }
   };
 }
 
