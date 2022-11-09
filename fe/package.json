@@ -27,6 +27,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.5.0",
     "react-simple-wysiwyg": "^2.1.1",
+    "react-toastify": "^9.1.1",
     "redux-first-history": "^5.1.1",
     "redux-saga": "^1.2.1",
     "sass": "^1.55.0",

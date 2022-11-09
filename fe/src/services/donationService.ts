@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { DonationDTOModel } from "../models/DonationModel";
 import ApiService from "./apiService";
 
@@ -13,23 +14,39 @@ export class DonationService extends ApiService {
   };
 
   deleteDonation = async (id: number) => {
-    const { data } = await this.apiClient.delete(
-      ENDPOINTS.DONATIONS + "/" + id
-    );
+    try {
+      const { data } = await this.apiClient.delete(ENDPOINTS.DONATIONS + "/" + id);
 
-    return data;
+      toast.success("Uspešno obrisana donacija.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom brisanja donacije.");
+    }
   };
 
   addDonation = async (payload: DonationDTOModel) => {
-    const { data } = await this.apiClient.post(ENDPOINTS.DONATIONS, payload);
+    try {
+      const { data } = await this.apiClient.post(ENDPOINTS.DONATIONS, payload);
 
-    return data;
+      toast.success("Uspešno kreirana donacija.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom dodavanja donacije.");
+    }
   };
 
   updateDonation = async (payload: DonationDTOModel) => {
-    const { data } = await this.apiClient.put(ENDPOINTS.DONATIONS, payload);
+    try {
+      const { data } = await this.apiClient.put(ENDPOINTS.DONATIONS, payload);
 
-    return data;
+      toast.success("Uspešno izmenjana donacija.");
+      
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom izmene donacije.");
+    }
   };
 }
 

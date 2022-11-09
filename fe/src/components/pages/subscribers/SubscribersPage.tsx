@@ -1,4 +1,4 @@
-import classes from "./ContactsPage.module.scss";
+import classes from "./SubscribersPage.module.scss";
 import globalClasses from "../../../constants/GlobalStyle.module.scss";
 import Table from "../../UI/molecules/table/Table";
 import Header from "../../UI/molecules/header/OPHeader";
@@ -6,26 +6,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { useEffect } from "react";
 import {
-  deleteContact,
-  getContacts,
-  addContact,
-  updateContact,
-} from "../../../store/actions/contactTypes";
-import ContactModal from "../../UI/molecules/contactModal/ContactModal";
+  deleteSubscribers,
+  getSubscribers,
+  addSubscribers,
+  updateSubscribers,
+} from "../../../store/actions/subscribersTypes";
+import SubscribersModal from "../../UI/molecules/subscribersModal/SubscribersModal";
 import { useState } from "react";
 import OPDeleteModal from "../../UI/molecules/deleteModal/OPDeleteModal";
-import { ContactModel } from "../../../models/ContactModel";
+import { SubscribersModel } from "../../../models/SubscribersModel";
 
-const headers: string[] = ["Kontakt", "Email", "Broj telefona", "Uredi"];
+const headers: string[] = ["Email", "Uredi"];
 
-const columnsToRender: string[] = ["title", "email", "phoneNumber", "actions"];
+const columnsToRender: string[] = ["email", "actions"];
 
-const ContactPage = () => {
+const SubscribersPage = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector((state: RootState) => state.contacts.contacts);
+  const subscribers = useSelector((state: RootState) => state.subscribers.subscribers);
 
   useEffect(() => {
-    dispatch(getContacts());
+    dispatch(getSubscribers());
   }, []);
 
   const [modalShow, setModalShow] = useState(false);
@@ -33,33 +33,25 @@ const ContactPage = () => {
   const [modalItem, setModalItem] = useState(undefined);
   const [id, setId] = useState<number>();
 
-  const addContactHandler = (
-    title: string,
+  const addSubscribersHandler = (
     email: string,
-    phoneNumber: string
   ) => {
-    const contactDto: ContactModel = {
-      title,
+    const subscriberDto: SubscribersModel = {
       email,
-      phoneNumber,
     };
     setModalShow(false);
-    dispatch(addContact(contactDto));
+    dispatch(addSubscribers(subscriberDto));
   };
 
-  const updateContactHandler = (
-    title: string,
+  const updateSubscribersHandler = (
     email: string,
-    phoneNumber: string
   ) => {
-    const contactDto: ContactModel = {
-      title,
+    const subscriberDto: SubscribersModel = {
       email,
-      phoneNumber,
     };
     dispatch(
-      updateContact({
-        ...contactDto,
+      updateSubscribers({
+        ...subscriberDto,
         id: modalItem ? modalItem["id"] : 0,
       })
     );
@@ -78,9 +70,8 @@ const ContactPage = () => {
   };
 
   const deleteHandler = () => {
-    console.log(id);
     setDeleteModalShow(false);
-    dispatch(deleteContact(id!));
+    dispatch(deleteSubscribers(id!));
   };
 
   return (
@@ -89,7 +80,7 @@ const ContactPage = () => {
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
           <div className={globalClasses["add-wrapper"]}>
-            <p className={globalClasses["add-text"]}>Kontakti</p>
+            <p className={globalClasses["add-text"]}>Pretplatnici</p>
             <button
               className={globalClasses["add-button"]}
               onClick={() => setModalShow(true)}
@@ -100,21 +91,21 @@ const ContactPage = () => {
           <div className={classes["table-wrapper"]}>
             <Table
               headers={headers}
-              data={contacts}
+              data={subscribers}
               columns={columnsToRender}
               deleteHandler={showDeleteModal}
               onClickEdit={handleClickEdit}
             />
           </div>
         </div>
-        <ContactModal
+        <SubscribersModal
           show={modalShow}
-          onClick={modalItem ? updateContactHandler : addContactHandler}
+          onClick={modalItem ? updateSubscribersHandler : addSubscribersHandler}
           onHide={() => {
             setModalShow(false);
             setModalItem(undefined);
           }}
-          label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ KONTAKT"}
+          label={modalItem ? "SAČUVAJ IZMENE" : "DODAJ PRETPLATNIKA"}
           item={modalItem}
         />
       </div>
@@ -122,10 +113,10 @@ const ContactPage = () => {
         show={deleteModalShow}
         onDelete={deleteHandler}
         onHide={() => setDeleteModalShow(false)}
-        type={"kontakt"}
+        type={"pretplatnika"}
       />
     </div>
   );
 };
 
-export default ContactPage;
+export default SubscribersPage;

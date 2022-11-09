@@ -28,12 +28,14 @@
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 4px 4px 0 0;
+  min-height: 40px;
 }
 
 .card-content-wrapper {
-  min-height: 221px;
+  min-height: 151px;
   padding: 12px;
   border-radius: 0 0 4px 4px;
+  padding-bottom: 20px;
 }
 
 .card-content-tag {
@@ -85,6 +87,23 @@
 }
 
 .card-item-no-image {
-  padding-top: "42px";
-  min-height: "261px";
+  position: relative;
+  max-width: 375px;
+  width: 100%;
+  // min-height: "261px";
+  margin-bottom: 20px;
+  padding-top: 42;
+  background-color: $background;
+  border-radius: 4px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: box-shadow 0.25s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-content-wrapper {
+    padding-top: 50px;
+  }
 }

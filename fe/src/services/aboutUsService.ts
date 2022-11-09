@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { AboutUsModel } from "../models/AboutUsModel";
 import ApiService from "./apiService";
 
@@ -14,11 +15,16 @@ export class AboutUsService extends ApiService {
 
     return data;
   };
+  
 
   updateAboutUs = async (payload: AboutUsModel) => {
-    const { data } = await this.apiClient.put(ENDPOINTS.ABOUT_US, payload);
-
-    return data;
+    try {
+      const { data} = await this.apiClient.put(ENDPOINTS.ABOUT_US, payload);
+      toast.success("Uspešna izmena opisa.");
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom čuvanja opisa.");
+    }
   };
 }
 

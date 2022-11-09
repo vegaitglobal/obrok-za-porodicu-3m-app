@@ -1,32 +1,28 @@
 import { Field, Formik } from "formik";
 import React from "react";
 import CustomModal from "../../molecules/customModal/CustomModal";
-import { contactValidationScheme } from "../../../validators/contactValidationScheme";
-import styles from "./ContactModal.module.scss";
+import { subscribersValidationScheme } from "../../../validators/subscribersValidationScheme";
+import styles from "./SubscribersModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
-import { ContactModel } from "../../../../models/ContactModel";
+import { SubscribersModel } from "../../../../models/SubscribersModel";
 import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 
-interface ContactModalProps {
+interface SubscribersModalProps {
   onClick: (
-    title: string,
     email: string,
-    phoneNumber: string,
   ) => void;
   onHide: () => void;
   show: boolean;
   label: string;
-  item?: ContactModel;
+  item?: SubscribersModel;
 }
 
 const initialValues: any = {
-  title: "",
   email: "",
-  phoneNumber: "",
 };
 
-export const ContactModal: React.FC<ContactModalProps> = ({
+export const SubscribersModal: React.FC<SubscribersModalProps> = ({
   onClick,
   onHide,
   show = false,
@@ -38,22 +34,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       <div>
         <Formik
           initialValues={item ? item : initialValues}
-          validationSchema={contactValidationScheme}
-          onSubmit={(values: ContactModel) => {
-            onClick(values.title, values.email, values.phoneNumber);
+          validationSchema={subscribersValidationScheme}
+          onSubmit={(values: SubscribersModel) => {
+            onClick(values.email);
           }}
         >
           {(formik) => (
             <>
               <div className={styles.divFlex}>
-                <Field
-                  label="Kontakt"
-                  component={OPPrimaryInput}
-                  placeholder="Unesi kontakt"
-                  name="title"
-                  type="text"
-                  value={item ? item.title : initialValues.title}
-                />
                 <Field
                   label="Email *"
                   component={OPPrimaryInput}
@@ -61,14 +49,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   name="email"
                   type="text"
                   value={item ? item.email : initialValues.email}
-                />
-                <Field
-                  label="Broj telefona"
-                  component={OPPrimaryInput}
-                  placeholder="Unesi broj telefona"
-                  name="phoneNumber"
-                  type="text"
-                  value={item ? item.phoneNumber : initialValues.phoneNumber}
                 />
               </div>
               <div className={globalClasses["modal-footer-ctas"]}>
@@ -87,4 +67,4 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   );
 };
 
-export default ContactModal;
+export default SubscribersModal;

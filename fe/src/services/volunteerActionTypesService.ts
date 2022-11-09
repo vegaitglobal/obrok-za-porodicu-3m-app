@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { VolunteerActionTypeModel } from "../models/VolunteerActionTypeModel";
 import ApiService from "./apiService";
 
@@ -14,25 +15,42 @@ export class VolunteerActionTypesService extends ApiService {
   };
 
   deleteActionType = async (id: number) => {
-    const { data } = await this.apiClient.delete(
-      ENDPOINTS.VOLUNTEER_ACTION_TYPE + id
-    );
+    try {
+      const { data } = await this.apiClient.delete(
+        ENDPOINTS.VOLUNTEER_ACTION_TYPE + id
+      );
 
-    return data;
+      toast.success("Uspešno brisanje tipa akcije.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom brisanja tipa akcije.");
+    }
   };
 
   addVolunteerActionType = async (payload: VolunteerActionTypeModel) => {
-    const { data } = await this.apiClient.post(ENDPOINTS.VOLUNTEER_ACTION_TYPES, payload);
+    try {
+      const { data } = await this.apiClient.post(ENDPOINTS.VOLUNTEER_ACTION_TYPES, payload);
 
-    return data;
+      toast.success("Uspešno dodavanje tipa akcije.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom dodavanja tipa akcije.");
+    }
   };
 
   updateVolunteerActionType = async (payload: VolunteerActionTypeModel) => {
-    const { data } = await this.apiClient.put(ENDPOINTS.VOLUNTEER_ACTION_TYPES, payload);
+    try {
+      const { data } = await this.apiClient.put(ENDPOINTS.VOLUNTEER_ACTION_TYPES, payload);
 
-    return data;
+      toast.success("Uspešna izmena tipa akcije.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom izmene tipa akcije.");
+    }
   };
-
 }
 
 const volunteerActionTypesService = new VolunteerActionTypesService();

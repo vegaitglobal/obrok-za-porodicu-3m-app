@@ -8,7 +8,7 @@ import CustomModal from "../../molecules/customModal/CustomModal";
 import styles from "./DonationModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import OPCheckbox from "../../atoms/checkbox/OPCheckbox";
-import { donationValidationScheme } from "../../../validators/donationValidationScheme";
+import { donationValidationScheme } from "../../../validators/DonationValidationScheme";
 import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 
 interface DonationModalProps {
@@ -77,15 +77,22 @@ export const DonationModal: React.FC<DonationModalProps> = ({
       "&:hover": {
         cursor: "pointer",
       },
+      fontFamily: "Dosis",
     }),
     indicatorSeparator: (provided: any) => ({
       ...provided,
       backgroundColor: "rgba(0, 0, 0, 0.1)",
+      fontFamily: "Dosis"
     }),
     dropdownIndicator: (provided: any) => ({
       ...provided,
       color: "rgba(0, 0, 0, 0.6)",
+      fontFamily: "Dosis"
     }),
+    menu: (provided: any) => ({
+      ...provided,
+      fontFamily: "Dosis",
+    })
   };
 
   const handleOnActionChange = (e: any) => {
@@ -121,7 +128,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                 <Select
                   styles={customStyles}
                   placeholder={
-                    <div className={styles.placeholder}>Izaberi akciju...</div>
+                    <div className={styles["placeholder"]}>Izaberi akciju...</div>
                   }
                   isSearchable={true}
                   className={styles.select}
@@ -129,8 +136,11 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                   value={selectedAction}
                   onChange={handleOnActionChange}
                 />
+                <div style={{margin: "20px 0 20px 10px"}}>
+                  <OPCheckbox name="isCompany" label="Donacija kompanije" />
+                </div>
                 <Field
-                  label="Naziv preduzeća"
+                  label="Naziv kompanije"
                   component={OPPrimaryInput}
                   placeholder="Unesi naziv preduzeća..."
                   name="companyName"
@@ -177,17 +187,9 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                   type="text"
                   value={item ? item.address : initialValues.address}
                 />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "50%",
-                  margin: "0 auto",
-                }}
-              >
-                <OPCheckbox name="isPickup" label="Preuzimanje" />
-                <OPCheckbox name="isCompany" label="Preduzeće" />
+                <div style={{margin: "0 0 10px 10px"}}>
+                  <OPCheckbox name="isPickup" label="Preuzimanje" />
+                </div>
               </div>
               <div className={globalClasses["modal-footer-ctas"]}>
                 <OPPrimaryButton

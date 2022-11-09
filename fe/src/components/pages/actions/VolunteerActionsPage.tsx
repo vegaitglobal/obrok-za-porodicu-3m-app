@@ -71,6 +71,7 @@ const VolunteerActionsPage = () => {
   const updateVolunteerActionHandler = (
     title: string,
     shortDescription: string,
+    description: string,
     statusId: string,
     typeId: string,
     referenceNumber: string,
@@ -83,8 +84,8 @@ const VolunteerActionsPage = () => {
       typeId: +typeId,
       referenceNumber,
       imageURL,
-      rawDescription: "Opis",
-      description: "Opis",
+      rawDescription: description,
+      description: description,
     };
     dispatch(
       updateVolunteerAction({
@@ -108,6 +109,7 @@ const VolunteerActionsPage = () => {
   const addVolunteerActionHandler = (
     title: string,
     shortDescription: string,
+    description: string,
     statusId: string,
     typeId: string,
     referenceNumber: string,
@@ -120,8 +122,8 @@ const VolunteerActionsPage = () => {
       typeId: +typeId,
       referenceNumber,
       imageURL,
-      rawDescription: "Opis",
-      description: "Opis",
+      rawDescription: description,
+      description: description,
     };
 
     dispatch(addVolunteerAction(actionDto));
@@ -164,22 +166,23 @@ const VolunteerActionsPage = () => {
       <Header />
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
-          <div className={classes["filter-wrapper"]}>
-            <OPSearchBar placeholder="Pretraži" />
-            <OPFilterItemList filterItems={volunteerActionTypes} />
-            <div className={classes["search-and-add-button-wrapper"]}>
-              <OPPrimaryButton
-                text="Pretraži"
-                onClick={() => {
-                  searchVolunteerActionsHandler();
-                }}
-                style={searchButtonStyle}
-              />
-              <OPPrimaryButton
-                text="Dodaj"
+          <div className={globalClasses["add-wrapper"]}>
+            <p className={globalClasses["add-text"]}>Akcije</p>
+              <button
+                className={globalClasses["add-button"]}
                 onClick={() => setModalShow(true)}
-                style={addButtonStyle}
-              />
+              >
+                <span>+</span>Dodaj
+              </button>
+            <div className={classes["search-and-add-button-wrapper"]}>
+              <OPSearchBar placeholder="Pretraži" />
+              <button
+                className={globalClasses["remove-button"]}
+                onClick={() => searchVolunteerActionsHandler()}
+                style={searchButtonStyle}
+              >
+                <span>+</span>Pretraži
+              </button>
             </div>
           </div>
           <OPCarditemList

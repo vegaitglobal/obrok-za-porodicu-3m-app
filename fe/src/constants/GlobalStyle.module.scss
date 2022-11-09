@@ -24,6 +24,10 @@
   border-left: 1px solid rgba(0, 0, 0, 0.05);
   border-right: 1px solid rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  img {
+    width: 100%;
+  }
 }
 
 .add-wrapper {
@@ -31,6 +35,10 @@
   margin: -16px -16px 40px;
   padding: 16px 16px 20px;
   width: calc(100% + 32px);
+  min-height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   &::after {
     content: '';
@@ -73,6 +81,32 @@
 
   &:hover {
     background-color: $greenHover;
+  }
+}
+
+.remove-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px 10px 18px;
+  font-size: 18px;
+  line-height: 19px;
+  font-weight: 600;
+  text-decoration: none;
+  color: $white;
+  background-color: $red;
+  border: 0;
+  border-radius: $borderRadius;
+  transition: background-color 0.25s ease-in-out;
+
+  span {
+    font-size: 22px;
+    margin-top: -4px;
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: $orange;
   }
 }
 

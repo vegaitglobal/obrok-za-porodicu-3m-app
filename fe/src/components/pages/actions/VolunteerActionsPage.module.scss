@@ -13,6 +13,7 @@
   width: calc(100% + 32px);
   padding: 16px;
   margin: -16px -16px 0;
+  min-height: 80px;
 
   &::after {
     content: "";
@@ -42,7 +43,7 @@
 
 .search-and-add-button-wrapper {
   align-self: flex-start;
-  width: 220px;
+  width: 420px;
   display: flex;
   margin-left: auto;
   flex-direction: row;

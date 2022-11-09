@@ -35,14 +35,15 @@ const NewsPage = () => {
   const updateNewsHandler = (
     title: string,
     shortDescription: string,
+    description: string,
     imageURL: string
   ) => {
     const newsDto: NewsModel = {
       title,
       shortDescription,
       imageURL,
-      rawDescription: "Opis",
-      description: "Opis",
+      rawDescription: description,
+      description,
     };
     dispatch(
       updateNews({
@@ -62,14 +63,16 @@ const NewsPage = () => {
   const addNewsHandler = (
     title: string,
     shortDescription: string,
+    description: string,
     imageURL: string
   ) => {
+    console.log("description", description);
     const newsDto: NewsModel = {
       title,
       shortDescription,
       imageURL,
-      rawDescription: "Opis",
-      description: "Opis",
+      rawDescription: description,
+      description: description,
     };
 
     dispatch(addNews(newsDto));
@@ -100,9 +103,9 @@ const NewsPage = () => {
       <Header />
       <div className={globalClasses["content-wrapper"]}>
         <div className={globalClasses["content"]}>
-          <p className={classes["paragraph"]}>
+          <div className={classes["paragraph"]}>
             <div className={globalClasses["add-wrapper"]}>
-              <p className={globalClasses["add-text"]}>Dodaj vest</p>
+              <p className={globalClasses["add-text"]}>Vesti</p>
               <button
                 className={globalClasses["add-button"]}
                 onClick={() => setModalShow(true)}
@@ -133,7 +136,7 @@ const NewsPage = () => {
               item={modalItem}
               showDeleteModal={showDeleteModal}
             />
-          </p>
+          </div>
         </div>
       </div>
     </div>

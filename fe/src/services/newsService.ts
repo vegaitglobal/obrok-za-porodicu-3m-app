@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { NewsModel } from "../models/NewsModel";
 import ApiService from "./apiService";
 
@@ -26,29 +27,44 @@ export class NewsService extends ApiService {
   };
 
   addNews = async (payload: NewsModel) => {
-    const { data } = await this.apiClient.post(
-      ENDPOINTS.NEWS,
-      payload
-    );
+    try {
+      const { data } = await this.apiClient.post(ENDPOINTS.NEWS, payload);
 
-    return data;
+      toast.success("Uspešno dodavanje novosti.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom kreiranja novosti.");
+    }
   };
 
   updateNews = async (payload: NewsModel) => {
-    const { data } = await this.apiClient.put(
-      ENDPOINTS.NEWS,
-      payload
-    );
+    try {
+      const { data } = await this.apiClient.put(
+        ENDPOINTS.NEWS,
+        payload
+      );
 
-    return data;
+      toast.success("Uspešno izmenjena novost.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom izmene novosti.");
+    }
   };
 
   deleteNews = async (id: number) => {
-    const { data } = await this.apiClient.delete(
-      ENDPOINTS.NEWS + "/" + id
-    );
+    try {
+      const { data } = await this.apiClient.delete(
+        ENDPOINTS.NEWS + "/" + id
+      );
 
-    return data;
+      toast.success("Uspešno brisanje novosti.");
+
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom brisanja novosti.");
+    }
   };
 }
 

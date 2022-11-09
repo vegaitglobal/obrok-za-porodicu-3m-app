@@ -10,11 +10,13 @@ import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
 import CustomModal from "../../molecules/customModal/CustomModal";
 import styles from "./VolunteerActionModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
+import { DefaultEditor } from 'react-simple-wysiwyg';
 
 interface VolunteerActionModalProps {
   onClick: (
     title: string,
     shortDescription: string,
+    description: string,
     statusId: string,
     typeId: string,
     referenceNumber: string,
@@ -32,6 +34,7 @@ interface VolunteerActionModalProps {
 const initialValues: any = {
   title: "",
   shortDescription: "",
+  description: "<p></p>",
   imageURL: "",
   referenceNumber: "",
 };
@@ -61,6 +64,16 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
   );
   const [selectedStatus, setSelectedStatus] = useState(StatusOptions[0]);
   const [selectedType, setSelectedType] = useState(TypesOptions[0]);
+  const [html, setHtml] = useState(item?.description);
+
+  const onChange = (e:any) => {
+    setHtml(e.target.value);
+  }
+
+  useEffect(() => {
+    setHtml(item?.description);
+  }, [item])
+
 
   useEffect(() => {
     setSelectedStatus(
@@ -81,19 +94,26 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
     control: (provided: any) => ({
       ...provided,
       border: "1px solid rgba(0, 0, 0, 0.08)",
-      marginBottom: 10,
+      marginBottom: 20,
       "&:hover": {
         cursor: "pointer",
       },
+      fontFamily: "Dosis",
     }),
     indicatorSeparator: (provided: any) => ({
       ...provided,
       backgroundColor: "rgba(0, 0, 0, 0.1)",
+      fontFamily: "Dosis",
     }),
     dropdownIndicator: (provided: any) => ({
       ...provided,
       color: "rgba(0, 0, 0, 0.6)",
+      fontFamily: "Dosis",
     }),
+    menu: (provided: any) => ({
+      ...provided,
+      fontFamily: "Dosis",
+    })
   };
 
   const handleOnStatusChange = (e: any) => {
@@ -118,11 +138,13 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
             onClick(
               values.title,
               values.shortDescription,
+              html || item?.description || "",
               selectedStatus.value,
               selectedType.value,
               values.referenceNumber,
               values.imageURL
             );
+            setHtml("");
           }}
         >
           {(formik) => (
@@ -148,17 +170,13 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
                       : initialValues.shortDescription
                   }
                 />
-                <div className={styles["input-label"]}>Stanje</div>
-                <Select
-                  styles={customStyles}
-                  placeholder={
-                    <div className={styles.placeholder}>Izaberi stanje...</div>
-                  }
-                  className={styles.select}
-                  options={StatusOptions}
-                  value={selectedStatus}
-                  onChange={handleOnStatusChange}
-                />
+                                  
+                <div className={styles["input-label"]}>Opis</div>
+
+                <div className={styles.divFlex} style={{paddingBottom: "20px", fontWeight: "normal", fontFamily: "Dosis"}}>
+                  <DefaultEditor value={html ? html : initialValues.description} onChange={onChange} />
+                </div>
+
                 <div className={styles["input-label"]}>Tip akcije</div>
                 <Select
                   styles={customStyles}
@@ -172,7 +190,17 @@ export const VolunteerActionModal: React.FC<VolunteerActionModalProps> = ({
                   value={selectedType}
                   onChange={handleOnTypeChange}
                 />
-
+                <div className={styles["input-label"]}>Status</div>
+                <Select
+                  styles={customStyles}
+                  placeholder={
+                    <div className={styles.placeholder}>Izaberi stanje...</div>
+                  }
+                  className={styles.select}
+                  options={StatusOptions}
+                  value={selectedStatus}
+                  onChange={handleOnStatusChange}
+                />
                 <Field
                   label="Poziv na broj"
                   component={OPPrimaryInput}

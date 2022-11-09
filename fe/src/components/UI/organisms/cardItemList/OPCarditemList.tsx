@@ -18,6 +18,7 @@ const OPCarditemList: React.FC<IOPCardItemListProps> = ({
         return (
           <OPCardItem
             id={item.id ?? 0}
+            key={`key-op-card-item-${item.id}`}
             type={(item as VolunteerActionModel).type ? (item as VolunteerActionModel).type.name : ""}
             title={item.title}
             status={(item as VolunteerActionModel).status ? (item as VolunteerActionModel).status.name : ""}

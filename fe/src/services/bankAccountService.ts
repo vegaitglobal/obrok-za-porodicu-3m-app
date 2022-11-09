@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { BankAccountModel } from "../models/BankAccountModel";
 import ApiService from "./apiService";
 
@@ -16,9 +17,15 @@ export class BankAccountService extends ApiService {
   };
 
   updateBankAccount = async (payload: BankAccountModel) => {
-    const { data } = await this.apiClient.put(ENDPOINTS.BANK_ACCOUNT, payload);
+    try {
+      const { data } = await this.apiClient.put(ENDPOINTS.BANK_ACCOUNT, payload);
 
-    return data;
+      toast.success("Uspešna izmena podataka o banci.");
+      
+      return data;
+    } catch (err) {
+      toast.error("Greška prilikom čuvanja podataka o banci.");
+    }
   };
 }
 

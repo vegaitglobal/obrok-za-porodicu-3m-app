@@ -1,5 +1,5 @@
 import { Field, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { VolunteerActionDTOModel } from "../../../../models/VolunteerActionModel";
 import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
@@ -8,9 +8,10 @@ import styles from "./NewsModal.module.scss";
 import globalClasses from "../../../../constants/GlobalStyle.module.scss";
 import { NewsModel } from "../../../../models/NewsModel";
 import { newsValidationScheme } from "../../../validators/newsValidationScheme";
+import { DefaultEditor } from 'react-simple-wysiwyg';
 
 interface NewsModalProps {
-  onClick: (title: string, shortDescription: string, imageURL: string) => void;
+  onClick: (title: string, shortDescription: string, description: string, imageURL: string) => void;
   onHide: () => void;
   show: boolean;
   label: string;
@@ -31,6 +32,12 @@ export const NewsModal: React.FC<NewsModalProps> = ({
   label,
   showDeleteModal,
 }) => {
+  const [html, setHtml] = useState(item?.description);
+
+  const onChange = (e:any) => {
+    setHtml(e.target.value);
+  }
+  
   return (
     <CustomModal show={show} onHide={onHide}>
       <div>
@@ -38,7 +45,8 @@ export const NewsModal: React.FC<NewsModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={newsValidationScheme}
           onSubmit={(values: VolunteerActionDTOModel) => {
-            onClick(values.title, values.shortDescription, values.imageURL);
+            onClick(values.title, values.shortDescription, html || "", values.imageURL);
+            setHtml("");
           }}
         >
           {(formik) => (
@@ -63,7 +71,12 @@ export const NewsModal: React.FC<NewsModalProps> = ({
                       ? item.shortDescription
                       : initialValues.shortDescription
                   }
-                />
+                />             
+                <div className={styles["input-label"]}>Opis</div>
+
+                <div className={styles.divFlex} style={{paddingBottom: "20px", fontWeight: "normal", fontFamily: "Dosis"}}>
+                  <DefaultEditor value={html ? html : ''} onChange={onChange} />
+                </div>
                 <Field
                   label="URL adresa slike"
                   component={OPPrimaryInput}

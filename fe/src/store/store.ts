@@ -7,6 +7,7 @@ import donationReducer from "./slices/donationSlice";
 import volunteerActionsReducer from "./slices/volunteerActionSlice";
 import volunteerActionTypesReducer from "./slices/volunteerActionTypeSlice";
 import contactsReducer from "./slices/contactSlice";
+import subscribersReducer from "./slices/subscribersSlice";
 import bankAccountReducer from "./slices/bankAccountSlice";
 import aboutUsReucer from "./slices/aboutUsSlice";
 import newsReducer from "./slices/newsSlice";
@@ -20,6 +21,7 @@ const store = configureStore({
     volunterActions: volunteerActionsReducer,
     volunteerActionTypes: volunteerActionTypesReducer,
     contacts: contactsReducer,
+    subscribers: subscribersReducer,
     bankAccount: bankAccountReducer,
     aboutUs: aboutUsReucer,
     news: newsReducer,

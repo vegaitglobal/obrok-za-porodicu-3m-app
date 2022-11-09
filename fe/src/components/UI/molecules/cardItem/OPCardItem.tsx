@@ -1,3 +1,4 @@
+import { Colors } from "../../../../constants/Colors";
 import { NewsModel } from "../../../../models/NewsModel";
 import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 import { getRandomColor } from "../../../../utils/color";
@@ -31,17 +32,19 @@ const OPCardItem: React.FC<IOPCardItemProps> = ({
   };
 
   return (
-    <div onClick={() => {onClickEdit(item)}} className={classes["card-item-wrapper"]} style={imageURL && imageURL.length > 0 ? {} : classes["card-item-no-image"]}>
+    <div onClick={() => {onClickEdit(item)}} className={imageURL && imageURL.length > 0 ? classes["card-item-wrapper"] : classes["card-item-no-image"]}>
       {imageURL && item.imageURL.length > 0 && <div className={classes["card-image"]} style={{backgroundImage: `url(${imageURL})`}}></div>}
       <div className={classes["card-content-wrapper"]}>
-        {type ? <p className={classes["card-content-tag"]} style={style}>
-          {type}
-        </p> : null}
+        <div style={{display: "flex", flexDirection: "row"}}>
+          {type ? <p className={classes["card-content-tag"]} style={style}>
+            {type}
+          </p> : null}
+          {status ? <div className={classes["card-status-wrapper"]}>
+            <p className={classes["card-status-text"]} style={{flex: 1, textAlign: "right", paddingRight: 10}}>Status:</p>
+            <p className={classes["card-status-value"]} style={status == "Trenutno u toku" ? {color: Colors.GREEN} : {}}>{status}</p>
+          </div> : null}
+        </div>
         <p className={classes["card-content-heading"]}>{title}</p>
-        {status ? <div className={classes["card-status-wrapper"]}>
-          <p className={classes["card-status-text"]}>Status</p>
-          <p className={classes["card-status-value"]}>{status}</p>
-        </div> : null}
         <p className={classes["card-content-description"]}>
           {shortDescription}
         </p>
