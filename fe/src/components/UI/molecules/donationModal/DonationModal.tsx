@@ -13,7 +13,7 @@ import { VolunteerActionModel } from "../../../../models/VolunteerActionModel";
 
 interface DonationModalProps {
   onClick: (
-    volunteerActionId: string,
+    volunteerActionId: string | null,
     isCompany: boolean,
     companyName: string,
     fullName: string,
@@ -31,6 +31,7 @@ interface DonationModalProps {
 }
 
 const initialValues: any = {
+  volunteerActionId: null,
   isCompany: false,
   companyName: "",
   fullName: "",
@@ -52,22 +53,20 @@ export const DonationModal: React.FC<DonationModalProps> = ({
   actions,
   label,
 }) => {
-  const ActionsOptions: OptionType[] = actions.map(
-    (b: VolunteerActionModel) => {
-      return { value: b.id.toString()!, label: b.title! };
-    }
-  );
-  const [selectedAction, setSelectedAction] = useState(ActionsOptions[0]);
+  let allOptions = [{value: '-1', label: '/'}];
+
+  allOptions = allOptions.concat(actions?.map((option) => ({
+    value: option?.id.toString(), 
+    label: option.title
+  })));
+
+  const [selectedAction, setSelectedAction] = useState<OptionType>({value: '-1', label: '/'});
 
   useEffect(() => {
-    setSelectedAction(
-      item
-        ? ActionsOptions.find(
-            (a) => a.value === item.volunteerActionId.toString()
-          ) ?? ActionsOptions[0]
-        : ActionsOptions[0]
-    );
-  }, [show, item]);
+    let action = allOptions?.find(option => option?.value == item?.volunteerActionId?.toString());
+    if(action) setSelectedAction(action);
+    else setSelectedAction(allOptions[0]);
+  }, [item]);
 
   const customStyles = {
     control: (provided: any) => ({
@@ -96,9 +95,8 @@ export const DonationModal: React.FC<DonationModalProps> = ({
   };
 
   const handleOnActionChange = (e: any) => {
-    setSelectedAction(
-      ActionsOptions.find((a) => a.value === e.value) ?? ActionsOptions[0]
-    );
+    let action = allOptions?.find((action) => action?.value == e?.value);
+    if(action) setSelectedAction(action);
   };
 
   return (
@@ -108,8 +106,9 @@ export const DonationModal: React.FC<DonationModalProps> = ({
           initialValues={item ? item : initialValues}
           validationSchema={donationValidationScheme}
           onSubmit={(values: DonationDTOModel) => {
+            let selectedActionId = selectedAction?.value == '-1' ? null : selectedAction?.value;
             onClick(
-              selectedAction.value,
+              selectedActionId,
               values.isCompany,
               values.companyName,
               values.fullName,
@@ -132,7 +131,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({
                   }
                   isSearchable={true}
                   className={styles.select}
-                  options={ActionsOptions}
+                  options={allOptions}
                   value={selectedAction}
                   onChange={handleOnActionChange}
                 />

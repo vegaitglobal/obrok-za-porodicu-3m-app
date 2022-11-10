@@ -47,7 +47,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <>
               <div className={styles.divFlex}>
                 <Field
-                  label="Kontakt"
+                  label="Kontakt *"
                   component={OPPrimaryInput}
                   placeholder="Unesi kontakt"
                   name="title"
@@ -55,7 +55,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   value={item ? item.title : initialValues.title}
                 />
                 <Field
-                  label="Email *"
+                  label="Email"
                   component={OPPrimaryInput}
                   placeholder="Unesi email adresu"
                   name="email"

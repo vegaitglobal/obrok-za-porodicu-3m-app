@@ -45,7 +45,7 @@ export function* handleAddVolunteerActionType({
     yield call(volunteerActionTypesService.addVolunteerActionType, payload);
     yield call(handleGetVolunteerActionTypes);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -60,6 +60,6 @@ export function* handleUpdateVolunteerActionType({
     yield call(volunteerActionTypesService.updateVolunteerActionType, payload);
     yield call(handleGetVolunteerActionTypes);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }

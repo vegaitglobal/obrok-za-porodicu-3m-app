@@ -2,7 +2,7 @@ import { VolunteerActionModel } from "./VolunteerActionModel";
 
 export interface DonationModel {
   id: number;
-  volunteerAction: VolunteerActionModel;
+  volunteerAction: VolunteerActionModel | null;
   isCompany: boolean;
   companyName: string;
   fullName: string;
@@ -15,7 +15,7 @@ export interface DonationModel {
 
 export interface DonationDTOModel {
   id?: number | null;
-  volunteerActionId: number
+  volunteerActionId: number | null;
   isCompany: boolean;
   companyName: string;
   fullName: string;

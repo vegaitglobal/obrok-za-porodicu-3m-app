@@ -66,7 +66,6 @@ const NewsPage = () => {
     description: string,
     imageURL: string
   ) => {
-    console.log("description", description);
     const newsDto: NewsModel = {
       title,
       shortDescription,

@@ -44,7 +44,7 @@ export function* handleAddNews({
         yield call(newsService.addNews, payload);
         yield put(getNews({}));
     } catch (error: any) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -55,7 +55,7 @@ export function* handleUpdateNews({
         yield call(newsService.updateNews, payload);
         yield put(getNews({}));
     } catch (error: any) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -67,6 +67,6 @@ export function* handleDeleteNews({
 
         yield put(getNews({}));
     } catch (error: any) {
-        console.log(error);
+        console.error(error);
     }
 }

@@ -10,7 +10,7 @@ export function* handleGetAboutUs(): Generator<any, void, AboutUsModel> {
 
     yield put(setAboutUs(aboutUs));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -24,6 +24,6 @@ export function* handleUpdateAboutUs({
     );
     yield call(handleGetAboutUs);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
