@@ -14,7 +14,7 @@ class DonateService implements IDonateService {
       const response = await axios.post(`${BASE_URL}/api/donations`, donation);
       return response.data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       logIfOnline(error);
       return Promise.reject(error);
     }

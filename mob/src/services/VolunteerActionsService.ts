@@ -29,7 +29,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       logIfOnline(error);
       return Promise.reject(error);
     }
@@ -46,7 +46,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       logIfOnline(error);
       return Promise.reject(error);
     }
@@ -62,7 +62,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return Promise.reject(error);
     }
   }
@@ -81,7 +81,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return Promise.reject(error);
     }
   }
@@ -97,7 +97,7 @@ class VolunteerActionService implements IVolunteerActionService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return Promise.reject(error);
     }
   }
