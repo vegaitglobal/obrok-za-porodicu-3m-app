@@ -119,7 +119,7 @@ const ActionScreen: React.FC<ActionScreenProps> = ({navigation, route}) => {
           <Text style={styles.title}>{t('actionScreen.applyToDonate')}</Text>
           <Text style={styles.body}>{t('actionScreen.applyToDonateText')}</Text>
         </View>
-        <OPDonateForm actionType={currentVolunteerAction?.type?.id} />
+        <OPDonateForm actionType={currentVolunteerAction?.type?.id} volunteerActionId={currentVolunteerAction?.id} />
       </ScrollView>
     </SafeAreaView>
   );

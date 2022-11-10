@@ -14,7 +14,7 @@ class BankAccountService implements IBankAccountService {
       const response = await axios.get(`${BASE_URL}/api/bank-account`);
       return response.data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       logIfOnline(error);
       return Promise.reject(error);
     }

@@ -10,7 +10,7 @@ export function* handleGetSubscribers(): Generator<any, void, SubscribersModel[]
 
     yield put(setSubscribers(subscribers));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -24,7 +24,7 @@ export function* handleDeleteSubscribers({
     );
     yield call(handleGetSubscribers);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -38,7 +38,7 @@ export function* handleAddSubscribers({
     );
     yield call(handleGetSubscribers);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -52,7 +52,7 @@ export function* handleUpdateSubscribers({
     );
     yield call(handleGetSubscribers);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 

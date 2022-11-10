@@ -12,7 +12,7 @@ export const getBankAccount = () => (dispatch: Dispatch) => {
       dispatch(setBankAccount(res));
     })
     .catch((err: any) => {
-      console.log(err);
+      console.error(err);
 
       Toast.show({
         type: 'error',

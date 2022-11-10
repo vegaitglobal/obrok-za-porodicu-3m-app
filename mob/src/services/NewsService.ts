@@ -20,7 +20,7 @@ class NewsService implements INewsService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       logIfOnline(error);
       return Promise.reject(error);
     }
@@ -35,7 +35,7 @@ class NewsService implements INewsService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return Promise.reject(error);
     }
   }

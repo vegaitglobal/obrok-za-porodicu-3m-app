@@ -12,7 +12,7 @@ export const getContacts = () => (dispatch: Dispatch) => {
       dispatch(setContacts(res.data));
     })
     .catch((err: any) => {
-      console.log(err);
+      console.error(err);
 
       Toast.show({
         type: 'error',

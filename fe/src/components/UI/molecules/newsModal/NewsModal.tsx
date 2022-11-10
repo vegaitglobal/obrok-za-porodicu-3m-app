@@ -1,5 +1,5 @@
 import { Field, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { VolunteerActionDTOModel } from "../../../../models/VolunteerActionModel";
 import OPPrimaryButton from "../../atoms/primaryButton/OPPrimaryButton";
 import OPPrimaryInput from "../../atoms/primaryInput/OPPrimaryInput";
@@ -32,11 +32,16 @@ export const NewsModal: React.FC<NewsModalProps> = ({
   label,
   showDeleteModal,
 }) => {
-  const [html, setHtml] = useState(item?.description);
+  const [html, setHtml] = useState("");
 
   const onChange = (e:any) => {
     setHtml(e.target.value);
   }
+
+  useEffect(() => {
+    if(item?.description) setHtml(item?.description)
+    else setHtml("")
+  }, [item])
   
   return (
     <CustomModal show={show} onHide={onHide}>
@@ -46,7 +51,6 @@ export const NewsModal: React.FC<NewsModalProps> = ({
           validationSchema={newsValidationScheme}
           onSubmit={(values: VolunteerActionDTOModel) => {
             onClick(values.title, values.shortDescription, html || "", values.imageURL);
-            setHtml("");
           }}
         >
           {(formik) => (

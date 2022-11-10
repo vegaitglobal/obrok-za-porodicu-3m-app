@@ -24,5 +24,4 @@ export const otherDonationDonateSchema = yup.object().shape({
 });
 
 export const companyPickupDonateSchema = yup.object().shape({
-  address: yup.string().required(i18next.t('general.required')),
 });

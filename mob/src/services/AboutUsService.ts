@@ -17,7 +17,7 @@ class AboutUsService implements IAboutUsService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       logIfOnline(error);
       return Promise.reject(error);
     }
@@ -33,7 +33,7 @@ class AboutUsService implements IAboutUsService {
         code: 200,
       };
     } catch (error) {
-      console.log(error);
+      console.error(error);
       logIfOnline(error);
       return Promise.reject(error);
     }

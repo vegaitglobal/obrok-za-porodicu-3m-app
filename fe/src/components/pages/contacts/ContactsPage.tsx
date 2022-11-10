@@ -78,7 +78,6 @@ const ContactPage = () => {
   };
 
   const deleteHandler = () => {
-    console.log(id);
     setDeleteModalShow(false);
     dispatch(deleteContact(id!));
   };

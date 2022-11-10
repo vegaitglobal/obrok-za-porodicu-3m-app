@@ -16,7 +16,7 @@ export const getNews = (page: number) => (dispatch: Dispatch) => {
       }
     })
     .catch((err: any) => {
-      console.log(err);
+      console.error(err);
       Toast.show({
         type: 'error',
         props: {
@@ -35,7 +35,7 @@ export const getNewsById = (id: number) => (dispatch: Dispatch) => {
       }
     })
     .catch((err: any) => {
-      console.log(err);
+      console.error(err);
       Toast.show({
         type: 'error',
         props: {

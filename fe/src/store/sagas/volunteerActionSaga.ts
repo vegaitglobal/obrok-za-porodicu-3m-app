@@ -97,7 +97,7 @@ export function* handleGetVolunteerActionStatuses(): Generator<
     );
     yield put(setVolunteerActionStatuses(volunteerActionStatuses));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -108,7 +108,7 @@ export function* handleAddAction({
     yield call(volunteerActionsService.addAction, payload);
     yield put(getVolunteerActions({}));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -119,7 +119,7 @@ export function* handleUpdateAction({
     yield call(volunteerActionsService.updateAction, payload);
     yield put(getVolunteerActions({}));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -129,7 +129,7 @@ export function* handleGetAllVolunteerActions(): Generator<any, void, VolunteerA
 
     yield put(setAllVolunteerActions(volunteerActions));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -141,6 +141,6 @@ export function* handleDeleteVolunteerAction({
 
     yield put(getVolunteerActions({}));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }

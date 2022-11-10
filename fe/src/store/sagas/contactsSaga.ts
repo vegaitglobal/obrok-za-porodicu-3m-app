@@ -10,7 +10,7 @@ export function* handleGetContacts(): Generator<any, void, ContactModel[]> {
 
     yield put(setContacts(contacts));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -21,7 +21,7 @@ export function* handleDeleteContact({
     yield call(contactsService.deleteContact, payload.contactId);
     yield call(handleGetContacts);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -35,7 +35,7 @@ export function* handleAddContact({
     );
     yield call(handleGetContacts);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -49,7 +49,7 @@ export function* handleUpdateContact({
     );
     yield call(handleGetContacts);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 

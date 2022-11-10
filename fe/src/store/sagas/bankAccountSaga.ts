@@ -10,7 +10,7 @@ export function* handleGetBankAccount(): Generator<any, void, BankAccountModel> 
 
     yield put(setBankAccount(bankAccount));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -24,6 +24,6 @@ export function* handleUpdateBankAccount({
     );
     yield call(handleGetBankAccount);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }

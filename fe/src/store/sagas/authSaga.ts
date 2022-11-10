@@ -15,7 +15,7 @@ export function* handleLogin({
 
     yield put(setLoggedIn(true));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -25,7 +25,7 @@ export function* handleLogout(): Generator<any, void, string> {
 
     yield put(setLoggedIn(false));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 

@@ -76,7 +76,7 @@ export const getVolunteerActions =
           }
         })
         .catch((err: any) => {
-          console.log(err);
+          console.error(err);
           Toast.show({
             type: 'error',
             props: {
@@ -98,7 +98,7 @@ export const getVolunteerActionStatuses = () => (dispatch: Dispatch) => {
       }
     })
     .catch((err: any) => {
-      console.log(err);
+      console.error(err);
       Toast.show({
         type: 'error',
         props: {
@@ -117,7 +117,7 @@ export const getVolunteerActionTypes = () => (dispatch: Dispatch) => {
       }
     })
     .catch((err: any) => {
-      console.log(err);
+      console.error(err);
       Toast.show({
         type: 'error',
         props: {
@@ -152,7 +152,7 @@ export const filterVolunteerActionsByTagsAndSearchTerm =
           res && dispatch(setVolunteerActions(res.data as VolunteerPageModel));
         })
         .catch((err: any) => {
-          console.log(err);
+          console.error(err);
           Toast.show({
             type: 'error',
             props: {
@@ -212,6 +212,6 @@ export const getVolunteerAction = (id: number) => (dispatch: Dispatch) => {
           description: i18n.t('general.errorText'),
         },
       });
-      console.log(err);
+      console.error(err);
     });
 };

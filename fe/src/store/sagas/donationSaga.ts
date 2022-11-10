@@ -10,7 +10,7 @@ export function* handleGetDonations(): Generator<any, void, DonationModel[]> {
 
     yield put(setDonations(donations));
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -22,7 +22,7 @@ export function* handleDeleteDonation({
 
     yield call(handleGetDonations);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -36,7 +36,7 @@ export function* handleAddDonation({
     );
     yield call(handleGetDonations);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }
 
@@ -50,6 +50,6 @@ export function* handleUpdateDonation({
     );
     yield call(handleGetDonations);
   } catch (error: any) {
-    console.log(error);
+    console.error(error);
   }
 }

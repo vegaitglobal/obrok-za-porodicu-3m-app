@@ -57,7 +57,6 @@ const DonationPage = () => {
   };
 
   const deleteHandler = () => {
-    console.log(id);
     dispatch(deleteDonation(id!));
     setDeleteModalShow(false);
   };
@@ -68,7 +67,7 @@ const DonationPage = () => {
   }, []);
 
   const updateDonationHandler = (
-    volunteerActionId: string,
+    volunteerActionId: string | null,
     isCompany: boolean,
     companyName: string,
     fullName: string,
@@ -79,7 +78,7 @@ const DonationPage = () => {
     address: string
   ) => {
     const donationDto: DonationDTOModel = {
-      volunteerActionId: +volunteerActionId,
+      volunteerActionId: volunteerActionId ? parseInt(volunteerActionId) : null,
       isCompany,
       companyName,
       fullName,
@@ -100,7 +99,7 @@ const DonationPage = () => {
   };
 
   const addDonationHandler = (
-    volunteerActionId: string,
+    volunteerActionId: string | null,
     isCompany: boolean,
     companyName: string,
     fullName: string,
@@ -111,7 +110,7 @@ const DonationPage = () => {
     address: string
   ) => {
     const donationDto: DonationDTOModel = {
-      volunteerActionId: +volunteerActionId,
+      volunteerActionId: volunteerActionId ? parseInt(volunteerActionId) : null,
       isCompany,
       companyName,
       fullName,
@@ -128,7 +127,7 @@ const DonationPage = () => {
   const handleClickEdit = (item: any) => {
     setModalItem({
       ...item,
-      volunteerActionId: item.volunteerAction.id,
+      volunteerActionId: item?.volunteerAction?.id || undefined,
     });
     setModalShow(true);
   };
@@ -152,11 +151,9 @@ const DonationPage = () => {
               <Table
                 headers={headers}
                 data={donations.map(
-                  (donation: { volunteerAction: { title: any } }) => ({
+                  (donation: any) => ({
                     ...donation,
-                    title: donation.volunteerAction
-                      ? donation.volunteerAction.title
-                      : "/",
+                    title: donation?.volunteerAction?.title || "/",
                   })
                 )}
                 columns={columnsToRender}
