@@ -19,6 +19,11 @@ namespace MealForFamily.Service
             return await _newsletterSubscriptionRepository.GetNewsletterSubscriptions();
         }
 
+        public async Task<List<string>> GetNewsletterSubscriptionEmails()
+        {
+            return await _newsletterSubscriptionRepository.GetNewsletterSubscriptionEmails();
+        }
+
         public async Task<NewsletterSubscription> GetSingleById(int id)
         {
             NewsletterSubscription subscription = await _newsletterSubscriptionRepository.GetSingleById(id);

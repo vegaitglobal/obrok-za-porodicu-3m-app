@@ -19,7 +19,6 @@ namespace MealForFamily.Repositories
             // TODO: Optimize count query
             int totalCount = _context.Set<News>().Where(n => n.IsDeleted == false).Count();
 
-            // TODO: Add OrderBy
             IEnumerable<News> content = await _context.Set<News>()
                 .Where(n => n.IsDeleted == false)
                 .OrderByDescending(p => p.Id)

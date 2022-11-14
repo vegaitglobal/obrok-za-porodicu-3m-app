@@ -12,6 +12,7 @@ namespace MealForFamily.Repositories
         public async Task<List<Contact>> GetContacts()
         {
             return await _context.Contacts.Where(c => c.IsDeleted == false)
+                .OrderByDescending(d => d.Id)
                 .ToListAsync();
         }
 

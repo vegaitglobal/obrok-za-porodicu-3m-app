@@ -9,10 +9,12 @@ namespace MealForFamily.Service
     public class VolunteerActionService : IVolunteerActionService
     {
         private readonly IVolunteerActionRepository _volunteerActionRepository;
+        private readonly IThankYouEmailSendingService _thankYouEmailSendingService;
 
-        public VolunteerActionService(IVolunteerActionRepository volunteerActionRepository)
+        public VolunteerActionService(IVolunteerActionRepository volunteerActionRepository, IThankYouEmailSendingService thankYouEmailSendingService)
         {
             _volunteerActionRepository = volunteerActionRepository;
+            _thankYouEmailSendingService = thankYouEmailSendingService;
         }
 
         public async Task<Page<VolunteerAction>> GetVolunteerActions(VolunteerActionFilterDTO filters, int pageNumber, int pageSize)
@@ -31,7 +33,9 @@ namespace MealForFamily.Service
 
         public async Task<VolunteerAction> CreateVolunteerAction(VolunteerAction va)
         {
-            return await _volunteerActionRepository.Create(va);
+            VolunteerAction volunteerAction = await _volunteerActionRepository.Create(va);
+            await _thankYouEmailSendingService.ThankSubscribers();
+            return volunteerAction;
         }
 
         public async Task<VolunteerAction> UpdateVolunteerAction(VolunteerAction va)
@@ -53,6 +57,5 @@ namespace MealForFamily.Service
         {
             return await _volunteerActionRepository.GetVolunteerActions();
         }
-
     }
 }

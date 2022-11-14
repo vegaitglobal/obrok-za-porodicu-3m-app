@@ -6,6 +6,8 @@ namespace MealForFamily.RepositoryInterface
     {
         Task<List<NewsletterSubscription>> GetNewsletterSubscriptions();
 
+        Task<List<string>> GetNewsletterSubscriptionEmails();
+
         Task<NewsletterSubscription> GetSingleById(int id);
 
         Task<NewsletterSubscription?> GetByEmail(string email);

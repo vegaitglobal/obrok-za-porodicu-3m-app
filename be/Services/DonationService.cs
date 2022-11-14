@@ -8,10 +8,14 @@ namespace MealForFamily.Service
     public class DonationService : IDonationService
     {
         private readonly IDonationRepository _donationRepository;
+        private readonly IEmailSendingService _emailSendingService;
+        private readonly IThankYouEmailSendingService _thankYouEmailSendingService;
 
-        public DonationService(IDonationRepository donationRepository)
+        public DonationService(IDonationRepository donationRepository, IThankYouEmailSendingService thankYouEmailSendingService, IEmailSendingService emailSendingService)
         {
             _donationRepository = donationRepository;
+            _emailSendingService = emailSendingService;
+            _thankYouEmailSendingService = thankYouEmailSendingService;
         }
 
         public async Task<List<Donation>> GetDonations()
@@ -28,9 +32,11 @@ namespace MealForFamily.Service
             return donation;
         }
 
-        public async Task<Donation> CreateDonation(Donation donation)
+        public async Task<Donation> CreateDonation(Donation newDonation)
         {
-            return await _donationRepository.Create(donation);
+            Donation donation = await _donationRepository.Create(newDonation);
+            await _thankYouEmailSendingService.ThankDonator(donation);
+            return donation;
         }
 
         public async Task<Donation> UpdateDonation(Donation donation)
