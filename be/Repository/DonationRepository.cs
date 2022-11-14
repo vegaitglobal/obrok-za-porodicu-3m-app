@@ -13,6 +13,7 @@ namespace MealForFamily.Repositories
         {
             return await _context.Donations.Include(d => d.VolunteerAction)
                 .Where(d => d.IsDeleted == false)
+                .OrderByDescending(d => d.Id)
                 .ToListAsync();
         }
 

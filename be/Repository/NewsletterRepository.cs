@@ -11,7 +11,13 @@ namespace MealForFamily.Repositories
 
         public async Task<List<NewsletterSubscription>> GetNewsletterSubscriptions()
         {
-            return await _context.NewsletterSubscriptions.Where(n => n.IsDeleted == false)
+            return await _context.NewsletterSubscriptions.Where(n => n.IsDeleted == false).OrderByDescending(n => n.Id)
+                .ToListAsync();
+        }
+
+        public async Task<List<string>> GetNewsletterSubscriptionEmails()
+        {
+            return await _context.NewsletterSubscriptions.Where(n => n.IsDeleted == false).Select(item => item.Email)
                 .ToListAsync();
         }
 

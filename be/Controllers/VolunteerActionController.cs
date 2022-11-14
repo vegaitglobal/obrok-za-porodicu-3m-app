@@ -47,7 +47,7 @@ namespace MealForFamily.Controllers
             return Ok(_mapper.Map<VolunteerActionDTO>(await _volunteerActionService.GetSingleById(id)));
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("")]
         public async Task<IActionResult> CreateVolunteerAction(RequestVolunteerActionDTO request)
         {

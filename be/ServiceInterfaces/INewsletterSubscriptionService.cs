@@ -6,6 +6,8 @@ namespace MealForFamily.ServiceInterface
     {
         Task<List<NewsletterSubscription>> GetNewsletterSubscriptions();
 
+        Task<List<string>> GetNewsletterSubscriptionEmails();
+
         Task<NewsletterSubscription> GetSingleById(int id);
 
         Task<NewsletterSubscription> CreateNewsletterSubscription(NewsletterSubscription ns);

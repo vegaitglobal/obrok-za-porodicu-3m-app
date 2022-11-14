@@ -28,6 +28,7 @@ namespace MealForFamily.Service
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = string.Format("<h2 style='color:red;'>{0}</h2>", message.Content) };
             return emailMessage;
         }
+
         private void Send(MimeMessage mailMessage)
         {
             using (var client = new SmtpClient())

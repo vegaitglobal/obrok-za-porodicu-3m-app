@@ -54,6 +54,7 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 
 builder.Services.AddTransient<IEmailSendingService, EmailSendingService>();
+builder.Services.AddTransient<IThankYouEmailSendingService, ThankYouEmailSendingService>();
 
 var emailConfig = builder.Configuration
         .GetSection("EmailConfiguration")

@@ -8,10 +8,14 @@ namespace MealForFamily.Service
     public class NewsService : INewsService
     {
         private readonly INewsRepository _newsRepository;
+        private readonly INewsletterSubscriptionService _newsletterSubscriptionService;
+        private readonly IThankYouEmailSendingService _thankYouEmailSendingService;
 
-        public NewsService(INewsRepository newsRepository)
+        public NewsService(INewsRepository newsRepository, INewsletterSubscriptionService newsletterSubscriptionService, IThankYouEmailSendingService thankYouEmailSendingService)
         {
             _newsRepository = newsRepository;
+            _newsletterSubscriptionService = newsletterSubscriptionService;
+            _thankYouEmailSendingService = thankYouEmailSendingService;
         }
 
         public async Task<Page<News>> GetNews(int pageNumber, int pageSize)
@@ -30,7 +34,9 @@ namespace MealForFamily.Service
 
         public async Task<News> CreateNews(News news)
         {
-            return await _newsRepository.Create(news);
+            News newNewsItem = await _newsRepository.Create(news);
+            await _thankYouEmailSendingService.ThankSubscribers();
+            return newNewsItem;
         }
 
         public async Task<News> UpdateNews(News news)
