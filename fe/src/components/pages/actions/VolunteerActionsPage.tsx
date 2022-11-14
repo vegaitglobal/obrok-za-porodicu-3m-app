@@ -181,7 +181,7 @@ const VolunteerActionsPage = () => {
                 onClick={() => searchVolunteerActionsHandler()}
                 style={searchButtonStyle}
               >
-                <span>+</span>Pretraži
+                Pretraži
               </button>
             </div>
           </div>
