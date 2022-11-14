@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { autoLogin } from "./store/actions/authType";
 import { ToastContainer } from 'react-toastify';
 import { injectStyle } from "react-toastify/dist/inject-style";
+import UnsubscribePage from "./components/pages/unsubscribe/UnsubscribePage";
 
 if (typeof window !== "undefined") {
   injectStyle();
@@ -40,6 +41,7 @@ function App() {
         <Route path="/contact" element={<ContactsPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/bank-account" element={<BankAccountPage />} />
+        <Route path="/unsubscribe/:email" element={<UnsubscribePage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
