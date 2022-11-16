@@ -60,5 +60,12 @@ namespace MealForFamily.Controllers
             await _newsletterSubscriptionService.DeleteNewsletterSubscription(id);
             return Ok("Newsletter Subscription deleted successfully");
         }
+
+        [HttpGet("unsubscribe/{email}")]
+        public async Task<IActionResult> Unsubscribe(string email)
+        {
+            await _newsletterSubscriptionService.DeleteNewsletterSubscription(email);
+            return Ok("Uspešno ste se odjavili");
+        }
     }
 }

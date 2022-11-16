@@ -56,5 +56,15 @@ namespace MealForFamily.Service
             subscription.IsDeleted = true;
             await _newsletterSubscriptionRepository.Update(subscription);
         }
+
+        public async Task DeleteNewsletterSubscription(string email)
+        {
+            NewsletterSubscription subscription = await _newsletterSubscriptionRepository.GetByEmail(email);
+            if (subscription == null)
+                throw new CustomException("Newsletter Subscription not found", 404);
+
+            subscription.IsDeleted = true;
+            await _newsletterSubscriptionRepository.Update(subscription);
+        }
     }
 }

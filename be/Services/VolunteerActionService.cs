@@ -34,7 +34,7 @@ namespace MealForFamily.Service
         public async Task<VolunteerAction> CreateVolunteerAction(VolunteerAction va)
         {
             VolunteerAction volunteerAction = await _volunteerActionRepository.Create(va);
-            await _thankYouEmailSendingService.ThankSubscribers();
+            await _thankYouEmailSendingService.ThankSubscribers(va);
             return volunteerAction;
         }
 

@@ -35,7 +35,7 @@ namespace MealForFamily.Service
         public async Task<News> CreateNews(News news)
         {
             News newNewsItem = await _newsRepository.Create(news);
-            await _thankYouEmailSendingService.ThankSubscribers();
+            await _thankYouEmailSendingService.ThankSubscribers(news);
             return newNewsItem;
         }
 

@@ -13,6 +13,9 @@ namespace MealForFamily.ServiceInterface
         Task<NewsletterSubscription> CreateNewsletterSubscription(NewsletterSubscription ns);
 
         Task<NewsletterSubscription> UpdateNewsletterSubscription(NewsletterSubscription ns);
+
         Task DeleteNewsletterSubscription(int id);
+
+        Task DeleteNewsletterSubscription(string email);
     }
 }
