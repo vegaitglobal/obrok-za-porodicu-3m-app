@@ -5,7 +5,9 @@ namespace MealForFamily.ServiceInterface
 {
 	public interface IThankYouEmailSendingService
 	{
-        Task ThankSubscribers();
+        Task ThankSubscribers(VolunteerAction volunteerAction);
+
+        Task ThankSubscribers(News news);
 
         Task ThankDonator(Donation donation);
     }

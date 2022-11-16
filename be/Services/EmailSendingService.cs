@@ -2,6 +2,7 @@ using MealForFamily.ServiceInterface;
 using MealForFamily.Models;
 using MailKit.Net.Smtp;
 using MimeKit;
+using System.IO;
 
 namespace MealForFamily.Service
 {
@@ -25,7 +26,7 @@ namespace MealForFamily.Service
             emailMessage.From.Add(new MailboxAddress("3M", _emailConfig.From));
             emailMessage.To.AddRange(message.To);
             emailMessage.Subject = message.Subject;
-            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = string.Format("<h2 style='color:red;'>{0}</h2>", message.Content) };
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = string.Format("{0}", message.Content) };
             return emailMessage;
         }
 
