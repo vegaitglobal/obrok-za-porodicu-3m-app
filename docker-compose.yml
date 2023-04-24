@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   mealforfamily:
+    container_name: 3m_backend
     depends_on:
       - "postgres"
     build:
@@ -15,11 +16,12 @@ services:
       EmailConfiguration__From: ${EMAIL_FROM}
       EmailConfiguration__Username: ${EMAIL_USERNAME}
       EmailConfiguration__Password: ${EMAIL_PASSWORD}
+    restart: "always"
     env_file:
       - .env
   postgres:
+    container_name: 3m_db
     image: postgres:latest
-    restart: always
     volumes:
       - db_volume:/var/lib/postgresql/data
       - ./dbscripts/:/docker-entrypoint-initdb.d/
@@ -27,6 +29,17 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
+    restart: "always"
+    env_file:
+      - .env
+  web:
+    container_name: 3m_frontend
+    build:
+      context: ./fe
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT}:3000"
+    restart: "always"
     env_file:
       - .env
 volumes:
