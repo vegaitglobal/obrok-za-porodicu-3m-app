@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
-COPY *.csproj ./
+COPY . .
 RUN dotnet restore MealForFamily.csproj
 
 COPY . ./
@@ -13,4 +13,6 @@ WORKDIR /app
 
 COPY --from=build /app/out .
 
-ENTRYPOINT ["dotnet", "MealForFamily.dll"]`
+EXPOSE 80
+
+ENTRYPOINT ["dotnet", "MealForFamily.dll"]
