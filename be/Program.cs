@@ -21,6 +21,8 @@ builder.Configuration.AddEnvironmentVariables();
 builder.Services.AddControllers();
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddTransient<IJwtUtils, JwtUtils>();
 
 builder.Services.AddTransient<IContactService, ContactService>();
