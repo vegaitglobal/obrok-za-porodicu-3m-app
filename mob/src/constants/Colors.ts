@@ -28,4 +28,6 @@ export const Colors = {
 
   YELLOW: '#F4CC73',
   PURPLE: '#B984FF',
+
+  BLUE: 'blue',
 };

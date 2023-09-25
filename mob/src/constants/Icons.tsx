@@ -28,6 +28,7 @@ import StarEmpty from '../../assets/icons/star_empty.svg';
 import UserFull from '../../assets/icons/user_full.svg';
 import User from '../../assets/icons/user.svg';
 import Warning from '../../assets/icons/warning.svg';
+import CheckSolid from '../../assets/icons/check_solid.svg';
 
 const styles = StyleSheet.create({
   search: {marginTop: Platform.OS === 'android' ? 8 : 0},
@@ -62,4 +63,5 @@ export default {
   USER: <User />,
   WARNING: <Warning color={Colors.LIGHT_GRAY} />,
   RED_WARNING: <Warning color={Colors.RED_ERROR} />,
+  CHECK_SOLID: <CheckSolid color={Colors.RED} width={20} height={20} />,
 };
