@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {ResponseModel} from '../models/ResponseModel';
-import {BASE_URL} from '../constants/BaseUrl';
+import {BASE_URL} from '../constants/UrlConstants';
 import {logIfOnline} from '../utils/logging';
 
 interface IContactService {

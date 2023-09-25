@@ -12,6 +12,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {useTranslation} from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
+import { AppRoute } from '../navigation/Routes';
 
 const titles = [
   'onboardingScreen.title1',
@@ -40,15 +42,16 @@ const OnboardingScreen = () => {
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
   }));
+  const navigation = useNavigation<any>();
 
   const handleOnContinuePress = useCallback(() => {
     if (selectedIndex === 3) {
-      dispatch(setIsOnboarded());
+      navigation.navigate(AppRoute.LEGAL_PRECONDITIONS_SCREEN);
     } else {
       opacity.value = 0;
       setSelectedIndex(selectedIndex + 1);
     }
-  }, [opacity, selectedIndex, dispatch]);
+  }, [selectedIndex, navigation, opacity]);
 
   useEffect(() => {
     if (opacity.value === 0) {

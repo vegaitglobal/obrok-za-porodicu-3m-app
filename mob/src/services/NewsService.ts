@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {BASE_URL} from '../constants/BaseUrl';
+import {BASE_URL} from '../constants/UrlConstants';
 import {ResponseModel} from '../models/ResponseModel';
 import {logIfOnline} from '../utils/logging';
 
