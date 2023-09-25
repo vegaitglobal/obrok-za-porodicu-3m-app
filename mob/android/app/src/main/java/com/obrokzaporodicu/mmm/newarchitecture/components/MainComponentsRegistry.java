@@ -1,4 +1,4 @@
-package com.obrokzaporodicu.newarchitecture.components;
+package com.obrokzaporodicu.mmm.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

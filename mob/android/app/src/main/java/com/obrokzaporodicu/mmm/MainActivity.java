@@ -1,6 +1,8 @@
-package com.obrokzaporodicu;
+package com.obrokzaporodicu.mmm;
 
 import android.os.Bundle;
+
+import com.obrokzaporodicu.mmm.BuildConfig;
 import com.zoontek.rnbootsplash.RNBootSplash;
 
 import com.facebook.react.ReactActivity;

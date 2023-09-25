@@ -1,4 +1,4 @@
-package com.obrokzaporodicu.newarchitecture;
+package com.obrokzaporodicu.mmm.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.obrokzaporodicu.BuildConfig;
-import com.obrokzaporodicu.newarchitecture.components.MainComponentsRegistry;
-import com.obrokzaporodicu.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.obrokzaporodicu.mmm.BuildConfig;
+import com.obrokzaporodicu.mmm.newarchitecture.components.MainComponentsRegistry;
+import com.obrokzaporodicu.mmm.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

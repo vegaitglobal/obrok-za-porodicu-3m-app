@@ -138,7 +138,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.obrokzaporodicu"
+        applicationId "com.obrokzaporodicu.mmm"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -221,7 +221,7 @@ android {
             keyPassword 'android'
         }
     }
-    namespace 'com.obrokzaporodicu'
+    namespace 'com.obrokzaporodicu.mmm'
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
